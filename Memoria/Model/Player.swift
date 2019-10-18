@@ -18,51 +18,26 @@ class Player : SCNNode, CAAnimationDelegate{
     override init() {
         super.init()
         guard let object = SCNScene(named: "art.scnassets/player.scn") else { return }
-        for node in object.rootNode.childNodes as [SCNNode]{
+        for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
         self.scale = SCNVector3(scaleMultiplier, scaleMultiplier, scaleMultiplier)
-//        addPhysicsBody()
+        self.position = SCNVector3Make(2, 3, 0)        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addPhysicsBody(){
-        let body = SCNPhysicsBody(type: .dynamic, shape: nil)
-        body.isAffectedByGravity = false
-        self.physicsBody = body
-    }
-    
     func stop(){
         self.physicsBody?.velocity = SCNVector3Zero
-        self.position = self.presentation.worldPosition
-    }
-    
-    func movePlayer2(hitTestResult : SCNHitTestResult){
-        HapticGenerator().play(5)
-        stop()
-        timer.invalidate()
-        velocity = velocity / 10
-        destination = SCNVector3(hitTestResult.worldCoordinates.x, self.position.y, hitTestResult.worldCoordinates.z)
-        let duration = calculateTime(to: destination)
-        let direction = calculateDirection(to: destination)
-        self.physicsBody?.velocity = SCNVector3Make(direction.x  * velocity, direction.y * velocity, direction.z * velocity)
-        
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(duration), repeats: false) { (Timer) in
-            self.stop()
-        }
+        synchronize()
     }
     
     func movePlayer(hitTestResult : SCNHitTestResult){
-        if movable {
-            HapticGenerator().play(5)
-//            movable = false
-            destination = SCNVector3(hitTestResult.worldCoordinates.x, self.position.y, hitTestResult.worldCoordinates.z)
-            animateMove(to: destination)
-            self.position = destination
-        }
+        HapticGenerator().play(5)
+        destination = SCNVector3(hitTestResult.worldCoordinates.x, self.position.y, hitTestResult.worldCoordinates.z)
+        animateMove(to: destination)
     }
     
     func animateMove(to destination : SCNVector3){
@@ -89,6 +64,7 @@ class Player : SCNNode, CAAnimationDelegate{
         let node1Pos = SCNVector3ToGLKVector3(self.position)
         let node2Pos = SCNVector3ToGLKVector3(destination)
         let distance = GLKVector3Distance(node1Pos, node2Pos)
+        print(#function, self.position, self.childNodes.first?.position, distance)
         return distance
     }
     
@@ -102,5 +78,11 @@ class Player : SCNNode, CAAnimationDelegate{
         let distance = calculateDistance(to: destination)
         let direction = SCNVector3Make(destination.x/distance, destination.y/distance, destination.z/distance)
         return direction
+    }
+    
+    func synchronize(){
+        //        self.childNodes.first!.position = self.childNodes.first!.presentation.position
+        //        self.position = self.childNodes.first!.position
+        self.position = self.presentation.worldPosition
     }
 }

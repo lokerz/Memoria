@@ -15,11 +15,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     var sceneView : SCNView!
     var scene : SCNScene!
     let player = Player()
+    let gear = Gear()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScene()
         setupPlayer()
+        setupGear()
         setupGesture()
     }
     
@@ -35,6 +37,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.scene?.rootNode.addChildNode(player)
     }
     
+    func setupGear(){
+        sceneView.scene?.rootNode.addChildNode(gear)
+    }
     
     override var shouldAutorotate: Bool {
         return true
@@ -45,7 +50,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        player.position = player.presentation.worldPosition
+        player.synchronize()
         print(player.position)
 
     }

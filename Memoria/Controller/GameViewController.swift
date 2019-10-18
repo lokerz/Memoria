@@ -45,8 +45,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-//        print(player.position)
-        //player.position = player.presentation.worldPosition
+        player.position = player.presentation.worldPosition
+        print(player.position)
+
     }
     
 }

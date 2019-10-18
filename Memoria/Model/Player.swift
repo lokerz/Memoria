@@ -22,13 +22,17 @@ class Player : SCNNode, CAAnimationDelegate{
             self.addChildNode(node)
         }
         self.scale = SCNVector3(scaleMultiplier, scaleMultiplier, scaleMultiplier)
-        let body = SCNPhysicsBody(type: .dynamic, shape: nil)
-        body.isAffectedByGravity = false
-        self.physicsBody = body
+//        addPhysicsBody()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addPhysicsBody(){
+        let body = SCNPhysicsBody(type: .dynamic, shape: nil)
+        body.isAffectedByGravity = false
+        self.physicsBody = body
     }
     
     func stop(){
@@ -47,14 +51,14 @@ class Player : SCNNode, CAAnimationDelegate{
         self.physicsBody?.velocity = SCNVector3Make(direction.x  * velocity, direction.y * velocity, direction.z * velocity)
         
         timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(duration), repeats: false) { (Timer) in
-//            self.stop()
+            self.stop()
         }
     }
     
     func movePlayer(hitTestResult : SCNHitTestResult){
         if movable {
             HapticGenerator().play(5)
-            movable = false
+//            movable = false
             destination = SCNVector3(hitTestResult.worldCoordinates.x, self.position.y, hitTestResult.worldCoordinates.z)
             animateMove(to: destination)
             self.position = destination

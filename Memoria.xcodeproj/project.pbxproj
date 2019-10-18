@@ -17,6 +17,7 @@
 		47B7A1CF23585BCE0027AA1F /* MemoriaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1CE23585BCE0027AA1F /* MemoriaUITests.swift */; };
 		47B7A1E123585C5F0027AA1F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E023585C5F0027AA1F /* Player.swift */; };
 		47B7A1E523585D050027AA1F /* GestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E423585D050027AA1F /* GestureExtension.swift */; };
+		47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E623587F120027AA1F /* HapticGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		47B7A1D023585BCE0027AA1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47B7A1E023585C5F0027AA1F /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		47B7A1E423585D050027AA1F /* GestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureExtension.swift; sourceTree = "<group>"; };
+		47B7A1E623587F120027AA1F /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				47B7A1E023585C5F0027AA1F /* Player.swift */,
+				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */,
+				47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureExtension.swift in Sources */,
 				47B7A1E123585C5F0027AA1F /* Player.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,

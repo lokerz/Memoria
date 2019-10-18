@@ -10,12 +10,11 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
     var sceneView : SCNView!
     var scene : SCNScene!
     let player = Player()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +28,7 @@ class GameViewController: UIViewController {
 //        sceneView.allowsCameraControl = true
         scene = SCNScene(named: "art.scnassets/Level1.scn")
         sceneView.scene = scene
+        sceneView.delegate = self
     }
     
     func setupPlayer(){
@@ -37,11 +37,16 @@ class GameViewController: UIViewController {
     
     
     override var shouldAutorotate: Bool {
-        return false
+        return true
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
 
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+//        print(player.position)
+        //player.position = player.presentation.worldPosition
+    }
+    
 }

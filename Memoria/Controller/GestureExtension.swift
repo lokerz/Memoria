@@ -24,15 +24,13 @@ extension GameViewController {
             // retrieved the first clicked object
             let tappedPiece = hitResults[0].node
             
-            moveNode(for : tappedPiece, to : location)
+            if tappedPiece.name == "floor"{
+//                player.movePlayer(hitTestResult : hitResults.first!)
+                player.movePlayer(hitTestResult: hitResults.first!)
+            }
         }
     }
     
-    func moveNode(for piece : SCNNode, to location : CGPoint){
-        print(player.position)
-        let destination = SCNVector3Make(Float(location.x), player.position.z, Float(location.y))
-        let dummyDestination = SCNVector3Make(1, 0, 0)
-        player.localTranslate(by: dummyDestination)
-        print(player.position)
-    }
+    
+    
 }

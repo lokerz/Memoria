@@ -8,81 +8,78 @@
 import Foundation
 import SceneKit
 
-class Player : SCNNode, CAAnimationDelegate{
-    var scaleMultiplier = 1
-    var velocity : Float = 5
-    var movable = true
-    var timer = Timer()
+class Player : SCNNode{
+    var movable = false
     var destination = SCNVector3()
+    var playerNode = SCNNode()
+    var velocity = SCNVector3()
     
-    override init() {
+    override init(){
+        super.init()
+    }
+    
+    init(on position : SCNVector3){
         super.init()
         guard let object = SCNScene(named: "art.scnassets/player.scn") else { return }
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
-        self.scale = SCNVector3(scaleMultiplier, scaleMultiplier, scaleMultiplier)
-        self.position = SCNVector3Make(2, 3, 0)        
+        playerNode = self.childNodes.first!
+        playerNode.position = position
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
-    func stop(){
-        self.physicsBody?.velocity = SCNVector3Zero
-        synchronize()
-    }
-    
-    func movePlayer(hitTestResult : SCNHitTestResult){
-        HapticGenerator().play(5)
-        destination = SCNVector3(hitTestResult.worldCoordinates.x, self.position.y, hitTestResult.worldCoordinates.z)
-        animateMove(to: destination)
-    }
-    
-    func animateMove(to destination : SCNVector3){
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.fromValue = self.position
-        animation.toValue = destination
-        animation.duration = Double(calculateTime(to : destination))
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        self.addAnimation(animation, forKey: "position")
-        
-        animation.setValue("position", forKey: "animationID")
-        animation.delegate = self
-    }
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if let animationID = anim.value(forKey: "animationID") {
-            if animationID as! NSString == "position" {
-                movable = true
+    func checkPosition(){
+        if movable {
+            if calculateDistance() < playerNode.scale.x * 1.5  {
+                stop()
+            } else {
+                move()
             }
         }
     }
     
-    func calculateDistance(to destination : SCNVector3)  -> Float{
-        let node1Pos = SCNVector3ToGLKVector3(self.position)
+    func move(){
+        playerNode.physicsBody!.velocity = velocity
+    }
+    
+    func stop(){
+        playerNode.physicsBody!.velocity = SCNVector3Zero
+        movable = false
+    }
+    
+    func movePlayer(hitTestResult : SCNHitTestResult){
+        HapticGenerator().play(5)
+        destination = hitTestResult.worldCoordinates
+        velocity = calculateVelocity()
+        movable = true
+        
+        synchronize()
+        move()
+    }
+    
+    func calculateDistance()  -> Float{
+        let node1Pos = SCNVector3ToGLKVector3(playerNode.presentation.worldPosition)
         let node2Pos = SCNVector3ToGLKVector3(destination)
         let distance = GLKVector3Distance(node1Pos, node2Pos)
-        print(#function, self.position, self.childNodes.first?.position, distance)
         return distance
     }
     
-    func calculateTime(to destination : SCNVector3) -> Float{
-        let distance = calculateDistance(to: destination)
-        let duration = distance / velocity
-        return duration
-    }
-    
-    func calculateDirection(to destination : SCNVector3) -> SCNVector3{
-        let distance = calculateDistance(to: destination)
-        let direction = SCNVector3Make(destination.x/distance, destination.y/distance, destination.z/distance)
-        return direction
+    func calculateVelocity() -> SCNVector3{
+        let distance = calculateDistance()
+        let position = playerNode.presentation.worldPosition
+        let x = (destination.x - position.x) / distance
+        let z = (destination.z - position.z) / distance
+        let velocity = SCNVector3Make(x, 0, z)
+        return velocity
     }
     
     func synchronize(){
         //        self.childNodes.first!.position = self.childNodes.first!.presentation.position
         //        self.position = self.childNodes.first!.position
-        self.position = self.presentation.worldPosition
+        playerNode.position = playerNode.presentation.worldPosition
     }
 }

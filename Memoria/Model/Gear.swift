@@ -8,42 +8,70 @@
 import Foundation
 import SceneKit
 
-class Gear : SCNNode, CAAnimationDelegate{
-    var scaleMultiplier : Float = 1.0
-    var velocity : Float = 5
-    var movable = true
-    var timer = Timer()
-    var destination = SCNVector3()
+class Gear : SCNNode{
+    var degreeAngle = 0
+    var currentAngle : Float = 0.0
+    var newAngle : Float = 0.0
+    var gearNode = SCNNode()
     
-    override init() {
+    override init(){
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/Gear.scn") else { return }
+    }
+    
+    init(on position : SCNVector3, with rotation : SCNVector4 ) {
+        super.init()
+        guard let object = SCNScene(named: "art.scnassets/gear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
-        
-        self.scale = SCNVector3Make(scaleMultiplier, scaleMultiplier, scaleMultiplier)
-        self.position = SCNVector3Make(0, 0, 0)
-//        addPhysicsBody()
+        self.position = position
+        self.rotation = rotation
+//        currentAngle = rotation.w
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
-    func addPhysicsBody(){
-        let scale = SCNVector3Make(1.0, 1.0, 1.0)
-        let shape = SCNPhysicsShape(node: self, options: [SCNPhysicsShape.Option.scale : scale])
-        let body = SCNPhysicsBody(type: .static, shape: shape)
-        body.isAffectedByGravity = false
-        self.physicsBody = body
-    }
-    
-    func rotateGear(by angle : SCNVector4){
-        self.rotation = angle
-    }
-    
-    func stopRotate(){
+//    func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
+//        newAngle = Float(translation.x) * Float(Double.pi / 180) * 0.25
+//        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : -newAngle
+//        newAngle += currentAngle
+//        self.eulerAngles.y = newAngle
+//        degreeAngle = Int(newAngle * 57.296 * 4)
+//        haptic()
+//
+//    }
+//
+    func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
+        let x = Float(translation.x)
+        let y = Float(-translation.y)
+        let anglePan = (sqrt(pow(x,2)+pow(y,2)))*(Float)(Double.pi)/180.0 / 10
+
+        var rotationVector = SCNVector4()
+        rotationVector.x = 0.0
+        rotationVector.y = x
+        rotationVector.z = 0.0
+        rotationVector.w = anglePan
+        
+        for child in self.childNodes{
+//            child.physicsBody?.angularVelocity = rotationVector
+            child.rotation = rotationVector
+        }
+        
+        print(#function, rotationVector)
         
     }
+    
+    func haptic(){
+        print(degreeAngle)
+        print(gearNode.physicsBody?.angularVelocity)
+        if (degreeAngle % 30 < 1) && (degreeAngle % 30 > -1){
+            HapticGenerator().play(4)
+        }
+    }
+//
+//    func synchronize(){
+//        currentAngle = newAngle
+//    }
 }

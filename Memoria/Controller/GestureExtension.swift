@@ -20,14 +20,13 @@ extension GameViewController {
     @objc func handleTap(_ gestureRecognizer : UIGestureRecognizer){
         let location = gestureRecognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: [:])
-
+        
         // check that we clicked on at least one object
         if hitResults.count > 0 {
             // retrieved the first clicked object
             let tappedPiece = hitResults[0].node
             
-            if tappedPiece.name == "floor"{
-//                player.movePlayer2(hitTestResult : hitResults.first!)
+            if tappedPiece.name != "player"{
                 player.movePlayer(hitTestResult: hitResults.first!)
             }
         }
@@ -36,30 +35,20 @@ extension GameViewController {
     @objc func handlePan(_ gestureRecognizer : UIPanGestureRecognizer){
         let location = gestureRecognizer.location(in: sceneView)
         let translation = gestureRecognizer.translation(in: sceneView)
+        let translation2 = CGPoint(x: -translation.x, y: -translation.y)
         let hitResults = sceneView.hitTest(location, options: [:])
-        var i = 0
         
         if hitResults.count > 0 {
             let pannedPiece = hitResults.first?.node
-            if pannedPiece?.name == "gear"{
-                print(gear.rotation)
-                let x = Float(translation.x)
-                let y = Float(-translation.y)
-                let anglePan = sqrt(pow(x,2)+pow(y,2))*(Float)(Double.pi)/180.0
-                var rotationVector = SCNVector4()
-                rotationVector.x = 0
-                rotationVector.y = x
-                rotationVector.z = 0
-                rotationVector.w = anglePan/2
-                
-                gear.rotateGear(by : rotationVector)
-                
-                print(x.truncatingRemainder(dividingBy: 10))
-                i += Int(translation.x)
-                if (i % 10 == 0){
-                    HapticGenerator().play(6)
-                }
+            if pannedPiece?.name != "player"{
+//                let gear = pannedPiece as! Gear
+                gear.rotateGear(from : hitResults.first!, by: translation)
+//                gear2.rotateGear(from: hitResults.first!, by: translation2)
             }
+        }
+
+        if gestureRecognizer.state == .ended {
+            
         }
     }
     

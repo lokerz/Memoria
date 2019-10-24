@@ -18,7 +18,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     var gear = Gear()
     var gear2 = Gear()
     
-    var gravity : Float = -5
+    var gravity : Float = -9.8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-//        player.checkPosition()
+        player.checkPosition()
         print(player.playerNode.position)
     }
     

@@ -43,8 +43,10 @@ class Player : SCNNode{
                 move()
             }
         }
-        if playerNode.position.y < -3 {
+        if playerNode.position.y < 0 {
             stop()
+        }
+        if playerNode.position.y < -5 {
             reset()
         }
     }
@@ -56,7 +58,7 @@ class Player : SCNNode{
     
     func stop(){
         movable = false
-        playerNode.physicsBody!.velocity = SCNVector3Zero
+        playerNode.physicsBody!.velocity = SCNVector3Zero 
         synchronize()
     }
     

@@ -26,9 +26,9 @@ extension GameViewController {
             // retrieved the first clicked object
             let tappedPiece = hitResults[0].node
             
-            if tappedPiece.name != "player"{
+//            if tappedPiece.name != "player"{
                 player.movePlayer(hitTestResult: hitResults.first!)
-            }
+//            }
         }
     }
     

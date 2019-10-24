@@ -13,6 +13,8 @@ class Player : SCNNode{
     var destination = SCNVector3()
     var playerNode = SCNNode()
     var velocity = SCNVector3()
+    var velocityFactor : Float = 1
+    var beginningPosition =  SCNVector3()
     
     override init(){
         super.init()
@@ -25,6 +27,7 @@ class Player : SCNNode{
             self.addChildNode(node)
         }
         playerNode = self.childNodes.first!
+        beginningPosition = position
         playerNode.position = position
     }
     
@@ -40,15 +43,25 @@ class Player : SCNNode{
                 move()
             }
         }
+        if playerNode.position.y < -3 {
+            stop()
+            reset()
+        }
     }
     
     func move(){
         playerNode.physicsBody!.velocity = velocity
+        synchronize()
     }
     
     func stop(){
-        playerNode.physicsBody!.velocity = SCNVector3Zero
         movable = false
+        playerNode.physicsBody!.velocity = SCNVector3Zero
+        synchronize()
+    }
+    
+    func reset(){
+        playerNode.position = beginningPosition
     }
     
     func movePlayer(hitTestResult : SCNHitTestResult){
@@ -71,9 +84,10 @@ class Player : SCNNode{
     func calculateVelocity() -> SCNVector3{
         let distance = calculateDistance()
         let position = playerNode.presentation.worldPosition
-        let x = (destination.x - position.x) / distance
-        let z = (destination.z - position.z) / distance
-        let velocity = SCNVector3Make(x, 0, z)
+        let x = (destination.x - position.x) / distance * velocityFactor
+        let y = playerNode.physicsBody!.velocity.y
+        let z = (destination.z - position.z) / distance * velocityFactor
+        let velocity = SCNVector3Make(x, y, z)
         return velocity
     }
     

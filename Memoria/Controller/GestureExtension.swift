@@ -33,23 +33,7 @@ extension GameViewController {
     }
     
     @objc func handlePan(_ gestureRecognizer : UIPanGestureRecognizer){
-        let location = gestureRecognizer.location(in: sceneView)
-        let translation = gestureRecognizer.translation(in: sceneView)
-        let translation2 = CGPoint(x: -translation.x, y: -translation.y)
-        let hitResults = sceneView.hitTest(location, options: [:])
-        
-        if hitResults.count > 0 {
-            let pannedPiece = hitResults.first?.node
-            if pannedPiece?.name != "player"{
-//                let gear = pannedPiece as! Gear
-                gear.rotateGear(from : hitResults.first!, by: translation)
-//                gear2.rotateGear(from: hitResults.first!, by: translation2)
-            }
-        }
-
-        if gestureRecognizer.state == .ended {
-            
-        }
+        level1PanHandler(gestureRecognizer)
     }
     
     

@@ -12,7 +12,7 @@ class Gear : SCNNode{
     var degreeAngle = 0
     var currentAngle : Float = 0.0
     var newAngle : Float = 0.0
-    var gearNode = SCNNode()
+    var isHaptic = false
     
     override init(){
         super.init()
@@ -26,52 +26,34 @@ class Gear : SCNNode{
         }
         self.position = position
         self.rotation = rotation
-//        currentAngle = rotation.w
+        currentAngle = rotation.w
+        print(currentAngle)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-//    func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
-//        newAngle = Float(translation.x) * Float(Double.pi / 180) * 0.25
-//        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : -newAngle
-//        newAngle += currentAngle
-//        self.eulerAngles.y = newAngle
-//        degreeAngle = Int(newAngle * 57.296 * 4)
-//        haptic()
-//
-//    }
-//
     func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
-        let x = Float(translation.x)
-        let y = Float(-translation.y)
-        let anglePan = (sqrt(pow(x,2)+pow(y,2)))*(Float)(Double.pi)/180.0 / 10
+        newAngle = Float(translation.x) * Float(Double.pi / 180)
+        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : -newAngle
+        newAngle = newAngle / 3
+        newAngle += currentAngle
+        self.eulerAngles.y = newAngle
+        degreeAngle = Int(newAngle * 57.296 )
+        haptic()
 
-        var rotationVector = SCNVector4()
-        rotationVector.x = 0.0
-        rotationVector.y = x
-        rotationVector.z = 0.0
-        rotationVector.w = anglePan
-        
-        for child in self.childNodes{
-//            child.physicsBody?.angularVelocity = rotationVector
-            child.rotation = rotationVector
-        }
-        
-        print(#function, rotationVector)
-        
     }
     
     func haptic(){
         print(degreeAngle)
-        print(gearNode.physicsBody?.angularVelocity)
-        if (degreeAngle % 30 < 1) && (degreeAngle % 30 > -1){
+        
+        if (degreeAngle % 20 == 0) && isHaptic{
             HapticGenerator().play(4)
         }
     }
-//
-//    func synchronize(){
-//        currentAngle = newAngle
-//    }
+    
+    func synchronize(){
+        currentAngle = newAngle
+    }
 }

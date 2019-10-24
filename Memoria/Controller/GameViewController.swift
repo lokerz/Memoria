@@ -18,6 +18,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     var gear = Gear()
     var gear2 = Gear()
     
+    var gravity : Float = -5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScene()
@@ -27,9 +29,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     func setupScene(){
         sceneView = self.view as! SCNView
-        scene = SCNScene(named: "art.scnassets/Level1.scn")
+        scene = SCNScene(named: "art.scnassets/World.scn")
         sceneView.scene = scene
         sceneView.delegate = self
+        sceneView.scene!.physicsWorld.gravity = SCNVector3Make(0, gravity, 0)
     }
     
     override var shouldAutorotate: Bool {
@@ -41,7 +44,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        player.checkPosition()
+//        player.checkPosition()
+        print(player.playerNode.position)
     }
     
 }

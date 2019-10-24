@@ -21,8 +21,8 @@ class Pillar : SCNNode{
             self.addChildNode(node)
         }
         
-//        moveDown(to: position)
-        self.position = position
+        moveDown(to: position)
+//        self.position = position
     }
     
     required init?(coder: NSCoder) {

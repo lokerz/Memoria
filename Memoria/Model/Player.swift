@@ -43,10 +43,11 @@ class Player : SCNNode{
                 move()
             }
         }
-        if playerNode.position.y < 0 {
+        if playerNode.position.y < 0.3 {
             stop()
         }
         if playerNode.position.y < -5 {
+            stop()
             reset()
         }
     }

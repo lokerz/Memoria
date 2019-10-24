@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class GameViewController: UIViewController, SCNSceneRendererDelegate {
+class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysicsContactDelegate {
 
     var sceneView : SCNView!
     var scene : SCNScene!
@@ -33,6 +33,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.scene = scene
         sceneView.delegate = self
         sceneView.scene!.physicsWorld.gravity = SCNVector3Make(0, gravity, 0)
+        sceneView.scene!.physicsWorld.contactDelegate = self
     }
     
     override var shouldAutorotate: Bool {
@@ -45,7 +46,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         player.checkPosition()
-        print(player.playerNode.position)
+//        print(player.playerNode.position)
     }
     
+    
+    
+    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+//        player.stop()
+    }
 }

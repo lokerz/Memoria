@@ -34,6 +34,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
         sceneView.delegate = self
         sceneView.scene!.physicsWorld.gravity = SCNVector3Make(0, gravity, 0)
         sceneView.scene!.physicsWorld.contactDelegate = self
+        sceneView.debugOptions = .showPhysicsShapes
     }
     
     override var shouldAutorotate: Bool {

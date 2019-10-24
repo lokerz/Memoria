@@ -36,13 +36,14 @@ class Gear : SCNNode{
     
     func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
         newAngle = Float(translation.x) * Float(Double.pi / 180)
-        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : -newAngle
+        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
         newAngle = newAngle / 3
         newAngle += currentAngle
         self.eulerAngles.y = newAngle
-        degreeAngle = Int(newAngle * 57.296 )
-        haptic()
-
+        degreeAngle = Int(newAngle * 57.296)
+        if newAngle != 0 {
+            haptic()
+        }
     }
     
     func haptic(){

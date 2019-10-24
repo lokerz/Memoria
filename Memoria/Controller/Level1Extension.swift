@@ -26,7 +26,7 @@ extension GameViewController {
         let gearTwoLocation = SCNVector3Make(2.35, 0, 0)
         let gearTwoRotation = SCNVector4Make(0, 1, 0, 0.25)
         
-        let pillar1Location = SCNVector3Make(-6.8, -0.55, 0)
+        let pillar1Location = SCNVector3Make(-6.75, -0.54, 0)
         let pillar2Location = SCNVector3Make(6.3, -0.55, 0)
         
         

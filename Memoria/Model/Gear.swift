@@ -13,6 +13,9 @@ class Gear : SCNNode{
     var currentAngle : Float = 0.0
     var newAngle : Float = 0.0
     var isHaptic = false
+    var gearNode = SCNNode()
+    var beginningPosition = SCNVector3()
+    
     
     override init(){
         super.init()
@@ -24,8 +27,10 @@ class Gear : SCNNode{
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
-        self.position = position
-        self.rotation = rotation
+        beginningPosition = position
+        gearNode = childNodes.first!
+        gearNode.position = position
+        gearNode.rotation = rotation
         currentAngle = rotation.w
         print(currentAngle)
     }
@@ -39,7 +44,7 @@ class Gear : SCNNode{
         newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
         newAngle = newAngle / 3
         newAngle += currentAngle
-        self.eulerAngles.y = newAngle
+        gearNode.eulerAngles.y = newAngle
         degreeAngle = Int(newAngle * 57.296)
         if newAngle != 0 {
             haptic()
@@ -56,5 +61,10 @@ class Gear : SCNNode{
     
     func synchronize(){
         currentAngle = newAngle
+    }
+    
+    func lock(){
+//        gearNode.physicsBody!.velocity = SCNVector3Zero
+        gearNode.position = beginningPosition
     }
 }

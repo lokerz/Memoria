@@ -18,7 +18,7 @@ extension GameViewController {
     func setupLevelOneChild(){
         let rootNode = sceneView.scene!.rootNode
         
-        let playerLocation = SCNVector3Make(-6.9, 10, 0)
+        let playerLocation = SCNVector3Make(-3, 10, 0)
         
         let gearOneLocation = SCNVector3Make(-2.8, 0, 0)
         let gearOneRotation = SCNVector4Make(0, 0, 0, 0)
@@ -26,8 +26,8 @@ extension GameViewController {
         let gearTwoLocation = SCNVector3Make(2.35, 0, 0)
         let gearTwoRotation = SCNVector4Make(0, 1, 0, 0.25)
         
-        let pillar1Location = SCNVector3Make(-6.75, -0.54, 0)
-        let pillar2Location = SCNVector3Make(6.3, -0.55, 0)
+        let pillar1Location = SCNVector3Make(-6.85, -0.5, 0)
+        let pillar2Location = SCNVector3Make(6.45, -0.56, 0)
         
         
         player = Player(on: playerLocation)
@@ -39,8 +39,12 @@ extension GameViewController {
         rootNode.addChildNode(player)
         rootNode.addChildNode(gear)
         rootNode.addChildNode(gear2)
-        rootNode.addChildNode(pillar)
-        rootNode.addChildNode(pillar2)
+//        rootNode.addChildNode(pillar)
+//        rootNode.addChildNode(pillar2)
+
+        gears.removeAll()
+        gears.append(gear)
+        gears.append(gear2)
         
     }
     
@@ -56,13 +60,13 @@ extension GameViewController {
                 gear.isHaptic = true
                 gear2.isHaptic = false
                 gear.rotateGear(from : hitResults.first!, by: translation)
-                gear2.rotateGear(from: hitResults.first!, by: translation2)
+//                gear2.rotateGear(from: hitResults.first!, by: translation2)
             }
             else if pannedPiece == gear2.childNodes.first {
                 gear.isHaptic = false
                 gear2.isHaptic = true
                 gear2.rotateGear(from : hitResults.first!, by: translation)
-                gear.rotateGear(from: hitResults.first!, by: translation2)
+//                gear.rotateGear(from: hitResults.first!, by: translation2)
             }
         }
 

@@ -15,6 +15,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
     var sceneView : SCNView!
     var scene : SCNScene!
     var player = Player()
+    var gears = [Gear]()
     var gear = Gear()
     var gear2 = Gear()
     
@@ -47,12 +48,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         player.checkPosition()
-//        print(player.playerNode.position)
-    }
-    
-    
-    
-    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-//        player.stop()
+//        print(player.playerNode.physicsBody!.friction, gear.gearNode.physicsBody!.friction)
+        
+        for gear in gears {
+            gear.lock()
+        }
     }
 }

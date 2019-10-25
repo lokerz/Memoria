@@ -37,30 +37,35 @@ class Player : SCNNode{
     
     func checkPosition(){
         if movable {
-            if calculateDistance() < playerNode.scale.x * 1.5  {
+            if calculateDistance() < playerNode.scale.x * 3 {
                 stop()
             } else {
                 move()
             }
         }
         if playerNode.position.y < 0.3 {
-            stop()
+            fall()
         }
         if playerNode.position.y < -5 {
             stop()
             reset()
         }
+        synchronize()
     }
     
     func move(){
         playerNode.physicsBody!.velocity = velocity
-        synchronize()
+    }
+    
+    func fall(){
+        movable = false
+        playerNode.physicsBody!.velocity = SCNVector3Make(0, playerNode.physicsBody!.velocity.y, 0)
     }
     
     func stop(){
+        print(#function)
         movable = false
-        playerNode.physicsBody!.velocity = SCNVector3Zero 
-        synchronize()
+        playerNode.physicsBody?.velocity = SCNVector3Zero
     }
     
     func reset(){

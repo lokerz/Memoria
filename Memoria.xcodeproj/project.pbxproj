@@ -11,6 +11,14 @@
 		4705CA35235D896F00E874EB /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA34235D896F00E874EB /* Player.swift */; };
 		4705CA37235EF3B100E874EB /* Level1Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA36235EF3B100E874EB /* Level1Extension.swift */; };
 		4705CA3B23617DFE00E874EB /* Pillar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA3A23617DFE00E874EB /* Pillar.swift */; };
+		4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA3C2362FF2800E874EB /* PathfindingManager.swift */; };
+		4705CA3F236409E500E874EB /* Level2Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA3E236409E500E874EB /* Level2Extension.swift */; };
+		4705CA41236409F300E874EB /* Level3Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA40236409F300E874EB /* Level3Extension.swift */; };
+		4705CA4323640A4100E874EB /* LevelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4223640A4100E874EB /* LevelExtension.swift */; };
+		4705CA45236588CE00E874EB /* Black.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA44236588CE00E874EB /* Black.swift */; };
+		4705CA4723658E1700E874EB /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4623658E1700E874EB /* Platform.swift */; };
+		4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA492365ADF500E874EB /* HalfGear.swift */; };
+		4705CA4C2366CC0400E874EB /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4B2366CC0400E874EB /* Light.swift */; };
 		47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */; };
 		47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A1AE23585BCA0027AA1F /* art.scnassets */; };
 		47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1B023585BCA0027AA1F /* GameViewController.swift */; };
@@ -45,6 +53,14 @@
 		4705CA34235D896F00E874EB /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4705CA36235EF3B100E874EB /* Level1Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1Extension.swift; sourceTree = "<group>"; };
 		4705CA3A23617DFE00E874EB /* Pillar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pillar.swift; sourceTree = "<group>"; };
+		4705CA3C2362FF2800E874EB /* PathfindingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathfindingManager.swift; sourceTree = "<group>"; };
+		4705CA3E236409E500E874EB /* Level2Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2Extension.swift; sourceTree = "<group>"; };
+		4705CA40236409F300E874EB /* Level3Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level3Extension.swift; sourceTree = "<group>"; };
+		4705CA4223640A4100E874EB /* LevelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelExtension.swift; sourceTree = "<group>"; };
+		4705CA44236588CE00E874EB /* Black.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black.swift; sourceTree = "<group>"; };
+		4705CA4623658E1700E874EB /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		4705CA492365ADF500E874EB /* HalfGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGear.swift; sourceTree = "<group>"; };
+		4705CA4B2366CC0400E874EB /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		47B7A1A923585BCA0027AA1F /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -88,6 +104,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4705CA482365A7DC00E874EB /* 3D Models */ = {
+			isa = PBXGroup;
+			children = (
+				4705CA322359A71100E874EB /* Gear.swift */,
+				4705CA492365ADF500E874EB /* HalfGear.swift */,
+				4705CA34235D896F00E874EB /* Player.swift */,
+				4705CA3A23617DFE00E874EB /* Pillar.swift */,
+				4705CA4623658E1700E874EB /* Platform.swift */,
+				4705CA44236588CE00E874EB /* Black.swift */,
+			);
+			path = "3D Models";
+			sourceTree = "<group>";
+		};
 		47B7A1A023585BCA0027AA1F = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +182,10 @@
 			children = (
 				47B7A1B023585BCA0027AA1F /* GameViewController.swift */,
 				47B7A1E423585D050027AA1F /* GestureExtension.swift */,
+				4705CA4223640A4100E874EB /* LevelExtension.swift */,
 				4705CA36235EF3B100E874EB /* Level1Extension.swift */,
+				4705CA3E236409E500E874EB /* Level2Extension.swift */,
+				4705CA40236409F300E874EB /* Level3Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,10 +202,10 @@
 		47B7A1DF23585C250027AA1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4705CA4B2366CC0400E874EB /* Light.swift */,
+				4705CA482365A7DC00E874EB /* 3D Models */,
 				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
-				4705CA322359A71100E874EB /* Gear.swift */,
-				4705CA34235D896F00E874EB /* Player.swift */,
-				4705CA3A23617DFE00E874EB /* Pillar.swift */,
+				4705CA3C2362FF2800E874EB /* PathfindingManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,14 +342,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4705CA4723658E1700E874EB /* Platform.swift in Sources */,
+				4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */,
+				4705CA41236409F300E874EB /* Level3Extension.swift in Sources */,
 				47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */,
 				4705CA37235EF3B100E874EB /* Level1Extension.swift in Sources */,
 				47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */,
+				4705CA4323640A4100E874EB /* LevelExtension.swift in Sources */,
+				4705CA3F236409E500E874EB /* Level2Extension.swift in Sources */,
 				4705CA3B23617DFE00E874EB /* Pillar.swift in Sources */,
 				4705CA35235D896F00E874EB /* Player.swift in Sources */,
 				4705CA332359A71100E874EB /* Gear.swift in Sources */,
+				4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureExtension.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,
+				4705CA4C2366CC0400E874EB /* Light.swift in Sources */,
+				4705CA45236588CE00E874EB /* Black.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

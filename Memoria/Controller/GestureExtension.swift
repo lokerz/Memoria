@@ -24,18 +24,23 @@ extension GameViewController {
         // check that we clicked on at least one object
         if hitResults.count > 0 {
             // retrieved the first clicked object
-            let tappedPiece = hitResults[0].node
+            let tappedPiece = hitResults.first!.node
             
-//            if tappedPiece.name != "player"{
+            if tappedPiece.name == "gear" || tappedPiece.name == "pillar"{
                 player.movePlayer(hitTestResult: hitResults.first!)
-//            }
+            }
         }
     }
     
     @objc func handlePan(_ gestureRecognizer : UIPanGestureRecognizer){
-        level1PanHandler(gestureRecognizer)
+        
+        switch level {
+            case 1 : levelOnePanHandler(gestureRecognizer)
+            case 2 : levelThreePanHandler(gestureRecognizer)
+            default : levelTwoPanHandler(gestureRecognizer)
+        }
     }
     
-    
+   
     
 }

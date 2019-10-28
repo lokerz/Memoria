@@ -13,28 +13,40 @@ import SceneKit
 class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysicsContactDelegate {
 
     var sceneView : SCNView!
-    var scene : SCNScene!
-    var player = Player()
-    var gear = Gear()
-    var gear2 = Gear()
+    var loadingView : UIView?
     
-    var gravity : Float = -9.8
+    var scene : SCNScene!
+    var rootNode = SCNNode()
+    var level = 1
+    var isLoading = false
+    
+    var player = Player()
+    var gears = [Gear]()
+    var halfGears = [HalfGear]()
+    var platforms = [Platform]()
+    var finishPillar = Pillar()
+    var black = Black()
+    
+    var gravity : Float = -5
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScene()
-        setupLevelOne()
+        setupWorld()
+        setupLevel()
         setupGesture()
     }
     
-    func setupScene(){
+    func setupWorld(){
         sceneView = self.view as! SCNView
         scene = SCNScene(named: "art.scnassets/World.scn")
+        sceneView.prepare(scene, shouldAbortBlock: nil)
         sceneView.scene = scene
         sceneView.delegate = self
+//        sceneView.scene!.physicsWorld.contactDelegate = self
         sceneView.scene!.physicsWorld.gravity = SCNVector3Make(0, gravity, 0)
-        sceneView.scene!.physicsWorld.contactDelegate = self
-        sceneView.debugOptions = .showPhysicsShapes
+//        sceneView.showsStatistics = true
+//        sceneView.debugOptions = [.showPhysicsShapes]
+        rootNode = sceneView.scene!.rootNode
     }
     
     override var shouldAutorotate: Bool {
@@ -45,14 +57,15 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
         return true
     }
 
+    
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         player.checkPosition()
+        
+        if player.isFinished && !isLoading{
+            nextLevel()
+        }
 //        print(player.playerNode.position)
     }
     
     
-    
-    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-//        player.stop()
-    }
 }

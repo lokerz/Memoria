@@ -11,7 +11,7 @@ import SceneKit
 
 extension GameViewController {
     
-    func setupLevelOne(){
+    func setupLevelThree(){
         
         let playerLocation = SCNVector3Make(-6.68, 7.5, 0)
         
@@ -21,9 +21,9 @@ extension GameViewController {
         let gearOneRotation = SCNVector4Make(0, 0, 0, 0)
         
         let gearTwoLocation = SCNVector3Make(2.34, 0, 0)
-        let gearTwoRotation = SCNVector4Make(0, 1, 0, 0.26)
+        let gearTwoRotation = SCNVector4Make(0, 0, 0, 0)
         
-        let finishPillarLocation = SCNVector3Make(6.24, -0.56, 0)
+        let finishPillarLocation = SCNVector3Make(4.29, -0.55, 0)
         
         let finishLocation = SCNVector3Make(finishPillarLocation.x, 0, finishPillarLocation.z)
         
@@ -31,24 +31,26 @@ extension GameViewController {
         player = Player(on: playerLocation)
         player.finishLocation = finishLocation
         let gear = Gear(on: gearOneLocation, with: gearOneRotation)
-        let gear2 = Gear(on: gearTwoLocation, with: gearTwoRotation)
+        let halfGear = HalfGear(on: gearTwoLocation, with: gearTwoRotation)
         let pillar = Pillar(on : pillar1Location, isFinish : false)
         finishPillar = Pillar(on : finishPillarLocation, isFinish : true)
         
         rootNode.addChildNode(player)
         rootNode.addChildNode(gear)
-        rootNode.addChildNode(gear2)
+        rootNode.addChildNode(halfGear)
         rootNode.addChildNode(pillar)
         rootNode.addChildNode(finishPillar)
         
         gears.removeAll()
         gears.append(gear)
-        gears.append(gear2)
         
-        
+        halfGears.removeAll()
+        halfGears.append(halfGear)
     }
     
-    func levelOnePanHandler(_ gestureRecognizer : UIPanGestureRecognizer){
+    
+    
+    func levelThreePanHandler(_ gestureRecognizer : UIPanGestureRecognizer){
         let location = gestureRecognizer.location(in: sceneView)
         let translation = gestureRecognizer.translation(in: sceneView)
         
@@ -59,10 +61,7 @@ extension GameViewController {
             let pannedPiece = hitResults.first?.node
             
             if pannedPiece == gears[0].childNodes.first {
-                gearSystem(gearA: gears[0], gearB: gears[1], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)
-            }
-            else if pannedPiece == gears[1].childNodes.first {
-                gearSystem(gearA: gears[1], gearB: gears[0], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)
+                halfGearSystem(gear: gears[0], halfGear: halfGears[0], hitResult: hitResults.first!, translation: translation)
             }
         }
         
@@ -71,6 +70,11 @@ extension GameViewController {
                 gear.isHaptic = true
                 gear.isRotating = true
                 gear.synchronize()
+            }
+            
+            for halfGear in halfGears{
+                halfGear.isRotateAble = true
+                halfGear.synchronize()
             }
         }
     }

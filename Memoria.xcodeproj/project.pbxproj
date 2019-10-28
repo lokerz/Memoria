@@ -19,6 +19,7 @@
 		4705CA4723658E1700E874EB /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4623658E1700E874EB /* Platform.swift */; };
 		4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA492365ADF500E874EB /* HalfGear.swift */; };
 		4705CA4C2366CC0400E874EB /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4B2366CC0400E874EB /* Light.swift */; };
+		4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4D2366D26C00E874EB /* RelationExtension.swift */; };
 		47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */; };
 		47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A1AE23585BCA0027AA1F /* art.scnassets */; };
 		47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1B023585BCA0027AA1F /* GameViewController.swift */; };
@@ -61,6 +62,7 @@
 		4705CA4623658E1700E874EB /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		4705CA492365ADF500E874EB /* HalfGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGear.swift; sourceTree = "<group>"; };
 		4705CA4B2366CC0400E874EB /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		4705CA4D2366D26C00E874EB /* RelationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationExtension.swift; sourceTree = "<group>"; };
 		47B7A1A923585BCA0027AA1F /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				47B7A1B023585BCA0027AA1F /* GameViewController.swift */,
 				47B7A1E423585D050027AA1F /* GestureExtension.swift */,
 				4705CA4223640A4100E874EB /* LevelExtension.swift */,
+				4705CA4D2366D26C00E874EB /* RelationExtension.swift */,
 				4705CA36235EF3B100E874EB /* Level1Extension.swift */,
 				4705CA3E236409E500E874EB /* Level2Extension.swift */,
 				4705CA40236409F300E874EB /* Level3Extension.swift */,
@@ -354,6 +357,7 @@
 				4705CA35235D896F00E874EB /* Player.swift in Sources */,
 				4705CA332359A71100E874EB /* Gear.swift in Sources */,
 				4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */,
+				4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureExtension.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,
 				4705CA4C2366CC0400E874EB /* Light.swift in Sources */,

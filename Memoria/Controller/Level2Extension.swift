@@ -38,7 +38,7 @@ extension GameViewController {
         let gear2 = Gear(on: gearTwoLocation, with: gearTwoRotation)
         let pillar = Pillar(on : pillar1Location, isFinish : false)
         finishPillar = Pillar(on : finishPillarLocation, isFinish : true)
-        let platform = Platform(on: platformLocation)
+        let platform = Platform(on: platformLocation, minHeight : -3, maxHeight : 3)
 
         
         rootNode.addChildNode(player)

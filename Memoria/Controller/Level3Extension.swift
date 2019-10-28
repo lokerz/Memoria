@@ -31,7 +31,7 @@ extension GameViewController {
         player = Player(on: playerLocation)
         player.finishLocation = finishLocation
         let gear = Gear(on: gearOneLocation, with: gearOneRotation)
-        let halfGear = HalfGear(on: gearTwoLocation, with: gearTwoRotation)
+        let halfGear = HalfGear(on: gearTwoLocation, with: gearTwoRotation, minAngle: -0.54, maxAngle: 0.61)
         let pillar = Pillar(on : pillar1Location, isFinish : false)
         finishPillar = Pillar(on : finishPillarLocation, isFinish : true)
         

@@ -14,6 +14,8 @@ class HalfGear : SCNNode{
     var degreeAngle : Float = 0
     var currentAngle : Float = 0.0
     var newAngle : Float = 0.0
+    var minAngle : Float = 0.0
+    var maxAngle : Float = 0.0
     
     var isRotateAble = true
     
@@ -21,7 +23,7 @@ class HalfGear : SCNNode{
         super.init()
     }
     
-    init(on position : SCNVector3, with rotation : SCNVector4 ) {
+    init(on position : SCNVector3, with rotation : SCNVector4, minAngle: Float, maxAngle : Float) {
         super.init()
         guard let object = SCNScene(named: "art.scnassets/halfgear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
@@ -32,6 +34,9 @@ class HalfGear : SCNNode{
         initialAngle = rotation.w
         currentAngle = initialAngle
         newAngle = initialAngle
+        
+        self.minAngle = minAngle
+        self.maxAngle = maxAngle
         
     }
     
@@ -45,9 +50,9 @@ class HalfGear : SCNNode{
         newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
         newAngle = newAngle * angularVelocity
         newAngle += currentAngle
-        if newAngle > 0.60 || newAngle < -0.53{
+        if newAngle > maxAngle || newAngle < minAngle{
             isRotateAble = false
-            newAngle = newAngle > 0.6 ? 0.6 : -0.53
+            newAngle = newAngle > maxAngle ? maxAngle : minAngle
         }
         self.eulerAngles.y = newAngle
         print(eulerAngles.y)

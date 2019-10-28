@@ -12,6 +12,7 @@ class Pillar : SCNNode{
     
     var isFinish = false
     
+    
     override init(){
         super.init()
     }

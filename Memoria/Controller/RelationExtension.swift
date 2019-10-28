@@ -47,10 +47,12 @@ extension GameViewController {
         let negativeTranslation = CGPoint(x: -translation.x, y: translation.y)
         
         gear.rotateGear(from : hitResult, by: translation)
-        switch relation {
-        case .oppositeDirection : platform.move(by : negativeTranslation)
-        case .sameDirection : platform.move(by: translation)
-        default : break
+        if hitResult.worldCoordinates.z > 0 {
+            switch relation {
+            case .oppositeDirection : platform.move(by : negativeTranslation)
+            case .sameDirection : platform.move(by: translation)
+            default : break
+            }
         }
     }
 }

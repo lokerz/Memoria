@@ -12,12 +12,11 @@ import SceneKit
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysicsContactDelegate {
 
-    var sceneView : SCNView!
-    var loadingView : UIView?
+    var level = 1
     
+    var sceneView : SCNView!
     var scene : SCNScene!
     var rootNode = SCNNode()
-    var level = 1
     var isLoading = false
     
     var player = Player()
@@ -37,9 +36,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
     }
     
     func setupWorld(){
-        sceneView = self.view as! SCNView
+        sceneView = (self.view as! SCNView)
         scene = SCNScene(named: "art.scnassets/World.scn")
-        sceneView.prepare(scene, shouldAbortBlock: nil)
         sceneView.scene = scene
         sceneView.delegate = self
 //        sceneView.scene!.physicsWorld.contactDelegate = self

@@ -33,12 +33,13 @@ extension GameViewController {
     }
     
     @objc func handlePan(_ gestureRecognizer : UIPanGestureRecognizer){
-        
+        isPanning = gestureRecognizer.state == .ended ? false : true
         switch level {
             case 1 : levelOnePanHandler(gestureRecognizer)
-            case 2 : levelThreePanHandler(gestureRecognizer)
-            default : levelTwoPanHandler(gestureRecognizer)
+            case 3 : levelTwoPanHandler(gestureRecognizer)
+            default : levelThreePanHandler(gestureRecognizer)
         }
+        
     }
     
    

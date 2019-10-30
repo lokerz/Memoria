@@ -17,7 +17,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
     var sceneView : SCNView!
     var scene : SCNScene!
     var rootNode = SCNNode()
+    var pathfinder = PathfindingManager.instance
+    
     var isLoading = false
+    var isPanning = false
     
     var player = Player()
     var gears = [Gear]()
@@ -33,6 +36,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
         setupWorld()
         setupLevel()
         setupGesture()
+        
+        pathfinder.test()
     }
     
     func setupWorld(){
@@ -42,7 +47,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
         sceneView.delegate = self
 //        sceneView.scene!.physicsWorld.contactDelegate = self
         sceneView.scene!.physicsWorld.gravity = SCNVector3Make(0, gravity, 0)
-//        sceneView.showsStatistics = true
+        sceneView.showsStatistics = true
 //        sceneView.debugOptions = [.showPhysicsShapes]
         rootNode = sceneView.scene!.rootNode
     }
@@ -58,6 +63,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         player.checkPosition()
+        autoRotateSystem(level : level)
         
         if player.isFinished && !isLoading{
             nextLevel()

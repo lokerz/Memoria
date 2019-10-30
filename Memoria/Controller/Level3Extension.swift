@@ -30,8 +30,8 @@ extension GameViewController {
         
         player = Player(on: playerLocation)
         player.finishLocation = finishLocation
-        let gear = Gear(on: gearOneLocation, with: gearOneRotation)
-        let halfGear = HalfGear(on: gearTwoLocation, with: gearTwoRotation, minAngle: -0.54, maxAngle: 0.61)
+        let gear = Gear(on: gearOneLocation, with: gearOneRotation, minAngle: -0.54, maxAngle: 0.61)
+        let halfGear = HalfGear(on: gearTwoLocation, with: gearTwoRotation, minAngle: -0.61, maxAngle: 0.54)
         let pillar = Pillar(on : pillar1Location, isFinish : false)
         finishPillar = Pillar(on : finishPillarLocation, isFinish : true)
         
@@ -44,6 +44,7 @@ extension GameViewController {
         gears.removeAll()
         gears.append(gear)
         
+        halfGear.isCounterRotate = true
         halfGears.removeAll()
         halfGears.append(halfGear)
     }
@@ -55,7 +56,6 @@ extension GameViewController {
         let translation = gestureRecognizer.translation(in: sceneView)
         
         let hitResults = sceneView.hitTest(location, options: [:])
-        
         
         if hitResults.count > 0 {
             let pannedPiece = hitResults.first?.node
@@ -79,4 +79,8 @@ extension GameViewController {
         }
     }
     
+    func autoRotateSystemLevelThree(){
+        gears[0].rotateGear(by : 0.2)
+        halfGears[0].rotateGear(by: 0.2)
+    }
 }

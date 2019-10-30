@@ -17,8 +17,8 @@ extension GameViewController {
         
         switch level {
         case 1 : setupLevelOne()
-        case 2 : setupLevelThree()
-        default : setupLevelTwo()
+        case 3 : setupLevelTwo()
+        default : setupLevelThree()
         }
         black.fadeOut()
     }

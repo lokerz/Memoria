@@ -40,6 +40,8 @@ extension GameViewController {
         finishPillar = Pillar(on : finishPillarLocation, isFinish : true)
         let platform = Platform(on: platformLocation, minHeight : -3, maxHeight : 3)
 
+        gear2.isCounterRotate = true
+
         
         rootNode.addChildNode(player)
         rootNode.addChildNode(gear)
@@ -87,4 +89,9 @@ extension GameViewController {
         }
     }
     
+    func autoRotateSystemLevelTwo(){
+        for gear in gears {
+            gear.rotateGear(by: 0.2)
+        }
+    }
 }

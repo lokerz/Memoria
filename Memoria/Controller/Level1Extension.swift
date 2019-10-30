@@ -34,12 +34,16 @@ extension GameViewController {
         let gear2 = Gear(on: gearTwoLocation, with: gearTwoRotation)
         let pillar = Pillar(on : pillar1Location, isFinish : false)
         finishPillar = Pillar(on : finishPillarLocation, isFinish : true)
+//        let obstacle = Obstacle(on: gearOneLocation)
+        
+        gear2.isCounterRotate = true
         
         rootNode.addChildNode(player)
         rootNode.addChildNode(gear)
         rootNode.addChildNode(gear2)
         rootNode.addChildNode(pillar)
         rootNode.addChildNode(finishPillar)
+//        rootNode.addChildNode(obstacle)
         
         gears.removeAll()
         gears.append(gear)
@@ -72,6 +76,13 @@ extension GameViewController {
                 gear.isRotating = true
                 gear.synchronize()
             }
+        }
+    }
+    
+    func autoRotateSystemLevelOne(){
+        
+        for gear in gears {
+            gear.rotateGear(by: 0.2)
         }
     }
     

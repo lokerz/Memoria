@@ -8,15 +8,25 @@
 
 import Foundation
 import GameplayKit
+import SceneKit
 
 class PathfindingManager : NSObject {
-    let instance = PathfindingManager()
+    static let instance = PathfindingManager()
     
     let myGraph = GKGraph()
     
-    func scanArea(){
-        let nodeA = GKGraphNode3D()
+    func test(){
+        let nodeA = GKGraphNode()
+        let nodeB = GKGraphNode()
+        let nodeC = GKGraphNode()
+        let nodeD = GKGraphNode()
         
+        nodeA.addConnections(to: [nodeB, nodeD], bidirectional: true)
+        nodeC.addConnections(to: [nodeB, nodeD], bidirectional: true)
+        
+        myGraph.add([nodeA, nodeB, nodeC, nodeD])
+        
+        print(myGraph.findPath(from: nodeA, to: nodeD))
     }
     
 }

@@ -37,7 +37,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate, SCNPhysics
         setupLevel()
         setupGesture()
         
-        pathfinder.test()
+        pathfinder.setupNode()
     }
     
     func setupWorld(){

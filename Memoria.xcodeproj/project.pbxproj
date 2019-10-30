@@ -187,8 +187,8 @@
 			children = (
 				47B7A1B023585BCA0027AA1F /* GameViewController.swift */,
 				47B7A1E423585D050027AA1F /* GestureExtension.swift */,
-				4705CA4223640A4100E874EB /* LevelExtension.swift */,
 				4705CA4D2366D26C00E874EB /* RelationExtension.swift */,
+				4705CA4223640A4100E874EB /* LevelExtension.swift */,
 				4705CA36235EF3B100E874EB /* Level1Extension.swift */,
 				4705CA3E236409E500E874EB /* Level2Extension.swift */,
 				4705CA40236409F300E874EB /* Level3Extension.swift */,

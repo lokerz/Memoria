@@ -21,6 +21,9 @@ class Player : SCNNode{
     var finishLocation = SCNVector3()
     var lastHeight : Int = 0
     
+    var pathManager = PathfindingManager()
+
+    
     override init(){
         super.init()
     }
@@ -31,10 +34,12 @@ class Player : SCNNode{
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
+        self.name = "Player"
         playerNode = self.childNodes.first!
         beginningPosition = position
         playerNode.position = position
         lastHeight = Int(roundf(playerNode.position.y * 10))
+        
     }
     
     required init?(coder: NSCoder) {
@@ -44,20 +49,22 @@ class Player : SCNNode{
     func movePlayer(hitTestResult : SCNHitTestResult){
         synchronize()
         lastHeight = Int(roundf(playerNode.position.y * 10))
+        
         if !isFinished {
+            isMovable = true
             HapticGenerator.instance.play(5)
             destination = hitTestResult.worldCoordinates
-            velocity = calculateVelocity()
-            isMovable = true
-            
+            velocity = calculateVelocity(to: destination)
+
             move()
         }
     }
     
     func checkPosition(){
+        print(velocity)
         let position = playerNode.presentation.worldPosition
         if isMovable {
-            if calculateDistance(nodeA: position, nodeB: destination) < playerNode.scale.x * 1.5  {
+            if calculateDistance(from: position, to: destination) < playerNode.scale.x * 1.5  {
                 stop()
             } else {
                 move()
@@ -76,7 +83,7 @@ class Player : SCNNode{
     func checkFinished(){
         let position = SCNVector3Make(playerNode.presentation.worldPosition.x, 0, playerNode.presentation.worldPosition.z)
         //        print(calculateDistance(nodeA: position, nodeB: finishLocation))
-        if calculateDistance(nodeA: position, nodeB: finishLocation) < 0.8 {
+        if calculateDistance(from: position, to: finishLocation) < 0.8 {
             isFinished = true
         }
         else {
@@ -95,6 +102,7 @@ class Player : SCNNode{
     }
     
     func stop(){
+        print(#function)
         synchronize()
         isMovable = false
         playerNode.physicsBody!.velocity = SCNVector3Zero 
@@ -119,16 +127,16 @@ class Player : SCNNode{
     }
     
     
-    func calculateDistance(nodeA: SCNVector3, nodeB: SCNVector3)  -> Float{
+    func calculateDistance(from nodeA: SCNVector3, to nodeB: SCNVector3)  -> Float{
         let node1Pos = SCNVector3ToGLKVector3(nodeA)
         let node2Pos = SCNVector3ToGLKVector3(nodeB)
         let distance = GLKVector3Distance(node1Pos, node2Pos)
         return distance
     }
     
-    func calculateVelocity() -> SCNVector3{
+    func calculateVelocity(to destination : SCNVector3) -> SCNVector3{
         let position = playerNode.presentation.worldPosition
-        let distance = calculateDistance(nodeA: position, nodeB: destination)
+        let distance = calculateDistance(from: position, to: destination)
         let x = (destination.x - position.x) / distance * velocityFactor
         let y : Float = 0
         let z = (destination.z - position.z) / distance * velocityFactor

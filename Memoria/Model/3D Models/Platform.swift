@@ -24,6 +24,7 @@ class Platform : SCNNode{
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
+        self.name = "Platform"
         self.position = position
         self.scale = SCNVector3Make(0.8, 1, 0.8)
         self.minHeight = minHeight

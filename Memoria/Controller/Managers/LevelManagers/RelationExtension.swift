@@ -15,17 +15,7 @@ enum relation {
     case nonInfluence
 }
 
-extension GameViewController {
-    
-    func autoRotateSystem(level : Int){
-        if !isPanning {
-            switch level {
-            case 1 : autoRotateSystemLevelOne()
-            case 3 : autoRotateSystemLevelTwo()
-            default : autoRotateSystemLevelThree()
-            }
-        }
-    }
+extension LevelManager {
     
     func gearSystem(gearA : Gear, gearB : Gear, relation : relation, hitResult : SCNHitTestResult, translation : CGPoint){
         gearB.isHaptic = !gearA.isHaptic
@@ -47,10 +37,8 @@ extension GameViewController {
         halfGear.isHaptic = false
         let negativeTranslation = CGPoint(x: -translation.x, y: translation.y)
         
-        if halfGear.isRotateAble{
-            halfGear.rotateGear(from: hitResult, by: negativeTranslation)
-            gear.rotateGear(from : hitResult, by: translation)
-        }
+        halfGear.rotateGear(from: hitResult, by: negativeTranslation)
+        gear.rotateGear(from : hitResult, by: translation)
     }
     
     func platformSystem(gear : Gear, platform : Platform, relation : relation, hitResult : SCNHitTestResult, translation : CGPoint){

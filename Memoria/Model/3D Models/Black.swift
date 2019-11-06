@@ -15,6 +15,7 @@ class Black : SCNNode{
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
+        self.name = "Black"
     }
     
     

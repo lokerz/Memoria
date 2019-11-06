@@ -8,9 +8,7 @@
 import Foundation
 import SceneKit
 
-class HalfGear : Gear{
-    var isRotateAble = true
-    
+class HalfGear : Gear{    
     
     override init(on position : SCNVector3, with rotation : SCNVector4, minAngle: Float, maxAngle : Float) {
         super.init()
@@ -18,6 +16,7 @@ class HalfGear : Gear{
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
+        self.name = "Half Gear"
         self.position = position
         self.rotation = rotation
         initialAngle = rotation.w

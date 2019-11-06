@@ -31,6 +31,7 @@ class Gear : SCNNode{
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
+        self.name = "Gear"
         self.position = position
         self.rotation = rotation
         initialAngle = rotation.w

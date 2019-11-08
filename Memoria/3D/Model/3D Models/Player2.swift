@@ -60,13 +60,13 @@ class Player2 : Player {
     func checkLastPos() -> Bool{
         let worldPos = playerNode.presentation.worldPosition
         let position = SCNVector3Make(worldPos.x, 0, worldPos.z)
-        return calculateDistance(from: position, to: lastDestination) < playerNode.scale.x * 1.5
+        return calculateDistance(from: position, to: lastDestination) < playerNode.scale.x * playerRadius
     }
     
     func checkNextDestination() -> Bool {
         let worldPos = playerNode.presentation.worldPosition
         let position = SCNVector3Make(worldPos.x, 0, worldPos.z)
-        return calculateDistance(from: position, to: destination) < playerNode.scale.x * 1.5  && !isLastDestination
+        return calculateDistance(from: position, to: destination) < playerNode.scale.x * playerRadius  && !isLastDestination
     }
     
     func nextDestination(){

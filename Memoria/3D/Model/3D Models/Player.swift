@@ -16,7 +16,8 @@ class Player : SCNNode{
     var destination = SCNVector3()
     var playerNode = SCNNode()
     var velocity = SCNVector3()
-    var velocityFactor : Float = 1
+    var velocityFactor : Float = 0.5
+    var playerRadius : Float = 2
     var beginningPosition =  SCNVector3()
     var finishLocation = SCNVector3()
     var lastHeight : Int = 0
@@ -61,10 +62,9 @@ class Player : SCNNode{
     }
     
     func checkPosition(){
-        print(velocity)
         let position = playerNode.presentation.worldPosition
         if isMovable {
-            if calculateDistance(from: position, to: destination) < playerNode.scale.x * 1.5  {
+            if calculateDistance(from: position, to: destination) < playerNode.scale.x * playerRadius  {
                 stop()
             } else {
                 move()

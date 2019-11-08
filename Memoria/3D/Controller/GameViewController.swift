@@ -20,9 +20,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     var gestureManager = GestureManager.instance
     var isLoading = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorld()
+        setupUI()
         setupLevelManager()
         setupGesture()
         startGame()
@@ -43,14 +45,17 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     func setupWorld(){
-        sceneView = (self.view as! SCNView)
+        sceneView = SCNView()
+        sceneView.frame = view.frame
         scene = SCNScene(named: "art.scnassets/World.scn")
         sceneView.scene = scene
         sceneView.delegate = self
-//        sceneView.showsStatistics = true
+        sceneView.showsStatistics = true
+        view.addSubview(sceneView)
 //        sceneView.scene!.physicsWorld.contactDelegate = self
 //        sceneView.debugOptions = [.showPhysicsShapes]
     }
+    
     
     func setupLevelManager(){
         switch level {
@@ -96,4 +101,27 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         return true
     }
     
+}
+
+extension GameViewController : GameUIDelegate{
+    func setupUI(){
+        let size : CGFloat = 100
+        let posX = view.frame.width - size - 50
+        let posY : CGFloat = 12
+        let frame = CGRect(x: posX, y: posY, width: size, height: size)
+        let uiview = GameUIView(frame: frame)
+        uiview.delegate = self
+        //
+        //        uiview.backgroundColor = .blue
+        //        uiview.alpha = 0.3
+        view.addSubview(uiview)
+        //        let gameUI = GameUIView(frame : view.frame)
+    }
+    
+    func pauseButton() {
+        HapticGenerator().play(5)
+        
+        
+    }
+        
 }

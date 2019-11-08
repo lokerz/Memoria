@@ -106,9 +106,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 extension GameViewController : GameUIDelegate{
     func setupUI(){
         let size : CGFloat = 100
-        let posX = view.frame.width - size - 50
-        let posY : CGFloat = 12
-        let frame = CGRect(x: posX, y: posY, width: size, height: size)
+        let posX = view.frame.width
+        let frame = CGRect(x: 0, y: 0, width: size, height: size)
         let uiview = GameUIView(frame: frame)
         uiview.delegate = self
         //

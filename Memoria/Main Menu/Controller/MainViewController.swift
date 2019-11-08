@@ -7,51 +7,47 @@
 //
 
 import UIKit
+import SpriteKit
+import GameplayKit
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var backgroundView: UIImageView!
+    
+    @IBOutlet weak var mainSkView: SKView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        setupBackground()
-        setupUI()
         
+        if let view = mainSkView {
+            
+            if let scene1 = SKScene(fileNamed: "MainMenu") {
+                scene1.scaleMode = .resizeFill
+                
+                view.presentScene(scene1)
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
     }
-    
-    func setupBackground(){
-        let backgroundImage = UIImage(named: "main1")
-        
-        backgroundView.frame = view.bounds
-        backgroundView.contentMode = .scaleAspectFill
-        backgroundView.clipsToBounds = true
-        backgroundView.image = backgroundImage
-        backgroundView.center = view.center
-        
-        
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
+
+    override var shouldAutorotate: Bool {
+        return true
     }
- 
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .landscape
+        } else {
+            return .landscape
+        }
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
-extension MainViewController : GameUIDelegate{
-    func setupUI(){
-        let posX = view.frame.width - 100
-        let posY = 12
-        let frame = CGRect(x: Int(posX), y: posY, width: 100, height: 100)
-        let uiview = GameUIView(frame: frame)
-        uiview.delegate = self
-        //
-        //        uiview.backgroundColor = .blue
-        //        uiview.alpha = 0.3
-        view.addSubview(uiview)
-        //        let gameUI = GameUIView(frame : view.frame)
-    }
-    
-    func pauseButton() {
-        HapticGenerator().play(5)
-    }
-        
-}

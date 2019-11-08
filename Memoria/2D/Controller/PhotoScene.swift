@@ -55,7 +55,7 @@ class PhotoScene: SKScene {
         
         //Declaring Node
         house.name = "house"
-        house.size = CGSize(width: view.frame.width-100, height: view.frame.height)
+        house.size = CGSize(width: view.frame.width, height: view.frame.height)
         house.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
         addChild(house)
@@ -64,17 +64,18 @@ class PhotoScene: SKScene {
         background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         background.color = UIColor.init(cgColor: CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1))
         
-        photo1.size = CGSize(width: photoWidth, height: photoHeight)
+        photo1.size = CGSize(width: 770, height: 360)
         photo1.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 )
+        photo1.alpha = 0
         
-        photo2.size = CGSize(width: photoWidth, height: photoHeight)
+        photo2.size = CGSize(width: 770, height: 360)
         photo2.position = CGPoint(x: view.frame.width/2 + 500, y: view.frame.height/2 )
+        photo2.alpha = 0
         
-        photo3.size = CGSize(width: photoWidth, height: photoHeight)
+        photo3.size = CGSize(width: 770, height: 360)
         photo3.position = CGPoint(x: view.frame.width/2 + 1000, y: view.frame.height/2)
         
-        photo4.name = "photo4"
-        photo4.size = CGSize(width: photoWidth, height: photoHeight)
+        photo4.size = CGSize(width: 770, height: 360)
         photo4.position = CGPoint(x: view.frame.width/2 + 1500, y: view.frame.height/2)
 
     }
@@ -88,14 +89,18 @@ class PhotoScene: SKScene {
                 if node.name == "house" && state == 1{
                     house.run(fadeOut)
                     view!.isUserInteractionEnabled = false
+                    
+                    photo1.run(fadeIn)
+                    photo2.run(fadeIn)
+                    
+                    self.addChild(self.background)
+                    self.addChild(self.photo1)
+                    self.addChild(self.photo2)
+                    self.addChild(self.photo3)
+                    self.addChild(self.photo4)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         self.view!.isUserInteractionEnabled = true
                         self.house.removeFromParent()
-                        self.addChild(self.background)
-                        self.addChild(self.photo1)
-                        self.addChild(self.photo2)
-                        self.addChild(self.photo3)
-                        self.addChild(self.photo4)
                     }
                     state += 1
                 }

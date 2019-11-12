@@ -11,6 +11,7 @@ import SceneKit
 
 class LevelManager : NSObject {
     var level = 0
+    var isStarting = false
     
     //scene variables
     var sceneView : SCNView! {
@@ -21,7 +22,7 @@ class LevelManager : NSObject {
         }
     }
     var rootNode = SCNNode()
-    var pathfinder = PathfindingManager()
+    var pathfinder = PathfindingManager.instance
     //
     
     // 3D Objects
@@ -47,6 +48,7 @@ class LevelManager : NSObject {
     func setupLevel(){
         resetLevel()
         black.fadeOut()
+        openingAnimation()
     }
     
     func resetLevel(){
@@ -59,6 +61,7 @@ class LevelManager : NSObject {
         gears.removeAll()
         platforms.removeAll()
         halfGears.removeAll()
+        pathfinder.resetPath()
     }
     
     func endLevel(){
@@ -69,6 +72,13 @@ class LevelManager : NSObject {
     func autoRotateSystem(){
         for gear in gears {
             gear.rotateGear(by: 0.2)
+        }
+    }
+    
+    func openingAnimation(){
+        isStarting = false
+        let _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            self.isStarting = true
         }
     }
     

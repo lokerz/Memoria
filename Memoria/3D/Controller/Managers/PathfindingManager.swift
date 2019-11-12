@@ -10,10 +10,17 @@ import Foundation
 import GameplayKit
 import SceneKit
 
+enum nodeType {
+    case singlePoint
+    case gear
+}
+
 class PathfindingManager : NSObject {
-    let myGraph = GKGraph()
+    static var instance = PathfindingManager()
+    var myGraph = GKGraph()
     var nodes = [GKGraphNode]()
     var coordinates = [SCNVector3]()
+    var lastNode = GKGraphNode()
     
     override init() {
         super.init()
@@ -21,25 +28,35 @@ class PathfindingManager : NSObject {
         setupNodes()
     }
     
+    func resetPath(){
+        myGraph = GKGraph()
+        nodes = [GKGraphNode]()
+        coordinates = [SCNVector3]()
+    }
+    
+    func appendNode(nodes : [GKGraphNode], lastNode : GKGraphNode, index : Int){
+        if index != 0 {
+            self.lastNode.addConnections(to: [nodes.first!], bidirectional: true)
+        }
+        nodes.forEach { node in
+            self.nodes.append(node)
+        }
+        self.lastNode = lastNode
+    }
+    
+    func appendCoordinates(coordinates : [SCNVector3]){
+        coordinates.forEach { coordinate in
+            self.coordinates.append(coordinate)
+        }
+    }
+    
     func setupNodes(){
-        
+        myGraph.add(nodes)
     }
     
     func setupCoordinates(){
         
     }
-    
-    func findPath() -> [SCNVector3]{
-        setupCoordinates()
-        setupNodes()
-        
-        var path = [SCNVector3]()
-        for graphNode in myGraph.findPath(from: nodes[0], to: nodes[12]) {
-            path.append(coordinates[nodes.firstIndex(of: graphNode)!])
-        }
-        return path
-    }
-    
     
     func calculateNode(from position: SCNVector3, to destination: SCNVector3) -> [SCNVector3]{
         var path = [SCNVector3]()

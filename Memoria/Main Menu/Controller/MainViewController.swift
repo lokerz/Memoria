@@ -12,12 +12,19 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIImageView!
     
+    var uiview = GameUIView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackground()
         setupUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        uiview.fadeInPauseButton()
     }
     
     func setupBackground(){
@@ -38,20 +45,18 @@ class MainViewController: UIViewController {
 
 extension MainViewController : GameUIDelegate{
     func setupUI(){
-        let posX = view.frame.width - 100
-        let posY = 12
-        let frame = CGRect(x: Int(posX), y: posY, width: 100, height: 100)
-        let uiview = GameUIView(frame: frame)
+        uiview = GameUIView(frame: view.frame)
         uiview.delegate = self
-        //
-        //        uiview.backgroundColor = .blue
-        //        uiview.alpha = 0.3
+        uiview.isMainMenu = true
         view.addSubview(uiview)
-        //        let gameUI = GameUIView(frame : view.frame)
     }
     
     func pauseButton() {
-        HapticGenerator().play(5)
+        
+    }
+    
+    func exitButton() {
+        
     }
         
 }

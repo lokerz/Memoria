@@ -11,6 +11,7 @@ import SceneKit
 
 class LevelOneManager : LevelManager{
 
+    let playerVelocity : Float = 0.5
     let playerPosition = SCNVector3Make(-6.68, 7.5, 0)
     
     let pillarPosition = SCNVector3Make(-6.68, 4.66, 0)
@@ -28,16 +29,17 @@ class LevelOneManager : LevelManager{
         super.setupLevel()
         
 //        spawnPlayer(on: playerPosition)
-        spawnPlayer2(on: playerPosition)
-        spawnPillar(on: pillarPosition)
-        spawnPillar(on: finishPillarPosition)
-        spawnGear(on: gearOnePosition, with: gearOneRotation)
-        spawnGear(on: gearTwoPosition, with: gearTwoRotation, counterRotate : gearTwoCounterRotate)
-        
+        spawnPlayer(on: playerPosition, with: playerVelocity)
+        spawnPillar(on: pillarPosition, index : 0)
+        spawnGear(on: gearOnePosition, with: gearOneRotation, index : 1)
+        spawnGear(on: gearTwoPosition, with: gearTwoRotation, counterRotate : gearTwoCounterRotate, index : 2)
+        spawnPillar(on: finishPillarPosition, index : 3)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
         player.pathManager = LevelOnePathfindingManager()
         pillars.first!.moveDown(by: 5, duration: 3)
+        
+        pathfinder.setupNodes()
         
     }
     

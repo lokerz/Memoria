@@ -16,6 +16,7 @@ class Player2 : Player {
     var isLastDestination = false
     
     override func movePlayer(hitTestResult : SCNHitTestResult){
+        playerNode.physicsBody!.isAffectedByGravity = false
         pathIndex = 0
         synchronize()
         lastHeight = Int(roundf(playerNode.position.y * 10))

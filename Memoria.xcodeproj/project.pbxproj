@@ -37,6 +37,9 @@
 		47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E423585D050027AA1F /* GestureManager.swift */; };
 		47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E623587F120027AA1F /* HapticGenerator.swift */; };
 		47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AE723740F7F007993D4 /* MainViewController.swift */; };
+		47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AEA2375633A007993D4 /* SoundGenerator.swift */; };
+		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
+		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		47B7A1E423585D050027AA1F /* GestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureManager.swift; sourceTree = "<group>"; };
 		47B7A1E623587F120027AA1F /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 		47FE5AE723740F7F007993D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		47FE5AEA2375633A007993D4 /* SoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
+		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
+		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,21 +126,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4705CA482365A7DC00E874EB /* 3D Models */ = {
-			isa = PBXGroup;
-			children = (
-				4705CA322359A71100E874EB /* Gear.swift */,
-				4705CA492365ADF500E874EB /* HalfGear.swift */,
-				4705CA34235D896F00E874EB /* Player.swift */,
-				4705CAA223715E7900E874EB /* Player2.swift */,
-				4705CA3A23617DFE00E874EB /* Pillar.swift */,
-				4705CA4623658E1700E874EB /* Platform.swift */,
-				4705CA44236588CE00E874EB /* Black.swift */,
-				4705CA992369844300E874EB /* Obstacle.swift */,
-			);
-			path = "3D Models";
-			sourceTree = "<group>";
-		};
 		4705CA9B236AF32B00E874EB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +240,7 @@
 		47B7A1AB23585BCA0027AA1F /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				47FE5AE923756317007993D4 /* Model */,
 				47B7A1DC23585C0D0027AA1F /* Asset */,
 				47FE5AE523740F17007993D4 /* Main Menu */,
 				4705CAA62372BA3600E874EB /* UI */,
@@ -282,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				47B7A1B523585BCD0027AA1F /* Assets.xcassets */,
-				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -299,8 +290,7 @@
 		47B7A1DF23585C250027AA1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4705CA482365A7DC00E874EB /* 3D Models */,
-				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
+				47FE5AED237966F9007993D4 /* 3D Model */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -320,6 +310,41 @@
 				47FE5AE723740F7F007993D4 /* MainViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		47FE5AE923756317007993D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
+				47FE5AEA2375633A007993D4 /* SoundGenerator.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47FE5AED237966F9007993D4 /* 3D Model */ = {
+			isa = PBXGroup;
+			children = (
+				47FE5AF4237A8D58007993D4 /* Pathed Model */,
+				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
+				4705CA322359A71100E874EB /* Gear.swift */,
+				4705CA492365ADF500E874EB /* HalfGear.swift */,
+				4705CA34235D896F00E874EB /* Player.swift */,
+				4705CAA223715E7900E874EB /* Player2.swift */,
+				4705CA3A23617DFE00E874EB /* Pillar.swift */,
+				4705CA4623658E1700E874EB /* Platform.swift */,
+				4705CA44236588CE00E874EB /* Black.swift */,
+				4705CA992369844300E874EB /* Obstacle.swift */,
+			);
+			path = "3D Model";
+			sourceTree = "<group>";
+		};
+		47FE5AF4237A8D58007993D4 /* Pathed Model */ = {
+			isa = PBXGroup;
+			children = (
+				47FE5AF2237A8D52007993D4 /* GearPath.swift */,
+				47FE5AF5237A9848007993D4 /* PillarPath.swift */,
+			);
+			path = "Pathed Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,13 +486,16 @@
 				4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */,
 				4705CA41236409F300E874EB /* LevelThreeManager.swift in Sources */,
 				47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */,
+				47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */,
 				4705CA37235EF3B100E874EB /* LevelOneManager.swift in Sources */,
 				47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */,
 				4705CA4323640A4100E874EB /* LevelManager.swift in Sources */,
 				4705CA3F236409E500E874EB /* LevelTwoManager.swift in Sources */,
+				47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */,
 				4705CA9A2369844300E874EB /* Obstacle.swift in Sources */,
 				4705CAA323715E7900E874EB /* Player2.swift in Sources */,
 				4705CA3B23617DFE00E874EB /* Pillar.swift in Sources */,
+				47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */,
 				4705CA35235D896F00E874EB /* Player.swift in Sources */,
 				4705CA332359A71100E874EB /* Gear.swift in Sources */,
 				4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */,

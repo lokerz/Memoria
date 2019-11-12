@@ -33,6 +33,8 @@ class LevelOnePathfindingManager : PathfindingManager {
         for _ in 0..<coordinates.count {
             nodes.append(GKGraphNode())
         }
+        myGraph.add(nodes)
+
         nodes[1].addConnections(to: [nodes[0], nodes[2], nodes[6]], bidirectional: true)
         nodes[3].addConnections(to: [nodes[2], nodes[4]], bidirectional: true)
         nodes[5].addConnections(to: [nodes[4], nodes[6]], bidirectional: true)
@@ -41,7 +43,6 @@ class LevelOnePathfindingManager : PathfindingManager {
         nodes[9].addConnections(to: [nodes[8], nodes[10], nodes[12]], bidirectional: true)
         
         
-        myGraph.add(nodes)
     }
     
     

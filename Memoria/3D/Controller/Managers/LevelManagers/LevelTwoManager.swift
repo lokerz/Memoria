@@ -28,11 +28,11 @@ class LevelTwoManager : LevelManager {
     override func setupLevel(){
         super.setupLevel()
         spawnPlayer(on: playerPosition)
-        spawnPillar(on: pillarPosition)
-        spawnPillar(on: finishPillarPosition)
-        spawnGear(on: gearOnePosition, with: gearOneRotation)
-        spawnGear(on: gearTwoPosition, with: gearTwoRotation, counterRotate : gearTwoCounterRotate)
-        spawnPlatform(on: platformPosition, min: -3, max: 3)
+        spawnPillar(on: pillarPosition, index : 0)
+        spawnPillar(on: finishPillarPosition, index :4)
+        spawnGear(on: gearOnePosition, with: gearOneRotation, index: 1)
+        spawnGear(on: gearTwoPosition, with: gearTwoRotation, counterRotate : gearTwoCounterRotate, index : 3)
+        spawnPlatform(on: platformPosition, min: -3, max: 3, index : 2)
         
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition

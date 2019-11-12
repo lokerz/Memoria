@@ -11,7 +11,7 @@ import SceneKit
 
 class LevelManager : NSObject {
     var level = 0
-    var isStarting = false
+    let playerVelocity : Float = 0.5
     
     //scene variables
     var sceneView : SCNView! {
@@ -36,6 +36,7 @@ class LevelManager : NSObject {
     // Boolean Variables
     var isLoading = false
     var isPanning = false
+    var isStarting = false
     //
 
     // Gesture Variables

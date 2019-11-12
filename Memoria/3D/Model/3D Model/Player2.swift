@@ -27,10 +27,12 @@ class Player2 : Player {
             isLastDestination = false
             HapticGenerator.instance.play(5)
             path = nearestNode(to: lastDestination)
-            destination = path[pathIndex]
-            print(path, destination)
-            velocity = calculateVelocity(to: destination)
-            move()
+            if path.count != 0 {
+                destination = path[pathIndex]
+                print(path, destination)
+                velocity = calculateVelocity(to: destination)
+                move()
+            }
         }
     }
     

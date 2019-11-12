@@ -28,17 +28,17 @@ class LevelThreeManager : LevelManager {
     
     override func setupLevel(){
         super.setupLevel()
-        spawnPlayer(on: playerPosition)
+        spawnPlayer(on: playerPosition, with: playerVelocity)
         spawnPillar(on: pillarPosition, index: 0)
-        spawnPillar(on: finishPillarPosition, index: 3)
         spawnGear(on: gearOnePosition, with: gearOneRotation, minAngle: -0.54, maxAngle: 0.61, index: 1)
         spawnHalfGear(on: gearTwoPosition, with: gearTwoRotation, minAngle: -0.61, maxAngle: 0.54, isCounterRotate : gearTwoCounterRotate, index : 2)
-        
+        spawnPillar(on: finishPillarPosition, index: 3)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
         
         pillars.first!.moveDown(by: 5, duration: 3)
 
+        pathfinder.setupNodes()
     }
     
     

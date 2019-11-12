@@ -21,11 +21,10 @@ class PathfindingManager : NSObject {
     var nodes = [GKGraphNode]()
     var coordinates = [SCNVector3]()
     var lastNode = GKGraphNode()
+    var finishNode = GKGraphNode()
     
     override init() {
         super.init()
-        setupCoordinates()
-        setupNodes()
     }
     
     func resetPath(){
@@ -34,9 +33,9 @@ class PathfindingManager : NSObject {
         coordinates = [SCNVector3]()
     }
     
-    func appendNode(nodes : [GKGraphNode], lastNode : GKGraphNode, index : Int){
+    func appendNode(nodes : [GKGraphNode], firstNode: GKGraphNode, lastNode : GKGraphNode, index : Int){
         if index != 0 {
-            self.lastNode.addConnections(to: [nodes.first!], bidirectional: true)
+            self.lastNode.addConnections(to: [firstNode], bidirectional: true)
         }
         nodes.forEach { node in
             self.nodes.append(node)
@@ -52,6 +51,8 @@ class PathfindingManager : NSObject {
     
     func setupNodes(){
         myGraph.add(nodes)
+        finishNode = nodes.last!
+        print(#function, coordinates)
     }
     
     func setupCoordinates(){

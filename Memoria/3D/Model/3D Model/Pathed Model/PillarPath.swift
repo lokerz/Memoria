@@ -15,6 +15,12 @@ class PillarPath : Pillar {
     var firstNode : GKGraphNode?
     var lastNode : GKGraphNode?
     
+    
+    func setupPath(){
+        setupCoordinates()
+        setupNodes()
+    }
+    
     func setupCoordinates(){
         coordinates.append(SCNVector3Make(position.x, 0, position.z))
     }

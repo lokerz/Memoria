@@ -21,6 +21,9 @@ class Gear : SCNNode{
     var isRotating = true
     var isCounterRotate = false
     
+    var pathManager = PathfindingManager.instance
+
+    
     override init(){
         super.init()
     }
@@ -62,6 +65,7 @@ class Gear : SCNNode{
     }
     
     func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
+        print(self.name, GLKMathRadiansToDegrees(eulerAngles.y))
         newAngle = Float(translation.x) * Float(Double.pi / 180)
         newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
         newAngle = newAngle * angularVelocity

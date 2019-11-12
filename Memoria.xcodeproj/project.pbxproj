@@ -21,7 +21,6 @@
 		4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4D2366D26C00E874EB /* RelationExtension.swift */; };
 		4705CA9A2369844300E874EB /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA992369844300E874EB /* Obstacle.swift */; };
 		4705CA9D236AFEDB00E874EB /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA9C236AFEDB00E874EB /* ObjectExtension.swift */; };
-		4705CAA1236C209600E874EB /* LevelOnePathfindingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CAA0236C209600E874EB /* LevelOnePathfindingManager.swift */; };
 		4705CAA323715E7900E874EB /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CAA223715E7900E874EB /* Player2.swift */; };
 		4705CAAE2372BF2E00E874EB /* 3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4705CAAD2372BF2E00E874EB /* 3D.storyboard */; };
 		4705CAB22372C0FD00E874EB /* GameUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CAB02372C0FD00E874EB /* GameUIView.swift */; };
@@ -40,6 +39,7 @@
 		47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AEA2375633A007993D4 /* SoundGenerator.swift */; };
 		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
 		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
+		47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,6 @@
 		4705CA4D2366D26C00E874EB /* RelationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationExtension.swift; sourceTree = "<group>"; };
 		4705CA992369844300E874EB /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4705CA9C236AFEDB00E874EB /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectExtension.swift; sourceTree = "<group>"; };
-		4705CAA0236C209600E874EB /* LevelOnePathfindingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOnePathfindingManager.swift; sourceTree = "<group>"; };
 		4705CAA223715E7900E874EB /* Player2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player2.swift; sourceTree = "<group>"; };
 		4705CAAD2372BF2E00E874EB /* 3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = 3D.storyboard; sourceTree = "<group>"; };
 		4705CAB02372C0FD00E874EB /* GameUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUIView.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		47FE5AEA2375633A007993D4 /* SoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
 		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
 		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
+		47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGearPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,6 @@
 			children = (
 				47B7A1E423585D050027AA1F /* GestureManager.swift */,
 				4705CA3C2362FF2800E874EB /* PathfindingManager.swift */,
-				4705CA9F236C1F0500E874EB /* PathfindingManagers */,
 				4705CA4223640A4100E874EB /* LevelManager.swift */,
 				4705CA9E236C1EFB00E874EB /* LevelManagers */,
 			);
@@ -148,14 +147,6 @@
 				4705CA40236409F300E874EB /* LevelThreeManager.swift */,
 			);
 			path = LevelManagers;
-			sourceTree = "<group>";
-		};
-		4705CA9F236C1F0500E874EB /* PathfindingManagers */ = {
-			isa = PBXGroup;
-			children = (
-				4705CAA0236C209600E874EB /* LevelOnePathfindingManager.swift */,
-			);
-			path = PathfindingManagers;
 			sourceTree = "<group>";
 		};
 		4705CAA42372BA0800E874EB /* 3D */ = {
@@ -324,8 +315,8 @@
 		47FE5AED237966F9007993D4 /* 3D Model */ = {
 			isa = PBXGroup;
 			children = (
-				47FE5AF4237A8D58007993D4 /* Pathed Model */,
 				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
+				47FE5AF4237A8D58007993D4 /* Pathed Model */,
 				4705CA322359A71100E874EB /* Gear.swift */,
 				4705CA492365ADF500E874EB /* HalfGear.swift */,
 				4705CA34235D896F00E874EB /* Player.swift */,
@@ -343,6 +334,7 @@
 			children = (
 				47FE5AF2237A8D52007993D4 /* GearPath.swift */,
 				47FE5AF5237A9848007993D4 /* PillarPath.swift */,
+				47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */,
 			);
 			path = "Pathed Model";
 			sourceTree = "<group>";
@@ -481,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */,
 				4705CA4723658E1700E874EB /* Platform.swift in Sources */,
 				47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */,
 				4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */,
@@ -502,7 +495,6 @@
 				4705CA9D236AFEDB00E874EB /* ObjectExtension.swift in Sources */,
 				4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */,
-				4705CAA1236C209600E874EB /* LevelOnePathfindingManager.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,
 				4705CAB22372C0FD00E874EB /* GameUIView.swift in Sources */,
 				4705CA45236588CE00E874EB /* Black.swift in Sources */,

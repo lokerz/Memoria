@@ -22,7 +22,7 @@ class Player : SCNNode{
     var finishLocation = SCNVector3()
     var lastHeight : Int = 0
     
-    var pathManager = PathfindingManager()
+    var pathManager = PathfindingManager.instance
 
     
     override init(){

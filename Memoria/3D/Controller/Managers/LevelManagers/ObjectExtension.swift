@@ -23,8 +23,8 @@ extension LevelManager{
     
     func spawnGear(on position : SCNVector3, with rotation : SCNVector4, index : Int){
         let gear = GearPath(on: position, with: rotation)
-        gear.setupCoordinates()
-        pathfinder.appendNode(nodes: gear.nodes, lastNode: gear.lastNode!, index: index)
+        gear.setupPath()
+        pathfinder.appendNode(nodes: gear.nodes, firstNode : gear.firstNode!, lastNode: gear.lastNode!, index: index)
         pathfinder.appendCoordinates(coordinates: gear.coordinates)
         rootNode.addChildNode(gear)
         gears.append(gear)
@@ -33,8 +33,8 @@ extension LevelManager{
     func spawnGear(on position : SCNVector3, with rotation : SCNVector4, counterRotate : Bool, index : Int){
         let gear = GearPath(on: position, with: rotation)
         gear.isCounterRotate = counterRotate
-        gear.setupCoordinates()
-        pathfinder.appendNode(nodes: gear.nodes, lastNode: gear.lastNode!, index: index)
+        gear.setupPath()
+        pathfinder.appendNode(nodes: gear.nodes, firstNode : gear.firstNode!, lastNode: gear.lastNode!, index: index)
         pathfinder.appendCoordinates(coordinates: gear.coordinates)
         rootNode.addChildNode(gear)
         gears.append(gear)
@@ -42,29 +42,27 @@ extension LevelManager{
     
     func spawnGear(on position : SCNVector3, with rotation : SCNVector4, minAngle: Float, maxAngle: Float, index : Int){
         let gear = GearPath(on: position, with: rotation, minAngle: minAngle, maxAngle: maxAngle)
-        gear.setupCoordinates()
-        pathfinder.appendNode(nodes: gear.nodes, lastNode: gear.lastNode!, index: index)
+        gear.setupPath()
+        pathfinder.appendNode(nodes: gear.nodes, firstNode : gear.firstNode!, lastNode: gear.lastNode!, index: index)
         pathfinder.appendCoordinates(coordinates: gear.coordinates)
         rootNode.addChildNode(gear)
         gears.append(gear)
     }
     
     func spawnHalfGear(on position : SCNVector3, with rotation : SCNVector4, minAngle : Float, maxAngle : Float, isCounterRotate : Bool, index : Int){
-        let gear = HalfGear(on: position, with: rotation, minAngle: minAngle, maxAngle: maxAngle)
+        let gear = HalfGearPath(on: position, with: rotation, minAngle: minAngle, maxAngle: maxAngle)
         gear.isCounterRotate = isCounterRotate
-//
-//        gear.setupCoordinates()
-//        pathfinder.appendNode(nodes: gear.nodes, lastNode: gear.lastNode!, index: index)
-//        pathfinder.appendCoordinates(coordinates: gear.coordinates)
-//
+        gear.setupPath()
+        pathfinder.appendNode(nodes: gear.nodes, firstNode: gear.firstNode!, lastNode: gear.lastNode!, index: index)
+        pathfinder.appendCoordinates(coordinates: gear.coordinates)
         rootNode.addChildNode(gear)
         halfGears.append(gear)
     }
     
     func spawnPillar(on position : SCNVector3, index : Int){
         let pillar = PillarPath(on: position)
-        pillar.setupCoordinates()
-        pathfinder.appendNode(nodes: pillar.nodes, lastNode: pillar.lastNode!, index: index)
+        pillar.setupPath()
+        pathfinder.appendNode(nodes: pillar.nodes, firstNode: pillar.firstNode!, lastNode: pillar.lastNode!, index: index)
         pathfinder.appendCoordinates(coordinates: pillar.coordinates)
         rootNode.addChildNode(pillar)
         pillars.append(pillar)

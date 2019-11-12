@@ -38,6 +38,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         levelManager.checkPlayer()
+//        if levelManager.isPanning{
+//            levelManager.player.playerNode.physicsBody?.isAffectedByGravity = true
+//            print(levelManager.player.playerNode.physicsBody?.isAffectedByGravity)
+//        }
         if !levelManager.isStarting{
             levelManager.autoRotateSystem()
         }

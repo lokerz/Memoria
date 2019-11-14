@@ -27,7 +27,7 @@ class InHouse : SKScene{
     var stateGeser = 0
     
     override func didMove(to view: SKView) {
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FrontHouse.swipedDirection(sender:)))
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(InHouse.swipedDirection(sender:)))
         
         swipeUp.direction = .up
         
@@ -36,18 +36,22 @@ class InHouse : SKScene{
         pulang1.name = "Pulang_1"
         pulang1.size = CGSize(width: view.frame.width/2, height: view.frame.height)
         pulang1.position = CGPoint(x: view.frame.width/4, y: -view.frame.height/2)
+        pulang1.zPosition = 1
         
         pulang2.name = "Pulang_2"
         pulang2.size = CGSize(width: view.frame.width/2, height: view.frame.height)
         pulang2.position = CGPoint(x: 3*view.frame.width/4, y: -view.frame.height/2)
+        pulang2.zPosition = 1
         
         pulang3.name = "Pulang_3"
         pulang3.size = CGSize(width: view.frame.width/2, height: view.frame.height)
         pulang3.position = CGPoint(x: view.frame.width/4, y: -view.frame.height/2)
+        pulang3.zPosition = 1
         
         pulang4.name = "Pulang_4"
         pulang4.size = CGSize(width: view.frame.width/2, height: view.frame.height)
         pulang4.position = CGPoint(x: 3*view.frame.width/4, y: -view.frame.height/2)
+        pulang4.zPosition = 1
         
         frameDepan.name = "Depan"
         frameDepan.size = CGSize(width: view.frame.width/2, height: view.frame.height)
@@ -57,7 +61,7 @@ class InHouse : SKScene{
         frameFoto.name = "Foto"
         frameFoto.size = CGSize(width: view.frame.width/2, height: view.frame.height)
         frameFoto.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
-        frameFoto.zPosition = 3
+        frameFoto.zPosition = 1
         
         frameBelakang.name = "Belakang"
         frameBelakang.size = CGSize(width: view.frame.width/2, height: view.frame.height)
@@ -80,6 +84,10 @@ class InHouse : SKScene{
            
             for node in nodesarray {
                  if node.name == "Foto" {
+                    
+                    for gesture in view!.gestureRecognizers!{
+                        view!.removeGestureRecognizer(gesture)
+                    }
                     self.currentNode = node
                     startTouch = location
                 }
@@ -102,6 +110,9 @@ class InHouse : SKScene{
             
             print(node.position.x)
             if node.position.x <= 200{
+                node.position.x = node.position.x
+            }
+            else if node.position.x >= view!.frame.width-100{
                 node.position.x = node.position.x
             }
             else {
@@ -155,6 +166,12 @@ class InHouse : SKScene{
             state += 1
         default:
             break
+        }
+    }
+    
+    override func willMove(from view: SKView) {
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
         }
     }
 }

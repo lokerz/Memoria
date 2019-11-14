@@ -11,11 +11,12 @@ import SpriteKit
 class FrontHouse: SKScene{
 
     var state = 0
-    let button = SKSpriteNode(imageNamed: "nextButton")
     
-    let houseBG = SKSpriteNode(imageNamed: "House_Night")
     let door = SKSpriteNode(imageNamed: "DoorKnob")
-    let knob = SKSpriteNode(imageNamed: "Knob")
+    let knob = SKSpriteNode(imageNamed: "DoorHandle")
+    
+    let houseNight = SKSpriteNode(imageNamed: "House_Night")
+    let houseNightAlbert = SKSpriteNode(imageNamed: "House_Night_Albert")
     
     override func didMove(to view: SKView) {
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FrontHouse.swipedDirection(sender:)))
@@ -24,21 +25,41 @@ class FrontHouse: SKScene{
         
         view.addGestureRecognizer(swipeDown)
         
-        houseBG.size = CGSize(width: view.frame.width - 100, height: view.frame.height)
-        houseBG.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
-        houseBG.name = "background"
-        houseBG.zPosition = -1
+        houseNightAlbert.size = CGSize(width: view.frame.width, height: view.frame.height)
+        houseNightAlbert.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        houseNightAlbert.name = "background"
+        houseNightAlbert.zPosition = 0
+        houseNightAlbert.alpha = 0
+        
+        houseNight.size = CGSize(width: view.frame.width, height: view.frame.height)
+        houseNight.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        houseNight.name = "background"
+        houseNight.zPosition = -1
         
         door.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        door.setScale(0.2)
         door.name = "door"
-        door.zPosition = 0
+        door.zPosition = 1
         
-        knob.anchorPoint = CGPoint(x: 1, y: 1)
-        knob.position = CGPoint(x: 500, y: 300)
-        knob.zPosition = 1
+        knob.anchorPoint = CGPoint(x: 0.9, y: 0.7)
+        knob.position = CGPoint(x: 510, y: 270)
+        knob.setScale(0.2)
+        knob.zPosition = 2
         knob.name = "knob"
         
-        addChild(houseBG)
+        addChild(houseNight)
+        
+        view.isUserInteractionEnabled = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.addChild(self.houseNightAlbert)
+            self.houseNightAlbert.run(SKAction.fadeIn(withDuration: 1))
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.houseNight.removeFromParent()
+            self.view?.isUserInteractionEnabled = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,7 +79,7 @@ class FrontHouse: SKScene{
     
     @objc func swipedDirection(sender: UISwipeGestureRecognizer){
         view?.isUserInteractionEnabled = false
-        let rotate = SKAction.rotate(byAngle: 3.14/3, duration: 1)
+        let rotate = SKAction.rotate(byAngle: 3.14/6, duration: 0.6)
         knob.run(rotate)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -68,5 +89,5 @@ class FrontHouse: SKScene{
             self.view?.presentScene(sixthPage!, transition: SKTransition.fade(withDuration: 0.5))
         }
     }
-    
+
 }

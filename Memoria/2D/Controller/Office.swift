@@ -7,11 +7,18 @@
 //
 
 import SpriteKit
+import UIKit
 
 class Office: SKScene{
     
     let button = SKSpriteNode(imageNamed: "nextButton")
     let border = SKSpriteNode()
+    
+    let monolog = SKLabelNode()
+    
+    let message = "Come with me, and see what has been foretold..."
+    
+    let albertBG = SKSpriteNode(imageNamed: "Kerja_3")
     
     override func didMove(to view: SKView) {
 
@@ -32,25 +39,41 @@ class Office: SKScene{
         border.size = CGSize(width: view.frame.width, height: view.frame.height/4)
         border.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
         
-        let text = SKLabelNode(text: "Hello World, Lorem Ipsum is not a word, why are you reading this, Go back to work!!!")
+        let text = "Hello World, Lorem Ipsum is not a word, why are you reading this, Go back to work!!!"
         
-        text.zPosition = 2
-        text.fontSize = 16
-        text.fontColor = .black
-        text.fontName = "Times New Roman"
-        text.position = CGPoint(x: view.frame.width/2, y: 6*view.frame.height/7)
-        text.numberOfLines = 3
-        text.preferredMaxLayoutWidth = view.frame.width-100
+        albertBG.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        albertBG.zPosition = -1
+        albertBG.size = CGSize(width: view.frame.width, height: view.frame.height)
+        
+        monolog.text = ""
+        monolog.zPosition = 2
+        monolog.fontSize = 16
+        monolog.fontColor = .black
+        monolog.fontName = "Times New Roman"
+        monolog.position = CGPoint(x: view.frame.width/2, y: 6*view.frame.height/7)
+        monolog.numberOfLines = 3
+        monolog.preferredMaxLayoutWidth = view.frame.width-100
         
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 1
         button.name = "nextButton"
         button.setScale(0.4)
         
+        addChild(albertBG)
         addChild(border)
         addChild(button)
-        addChild(text)
+        
+//        for char in text{
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                monolog.text = monolog.text! + "\(char)"
+//                monolog.removeFromParent()
+//                self.addChild(monolog)
+//            }
+//        }
+
     }
+    
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
@@ -108,3 +131,37 @@ extension SKTexture
     self.init(image: image)
   }
 }
+
+//extension String {
+//    var characterArray: [Character]{
+//        var characterArray = [Character]()
+//        for character in String {
+//            characterArray.append(character)
+//        }
+//        return characterArray
+//    }
+//}
+//
+//extension UITextView {
+//    func typeOn(string: String) {
+//        let characterArray = string.characterArray
+//        var characterIndex = 0
+//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
+//            if characterArray[characterIndex] != "$" {
+//                while characterArray[characterIndex] == " " {
+//                    self.text.append(" ")
+//                    characterIndex += 1
+//                    if characterIndex == characterArray.count {
+//                        timer.invalidate()
+//                        return
+//                    }
+//                }
+//                self.text.append(characterArray[characterIndex])
+//            }
+//            characterIndex += 1
+//            if characterIndex == characterArray.count {
+//                timer.invalidate()
+//            }
+//        }
+//    }
+//}

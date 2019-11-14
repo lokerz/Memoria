@@ -9,6 +9,7 @@
 import SpriteKit
 
 class PhotoScene: SKScene {
+    let backBlack = SKShapeNode(circleOfRadius: 30)
     
     let button = SKSpriteNode(imageNamed: "nextButton")
     let background = SKSpriteNode()
@@ -57,26 +58,44 @@ class PhotoScene: SKScene {
         house.name = "house"
         house.size = CGSize(width: view.frame.width, height: view.frame.height)
         house.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        house.zPosition = -1
         
         addChild(house)
         
         background.size = CGSize(width: view.frame.width, height: view.frame.height)
         background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
-        background.color = UIColor.init(cgColor: CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1))
+        background.color = UIColor.init(red: 140, green: 107, blue: 79, alpha: 0.6)
+//        background.color = UIColor.init(hue: 40, saturation: 20, brightness: 1, alpha: 1)
+        background.zPosition = 2
+
         
         photo1.size = CGSize(width: 770, height: 360)
         photo1.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 )
         photo1.alpha = 0
+        photo1.zPosition = 1
         
         photo2.size = CGSize(width: 770, height: 360)
         photo2.position = CGPoint(x: view.frame.width/2 + 500, y: view.frame.height/2 )
         photo2.alpha = 0
+        photo2.zPosition = 1
         
         photo3.size = CGSize(width: 770, height: 360)
         photo3.position = CGPoint(x: view.frame.width/2 + 1000, y: view.frame.height/2)
+        photo3.zPosition = 1
         
         photo4.size = CGSize(width: 770, height: 360)
         photo4.position = CGPoint(x: view.frame.width/2 + 1500, y: view.frame.height/2)
+        photo4.zPosition = 1
+        
+        button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        button.position = CGPoint(x:view.frame.width-60, y: 60)
+        button.zPosition = 5
+        button.name = "nextButton"
+        button.setScale(0.4)
+        
+        backBlack.fillColor = .black
+        backBlack.position = button.position
+        backBlack.zPosition = 4
 
     }
     
@@ -93,7 +112,7 @@ class PhotoScene: SKScene {
                     photo1.run(fadeIn)
                     photo2.run(fadeIn)
                     
-                    self.addChild(self.background)
+//                    self.addChild(self.background)
                     self.addChild(self.photo1)
                     self.addChild(self.photo2)
                     self.addChild(self.photo3)
@@ -105,7 +124,7 @@ class PhotoScene: SKScene {
                     state += 1
                 }
                 else if node.name == "nextButton" {
-                    let thridPage = WorkScene(fileNamed: "WorkScene")
+                    let thridPage = PaperWork(fileNamed: "PaperWork")
                     thridPage?.scaleMode = .resizeFill
                     self.view?.presentScene(thridPage!, transition: SKTransition.fade(withDuration: 0.5))
                 }
@@ -124,18 +143,28 @@ class PhotoScene: SKScene {
         let move2 = SKAction.move(to: point2, duration: durationMove)
         let move3 = SKAction.move(to: point3, duration: durationMove)
         let move4 = SKAction.move(to: point4, duration: durationMove)
-            if self.stateGesture < 3{
-                    photo1.run(move1)
-                    photo2.run(move2)
-                    photo3.run(move3)
-                    photo4.run(move4)
-                    self.stateGesture += 1
-                    view!.isUserInteractionEnabled = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                        self.view!.isUserInteractionEnabled = true
+        if self.stateGesture < 3{
+                photo1.run(move1)
+                photo2.run(move2)
+                photo3.run(move3)
+                photo4.run(move4)
+                self.stateGesture += 1
+                view!.isUserInteractionEnabled = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                    self.view!.isUserInteractionEnabled = true
                 }
             }
+        if self.stateGesture == 3{
+            button.removeFromParent()
+            backBlack.removeFromParent()
+            addChild(button)
+            addChild(backBlack)
         }
+        else{
+            button.removeFromParent()
+            backBlack.removeFromParent()
+        }
+    }
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer){
     let point1 = CGPoint(x: self.photo1.position.x + self.distanceMove, y: view!.frame.height/2)
@@ -159,6 +188,10 @@ class PhotoScene: SKScene {
                     self.view!.isUserInteractionEnabled = true
             }
         }
+        if self.stateGesture != 3{
+            button.removeFromParent()
+            backBlack.removeFromParent()
+        }
     }
     
     @objc func swipedDirection(sender: UISwipeGestureRecognizer){
@@ -175,4 +208,9 @@ class PhotoScene: SKScene {
         }
     }
 
+    override func willMove(from view: SKView) {
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
+        }
+    }
 }

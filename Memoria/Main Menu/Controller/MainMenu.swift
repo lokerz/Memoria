@@ -16,11 +16,11 @@ class MainMenu: SKScene {
         
         let playButton = SKLabelNode()
         let backgroundImage = SKSpriteNode(imageNamed: "Main Background")
-        let selectChapter = SKLabelNode()
+//        let selectChapter = SKLabelNode()
         let dropShadow = SKLabelNode()
         
         playButton.fontSize = 30
-        playButton.fontName = "SF Pro-Bold"
+        playButton.fontName = "Helvetica Neue Medium"
         playButton.text = "Play"
         playButton.name = "playButton"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 30)
@@ -33,12 +33,12 @@ class MainMenu: SKScene {
         dropShadow.position = CGPoint(x: view.frame.width/2 + 1, y: view.frame.height/2 - 32)
         dropShadow.zPosition = 1
         
-        selectChapter.fontSize = 30
-        selectChapter.fontName = "SF Pro-Bold"
-        selectChapter.text = "Chapter"
-        selectChapter.name = "selectChapter"
-        selectChapter.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 75)
-        selectChapter.zPosition = 2
+//        selectChapter.fontSize = 30
+//        selectChapter.fontName = "Helvetica Neue Medium"
+//        selectChapter.text = "Chapter"
+//        selectChapter.name = "selectChapter"
+//        selectChapter.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 75)
+//        selectChapter.zPosition = 2
         
         backgroundImage.size = CGSize(width: view.frame.width, height: view.frame.height)
         backgroundImage.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
@@ -47,6 +47,7 @@ class MainMenu: SKScene {
         addChild(dropShadow)
         addChild(playButton)
         addChild(backgroundImage)
+        
 //        addChild(selectChapter)
     }
     

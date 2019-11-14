@@ -44,11 +44,9 @@
 		F157323D2375586B00E7891E /* MobilScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573233237554FA00E7891E /* MobilScene.sks */; };
 		F157323E2375586B00E7891E /* PaperWork.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573234237554FA00E7891E /* PaperWork.sks */; };
 		F157323F2375586B00E7891E /* FrontHouse.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573235237554FA00E7891E /* FrontHouse.sks */; };
-		F15732402375586B00E7891E /* WorkScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573236237554FA00E7891E /* WorkScene.sks */; };
 		F15732412375586B00E7891E /* InHouse.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573237237554FA00E7891E /* InHouse.sks */; };
 		F15732422375587800E7891E /* PhotoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1573227237554E700E7891E /* PhotoScene.swift */; };
 		F15732432375587800E7891E /* Office.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1573228237554E700E7891E /* Office.swift */; };
-		F15732442375587800E7891E /* WorkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1573229237554E700E7891E /* WorkScene.swift */; };
 		F15732452375587800E7891E /* PaperWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157322A237554E700E7891E /* PaperWork.swift */; };
 		F15732462375587800E7891E /* InHouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157322B237554E700E7891E /* InHouse.swift */; };
 		F15732472375587800E7891E /* MobilScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157322C237554E700E7891E /* MobilScene.swift */; };
@@ -57,6 +55,8 @@
 		F157324C237567B100E7891E /* ChapterSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = F157324B237567B100E7891E /* ChapterSelect.sks */; };
 		F157324E237567DE00E7891E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324D237567DE00E7891E /* MainMenu.swift */; };
 		F1573250237567F500E7891E /* ChapterSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324F237567F500E7891E /* ChapterSelect.swift */; };
+		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
+		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +115,6 @@
 		47FE5AE723740F7F007993D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F1573227237554E700E7891E /* PhotoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScene.swift; sourceTree = "<group>"; };
 		F1573228237554E700E7891E /* Office.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Office.swift; sourceTree = "<group>"; };
-		F1573229237554E700E7891E /* WorkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScene.swift; sourceTree = "<group>"; };
 		F157322A237554E700E7891E /* PaperWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperWork.swift; sourceTree = "<group>"; };
 		F157322B237554E700E7891E /* InHouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InHouse.swift; sourceTree = "<group>"; };
 		F157322C237554E700E7891E /* MobilScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilScene.swift; sourceTree = "<group>"; };
@@ -126,13 +125,14 @@
 		F1573233237554FA00E7891E /* MobilScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MobilScene.sks; sourceTree = "<group>"; };
 		F1573234237554FA00E7891E /* PaperWork.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PaperWork.sks; sourceTree = "<group>"; };
 		F1573235237554FA00E7891E /* FrontHouse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FrontHouse.sks; sourceTree = "<group>"; };
-		F1573236237554FA00E7891E /* WorkScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WorkScene.sks; sourceTree = "<group>"; };
 		F1573237237554FA00E7891E /* InHouse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InHouse.sks; sourceTree = "<group>"; };
 		F15732392375553800E7891E /* 2D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = 2D.storyboard; sourceTree = "<group>"; };
 		F15732492375679500E7891E /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		F157324B237567B100E7891E /* ChapterSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ChapterSelect.sks; sourceTree = "<group>"; };
 		F157324D237567DE00E7891E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		F157324F237567F500E7891E /* ChapterSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSelect.swift; sourceTree = "<group>"; };
+		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
+		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,7 +374,7 @@
 			children = (
 				F1573227237554E700E7891E /* PhotoScene.swift */,
 				F1573228237554E700E7891E /* Office.swift */,
-				F1573229237554E700E7891E /* WorkScene.swift */,
+				F17B8BB4237D4852003E61D3 /* Prologue.swift */,
 				F157322A237554E700E7891E /* PaperWork.swift */,
 				F157322B237554E700E7891E /* InHouse.swift */,
 				F157322C237554E700E7891E /* MobilScene.swift */,
@@ -389,9 +389,9 @@
 				F1573231237554FA00E7891E /* PhotoScene.sks */,
 				F1573232237554FA00E7891E /* Office.sks */,
 				F1573233237554FA00E7891E /* MobilScene.sks */,
+				F17B8BB2237D483A003E61D3 /* Prologue.sks */,
 				F1573234237554FA00E7891E /* PaperWork.sks */,
 				F1573235237554FA00E7891E /* FrontHouse.sks */,
-				F1573236237554FA00E7891E /* WorkScene.sks */,
 				F1573237237554FA00E7891E /* InHouse.sks */,
 			);
 			path = Scene;
@@ -518,11 +518,11 @@
 				4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */,
 				F157323E2375586B00E7891E /* PaperWork.sks in Resources */,
 				F157324C237567B100E7891E /* ChapterSelect.sks in Resources */,
+				F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */,
 				F157323F2375586B00E7891E /* FrontHouse.sks in Resources */,
 				47B7A1B923585BCD0027AA1F /* LaunchScreen.storyboard in Resources */,
 				47B7A1B623585BCD0027AA1F /* Assets.xcassets in Resources */,
 				F157323B2375585700E7891E /* PhotoScene.sks in Resources */,
-				F15732402375586B00E7891E /* WorkScene.sks in Resources */,
 				47B7A1B423585BCA0027AA1F /* Main.storyboard in Resources */,
 				F157324A2375679500E7891E /* MainMenu.sks in Resources */,
 				F157323A2375553800E7891E /* 2D.storyboard in Resources */,
@@ -572,6 +572,7 @@
 				F157322F237554EF00E7891E /* SpriteKitController.swift in Sources */,
 				4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */,
 				F1573250237567F500E7891E /* ChapterSelect.swift in Sources */,
+				F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */,
 				4705CA9D236AFEDB00E874EB /* ObjectExtension.swift in Sources */,
 				F157324E237567DE00E7891E /* MainMenu.swift in Sources */,
 				4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */,
@@ -579,7 +580,6 @@
 				4705CAA1236C209600E874EB /* LevelOnePathfindingManager.swift in Sources */,
 				F15732462375587800E7891E /* InHouse.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,
-				F15732442375587800E7891E /* WorkScene.swift in Sources */,
 				4705CAB22372C0FD00E874EB /* GameUIView.swift in Sources */,
 				4705CA45236588CE00E874EB /* Black.swift in Sources */,
 			);

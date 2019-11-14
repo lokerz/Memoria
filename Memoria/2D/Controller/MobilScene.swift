@@ -22,9 +22,6 @@ class MobilScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        let firstPage = MobilScene(fileNamed: "MobilScene")
-        firstPage?.scaleMode = .aspectFill
-        
         //Declaring Node
         ibuAnak.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         ibuAnak.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 50)

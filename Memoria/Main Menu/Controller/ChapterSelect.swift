@@ -121,11 +121,13 @@ class ChapterSelect: SKScene {
                 if node.name == "playButton"{
                     switch state {
                     case 1:
-                       let nextPage = MobilScene(fileNamed: "MobilScene")
+                       let nextPage = Prologue(fileNamed: "Prologue")
                        nextPage?.scaleMode = .resizeFill
-                       self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 0.5))
+                       self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 1))
                     case 2:
-                        break
+                        let nextPage = MobilScene(fileNamed: "MobilScene")
+                        nextPage?.scaleMode = .resizeFill
+                        self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 0.5))
                     case 3:
                         break
                     case 4:
@@ -246,6 +248,12 @@ class ChapterSelect: SKScene {
                     DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                         self.view!.isUserInteractionEnabled = true
             }
+        }
+    }
+    
+    override func willMove(from view: SKView) {
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
         }
     }
 }

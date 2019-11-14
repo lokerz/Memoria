@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        mainSkView.ignoresSiblingOrder = true
+        
         super.viewDidLoad()
         
         

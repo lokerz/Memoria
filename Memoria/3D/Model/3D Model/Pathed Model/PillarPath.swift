@@ -12,8 +12,6 @@ import GameplayKit
 class PillarPath : Pillar {
     var coordinates = [SCNVector3]()
     var nodes = [GKGraphNode]()
-    var firstNode : GKGraphNode?
-    var lastNode : GKGraphNode?
     
     
     func setupPath(){
@@ -27,7 +25,5 @@ class PillarPath : Pillar {
     
     func setupNodes(){
         nodes.append(GKGraphNode())
-        firstNode = nodes.first
-        lastNode = nodes.first
     }
 }

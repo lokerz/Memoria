@@ -30,6 +30,17 @@ class Gear : SCNNode{
     
     init(on position : SCNVector3, with rotation : SCNVector4 ) {
         super.init()
+        commonInit(on: position, with: rotation)
+    }
+    
+    init(on position : SCNVector3, with rotation : SCNVector4, minAngle : Float, maxAngle : Float) {
+        super.init()
+        commonInit(on: position, with: rotation)
+        self.minAngle = minAngle
+        self.maxAngle = maxAngle
+    }
+    
+    func commonInit(on position : SCNVector3, with rotation :  SCNVector4){
         guard let object = SCNScene(named: "art.scnassets/gear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
@@ -43,29 +54,11 @@ class Gear : SCNNode{
         
     }
     
-    init(on position : SCNVector3, with rotation : SCNVector4, minAngle : Float, maxAngle : Float) {
-        super.init()
-        guard let object = SCNScene(named: "art.scnassets/gear.scn") else { return }
-        for node in object.rootNode.childNodes as [SCNNode]{
-            self.addChildNode(node)
-        }
-        self.position = position
-        self.rotation = rotation
-        initialAngle = rotation.w
-        currentAngle = initialAngle
-        newAngle = initialAngle
-        
-        self.minAngle = minAngle
-        self.maxAngle = maxAngle
-        
-    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
     func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
-        print(self.name, GLKMathRadiansToDegrees(eulerAngles.y))
         newAngle = Float(translation.x) * Float(Double.pi / 180)
         newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
         newAngle = newAngle * angularVelocity

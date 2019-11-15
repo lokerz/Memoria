@@ -12,14 +12,13 @@ import GameplayKit
 class GearPath : Gear {
     var coordinates = [SCNVector3]()
     var nodes = [GKGraphNode]()
-    var firstNode : GKGraphNode?
-    var lastNode : GKGraphNode?
     var radius : Float = 1.75
     
     
     func setupPath(){
         setupCoordinates()
         setupNodes()
+        swapNodes(4, with: 7)
     }
     
     func setupCoordinates(){
@@ -40,8 +39,16 @@ class GearPath : Gear {
         }
         nodes.first!.addConnections(to: [nodes.last!], bidirectional: true)
         
-        firstNode = nodes.first
-        lastNode = nodes[4]
+    }
+    
+    func swapNodes(_ indexA : Int, with indexB : Int){
+        let temp = coordinates[indexA]
+        coordinates[indexA] = coordinates[indexB]
+        coordinates[indexB] = temp
+        
+        let temp2 = nodes[indexA]
+        nodes[indexA] = nodes[indexB]
+        nodes[indexB] = temp2
     }
     
     func calculateCoordinate(from position : SCNVector3, with radius : Float, rotation: Float ) -> SCNVector3{

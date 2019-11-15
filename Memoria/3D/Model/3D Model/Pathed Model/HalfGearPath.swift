@@ -16,14 +16,15 @@ class HalfGearPath : HalfGear {
     var lastNode : GKGraphNode?
     var radius : Float = 1.75
     
-    override func rotateGear(from hitResult: SCNHitTestResult, by translation: CGPoint) {
-        super.rotateGear(from: hitResult, by: translation)
+    override func synchronize() {
+        super.synchronize()
         checkRotation()
     }
     
     func setupPath(){
         setupCoordinates()
         setupNodes()
+        swapNodes(0, with: 3)
     }
     
     func setupCoordinates(){
@@ -42,26 +43,30 @@ class HalfGearPath : HalfGear {
         for i in 0..<nodes.count - 1{
             nodes[i].addConnections(to: [nodes[i+1]], bidirectional: true)
         }
+    }
+    
+    func swapNodes(_ indexA : Int, with indexB : Int){
+        let temp = coordinates[indexA]
+        coordinates[indexA] = coordinates[indexB]
+        coordinates[indexB] = temp
         
-//        nodes.first?.removeConnections(to: <#T##[GKGraphNode]#>, bidirectional: <#T##Bool#>)
-        
-        firstNode = nodes[3]
-        lastNode = nodes[6]
+        let temp2 = nodes[indexA]
+        nodes[indexA] = nodes[indexB]
+        nodes[indexB] = temp2
     }
     
     func checkRotation(){
-        let finishNode = pathManager.finishNode
-        let angle = GLKMathRadiansToDegrees(eulerAngles.y)
+        let angle = eulerAngles.y
         
-        if angle > 30 {
-            nodes[0].addConnections(to: [finishNode], bidirectional: true) //sambungin 0 dan finish
-            nodes[6].removeConnections(to: [finishNode], bidirectional: true) //putusin 6 dan finish
-        } else if angle < -32 {
-            nodes[0].removeConnections(to: [finishNode], bidirectional: true) //putusin 0 dan finish
-            nodes[6].addConnections(to: [finishNode], bidirectional: true) //sambungin 6 dan finish
+        if angle >= maxAngle - 0.001{
+            pathManager.addConnection(from: nodes[3], with: .finishNode)
+            pathManager.removeConnection(from: nodes[6], with: .finishNode)
+        } else if angle <= minAngle + 0.001{
+            pathManager.addConnection(from: nodes[6], with: .finishNode)
+            pathManager.removeConnection(from: nodes[3], with: .finishNode)
         } else {
-            nodes[0].removeConnections(to: [finishNode], bidirectional: true) //putusin 0 dan finish
-            nodes[6].removeConnections(to: [finishNode], bidirectional: true) //putusin 6 dan finish
+            pathManager.removeConnection(from: nodes[3], with: .finishNode)
+            pathManager.removeConnection(from: nodes[6], with: .finishNode)
         }
     }
     

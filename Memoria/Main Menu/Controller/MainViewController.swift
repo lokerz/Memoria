@@ -48,6 +48,7 @@ extension MainViewController : GameUIDelegate{
         uiview = GameUIView(frame: view.frame)
         uiview.delegate = self
         uiview.isMainMenu = true
+        uiview.setupButton()
         view.addSubview(uiview)
     }
     

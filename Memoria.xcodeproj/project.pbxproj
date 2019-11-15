@@ -19,7 +19,6 @@
 		4705CA4723658E1700E874EB /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4623658E1700E874EB /* Platform.swift */; };
 		4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA492365ADF500E874EB /* HalfGear.swift */; };
 		4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA4D2366D26C00E874EB /* RelationExtension.swift */; };
-		4705CA9A2369844300E874EB /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA992369844300E874EB /* Obstacle.swift */; };
 		4705CA9D236AFEDB00E874EB /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CA9C236AFEDB00E874EB /* ObjectExtension.swift */; };
 		4705CAA323715E7900E874EB /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CAA223715E7900E874EB /* Player2.swift */; };
 		4705CAAE2372BF2E00E874EB /* 3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4705CAAD2372BF2E00E874EB /* 3D.storyboard */; };
@@ -40,6 +39,7 @@
 		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
 		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
 		47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */; };
+		47FE5AFA237C0233007993D4 /* PlatformPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF9237C0232007993D4 /* PlatformPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,6 @@
 		4705CA4623658E1700E874EB /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		4705CA492365ADF500E874EB /* HalfGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGear.swift; sourceTree = "<group>"; };
 		4705CA4D2366D26C00E874EB /* RelationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationExtension.swift; sourceTree = "<group>"; };
-		4705CA992369844300E874EB /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4705CA9C236AFEDB00E874EB /* ObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectExtension.swift; sourceTree = "<group>"; };
 		4705CAA223715E7900E874EB /* Player2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player2.swift; sourceTree = "<group>"; };
 		4705CAAD2372BF2E00E874EB /* 3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = 3D.storyboard; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
 		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
 		47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGearPath.swift; sourceTree = "<group>"; };
+		47FE5AF9237C0232007993D4 /* PlatformPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,7 +324,6 @@
 				4705CA3A23617DFE00E874EB /* Pillar.swift */,
 				4705CA4623658E1700E874EB /* Platform.swift */,
 				4705CA44236588CE00E874EB /* Black.swift */,
-				4705CA992369844300E874EB /* Obstacle.swift */,
 			);
 			path = "3D Model";
 			sourceTree = "<group>";
@@ -335,6 +334,7 @@
 				47FE5AF2237A8D52007993D4 /* GearPath.swift */,
 				47FE5AF5237A9848007993D4 /* PillarPath.swift */,
 				47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */,
+				47FE5AF9237C0232007993D4 /* PlatformPath.swift */,
 			);
 			path = "Pathed Model";
 			sourceTree = "<group>";
@@ -480,12 +480,12 @@
 				4705CA41236409F300E874EB /* LevelThreeManager.swift in Sources */,
 				47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */,
 				47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */,
+				47FE5AFA237C0233007993D4 /* PlatformPath.swift in Sources */,
 				4705CA37235EF3B100E874EB /* LevelOneManager.swift in Sources */,
 				47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */,
 				4705CA4323640A4100E874EB /* LevelManager.swift in Sources */,
 				4705CA3F236409E500E874EB /* LevelTwoManager.swift in Sources */,
 				47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */,
-				4705CA9A2369844300E874EB /* Obstacle.swift in Sources */,
 				4705CAA323715E7900E874EB /* Player2.swift in Sources */,
 				4705CA3B23617DFE00E874EB /* Pillar.swift in Sources */,
 				47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */,

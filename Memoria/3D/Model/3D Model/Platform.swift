@@ -8,12 +8,13 @@
 import Foundation
 import SceneKit
 
-class Platform : SCNNode{
+class Platform : Pillar{
     var lastVal = 0
-    var yVelocity : Float = 0.05
+    var yVelocity : Float = 0.01
     var minHeight : Float = 0.0
     var maxHeight : Float = 0.0
     
+
     override init(){
         super.init()
     }
@@ -29,6 +30,7 @@ class Platform : SCNNode{
         self.scale = SCNVector3Make(0.8, 1, 0.8)
         self.minHeight = minHeight
         self.maxHeight = maxHeight
+    
     }
     
     required init?(coder: NSCoder) {
@@ -47,21 +49,6 @@ class Platform : SCNNode{
         }
 
         lastVal = Int(translation.x)
-        
-    }
-    
-    func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
-        //        newAngle = Float(translation.x) * Float(Double.pi / 180)
-        //        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
-        //        newAngle = newAngle * angularVelocity
-        //        newAngle += currentAngle
-        //        self.eulerAngles.y = newAngle
-        //
-        //
-        //        if newAngle != 0 {
-        //            haptic(eulerAngles.y)
-        //        }
-        //
     }
     
 }

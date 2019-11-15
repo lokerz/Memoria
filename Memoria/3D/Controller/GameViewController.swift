@@ -37,6 +37,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if levelManager.player.isFinished && !isLoading{
+            nextLevel()
+        }
+        
         levelManager.checkPlayer()
 //        if levelManager.isPanning{
 //            levelManager.player.playerNode.physicsBody?.isAffectedByGravity = true
@@ -45,11 +49,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         if !levelManager.isStarting{
             levelManager.autoRotateSystem()
         }
-        
-        if levelManager.player.isFinished && !isLoading{
-            nextLevel()
-        }
-        //            print(player.playerNode.position)
     }
     
     func setupWorld(){
@@ -93,10 +92,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
         let _ = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (Timer) in
             self.setupLevelManager()
-            self.isLoading = false
             self.levelManager.setupLevel()
             self.levelManager.player.isFinished = false
             self.gestureManager.setupGesture(self.sceneView, self.levelManager)
+            self.isLoading = false
         }
     }
     
@@ -115,6 +114,7 @@ extension GameViewController : GameUIDelegate{
     func setupUI(){
         uiview = GameUIView(frame: view.frame)
         uiview.delegate = self
+        uiview.setupButton()
         view.addSubview(uiview)
     }
     

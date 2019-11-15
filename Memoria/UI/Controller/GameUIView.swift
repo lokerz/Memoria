@@ -36,7 +36,6 @@ class GameUIView: UIView{
         super.init(frame: frame)
         commonInit()
         setupSize(frame)
-        setupButton()
     }
     
     required init?(coder: NSCoder) {
@@ -71,14 +70,14 @@ class GameUIView: UIView{
         buttons.append(soundButtonOutlet)
         buttons.append(hapticButtonOutlet)
         buttons.append(exitButtonOutlet)
-//
-//        buttons.forEach { button in
-//            centers.append (button.center)
-//            button.center = pauseButtonOutlet.center
-//            button.layoutIfNeeded()
-//        }
-//        //        buttons.layoutIfNeeded()
-//        setNeedsDisplay()
+    }
+    
+    func resetButton(){
+        pauseButtonOutlet.transform = CGAffineTransform(rotationAngle: 0)
+        buttons.forEach { (button) in
+            button.alpha = 0
+        }
+        isToggle = false
     }
     
     func fadeInPauseButton(){
@@ -129,9 +128,9 @@ class GameUIView: UIView{
     
     
     func rotate(button : UIButton, duration : TimeInterval){
-        let degree = isToggle ? GLKMathDegreesToRadians(-90) : 0 //the value in degrees
+        let degree = isToggle ? GLKMathDegreesToRadians(-180) : 0 //the value in degrees
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-            button.transform = CGAffineTransform.init(rotationAngle: CGFloat(degree))
+            button.transform = CGAffineTransform(rotationAngle: CGFloat(degree))
         })
     }
     

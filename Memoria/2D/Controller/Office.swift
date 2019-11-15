@@ -15,6 +15,7 @@ class Office: SKScene{
     let border = SKSpriteNode()
     
     let monolog = SKLabelNode()
+    let mobA = SKSpriteNode(imageNamed: "mobA")
     
     let message = "Come with me, and see what has been foretold..."
     
@@ -33,7 +34,6 @@ class Office: SKScene{
           return SKTexture(linearGradientWithAngle: angle, colors: linearGradientColors, locations: linearGradientLocations, size: linearGradientSize)
         }
             
-        let border = SKSpriteNode(texture: textures.first)
         border.zPosition = 1
         border.anchorPoint = CGPoint(x: 0.5, y: 0)
         border.size = CGSize(width: view.frame.width, height: view.frame.height/4)
@@ -59,6 +59,12 @@ class Office: SKScene{
         button.name = "nextButton"
         button.setScale(0.4)
         
+        mobA.size = CGSize(width: view.frame.width, height: view.frame.height)
+        mobA.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        mobA.zPosition = 0
+        
+        
+        addChild(mobA)
         addChild(albertBG)
         addChild(border)
         addChild(button)

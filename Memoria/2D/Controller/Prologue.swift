@@ -124,29 +124,6 @@ class Prologue: SKScene {
                             self.view!.isUserInteractionEnabled = true
                         }
                     case 11:
-                        view!.isUserInteractionEnabled = false
-                        prologue.run(fadeOut)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.prologue.run(self.fadeIn)
-                            self.prologue.text = "Today is a special day for me"
-                            self.view!.isUserInteractionEnabled = true
-                        }
-                    case 12:
-                        prologue.run(fadeOut)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.prologue.run(self.fadeIn)
-                            self.prologue.text = "because i was picked up by these people whom will be my new parents"
-                            self.view!.isUserInteractionEnabled = true
-                        }
-                    case 13:
-                        view!.isUserInteractionEnabled = false
-                        prologue.run(fadeOut)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.prologue.run(self.fadeIn)
-                            self.prologue.text = "This is the start of a new journey in my life"
-                            self.view!.isUserInteractionEnabled = true
-                        }
-                    case 14:
                         let firstPage = MobilScene(fileNamed: "MobilScene")
                         firstPage?.scaleMode = .resizeFill
                         self.view?.presentScene(firstPage!, transition: SKTransition.fade(withDuration: 0.5))

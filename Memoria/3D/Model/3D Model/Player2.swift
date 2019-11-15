@@ -17,6 +17,7 @@ class Player2 : Player {
     
     override func movePlayer(hitTestResult : SCNHitTestResult){
 //        playerNode.physicsBody!.isAffectedByGravity = false
+        isMovable = false
         pathIndex = 1
         synchronize()
         lastHeight = Int(roundf(playerNode.position.y * 10))
@@ -26,7 +27,8 @@ class Player2 : Player {
             isLastDestination = false
             HapticGenerator.instance.play(5)
             path = nearestNode(to: lastDestination)
-            if path.count != 0 {
+            print(path)
+            if path.count > 1 {
                 isMovable = true
                 destination = path[pathIndex]
                 velocity = calculateVelocity(to: destination)

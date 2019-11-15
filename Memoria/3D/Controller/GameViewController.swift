@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate {
-    var level = 1
+    var level = 2
     
     var sceneView : SCNView!
     var scene : SCNScene!

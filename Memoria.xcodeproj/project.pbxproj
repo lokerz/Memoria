@@ -35,7 +35,12 @@
 		47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E423585D050027AA1F /* GestureManager.swift */; };
 		47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E623587F120027AA1F /* HapticGenerator.swift */; };
 		47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AE723740F7F007993D4 /* MainViewController.swift */; };
-		F157322F237554EF00E7891E /* SpriteKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157322E237554EF00E7891E /* SpriteKitController.swift */; };
+		47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AEA2375633A007993D4 /* SoundGenerator.swift */; };
+		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
+		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
+		47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */; };
+		47FE5AFA237C0233007993D4 /* PlatformPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF9237C0232007993D4 /* PlatformPath.swift */; };
+		F157322F237554EF00E7891E /* SpriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157322E237554EF00E7891E /* SpriteManager.swift */; };
 		F157323A2375553800E7891E /* 2D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15732392375553800E7891E /* 2D.storyboard */; };
 		F157323B2375585700E7891E /* PhotoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573231237554FA00E7891E /* PhotoScene.sks */; };
 		F157323C2375585B00E7891E /* Office.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573232237554FA00E7891E /* Office.sks */; };
@@ -55,11 +60,6 @@
 		F1573250237567F500E7891E /* ChapterSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324F237567F500E7891E /* ChapterSelect.swift */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
-		47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AEA2375633A007993D4 /* SoundGenerator.swift */; };
-		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
-		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
-		47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */; };
-		47FE5AFA237C0233007993D4 /* PlatformPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF9237C0232007993D4 /* PlatformPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,13 +114,18 @@
 		47B7A1E423585D050027AA1F /* GestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureManager.swift; sourceTree = "<group>"; };
 		47B7A1E623587F120027AA1F /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 		47FE5AE723740F7F007993D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		47FE5AEA2375633A007993D4 /* SoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
+		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
+		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
+		47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGearPath.swift; sourceTree = "<group>"; };
+		47FE5AF9237C0232007993D4 /* PlatformPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformPath.swift; sourceTree = "<group>"; };
 		F1573227237554E700E7891E /* PhotoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScene.swift; sourceTree = "<group>"; };
 		F1573228237554E700E7891E /* Office.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Office.swift; sourceTree = "<group>"; };
 		F157322A237554E700E7891E /* PaperWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperWork.swift; sourceTree = "<group>"; };
 		F157322B237554E700E7891E /* InHouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InHouse.swift; sourceTree = "<group>"; };
 		F157322C237554E700E7891E /* MobilScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilScene.swift; sourceTree = "<group>"; };
 		F157322D237554E700E7891E /* FrontHouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontHouse.swift; sourceTree = "<group>"; };
-		F157322E237554EF00E7891E /* SpriteKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitController.swift; sourceTree = "<group>"; };
+		F157322E237554EF00E7891E /* SpriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteManager.swift; sourceTree = "<group>"; };
 		F1573231237554FA00E7891E /* PhotoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoScene.sks; sourceTree = "<group>"; };
 		F1573232237554FA00E7891E /* Office.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Office.sks; sourceTree = "<group>"; };
 		F1573233237554FA00E7891E /* MobilScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MobilScene.sks; sourceTree = "<group>"; };
@@ -134,11 +139,6 @@
 		F157324F237567F500E7891E /* ChapterSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSelect.swift; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
-		47FE5AEA2375633A007993D4 /* SoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
-		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
-		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
-		47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGearPath.swift; sourceTree = "<group>"; };
-		47FE5AF9237C0232007993D4 /* PlatformPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				F15732382375552700E7891E /* View */,
-				F157322E237554EF00E7891E /* SpriteKitController.swift */,
+				F157322E237554EF00E7891E /* SpriteManager.swift */,
 				F1573226237554E700E7891E /* Controller */,
 			);
 			path = 2D;
@@ -350,6 +350,42 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		47FE5AE923756317007993D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
+				47FE5AEA2375633A007993D4 /* SoundGenerator.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47FE5AED237966F9007993D4 /* 3D Model */ = {
+			isa = PBXGroup;
+			children = (
+				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
+				47FE5AF4237A8D58007993D4 /* Pathed Model */,
+				4705CA322359A71100E874EB /* Gear.swift */,
+				4705CA492365ADF500E874EB /* HalfGear.swift */,
+				4705CA34235D896F00E874EB /* Player.swift */,
+				4705CAA223715E7900E874EB /* Player2.swift */,
+				4705CA3A23617DFE00E874EB /* Pillar.swift */,
+				4705CA4623658E1700E874EB /* Platform.swift */,
+				4705CA44236588CE00E874EB /* Black.swift */,
+			);
+			path = "3D Model";
+			sourceTree = "<group>";
+		};
+		47FE5AF4237A8D58007993D4 /* Pathed Model */ = {
+			isa = PBXGroup;
+			children = (
+				47FE5AF2237A8D52007993D4 /* GearPath.swift */,
+				47FE5AF5237A9848007993D4 /* PillarPath.swift */,
+				47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */,
+				47FE5AF9237C0232007993D4 /* PlatformPath.swift */,
+			);
+			path = "Pathed Model";
+			sourceTree = "<group>";
+		};
 		F1573226237554E700E7891E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,42 +421,6 @@
 				F15732392375553800E7891E /* 2D.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		47FE5AE923756317007993D4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
-				47FE5AEA2375633A007993D4 /* SoundGenerator.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		47FE5AED237966F9007993D4 /* 3D Model */ = {
-			isa = PBXGroup;
-			children = (
-				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
-				47FE5AF4237A8D58007993D4 /* Pathed Model */,
-				4705CA322359A71100E874EB /* Gear.swift */,
-				4705CA492365ADF500E874EB /* HalfGear.swift */,
-				4705CA34235D896F00E874EB /* Player.swift */,
-				4705CAA223715E7900E874EB /* Player2.swift */,
-				4705CA3A23617DFE00E874EB /* Pillar.swift */,
-				4705CA4623658E1700E874EB /* Platform.swift */,
-				4705CA44236588CE00E874EB /* Black.swift */,
-			);
-			path = "3D Model";
-			sourceTree = "<group>";
-		};
-		47FE5AF4237A8D58007993D4 /* Pathed Model */ = {
-			isa = PBXGroup;
-			children = (
-				47FE5AF2237A8D52007993D4 /* GearPath.swift */,
-				47FE5AF5237A9848007993D4 /* PillarPath.swift */,
-				47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */,
-				47FE5AF9237C0232007993D4 /* PlatformPath.swift */,
-			);
-			path = "Pathed Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -580,7 +580,6 @@
 				47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */,
 				4705CA4323640A4100E874EB /* LevelManager.swift in Sources */,
 				4705CA3F236409E500E874EB /* LevelTwoManager.swift in Sources */,
-				4705CA9A2369844300E874EB /* Obstacle.swift in Sources */,
 				F15732452375587800E7891E /* PaperWork.swift in Sources */,
 				47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */,
 				4705CAA323715E7900E874EB /* Player2.swift in Sources */,
@@ -591,7 +590,7 @@
 				F15732482375587800E7891E /* FrontHouse.swift in Sources */,
 				F15732472375587800E7891E /* MobilScene.swift in Sources */,
 				4705CA332359A71100E874EB /* Gear.swift in Sources */,
-				F157322F237554EF00E7891E /* SpriteKitController.swift in Sources */,
+				F157322F237554EF00E7891E /* SpriteManager.swift in Sources */,
 				4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */,
 				F1573250237567F500E7891E /* ChapterSelect.swift in Sources */,
 				F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */,
@@ -599,7 +598,6 @@
 				F157324E237567DE00E7891E /* MainMenu.swift in Sources */,
 				4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */,
-				4705CAA1236C209600E874EB /* LevelOnePathfindingManager.swift in Sources */,
 				F15732462375587800E7891E /* InHouse.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,
 				4705CAB22372C0FD00E874EB /* GameUIView.swift in Sources */,

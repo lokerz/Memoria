@@ -28,16 +28,17 @@ class LevelOneManager : LevelManager{
         super.setupLevel()
         
 //        spawnPlayer(on: playerPosition)
-        spawnPlayer2(on: playerPosition)
+        spawnPlayer(on: playerPosition, with: playerVelocity)
         spawnPillar(on: pillarPosition)
-        spawnPillar(on: finishPillarPosition)
         spawnGear(on: gearOnePosition, with: gearOneRotation)
         spawnGear(on: gearTwoPosition, with: gearTwoRotation, counterRotate : gearTwoCounterRotate)
-        
+        spawnPillar(on: finishPillarPosition)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
-        player.pathManager = LevelOnePathfindingManager()
+//        player.pathManager = LevelOnePathfindingManager()
         pillars.first!.moveDown(by: 5, duration: 3)
+        
+        pathfinder.setupNodes()
         
     }
     

@@ -21,12 +21,26 @@ class Gear : SCNNode{
     var isRotating = true
     var isCounterRotate = false
     
+    var pathManager = PathfindingManager.instance
+
+    
     override init(){
         super.init()
     }
     
     init(on position : SCNVector3, with rotation : SCNVector4 ) {
         super.init()
+        commonInit(on: position, with: rotation)
+    }
+    
+    init(on position : SCNVector3, with rotation : SCNVector4, minAngle : Float, maxAngle : Float) {
+        super.init()
+        commonInit(on: position, with: rotation)
+        self.minAngle = minAngle
+        self.maxAngle = maxAngle
+    }
+    
+    func commonInit(on position : SCNVector3, with rotation :  SCNVector4){
         guard let object = SCNScene(named: "art.scnassets/gear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
@@ -37,23 +51,6 @@ class Gear : SCNNode{
         initialAngle = rotation.w
         currentAngle = initialAngle
         newAngle = initialAngle
-        
-    }
-    
-    init(on position : SCNVector3, with rotation : SCNVector4, minAngle : Float, maxAngle : Float) {
-        super.init()
-        guard let object = SCNScene(named: "art.scnassets/gear.scn") else { return }
-        for node in object.rootNode.childNodes as [SCNNode]{
-            self.addChildNode(node)
-        }
-        self.position = position
-        self.rotation = rotation
-        initialAngle = rotation.w
-        currentAngle = initialAngle
-        newAngle = initialAngle
-        
-        self.minAngle = minAngle
-        self.maxAngle = maxAngle
         
     }
     

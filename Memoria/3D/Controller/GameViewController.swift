@@ -18,6 +18,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     var levelManager = LevelManager()
     var gestureManager = GestureManager.instance
+    var uiview = GameUIView()
     var isLoading = false
     
     
@@ -28,20 +29,26 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         setupLevelManager()
         setupGesture()
         startGame()
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        uiview.fadeInPauseButton()
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        levelManager.checkPlayer()
-        if !levelManager.isPanning{
-            levelManager.autoRotateSystem()
-        }
-        
         if levelManager.player.isFinished && !isLoading{
             nextLevel()
         }
-        //            print(player.playerNode.position)
+        
+        levelManager.checkPlayer()
+//        if levelManager.isPanning{
+//            levelManager.player.playerNode.physicsBody?.isAffectedByGravity = true
+//            print(levelManager.player.playerNode.physicsBody?.isAffectedByGravity)
+//        }
+        if !levelManager.isStarting{
+            levelManager.autoRotateSystem()
+        }
     }
     
     func setupWorld(){
@@ -85,10 +92,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
         let _ = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (Timer) in
             self.setupLevelManager()
-            self.isLoading = false
             self.levelManager.setupLevel()
             self.levelManager.player.isFinished = false
             self.gestureManager.setupGesture(self.sceneView, self.levelManager)
+            self.isLoading = false
         }
     }
     
@@ -105,22 +112,20 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
 extension GameViewController : GameUIDelegate{
     func setupUI(){
-        let size : CGFloat = 100
-        let posX = view.frame.width
-        let frame = CGRect(x: 0, y: 0, width: size, height: size)
-        let uiview = GameUIView(frame: frame)
+        uiview = GameUIView(frame: view.frame)
         uiview.delegate = self
-        //
-        //        uiview.backgroundColor = .blue
-        //        uiview.alpha = 0.3
+        uiview.setupButton()
         view.addSubview(uiview)
-        //        let gameUI = GameUIView(frame : view.frame)
     }
     
     func pauseButton() {
-        HapticGenerator().play(5)
         
         
     }
         
+    func exitButton() {
+        self.dismiss(animated: true) {
+            
+        }
+    }
 }

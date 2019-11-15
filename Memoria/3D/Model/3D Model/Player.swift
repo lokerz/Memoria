@@ -17,12 +17,12 @@ class Player : SCNNode{
     var playerNode = SCNNode()
     var velocity = SCNVector3()
     var velocityFactor : Float = 0.5
-    var playerRadius : Float = 2
+    var playerRadius : Float = 1.25
     var beginningPosition =  SCNVector3()
     var finishLocation = SCNVector3()
     var lastHeight : Int = 0
     
-    var pathManager = PathfindingManager()
+    var pathManager = PathfindingManager.instance
 
     
     override init(){

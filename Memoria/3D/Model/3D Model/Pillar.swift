@@ -12,6 +12,9 @@ class Pillar : SCNNode{
     
     var isFinish = false
     
+    var pathManager = PathfindingManager.instance
+    var levelManager = LevelManager()
+    
     
     override init(){
         super.init()

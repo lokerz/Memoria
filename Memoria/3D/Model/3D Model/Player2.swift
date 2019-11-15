@@ -12,24 +12,26 @@ import SceneKit
 class Player2 : Player {
     var path = [SCNVector3]()
     var lastDestination = SCNVector3()
-    var pathIndex = 0
+    var pathIndex = 1
     var isLastDestination = false
     
     override func movePlayer(hitTestResult : SCNHitTestResult){
-        pathIndex = 0
+//        playerNode.physicsBody!.isAffectedByGravity = false
+        pathIndex = 1
         synchronize()
         lastHeight = Int(roundf(playerNode.position.y * 10))
         
         if !isFinished {
-            isMovable = true
             lastDestination = SCNVector3Make(hitTestResult.worldCoordinates.x, 0 , hitTestResult.worldCoordinates.z)
             isLastDestination = false
             HapticGenerator.instance.play(5)
             path = nearestNode(to: lastDestination)
-            destination = path[pathIndex]
-            print(path, destination)
-            velocity = calculateVelocity(to: destination)
-            move()
+            if path.count != 0 {
+                isMovable = true
+                destination = path[pathIndex]
+                velocity = calculateVelocity(to: destination)
+                move()
+            }
         }
     }
     
@@ -40,7 +42,7 @@ class Player2 : Player {
     }
     
     override func checkPosition(){
-        
+//        print(playerNode.physicsBody?.velocity.y)
         if isMovable {
             if checkLastPos(){
                 stop()
@@ -50,10 +52,10 @@ class Player2 : Player {
                 move()
             }
         }
-        if playerNode.position.y < -5 {
-            stop()
-            reset()
-        }
+//        if playerNode.position.y < -5 {
+//            stop()
+//            reset()
+//        }
         checkFinished()
     }
     

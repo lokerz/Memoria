@@ -12,13 +12,13 @@ import SceneKit
 class LevelTwoManager : LevelManager {
     let playerPosition = SCNVector3Make(-7.6, 7.5, 0)
     
-    let platformPosition = SCNVector3Make(0, 3, 0)
+    let platformPosition = SCNVector3Make(0, -0.5, 0)
             
     let gearOnePosition = SCNVector3Make(-3.7, 0, 0)
     let gearOneRotation = SCNVector4Make(0, 0, 0, 0)
 
     let gearTwoPosition = SCNVector3Make(3.7, 0, 0)
-    let gearTwoRotation = SCNVector4Make(0, 1, 0, 0.25)
+    let gearTwoRotation = SCNVector4Make(0, 0, 0, 0)
     let gearTwoCounterRotate = true
     
     let pillarPosition = SCNVector3Make(-7.6, 4.66, 0)
@@ -27,18 +27,20 @@ class LevelTwoManager : LevelManager {
             
     override func setupLevel(){
         super.setupLevel()
-        spawnPlayer(on: playerPosition)
+        spawnPlayer(on: playerPosition,with: playerVelocity)
         spawnPillar(on: pillarPosition)
-        spawnPillar(on: finishPillarPosition)
         spawnGear(on: gearOnePosition, with: gearOneRotation)
+        spawnPlatform(on: platformPosition, min: -0.5, max: 1)
         spawnGear(on: gearTwoPosition, with: gearTwoRotation, counterRotate : gearTwoCounterRotate)
-        spawnPlatform(on: platformPosition, min: -3, max: 3)
+        spawnPillar(on: finishPillarPosition)
         
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
         
         pillars.first!.moveDown(by: 5, duration: 3)
+        platforms.first?.moveDown(by: -1.5, duration: 3)
 
+        pathfinder.setupNodes()
     }
     
     

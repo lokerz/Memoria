@@ -10,40 +10,92 @@ import Foundation
 import GameplayKit
 import SceneKit
 
+enum nodeType {
+    case nextNode
+    case previousNode
+    case finishNode
+}
+
+
+@objc protocol PathManagerDelegate {
+    @objc optional func pathInitDetails()
+}
+
 class PathfindingManager : NSObject {
-    let myGraph = GKGraph()
+    static var instance = PathfindingManager()
+    var myGraph = GKGraph()
     var nodes = [GKGraphNode]()
     var coordinates = [SCNVector3]()
+    var lastNode = GKGraphNode()
+    var finishNode = GKGraphNode()
+    var delegate : PathManagerDelegate?
     
     override init() {
         super.init()
-        setupCoordinates()
-        setupNodes()
+    }
+    
+    func setupPath(nodes : [GKGraphNode], coordinates : [SCNVector3]){
+        appendNode(nodes: nodes)
+        appendCoordinates(coordinates: coordinates)
+    }
+    
+    func resetPath(){
+        myGraph = GKGraph()
+        nodes = [GKGraphNode]()
+        coordinates = [SCNVector3]()
+    }
+    
+    func appendNode(nodes : [GKGraphNode]){
+        if self.nodes.count > 0 {
+            self.nodes.last!.addConnections(to: [nodes.first!], bidirectional: true)
+        }
+        nodes.forEach { node in
+            self.nodes.append(node)
+        }
+        print(self.nodes.first!.connectedNodes)
+    }
+    
+    func appendCoordinates(coordinates : [SCNVector3]){
+        coordinates.forEach { coordinate in
+            self.coordinates.append(coordinate)
+        }
     }
     
     func setupNodes(){
-        
+        myGraph.add(nodes)
+        self.delegate?.pathInitDetails?()
     }
     
-    func setupCoordinates(){
-        
+    func removeConnection(from node : GKGraphNode, with type : nodeType ){
+        let temp = findNode(from: node, with: type)
+        node.removeConnections(to: [temp], bidirectional: true)
     }
     
-    func findPath() -> [SCNVector3]{
-        setupCoordinates()
-        setupNodes()
-        
-        var path = [SCNVector3]()
-        for graphNode in myGraph.findPath(from: nodes[0], to: nodes[12]) {
-            path.append(coordinates[nodes.firstIndex(of: graphNode)!])
+    
+    func addConnection(from node : GKGraphNode, with type : nodeType ){
+        let temp = findNode(from: node, with: type)
+        node.addConnections(to: [temp], bidirectional: true)
+    }
+    
+    func findNode(from node : GKGraphNode, with type : nodeType ) -> GKGraphNode{
+        var temp = GKGraphNode()
+        print(node)
+        for i in 1..<nodes.count-1 {
+            if nodes[i] == node{
+                switch type {
+                case .nextNode      : temp = nodes[i+1]
+                case .previousNode  : temp = nodes[i-1]
+                default             : temp = nodes.last!
+                }
+                
+            }
         }
-        return path
+        return temp
     }
-    
     
     func calculateNode(from position: SCNVector3, to destination: SCNVector3) -> [SCNVector3]{
         var path = [SCNVector3]()
-                
+        
         //Find nearest Node to position
         var distance = calculateDistance(from: position, to: coordinates.first!)
         var firstNodeIndex = 0

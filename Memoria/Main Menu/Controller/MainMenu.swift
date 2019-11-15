@@ -16,7 +16,6 @@ class MainMenu: SKScene {
         
         let playButton = SKLabelNode()
         let backgroundImage = SKSpriteNode(imageNamed: "Main Background")
-//        let selectChapter = SKLabelNode()
         let dropShadow = SKLabelNode()
         
         playButton.fontSize = 30
@@ -32,13 +31,6 @@ class MainMenu: SKScene {
         dropShadow.fontColor = SKColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         dropShadow.position = CGPoint(x: view.frame.width/2 + 1, y: view.frame.height/2 - 32)
         dropShadow.zPosition = 1
-        
-//        selectChapter.fontSize = 30
-//        selectChapter.fontName = "Helvetica Neue Medium"
-//        selectChapter.text = "Chapter"
-//        selectChapter.name = "selectChapter"
-//        selectChapter.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 75)
-//        selectChapter.zPosition = 2
         
         backgroundImage.size = CGSize(width: view.frame.width, height: view.frame.height)
         backgroundImage.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
@@ -58,15 +50,9 @@ class MainMenu: SKScene {
 
             for node in nodesarray {
                 if node.name == "playButton"{
-                    let nextPage = ChapterSelect(fileNamed: "ChapterSelect")
-                    nextPage?.scaleMode = .resizeFill
-                    self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 0.5))
+                    let scene = SpriteManager.instance.callScene(index: 99)
+                    view!.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                 }
-//                else if node.name == "chapterSelect"{
-//                    let nextPage = ChapterSelect(fileNamed: "ChapterSelect")
-//                        nextPage?.scaleMode = .resizeFill
-//                    self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 0.5))
-//                }
             }
         }
     }

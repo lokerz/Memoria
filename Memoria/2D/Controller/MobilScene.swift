@@ -167,10 +167,9 @@ class MobilScene: SKScene {
                 }
             }
             else if node.name == "nextButton" {
-                   let secondPage = PhotoScene(fileNamed: "PhotoScene")
-                   secondPage?.scaleMode = .resizeFill
-                   self.view?.presentScene(secondPage!, transition: SKTransition.fade(withDuration: 0.5))
-                   }
+                   let scene = SpriteManager.instance.callScene(index: 3)
+                   self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+            }
             }
         }
     }

@@ -124,9 +124,8 @@ class PhotoScene: SKScene {
                     state += 1
                 }
                 else if node.name == "nextButton" {
-                    let thridPage = PaperWork(fileNamed: "PaperWork")
-                    thridPage?.scaleMode = .resizeFill
-                    self.view?.presentScene(thridPage!, transition: SKTransition.fade(withDuration: 0.5))
+                    let scene = SpriteManager.instance.callScene(index: 4)
+                    self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                 }
             }
         }
@@ -202,9 +201,8 @@ class PhotoScene: SKScene {
             photo3.removeFromParent()
             photo4.removeFromParent()
             
-            let thridPage = PaperWork(fileNamed: "PaperWork")
-            thridPage?.scaleMode = .resizeFill
-            self.view?.presentScene(thridPage!, transition: SKTransition.fade(withDuration: 0))
+            let scene = SpriteManager.instance.callScene(index: 4)
+            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
         }
     }
 

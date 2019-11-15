@@ -84,9 +84,8 @@ class FrontHouse: SKScene{
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.view?.isUserInteractionEnabled = true
-            let sixthPage = InHouse(fileNamed: "InHouse")
-            sixthPage?.scaleMode = .resizeFill
-            self.view?.presentScene(sixthPage!, transition: SKTransition.fade(withDuration: 0.5))
+            let scene = SpriteManager.instance.callScene(index: 7)
+            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
         }
     }
 

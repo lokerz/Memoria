@@ -182,9 +182,8 @@ class PaperWork: SKScene {
                     }
                         
                     else if node.name == "nextButton"{
-                        let fourthPage = Office(fileNamed: "Office")
-                        fourthPage?.scaleMode = .resizeFill
-                        self.view?.presentScene(fourthPage!)
+                       let scene = SpriteManager.instance.callScene(index: 5)
+                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                     }
                 }
             }

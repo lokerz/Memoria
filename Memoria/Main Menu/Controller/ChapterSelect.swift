@@ -121,13 +121,11 @@ class ChapterSelect: SKScene {
                 if node.name == "playButton"{
                     switch state {
                     case 1:
-                       let nextPage = Prologue(fileNamed: "Prologue")
-                       nextPage?.scaleMode = .resizeFill
-                       self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 1))
+                        let scene = SpriteManager.instance.callScene(index: 1)
+                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                     case 2:
-                        let nextPage = MobilScene(fileNamed: "MobilScene")
-                        nextPage?.scaleMode = .resizeFill
-                        self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 0.5))
+                        let scene = SpriteManager.instance.callScene(index: 5)
+                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                     case 3:
                         break
                     case 4:
@@ -139,93 +137,56 @@ class ChapterSelect: SKScene {
                     }
                 }
                 else if node.name == "leftButton"{
-                    let point1 = CGPoint(x: self.chapter1.position.x + self.view!.frame.width, y: view!.frame.height/2)
-                    let point2 = CGPoint(x: self.chapter2.position.x + self.view!.frame.width, y: view!.frame.height/2)
-                    let point3 = CGPoint(x: self.chapter3.position.x + self.view!.frame.width, y: view!.frame.height/2)
-                    let point4 = CGPoint(x: self.chapter4.position.x + self.view!.frame.width, y: view!.frame.height/2)
-                    let point5 = CGPoint(x: self.chapter5.position.x + self.view!.frame.width, y: view!.frame.height/2)
-                        
-                    let move1 = SKAction.move(to: point1, duration: durationMove)
-                    let move2 = SKAction.move(to: point2, duration: durationMove)
-                    let move3 = SKAction.move(to: point3, duration: durationMove)
-                    let move4 = SKAction.move(to: point4, duration: durationMove)
-                    let move5 = SKAction.move(to: point5, duration: durationMove)
-                        if self.state > 1{
-                            chapter1.run(move1)
-                            chapter2.run(move2)
-                            chapter3.run(move3)
-                            chapter4.run(move4)
-                            chapter5.run(move5)
-                                self.state -= 1
-                                view!.isUserInteractionEnabled = false
-                                DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                                    self.view!.isUserInteractionEnabled = true
-                            }
-                        }
+                    prevChapter()
                     
                 }
                 else if node.name == "rightButton"{
-                    let point1 = CGPoint(x: self.chapter1.position.x - self.view!.frame.width, y: view!.frame.height/2)
-                    let point2 = CGPoint(x: self.chapter2.position.x - self.view!.frame.width, y: view!.frame.height/2)
-                    let point3 = CGPoint(x: self.chapter3.position.x - self.view!.frame.width, y: view!.frame.height/2)
-                    let point4 = CGPoint(x: self.chapter4.position.x - self.view!.frame.width, y: view!.frame.height/2)
-                    let point5 = CGPoint(x: self.chapter5.position.x - self.view!.frame.width, y: view!.frame.height/2)
-                    
-                    let move1 = SKAction.move(to: point1, duration: durationMove)
-                    let move2 = SKAction.move(to: point2, duration: durationMove)
-                    let move3 = SKAction.move(to: point3, duration: durationMove)
-                    let move4 = SKAction.move(to: point4, duration: durationMove)
-                    let move5 = SKAction.move(to: point5, duration: durationMove)
-                        if self.state < 5{
-                            chapter1.run(move1)
-                            chapter2.run(move2)
-                            chapter3.run(move3)
-                            chapter4.run(move4)
-                            chapter5.run(move5)
-                                self.state += 1
-                                view!.isUserInteractionEnabled = false
-                                DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                                    self.view!.isUserInteractionEnabled = true
-                            }
-                    }
+                   nextChapter()
                     
                 }
                 else if node.name == "back"{
-                          let nextPage = MainMenu(fileNamed: "MainMenu")
-                          nextPage?.scaleMode = .resizeFill
-                          self.view?.presentScene(nextPage!, transition: SKTransition.fade(withDuration: 0.5))
+                    let scene = SpriteManager.instance.callScene(index: 100)
+                          self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                 }
             }
         }
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer){
-       let point1 = CGPoint(x: self.chapter1.position.x - self.view!.frame.width, y: view!.frame.height/2)
-       let point2 = CGPoint(x: self.chapter2.position.x - self.view!.frame.width, y: view!.frame.height/2)
-       let point3 = CGPoint(x: self.chapter3.position.x - self.view!.frame.width, y: view!.frame.height/2)
-       let point4 = CGPoint(x: self.chapter4.position.x - self.view!.frame.width, y: view!.frame.height/2)
-       let point5 = CGPoint(x: self.chapter5.position.x - self.view!.frame.width, y: view!.frame.height/2)
-       
-       let move1 = SKAction.move(to: point1, duration: durationMove)
-       let move2 = SKAction.move(to: point2, duration: durationMove)
-       let move3 = SKAction.move(to: point3, duration: durationMove)
-       let move4 = SKAction.move(to: point4, duration: durationMove)
-       let move5 = SKAction.move(to: point5, duration: durationMove)
-           if self.state < 5{
-               chapter1.run(move1)
-               chapter2.run(move2)
-               chapter3.run(move3)
-               chapter4.run(move4)
-               chapter5.run(move5)
-                   self.state += 1
-                   view!.isUserInteractionEnabled = false
-                   DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                       self.view!.isUserInteractionEnabled = true
-               }
-       }
-        }
+        nextChapter()
+    }
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer){
+        prevChapter()
+    }
+    
+    func nextChapter(){
+        let point1 = CGPoint(x: self.chapter1.position.x - self.view!.frame.width, y: view!.frame.height/2)
+        let point2 = CGPoint(x: self.chapter2.position.x - self.view!.frame.width, y: view!.frame.height/2)
+        let point3 = CGPoint(x: self.chapter3.position.x - self.view!.frame.width, y: view!.frame.height/2)
+        let point4 = CGPoint(x: self.chapter4.position.x - self.view!.frame.width, y: view!.frame.height/2)
+        let point5 = CGPoint(x: self.chapter5.position.x - self.view!.frame.width, y: view!.frame.height/2)
+        
+        let move1 = SKAction.move(to: point1, duration: durationMove)
+        let move2 = SKAction.move(to: point2, duration: durationMove)
+        let move3 = SKAction.move(to: point3, duration: durationMove)
+        let move4 = SKAction.move(to: point4, duration: durationMove)
+        let move5 = SKAction.move(to: point5, duration: durationMove)
+            if self.state < 5{
+                chapter1.run(move1)
+                chapter2.run(move2)
+                chapter3.run(move3)
+                chapter4.run(move4)
+                chapter5.run(move5)
+                    self.state += 1
+                    view!.isUserInteractionEnabled = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                        self.view!.isUserInteractionEnabled = true
+                }
+        }
+    }
+    
+    func prevChapter(){
         let point1 = CGPoint(x: self.chapter1.position.x + self.view!.frame.width, y: view!.frame.height/2)
         let point2 = CGPoint(x: self.chapter2.position.x + self.view!.frame.width, y: view!.frame.height/2)
         let point3 = CGPoint(x: self.chapter3.position.x + self.view!.frame.width, y: view!.frame.height/2)

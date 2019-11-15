@@ -102,14 +102,12 @@ class Player : SCNNode{
     }
     
     func stop(){
-        print(#function)
         synchronize()
         isMovable = false
         playerNode.physicsBody!.velocity = SCNVector3Zero 
     }
     
     func fall(){
-        print(#function)
         synchronize()
         isMovable = false
         let y = playerNode.physicsBody!.velocity.y

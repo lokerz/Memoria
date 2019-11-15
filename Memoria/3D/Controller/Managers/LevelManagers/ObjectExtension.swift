@@ -18,7 +18,7 @@ extension LevelManager{
     }
     
     func spawnPlayer(on position : SCNVector3, with velocity : Float){
-        player = Player2(on: position)
+        player = Player3(on: position)
         player.velocityFactor = velocity
         rootNode.addChildNode(player)
     }

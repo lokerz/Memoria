@@ -9,18 +9,18 @@
 import Foundation
 import SceneKit
 
-class Player2 : Player {
+class Player3 : Player {
     var path = [SCNVector3]()
     var lastDestination = SCNVector3()
     var pathIndex = 1
     var isLastDestination = false
+    
     
     override func movePlayer(hitTestResult : SCNHitTestResult){
 //        playerNode.physicsBody!.isAffectedByGravity = false
         isMovable = false
         pathIndex = 1
         synchronize()
-        lastHeight = Int(roundf(playerNode.position.y * 10))
         
         if !isFinished {
             lastDestination = SCNVector3Make(hitTestResult.worldCoordinates.x, 0 , hitTestResult.worldCoordinates.z)
@@ -30,10 +30,18 @@ class Player2 : Player {
             if path.count > 1 {
                 isMovable = true
                 destination = path[pathIndex]
-                velocity = calculateVelocity(to: destination)
-                move()
+//                velocity = calculateVelocity(to: destination)
+//                move()
+                move(to: destination)
             }
         }
+    }
+    
+    func move(to destination : SCNVector3){
+        synchronize()
+        let coordinate = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
+        let move = SCNAction.move(to: coordinate, duration: 1)
+        playerNode.runAction(move)
     }
     
     func nearestNode(to destination : SCNVector3) -> [SCNVector3]{
@@ -43,20 +51,15 @@ class Player2 : Player {
     }
     
     override func checkPosition(){
-//        print(playerNode.physicsBody?.velocity.y)
         if isMovable {
             if checkLastPos(){
                 stop()
             }else if checkNextDestination(){
                 nextDestination()
             } else {
-                move()
+//                move()
             }
         }
-//        if playerNode.position.y < -5 {
-//            stop()
-//            reset()
-//        }
         checkFinished()
     }
     
@@ -76,10 +79,10 @@ class Player2 : Player {
         if pathIndex < path.count - 1{
             pathIndex += 1
             destination = path[pathIndex]
-            velocity = calculateVelocity(to: destination)
+            move(to: destination)
         } else {
             isLastDestination = true
-            velocity = calculateVelocity(to: lastDestination)
+//            move(to: lastDestination)
         }
         isMovable = true
     }

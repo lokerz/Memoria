@@ -108,7 +108,6 @@ class LevelManager : NSObject {
         translation = gestureRecognizer.translation(in: sceneView)
         hitResults = sceneView.hitTest(location, options: [:])
         player.playerNode.physicsBody?.isAffectedByGravity = true
-        print(#function, isPanning, player.playerNode.physicsBody?.isAffectedByGravity)
 
     }
     

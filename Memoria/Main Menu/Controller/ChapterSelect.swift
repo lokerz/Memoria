@@ -124,7 +124,7 @@ class ChapterSelect: SKScene {
                         let scene = SpriteManager.instance.callScene(index: 1)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                     case 2:
-                        let scene = SpriteManager.instance.callScene(index: 5)
+                        let scene = SpriteManager.instance.callScene(index: 2)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                     case 3:
                         break

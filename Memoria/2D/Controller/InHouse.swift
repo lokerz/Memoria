@@ -20,6 +20,7 @@ class InHouse : SKScene{
     let pulang2 = SKSpriteNode(imageNamed: "Pulang_2")
     let pulang3 = SKSpriteNode(imageNamed: "Pulang_3")
     let pulang4 = SKSpriteNode(imageNamed: "Pulang_4")
+    let pulang5 = SKSpriteNode(imageNamed: "Pulang_5")
     
     let frameDepan = SKSpriteNode(imageNamed: "Frame_Front")
     let frameFoto = SKSpriteNode(imageNamed: "Frame_Photo")
@@ -61,6 +62,11 @@ class InHouse : SKScene{
         pulang4.size = pulang1.size
         pulang4.position = pulang1.position
         pulang4.zPosition = 1
+        
+        pulang5.name = "Pulang_5"
+        pulang5.size = pulang1.size
+        pulang5.position = pulang1.position
+        pulang5.zPosition = 1
         
         frameDepan.name = "Depan"
         frameDepan.size = CGSize(width: view.frame.width, height: view.frame.height)
@@ -185,10 +191,17 @@ class InHouse : SKScene{
             state += 1
         case 3:
             wait()
+            pulang4.run(goUp2)
+            addChild(pulang5)
+            pulang5.run(goUp)
+            state += 1
+        case 4:
+            wait()
             pulang1.removeFromParent()
             pulang2.removeFromParent()
             pulang3.removeFromParent()
-            pulang4.run(goUp2)
+            pulang4.removeFromParent()
+            pulang5.run(goUp2)
             addChild(frameDepan)
             addChild(frameBelakang)
             

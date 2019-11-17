@@ -155,15 +155,17 @@ class PaperWork: SKScene {
         addChild(paper1_2)
         addChild(paper1_3)
         addChild(paper2)
+        addChild(pen)
         
         albertWork.run(fadeIn)
-        paper1_1.run(fadeIn)
-        paper1_2.run(fadeIn)
-        paper1_3.run(fadeIn)
-        paper2.run(fadeIn)
-        pen.run(fadeIn)
         
-        addChild(pen)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.paper1_1.run(self.fadeIn)
+            self.paper1_2.run(self.fadeIn)
+            self.paper1_3.run(self.fadeIn)
+            self.paper2.run(self.fadeIn)
+            self.pen.run(self.fadeIn)
+        }
 
     }
     

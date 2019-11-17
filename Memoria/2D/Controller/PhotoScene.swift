@@ -143,25 +143,25 @@ class PhotoScene: SKScene {
         let move3 = SKAction.move(to: point3, duration: durationMove)
         let move4 = SKAction.move(to: point4, duration: durationMove)
         if self.stateGesture < 3{
-                photo1.run(move1)
-                photo2.run(move2)
-                photo3.run(move3)
-                photo4.run(move4)
-                self.stateGesture += 1
-                view!.isUserInteractionEnabled = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                    self.view!.isUserInteractionEnabled = true
-                }
+            photo1.run(move1)
+            photo2.run(move2)
+            photo3.run(move3)
+            photo4.run(move4)
+            self.stateGesture += 1
+            view!.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                self.view!.isUserInteractionEnabled = true
+
             }
-        if self.stateGesture == 3{
-            button.removeFromParent()
-            backBlack.removeFromParent()
-            addChild(button)
-            addChild(backBlack)
         }
-        else{
-            button.removeFromParent()
-            backBlack.removeFromParent()
+        if self.stateGesture == 3{
+            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                self.button.removeFromParent()
+                self.backBlack.removeFromParent()
+                self.addChild(self.button)
+                self.addChild(self.backBlack)
+            }
+                
         }
     }
     
@@ -186,10 +186,6 @@ class PhotoScene: SKScene {
                 DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                     self.view!.isUserInteractionEnabled = true
             }
-        }
-        if self.stateGesture != 3{
-            button.removeFromParent()
-            backBlack.removeFromParent()
         }
     }
     

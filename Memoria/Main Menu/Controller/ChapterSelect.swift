@@ -47,15 +47,15 @@ class ChapterSelect: SKScene {
         chapter2.size = chapter1.size
         chapter2.zPosition = -1
         
-        chapter3.position = CGPoint(x: 5 * view.frame.width/2, y: view.frame.height/2)
+        chapter3.position = CGPoint(x: 3 * view.frame.width/2, y: view.frame.height/2)
         chapter3.size = chapter1.size
         chapter3.zPosition = -1
     
-        chapter4.position = CGPoint(x: 7 * view.frame.width/2, y: view.frame.height/2)
+        chapter4.position = CGPoint(x: 3 * view.frame.width/2, y: view.frame.height/2)
         chapter4.size = chapter1.size
         chapter4.zPosition = -1
         
-        chapter5.position = CGPoint(x: 9 * view.frame.width/2, y: view.frame.height/2)
+        chapter5.position = CGPoint(x: 3 * view.frame.width/2, y: view.frame.height/2)
         chapter5.size = chapter1.size
         chapter5.zPosition = -1
         
@@ -96,10 +96,6 @@ class ChapterSelect: SKScene {
         rightButton.zPosition = 2
         
         addChild(chapter1)
-        addChild(chapter2)
-        addChild(chapter3)
-        addChild(chapter4)
-        addChild(chapter5)
         addChild(whiteBorder)
         
         addChild(back)
@@ -161,53 +157,89 @@ class ChapterSelect: SKScene {
     }
     
     func nextChapter(){
-        let point1 = CGPoint(x: self.chapter1.position.x - self.view!.frame.width, y: view!.frame.height/2)
-        let point2 = CGPoint(x: self.chapter2.position.x - self.view!.frame.width, y: view!.frame.height/2)
-        let point3 = CGPoint(x: self.chapter3.position.x - self.view!.frame.width, y: view!.frame.height/2)
-        let point4 = CGPoint(x: self.chapter4.position.x - self.view!.frame.width, y: view!.frame.height/2)
-        let point5 = CGPoint(x: self.chapter5.position.x - self.view!.frame.width, y: view!.frame.height/2)
-        
-        let move1 = SKAction.move(to: point1, duration: durationMove)
-        let move2 = SKAction.move(to: point2, duration: durationMove)
-        let move3 = SKAction.move(to: point3, duration: durationMove)
-        let move4 = SKAction.move(to: point4, duration: durationMove)
-        let move5 = SKAction.move(to: point5, duration: durationMove)
-            if self.state < 5{
-                chapter1.run(move1)
-                chapter2.run(move2)
-                chapter3.run(move3)
-                chapter4.run(move4)
-                chapter5.run(move5)
-                    self.state += 1
-                    view!.isUserInteractionEnabled = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                        self.view!.isUserInteractionEnabled = true
-                }
+        switch state {
+        case 1:
+            removeChapters()
+            chapterMoveNext(chapter1: chapter1, chapter2: chapter2)
+        case 2:
+            removeChapters()
+            chapterMoveNext(chapter1: chapter2, chapter2: chapter3)
+        case 3:
+            removeChapters()
+            chapterMoveNext(chapter1: chapter3, chapter2: chapter4)
+        case 4:
+            removeChapters()
+            chapterMoveNext(chapter1: chapter4, chapter2: chapter5)
+        default:
+            print(state)
         }
     }
     
     func prevChapter(){
-        let point1 = CGPoint(x: self.chapter1.position.x + self.view!.frame.width, y: view!.frame.height/2)
-        let point2 = CGPoint(x: self.chapter2.position.x + self.view!.frame.width, y: view!.frame.height/2)
-        let point3 = CGPoint(x: self.chapter3.position.x + self.view!.frame.width, y: view!.frame.height/2)
-        let point4 = CGPoint(x: self.chapter4.position.x + self.view!.frame.width, y: view!.frame.height/2)
-        let point5 = CGPoint(x: self.chapter5.position.x + self.view!.frame.width, y: view!.frame.height/2)
-            
+        switch state {
+        case 2:
+            removeChapters()
+            chapterMovePrev(chapter1: chapter2, chapter2: chapter1)
+        case 3:
+            removeChapters()
+            chapterMovePrev(chapter1: chapter3, chapter2: chapter2)
+        case 4:
+            removeChapters()
+            chapterMovePrev(chapter1: chapter4, chapter2: chapter3)
+        case 5:
+            removeChapters()
+            chapterMovePrev(chapter1: chapter5, chapter2: chapter4)
+        default:
+            print(state)
+        }
+    }
+    
+    func removeChapters(){
+        chapter1.removeFromParent()
+        chapter2.removeFromParent()
+        chapter3.removeFromParent()
+        chapter4.removeFromParent()
+        chapter5.removeFromParent()
+    }
+    
+    func chapterMoveNext(chapter1: SKNode, chapter2: SKNode){
+        addChild(chapter1)
+        addChild(chapter2)
+
+        let point1 = CGPoint(x: chapter1.position.x - self.view!.frame.width, y: view!.frame.height/2)
+        let point2 = CGPoint(x: chapter2.position.x - self.view!.frame.width, y: view!.frame.height/2)
+
         let move1 = SKAction.move(to: point1, duration: durationMove)
         let move2 = SKAction.move(to: point2, duration: durationMove)
-        let move3 = SKAction.move(to: point3, duration: durationMove)
-        let move4 = SKAction.move(to: point4, duration: durationMove)
-        let move5 = SKAction.move(to: point5, duration: durationMove)
-            if self.state > 1{
-                chapter1.run(move1)
-                chapter2.run(move2)
-                chapter3.run(move3)
-                chapter4.run(move4)
-                chapter5.run(move5)
-                    self.state -= 1
-                    view!.isUserInteractionEnabled = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                        self.view!.isUserInteractionEnabled = true
+
+        if self.state < 5{
+        chapter1.run(move1)
+        chapter2.run(move2)
+        self.state += 1
+        view!.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                self.view!.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func chapterMovePrev(chapter1: SKNode, chapter2: SKNode){
+        addChild(chapter1)
+        addChild(chapter2)
+
+        let point1 = CGPoint(x: chapter1.position.x + self.view!.frame.width, y: view!.frame.height/2)
+        let point2 = CGPoint(x: chapter2.position.x + self.view!.frame.width, y: view!.frame.height/2)
+
+        let move1 = SKAction.move(to: point1, duration: durationMove)
+        let move2 = SKAction.move(to: point2, duration: durationMove)
+
+        if self.state > 1{
+        chapter1.run(move1)
+        chapter2.run(move2)
+        self.state -= 1
+        view!.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                self.view!.isUserInteractionEnabled = true
             }
         }
     }

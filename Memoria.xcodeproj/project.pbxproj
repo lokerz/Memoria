@@ -58,6 +58,8 @@
 		F157324C237567B100E7891E /* ChapterSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = F157324B237567B100E7891E /* ChapterSelect.sks */; };
 		F157324E237567DE00E7891E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324D237567DE00E7891E /* MainMenu.swift */; };
 		F1573250237567F500E7891E /* ChapterSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324F237567F500E7891E /* ChapterSelect.swift */; };
+		F1685EA2238131F1008D710E /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1685EA1238131F1008D710E /* PlaySound.swift */; };
+		F1685EA523813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
 /* End PBXBuildFile section */
@@ -137,6 +139,8 @@
 		F157324B237567B100E7891E /* ChapterSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ChapterSelect.sks; sourceTree = "<group>"; };
 		F157324D237567DE00E7891E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		F157324F237567F500E7891E /* ChapterSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSelect.swift; sourceTree = "<group>"; };
+		F1685EA1238131F1008D710E /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lulu_Is_the_Cat_I_Like_Best.mp3; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +313,7 @@
 		47B7A1DC23585C0D0027AA1F /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				F1685EA323813439008D710E /* Sound Effect */,
 				47B7A1B523585BCD0027AA1F /* Assets.xcassets */,
 			);
 			path = Asset;
@@ -355,6 +360,7 @@
 			children = (
 				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
 				47FE5AEA2375633A007993D4 /* SoundGenerator.swift */,
+				F1685EA1238131F1008D710E /* PlaySound.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -421,6 +427,14 @@
 				F15732392375553800E7891E /* 2D.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F1685EA323813439008D710E /* Sound Effect */ = {
+			isa = PBXGroup;
+			children = (
+				F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */,
+			);
+			path = "Sound Effect";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -528,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */,
+				F1685EA523813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 in Resources */,
 				F15732412375586B00E7891E /* InHouse.sks in Resources */,
 				4705CAAE2372BF2E00E874EB /* 3D.storyboard in Resources */,
 				F157323D2375586B00E7891E /* MobilScene.sks in Resources */,
@@ -568,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */,
+				F1685EA2238131F1008D710E /* PlaySound.swift in Sources */,
 				4705CA4723658E1700E874EB /* Platform.swift in Sources */,
 				47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */,
 				4705CA4A2365ADF500E874EB /* HalfGear.swift in Sources */,

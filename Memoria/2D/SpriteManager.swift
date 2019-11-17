@@ -6,6 +6,11 @@
 //  Copyright © 2019 Delvin. All rights reserved.
 //
 
+
+//usage
+//let scene = SpriteManager.instance.callScene(index: 1)
+//self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
+
 import UIKit
 import SpriteKit
 

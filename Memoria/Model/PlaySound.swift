@@ -10,10 +10,12 @@
 //usage
 //run(PlaySound.instance.playSoundEffect(index: 1))
 
-import SpriteKit
+import AVFoundation
 
 class PlaySound{
     static var instance = PlaySound()
+    
+    var player: AVAudioPlayer?
     
     var mainTheme = [
     ""
@@ -21,19 +23,45 @@ class PlaySound{
     
     var soundChapter1 = [
     "",
-    "Lulu_Is_the_Cat_I_Like_Best.mp3"
+    "Lulu_Is_the_Cat_I_Like_Best"
     ]
     
-    func playSoundEffectChapter1(index: Int) -> SKAction{
-        var sounds = SKAction()
-        sounds = SKAction.playSoundFileNamed(soundChapter1[index], waitForCompletion: false)
-        return sounds
+    func playSoundSEChapter1(index: Int) {
+        guard let url = Bundle.main.url(forResource: soundChapter1[index], withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
-    func playBackgroundMusic(index: Int) -> SKAction{
-        var sounds = SKAction()
-        sounds = SKAction.playSoundFileNamed(mainTheme[index], waitForCompletion: false)
-        return sounds
+    func playBGM(index: Int) {
+        guard let url = Bundle.main.url(forResource: mainTheme[index], withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
 }

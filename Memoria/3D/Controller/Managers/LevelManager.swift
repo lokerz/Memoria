@@ -107,8 +107,7 @@ class LevelManager : NSObject {
         location = gestureRecognizer.location(in: sceneView)
         translation = gestureRecognizer.translation(in: sceneView)
         hitResults = sceneView.hitTest(location, options: [:])
-        player.playerNode.physicsBody?.isAffectedByGravity = true
-
+        player.stop()
     }
     
 }

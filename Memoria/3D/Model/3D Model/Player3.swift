@@ -30,8 +30,6 @@ class Player3 : Player {
             if path.count > 1 {
                 isMovable = true
                 destination = path[pathIndex]
-//                velocity = calculateVelocity(to: destination)
-//                move()
                 move(to: destination)
             }
         }
@@ -42,6 +40,12 @@ class Player3 : Player {
         let coordinate = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
         let move = SCNAction.move(to: coordinate, duration: 1)
         playerNode.runAction(move)
+    }
+    
+    override func stop(){
+        synchronize()
+        isMovable = false
+        playerNode.removeAllActions()
     }
     
     func nearestNode(to destination : SCNVector3) -> [SCNVector3]{

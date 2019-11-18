@@ -19,6 +19,8 @@ class MainMenu: SKScene {
 //        let selectChapter = SKLabelNode()
         let dropShadow = SKLabelNode()
         
+        addBubble()
+        
         playButton.fontSize = 30
         playButton.fontName = "Helvetica Neue Medium"
         playButton.text = "Play"
@@ -49,6 +51,15 @@ class MainMenu: SKScene {
         addChild(backgroundImage)
         
 //        addChild(selectChapter)
+    }
+    
+    func addBubble(){
+        let text = "Used this answer, but Leo Dabus deserves credit. Please comment if you can explain whether it's equally valid to define a new convenience initializer as Leo did or override the default initializer as this answer does, or if one is preferable to the other."
+        let bubble = Bubble()
+        let width : CGFloat = 400
+        let position = CGPoint(x: 100, y: 300)
+        bubble.createBubble(position: position, width: width, bubbleColor: .black, type: .bottomRight, text: text, textColor: .yellow, textSize : 20)
+        addChild(bubble)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

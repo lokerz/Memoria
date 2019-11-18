@@ -21,14 +21,13 @@ class MainViewController: UIViewController {
         mainSkView.ignoresSiblingOrder = true
         setupSKView()
         setupUI()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         uiview.fadeInPauseButton()
     }
- 
+    
     func setupSKView(){
         if let view = mainSkView {
              

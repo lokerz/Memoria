@@ -18,8 +18,8 @@ enum bubbleType {
 }
 class Bubble : SKSpriteNode {
     let fontName = "Helvetica Neue Light"
-    let margin : CGFloat = 10
-    let fontSize : CGFloat = 10
+    let cornerRadius : CGFloat = 20
+
     
     var shapeNode = SKShapeNode()
     
@@ -44,24 +44,29 @@ class Bubble : SKSpriteNode {
         textNode.fontName = fontName
         textNode.horizontalAlignmentMode = .left
         textNode.verticalAlignmentMode = .center
-        textNode.fontSize = fontSize
+        textNode.fontSize = size
         textNode.numberOfLines = 0
-        textNode.preferredMaxLayoutWidth = self.frame.width - margin
+        textNode.preferredMaxLayoutWidth = self.frame.width - cornerRadius
         textNode.color = color
         addChild(textNode)
         
 
         let constraintRect = CGSize(width: self.frame.width,
                                     height: .greatestFiniteMagnitude)
+        let label =  UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont(name: fontName, size: size)
+        label.text = text
+        
         let boundingBox = text.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
-                                            attributes: nil,
+                                            attributes: [.font : label.font],
                                             context: nil)
         
-        let bubbleSize = CGSize(width: ceil(boundingBox.width) + margin,
-                                     height: ceil(boundingBox.height) + margin)
+        let bubbleSize = CGSize(width: ceil(boundingBox.width) + cornerRadius,
+                                     height: ceil(boundingBox.height) + cornerRadius)
         
-        textNode.position = CGPoint(x: margin, y: bubbleSize.height/2)
+        textNode.position = CGPoint(x: cornerRadius, y: bubbleSize.height/2)
 
         return(bubbleSize)
     }
@@ -71,7 +76,6 @@ class Bubble : SKSpriteNode {
         let bezierPath = UIBezierPath()
         let width = size.width
         let height = size.height
-        let cornerRadius : CGFloat = 10
         
         let points = [
         CGPoint(x: 0, y: cornerRadius), //0

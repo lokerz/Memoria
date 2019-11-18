@@ -112,8 +112,6 @@ class MobilScene: SKScene {
                     addChild(blocker)
                     addChild(paperBig)
                     
-                    PlaySound.instance.playSoundSEChapter1(index: 1)
-                    
                     paperBig.run(SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.2))
 
                     statePaper += 1

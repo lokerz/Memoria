@@ -17,17 +17,16 @@ class ChapterSelect: SKScene {
     let chapter4 = SKSpriteNode(imageNamed: "PH3")
     let chapter5 = SKSpriteNode(imageNamed: "PH4")
     
-    let whiteBorder = SKSpriteNode(imageNamed: "White")
+    let whiteBorder = SKSpriteNode(imageNamed: "CS_Brush")
     
     let durationMove = 0.6
     
     let back = SKSpriteNode(imageNamed: "nextButton")
     let backBlack = SKShapeNode(circleOfRadius: 30)
     
-    let playButton = SKSpriteNode()
-    let play = SKLabelNode()
-    let leftButton = SKSpriteNode()
-    let rightButton = SKSpriteNode()
+    let play = SKSpriteNode(imageNamed: "CS_Play")
+    let leftButton = SKSpriteNode(imageNamed: "CS_Left")
+    let rightButton = SKSpriteNode(imageNamed: "CS_Right")
     
     override func didMove(to view: SKView) {
         let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
@@ -73,26 +72,15 @@ class ChapterSelect: SKScene {
         backBlack.position = back.position
         backBlack.zPosition = 1
         
-        play.zPosition = 2
+        play.zPosition = 1
         play.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 150)
-        play.text = "Play"
-        
-        playButton.name = "playButton"
-        playButton.position = play.position
-        playButton.size = CGSize(width: 200, height: 50)
-        playButton.color = .black
-        playButton.zPosition = 1
         
         leftButton.name = "leftButton"
         leftButton.position = CGPoint(x: 50, y: view.frame.height/2)
-        leftButton.size = CGSize(width: 50, height: 50)
-        leftButton.color = .black
         leftButton.zPosition = 2
         
         rightButton.name = "rightButton"
         rightButton.position = CGPoint(x: view.frame.width-50, y: view.frame.height/2)
-        rightButton.size = CGSize(width: 50, height: 50)
-        rightButton.color = .black
         rightButton.zPosition = 2
         
         addChild(chapter1)
@@ -102,7 +90,6 @@ class ChapterSelect: SKScene {
         addChild(backBlack)
         
         addChild(play)
-        addChild(playButton)
         
         addChild(leftButton)
         addChild(rightButton)

@@ -14,29 +14,39 @@ class MainMenu: SKScene {
         let firstPage = MainMenu(fileNamed: "MainMenu")
         firstPage?.scaleMode = .aspectFill
         
+        let gameTitle = SKLabelNode()
         let playButton = SKLabelNode()
         let backgroundImage = SKSpriteNode(imageNamed: "Main Background")
-        let dropShadow = SKLabelNode()
+//        let dropShadow = SKLabelNode()
         
+        gameTitle.fontColor = .black
+        gameTitle.fontSize = 52
+        gameTitle.fontName = "Roboto-Medium"
+        gameTitle.text = "Reverie"
+        gameTitle.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
+        gameTitle.zPosition = 2
+        
+        playButton.fontColor = .black
         playButton.fontSize = 30
-        playButton.fontName = "Helvetica Neue Medium"
+        playButton.fontName = "Roboto-Regular"
         playButton.text = "Play"
         playButton.name = "playButton"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 30)
         playButton.zPosition = 2
         
-        dropShadow.fontSize = 30
-        dropShadow.fontName = playButton.fontName
-        dropShadow.text = playButton.text
-        dropShadow.fontColor = SKColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
-        dropShadow.position = CGPoint(x: view.frame.width/2 + 1, y: view.frame.height/2 - 32)
-        dropShadow.zPosition = 1
+//        dropShadow.fontSize = 30
+//        dropShadow.fontName = playButton.fontName
+//        dropShadow.text = playButton.text
+//        dropShadow.fontColor = SKColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
+//        dropShadow.position = CGPoint(x: view.frame.width/2 + 1, y: view.frame.height/2 - 32)
+//        dropShadow.zPosition = 1
         
         backgroundImage.size = CGSize(width: view.frame.width, height: view.frame.height)
         backgroundImage.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         backgroundImage.zPosition = -1
         
-        addChild(dropShadow)
+//        addChild(dropShadow)\
+        addChild(gameTitle)
         addChild(playButton)
         addChild(backgroundImage)
         

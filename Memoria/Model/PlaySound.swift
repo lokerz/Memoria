@@ -8,7 +8,7 @@
 
 
 //usage
-//run(PlaySound.instance.playSoundEffect(index: 1))
+//PlaySound.instance.playSEChapter1(index: 1)
 
 import AVFoundation
 

@@ -23,6 +23,8 @@ class PhotoScene: SKScene {
     var state = 1
     var stateGesture = 0
     
+    let border = SKSpriteNode()
+    
     //Photo Size
     var photoWidth = 300
     var photoHeight = 400
@@ -53,6 +55,13 @@ class PhotoScene: SKScene {
         
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
+        
+        
+        border.zPosition = 3
+        border.anchorPoint = CGPoint(x: 0.5, y: 0)
+        border.size = CGSize(width: view.frame.width, height: view.frame.height/4)
+        border.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
+        border.alpha = 0
         
         //Declaring Node
         house.name = "house"

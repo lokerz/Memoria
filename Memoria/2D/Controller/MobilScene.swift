@@ -30,19 +30,19 @@ class MobilScene: SKScene {
     let border = SKSpriteNode()
     
     override func didMove(to view: SKView) {
-        let linearGradientSize = size
-        let linearGradientColors = [UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1),
-                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.5),
-                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0)]
-        let linearGradientLocations: [CGFloat] = [0, 0.5, 1]
-        let textureCount = 8
-        let textures = (0..<textureCount).map { (index) -> SKTexture in
-            let angle : CGFloat = 33/7
-          return SKTexture(linearGradientWithAngle: angle, colors: linearGradientColors, locations: linearGradientLocations, size: linearGradientSize)
-        }
+//        let linearGradientSize = size
+//        let linearGradientColors = [UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1),
+//                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.5),
+//                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0)]
+//        let linearGradientLocations: [CGFloat] = [0, 0.5, 1]
+//        let textureCount = 8
+//        let textures = (0..<textureCount).map { (index) -> SKTexture in
+//            let angle : CGFloat = 33/7
+//          return SKTexture(linearGradientWithAngle: angle, colors: linearGradientColors, locations: linearGradientLocations, size: linearGradientSize)
+//        }
 //        let border = SKSpriteNode(texture: textures.first)
         
-        border.texture = textures.first
+        border.texture = SKTexture(imageNamed: "Monologue")
         
         border.zPosition = 3
         border.anchorPoint = CGPoint(x: 0.5, y: 0)
@@ -167,10 +167,9 @@ class MobilScene: SKScene {
                 }
             }
             else if node.name == "nextButton" {
-                   let secondPage = PhotoScene(fileNamed: "PhotoScene")
-                   secondPage?.scaleMode = .resizeFill
-                   self.view?.presentScene(secondPage!, transition: SKTransition.fade(withDuration: 0.5))
-                   }
+                   let scene = SpriteManager.instance.callScene(index: 3)
+                   self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+            }
             }
         }
     }

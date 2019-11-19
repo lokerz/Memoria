@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mainSkView: SKView!
     
-    var uiview = GameUIView()
+    var  uiview = GameUIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

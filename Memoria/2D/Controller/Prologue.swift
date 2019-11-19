@@ -124,9 +124,8 @@ class Prologue: SKScene {
                             self.view!.isUserInteractionEnabled = true
                         }
                     case 11:
-                        let firstPage = MobilScene(fileNamed: "MobilScene")
-                        firstPage?.scaleMode = .resizeFill
-                        self.view?.presentScene(firstPage!, transition: SKTransition.fade(withDuration: 0.5))
+                        let scene = SpriteManager.instance.callScene(index: 2)
+                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                     default:
                         break
                     }

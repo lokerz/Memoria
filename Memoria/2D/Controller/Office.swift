@@ -88,9 +88,8 @@ class Office: SKScene{
 
             for node in nodesarray {
                 if node.name == "nextButton"{
-                    let fifthPage = FrontHouse(fileNamed: "FrontHouse")
-                    fifthPage?.scaleMode = .resizeFill
-                    self.view?.presentScene(fifthPage!, transition: SKTransition.fade(withDuration: 0.5))
+                    let scene = SpriteManager.instance.callScene(index: 6)
+                    self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                 }
             }
         }

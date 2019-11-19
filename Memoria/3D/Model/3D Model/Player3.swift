@@ -60,8 +60,6 @@ class Player3 : Player {
                 stop()
             }else if checkNextDestination(){
                 nextDestination()
-            } else {
-//                move()
             }
         }
         checkFinished()

@@ -18,14 +18,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     var levelManager = LevelManager()
     var gestureManager = GestureManager.instance
-    var uiview = GameUIView()
     var isLoading = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorld()
-        setupUI()
         setupLevelManager()
         setupGesture()
         startGame()
@@ -33,7 +31,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        uiview.fadeInPauseButton()
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -108,24 +105,4 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         return true
     }
     
-}
-
-extension GameViewController : GameUIDelegate{
-    func setupUI(){
-        uiview = GameUIView(frame: view.frame)
-        uiview.delegate = self
-        uiview.setupButton()
-        view.addSubview(uiview)
-    }
-    
-    func pauseButton() {
-        
-        
-    }
-        
-    func exitButton() {
-        self.dismiss(animated: true) {
-            
-        }
-    }
 }

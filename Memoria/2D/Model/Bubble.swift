@@ -17,135 +17,153 @@ enum bubbleType {
     case bottomRight
 }
 class Bubble : SKSpriteNode {
-    let fontName = "Helvetica Neue Light"
-    let cornerRadius : CGFloat = 15
     var height : CGFloat = 0
+    let fontName = "Helvetica Neue Light"
+    let cornerRadius : CGFloat = 20
+    let space : CGFloat = 5
+    
+    var bubbleNode = SKShapeNode()
+    var heights = [CGFloat]()
+    
+    
+    func createChoiceBubble(position: CGPoint, width : CGFloat, bubbleColor: UIColor, type : bubbleType, choices : [String], textColor : UIColor, textSize : CGFloat){
+        let size = CGSize(width: width, height: 0)
+        
+        self.position = position
+        self.size = size
+        setupBubble(type: type, size: calculateSize(for: choices, textSize: textSize, bubbleSize : size), color: bubbleColor)
 
-    
-    var shapeNode = SKShapeNode()
-    
+        for i in 0..<choices.count {
+            addChoice(index : i, type : type, text: choices[i], with: textColor, size: textSize)
+        }
+        
+    }
+
     func createBubble(position: CGPoint, width : CGFloat, bubbleColor: UIColor, type : bubbleType, text : String, textColor : UIColor, textSize : CGFloat) {
         let size = CGSize(width: width, height: 0)
         
         self.position = position
         self.size = size
-        setupBubble(type: type, size : calculateSize(for: text, with : textColor, size: textSize), color : bubbleColor)
-
+        setupBubble(type: type, size : calculateSize(for: text, textSize: textSize, bubbleSize : size), color : bubbleColor)
+        addText(type : type, text : text,  with : textColor, size: textSize)
     }
     
     func setupBubble(type : bubbleType, size : CGSize, color : UIColor){
-        shapeNode = SKShapeNode(path: createPath(type, size).cgPath)
-        shapeNode.fillColor = color
-        shapeNode.strokeColor = color
-        
-        addChild(shapeNode)
+        bubbleNode = SKShapeNode(path: createPath(type, size).cgPath)
+        bubbleNode.fillColor = color
+        bubbleNode.strokeColor = color
+        addChild(bubbleNode)
     }
     
-    func calculateSize(for text : String, with color: UIColor, size : CGFloat) -> CGSize{
+    func addText(type : bubbleType, text : String, with color : UIColor, size : CGFloat){
         let textNode = SKLabelNode(text: text)
         textNode.fontName = fontName
         textNode.horizontalAlignmentMode = .left
         textNode.verticalAlignmentMode = .center
         textNode.fontSize = size
         textNode.numberOfLines = 0
-        textNode.preferredMaxLayoutWidth = self.frame.width - cornerRadius * 2
+        textNode.preferredMaxLayoutWidth = self.frame.width - cornerRadius * 2 - 5
         textNode.color = color
-        addChild(textNode)
-        
+        switch type {
+            case .bottomLeft : textNode.position = CGPoint(x: cornerRadius, y: bubbleNode.frame.height/2)
+            case .bottomRight : textNode.position = CGPoint(x: -(bubbleNode.frame.width - cornerRadius), y: bubbleNode.frame.height/2)
+            case .upperLeft : textNode.position = CGPoint(x: cornerRadius, y: -bubbleNode.frame.height/2)
+            default : textNode.position = CGPoint(x: -(bubbleNode.frame.width - cornerRadius), y: -bubbleNode.frame.height/2)
+        }
+        bubbleNode.addChild(textNode)
+    }
+    
+    func addChoice(index : Int, type : bubbleType, text : String, with color : UIColor, size : CGFloat){
+        print(bubbleNode.frame.height, heights)
+        let textNode = SKLabelNode(text: text)
+        textNode.fontName = fontName
+        textNode.horizontalAlignmentMode = .left
+        textNode.verticalAlignmentMode = .top
+        textNode.fontSize = size
+        textNode.numberOfLines = 0
+        textNode.preferredMaxLayoutWidth = self.frame.width - cornerRadius * 2 - 5
+        textNode.color = color
+        let height = index > 0 ? heights[index - 1] : 0
+        switch type {
+            case .bottomLeft : textNode.position = CGPoint(x: cornerRadius, y: bubbleNode.frame.height - (cornerRadius + height))
+            case .bottomRight : textNode.position = CGPoint(x: -(bubbleNode.frame.width - cornerRadius), y: bubbleNode.frame.height - (cornerRadius + height))
+            case .upperLeft : textNode.position = CGPoint(x: cornerRadius, y: -(cornerRadius + height))
+            default : textNode.position = CGPoint(x: -(bubbleNode.frame.width - cornerRadius), y: -(cornerRadius + height))
 
-        let constraintRect = CGSize(width: self.frame.width,
+        }
+        
+        bubbleNode.addChild(textNode)
+    }
+    
+    func createBoundingBox(for text : String, textSize : CGFloat, bubbleSize : CGSize) -> CGRect{
+        let constraintRect = CGSize(width: bubbleSize.width - cornerRadius * 2,
                                     height: .greatestFiniteMagnitude)
         let label =  UILabel()
         label.numberOfLines = 0
-        label.font = UIFont(name: fontName, size: size)
+        label.font = UIFont(name: fontName, size: textSize)
         label.text = text
         
-        let boundingBox = text.boundingRect(with: constraintRect,
+        return text.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
                                             attributes: [.font : label.font],
                                             context: nil)
-        
+    }
+    
+    func calculateSize(for text : String, textSize : CGFloat, bubbleSize : CGSize) -> CGSize{
+        let boundingBox = createBoundingBox(for: text, textSize: textSize, bubbleSize : size)
         let bubbleSize = CGSize(width: ceil(boundingBox.width) + cornerRadius * 2,
                                      height: ceil(boundingBox.height) + cornerRadius * 2)
         
-        textNode.position = CGPoint(x: cornerRadius, y: bubbleSize.height/2)
         height = bubbleSize.height
-
+        
+        return(bubbleSize)
+    }
+    
+    func calculateSize(for texts : [String], textSize : CGFloat, bubbleSize : CGSize) -> CGSize{
+        
+        var maxWidth : CGFloat = 0
+        
+        for i in 0..<texts.count{
+            let boundingBox = createBoundingBox(for: texts[i], textSize: textSize, bubbleSize : size)
+            
+            let width = ceil(boundingBox.width) + cornerRadius * 2
+            let height = ceil(boundingBox.height)
+            
+            maxWidth = width > maxWidth ? width : maxWidth
+            self.height += height + space
+            heights.append(self.height)
+        }
+        self.height += cornerRadius * 2
+        let bubbleSize = CGSize(width: maxWidth, height: self.height)
         return(bubbleSize)
     }
     
     
     func createPath(_ type : bubbleType, _ size : CGSize) -> UIBezierPath{
         let bezierPath = UIBezierPath()
+        
+        if type == .bottomLeft {
+            return drawPath(bezierPath : bezierPath, size : size, a : 1, b : 1)
+        } else if type == .bottomRight {
+            return drawPath(bezierPath : bezierPath, size : size, a : -1, b : 1)
+        } else if type == .upperRight {
+            return drawPath(bezierPath : bezierPath, size : size, a : -1, b : -1)
+        } else {
+            return drawPath(bezierPath : bezierPath, size : size, a : 1, b : -1)
+        }
+    }
+    
+    func drawPath(bezierPath : UIBezierPath, size: CGSize, a: CGFloat, b : CGFloat) -> UIBezierPath{
         let width = size.width
         let height = size.height
         
-        let points = [
-        CGPoint(x: 0, y: cornerRadius), //0
-        CGPoint(x: 0, y: 0),            //1 kiri bawah
-        CGPoint(x: cornerRadius, y: 0), //2
-
-        CGPoint(x: width - cornerRadius, y: 0), //3
-        CGPoint(x: width, y: 0),                //4 kanan bawah
-        CGPoint(x: width, y: cornerRadius),     //5
-        
-        CGPoint(x: width, y: height - cornerRadius), //6
-        CGPoint(x: width, y: height),                //7 kanan atas
-        CGPoint(x: width - cornerRadius, y: height), //8
-        
-        CGPoint(x: cornerRadius, y: height),     //9
-        CGPoint(x: 0, y: height),                //10 kiri atas
-        CGPoint(x: 0, y: height - cornerRadius), //11
-        ]
-        
-        let controlPoints = [
-        CGPoint(x: 0, y: cornerRadius/2), //0
-        CGPoint(x: cornerRadius/2, y: 0), //1 kiri bawah
-        
-        CGPoint(x: width - cornerRadius/2, y: 0),   //2
-        CGPoint(x: width, y: cornerRadius/2),       //3 kanan bawah
-        
-        CGPoint(x: width, y: height - cornerRadius/2),  //4
-        CGPoint(x: width - cornerRadius/2, y: height),  //5 kanan atas
-        
-        CGPoint(x: cornerRadius/2, y: height),      //6
-        CGPoint(x: 0, y: height - cornerRadius/2)   //7 kiri atas
-        ]
-        
-        if type == .bottomLeft {
-            bezierPath.move(to : points[1])
-            bezierPath.addLine(to: points[3] )
-            bezierPath.addCurve(to: points[5] , controlPoint1: controlPoints[2], controlPoint2: controlPoints[3])
-            bezierPath.addLine(to: points[6])
-            bezierPath.addCurve(to: points[8], controlPoint1: controlPoints[4], controlPoint2: controlPoints[5])
-            bezierPath.addLine(to: points[9] )
-            bezierPath.addCurve(to: points[11] , controlPoint1: controlPoints[6], controlPoint2: controlPoints[7] )
-        } else if type == .bottomRight {
-            bezierPath.move(to : points[4])
-            bezierPath.addLine(to: points[6] )
-            bezierPath.addCurve(to: points[8] , controlPoint1: controlPoints[4], controlPoint2: controlPoints[5])
-            bezierPath.addLine(to: points[9])
-            bezierPath.addCurve(to: points[11], controlPoint1: controlPoints[6], controlPoint2: controlPoints[7])
-            bezierPath.addLine(to: points[0] )
-            bezierPath.addCurve(to: points[2] , controlPoint1: controlPoints[0], controlPoint2: controlPoints[1] )
-        } else if type == .upperLeft {
-            bezierPath.move(to : points[10])
-            bezierPath.addLine(to: points[0] )
-            bezierPath.addCurve(to: points[2] , controlPoint1: controlPoints[0], controlPoint2: controlPoints[1])
-            bezierPath.addLine(to: points[3])
-            bezierPath.addCurve(to: points[5], controlPoint1: controlPoints[2], controlPoint2: controlPoints[3])
-            bezierPath.addLine(to: points[6] )
-            bezierPath.addCurve(to: points[8] , controlPoint1: controlPoints[4], controlPoint2: controlPoints[5] )
-        } else {
-            bezierPath.move(to : points[7])
-            bezierPath.addLine(to: points[9] )
-            bezierPath.addCurve(to: points[11] , controlPoint1: controlPoints[6], controlPoint2: controlPoints[7])
-            bezierPath.addLine(to: points[0])
-            bezierPath.addCurve(to: points[2], controlPoint1: controlPoints[0], controlPoint2: controlPoints[1])
-            bezierPath.addLine(to: points[3] )
-            bezierPath.addCurve(to: points[5] , controlPoint1: controlPoints[2], controlPoint2: controlPoints[3] )
-        }
-        
+        bezierPath.move(to : CGPoint.zero)
+        bezierPath.addLine(to: CGPoint(x: a * (width - cornerRadius), y: 0))
+        bezierPath.addCurve(to: CGPoint(x: a * width, y: b * cornerRadius), controlPoint1: CGPoint(x: a * (width - cornerRadius/2), y: 0), controlPoint2: CGPoint(x: a * width, y: b * cornerRadius/2))
+        bezierPath.addLine(to: CGPoint(x: a * width, y: b * (height - cornerRadius)))
+        bezierPath.addCurve(to: CGPoint(x: a * (width - cornerRadius), y: b * height), controlPoint1: CGPoint(x: a * width, y: b * (height - cornerRadius/2)), controlPoint2: CGPoint(x: a * (width - cornerRadius/2), y: b * height))
+        bezierPath.addLine(to: CGPoint(x: a * cornerRadius, y: b * height))
+        bezierPath.addCurve(to: CGPoint(x: 0, y: b * (height - cornerRadius)), controlPoint1: CGPoint(x: a * cornerRadius/2, y: b * height), controlPoint2: CGPoint(x: 0, y: b * (height - cornerRadius/2)))
         bezierPath.close()
         
         return bezierPath

@@ -50,7 +50,18 @@ class MainMenu: SKScene {
         addChild(playButton)
         addChild(backgroundImage)
         
+//        addBubble()
 //        addChild(selectChapter)
+    }
+    
+    func addBubble(){
+        let text = ["> Used this answer, but Leo Dabus deserves credit.", "> Please comment if you can explain whether it's equally valid to define a new.", "> Convenience initializer as Leo did or override the default initializer as this answer does", "> or if one is preferable to the other."]
+        let bubble = Bubble()
+        let width : CGFloat = 400
+        let position = CGPoint(x: frame.width/2, y: frame.height/2)
+        bubble.createChoiceBubble(position: position, width: width, bubbleColor: .black, type: .upperLeft, choices: text, textColor: .yellow, textSize : 16)
+        addChild(bubble)
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

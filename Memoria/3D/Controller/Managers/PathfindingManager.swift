@@ -52,7 +52,6 @@ class PathfindingManager : NSObject {
         nodes.forEach { node in
             self.nodes.append(node)
         }
-        print(self.nodes.first!.connectedNodes)
     }
     
     func appendCoordinates(coordinates : [SCNVector3]){
@@ -79,7 +78,6 @@ class PathfindingManager : NSObject {
     
     func findNode(from node : GKGraphNode, with type : nodeType ) -> GKGraphNode{
         var temp = GKGraphNode()
-        print(node)
         for i in 1..<nodes.count-1 {
             if nodes[i] == node{
                 switch type {

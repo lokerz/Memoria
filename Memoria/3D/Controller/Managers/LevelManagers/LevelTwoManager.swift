@@ -21,8 +21,8 @@ class LevelTwoManager : LevelManager {
     let gearTwoRotation = SCNVector4Make(0, 0, 0, 0)
     let gearTwoCounterRotate = true
     
-    let pillarPosition = SCNVector3Make(-7.6, 4.66, 0)
-    let finishPillarPosition = SCNVector3Make(7.6, -0.55, 0)
+    let pillarPosition = SCNVector3Make(-7.6, 4.465, 0)
+    let finishPillarPosition = SCNVector3Make(7.6, -0.56, 0)
 
             
     override func setupLevel(){

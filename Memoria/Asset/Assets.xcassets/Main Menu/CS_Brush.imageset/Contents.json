@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "brush terbaru (chapsel).png",
+      "filename" : "brush chapsel (baru, yang lebih lebar).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "brush terbaru (chapsel)@2x.png",
+      "filename" : "brush chapsel (baru, yang lebih lebar)@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "brush terbaru (chapsel)@3x.png",
+      "filename" : "brush chapsel (baru, yang lebih lebar)@3x.png",
       "scale" : "3x"
     }
   ],

@@ -15,6 +15,8 @@ class FrontHouse: SKScene{
     let door = SKSpriteNode(imageNamed: "DoorKnob")
     let knob = SKSpriteNode(imageNamed: "DoorHandle")
     
+    let fadeIn = SKAction.fadeAlpha(to: 1, duration: 1)
+    
     let houseNight = SKSpriteNode(imageNamed: "House_Night")
     let houseNightAlbert = SKSpriteNode(imageNamed: "House_Night_Albert")
     
@@ -39,11 +41,13 @@ class FrontHouse: SKScene{
         door.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         door.setScale(0.2)
         door.name = "door"
+        door.alpha = 0
         door.zPosition = 1
         
         knob.anchorPoint = CGPoint(x: 0.9, y: 0.7)
         knob.position = CGPoint(x: 510, y: 270)
         knob.setScale(0.2)
+        knob.alpha = 0
         knob.zPosition = 2
         knob.name = "knob"
         
@@ -70,6 +74,9 @@ class FrontHouse: SKScene{
                 if node.name == "background" && state == 0{
                     addChild(door)
                     addChild(knob)
+                    
+                    door.run(fadeIn)
+                    knob.run(fadeIn)
                     state = 1
                 }
             }

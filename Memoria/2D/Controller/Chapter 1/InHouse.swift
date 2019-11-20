@@ -83,7 +83,7 @@ class InHouse : SKScene{
         frameBelakang.position = pulang1.position
         frameBelakang.zPosition = 2
         
-        lastFoto.size = CGSize(width: view.frame.width/2, height: view.frame.height)
+        lastFoto.size = CGSize(width: view.frame.width, height: view.frame.height)
         lastFoto.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
         addChild(pulang1)
@@ -136,7 +136,7 @@ class InHouse : SKScene{
             }
                 //left
             else{
-                if node.position.x > 420{
+                if node.position.x > 430{
                     newLocx = -(startTouch.x - touchLocation.x)
                 }
             }
@@ -144,10 +144,7 @@ class InHouse : SKScene{
             startTouch = touchLocation
             
             print(node.position.y)
-            if node.position.y > 300{
-                node.position.y = node.position.y
-            }
-            else {
+            if node.position.y < 280{
                 node.position.y = node.position.y + newLocy
                 node.position.x = node.position.x + newLocx
             }
@@ -156,7 +153,7 @@ class InHouse : SKScene{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let node = self.currentNode {
-            if node.position.y > 300 && stateGeser == 0{
+            if node.position.y > 280 && stateGeser == 0{
                stateGeser += 1
                addChild(lastFoto)
                frameDepan.removeFromParent()

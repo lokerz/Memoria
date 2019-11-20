@@ -29,7 +29,7 @@ class ChapterSelect: SKScene {
     
     let whiteBorder = SKSpriteNode(imageNamed: "CS_Brush")
     
-    let durationMove = 1.6
+    let durationMove = 1.0
     
     let back = SKSpriteNode(imageNamed: "nextButton")
     let backBlack = SKShapeNode(circleOfRadius: 30)
@@ -37,6 +37,8 @@ class ChapterSelect: SKScene {
     let play = SKSpriteNode(imageNamed: "CS_Play")
     let leftButton = SKSpriteNode(imageNamed: "CS_Left")
     let rightButton = SKSpriteNode(imageNamed: "CS_Right")
+    
+    var spriteManager = SpriteManager.instance
     
     override func didMove(to view: SKView) {
         let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
@@ -134,7 +136,8 @@ class ChapterSelect: SKScene {
                         let scene = SpriteManager.instance.callScene(index: 2)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                     case 3:
-                        break
+                        let scene = SpriteManager.instance.callScene(index: 5)
+                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                     case 4:
                         break
                     case 5:

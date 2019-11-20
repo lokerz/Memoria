@@ -21,8 +21,8 @@ class MobilScene: SKScene {
     
     let monologue = SKLabelNode()
     
-    let fadeIn = SKAction.fadeAlpha(by: 1, duration: 1)
-    let fadeOut = SKAction.fadeAlpha(by: -1, duration: 1)
+    let fadeIn = SKAction.fadeAlpha(by: 1, duration: 0.5)
+    let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
     
     var statePaper = 1
     var stateButton = 1
@@ -154,8 +154,8 @@ class MobilScene: SKScene {
                     addChild(border)
                     addChild(monologue)
                     
-                    border.run(SKAction.fadeIn(withDuration: 1))
-                    monologue.run(SKAction.fadeIn(withDuration: 1))
+                    border.run(SKAction.fadeIn(withDuration: 0.5))
+                    monologue.run(SKAction.fadeIn(withDuration: 0.5))
                     monologue.text = "because i was picked up by these people whom will be my new parents"
                     
                     button.removeFromParent()

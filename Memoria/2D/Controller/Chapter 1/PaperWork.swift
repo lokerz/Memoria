@@ -179,7 +179,7 @@ class PaperWork: SKScene {
                     if node.name == "detector" {
                         startTouch = location
                         nodePosition = node.position
-            
+                        HapticGenerator.instance.play(4)
                         albertAnimation()
                     }
                         
@@ -207,7 +207,6 @@ class PaperWork: SKScene {
                     else if touchLocation != startTouch{
                         print(touchLocation)
                         pen.position = touchLocation
-                        HapticGenerator.instance.play(4)
                         
                         writeState += 1
                         if writeState == 5{
@@ -277,6 +276,7 @@ class PaperWork: SKScene {
             super.touchesMoved(touches, with: event)
         }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        HapticGenerator.instance.play(4)
         albertWork.removeAction(forKey: "Key")
     }
     

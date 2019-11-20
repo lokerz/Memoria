@@ -236,7 +236,6 @@
 			children = (
 				47F2ADA9237EACC50093F313 /* Model */,
 				F15732382375552700E7891E /* View */,
-				F157322E237554EF00E7891E /* SpriteManager.swift */,
 				F1573226237554E700E7891E /* Controller */,
 			);
 			path = 2D;
@@ -367,6 +366,7 @@
 		47F2ADA9237EACC50093F313 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F157322E237554EF00E7891E /* SpriteManager.swift */,
 				47F2ADAA237EACD50093F313 /* Bubble.swift */,
 			);
 			path = Model;

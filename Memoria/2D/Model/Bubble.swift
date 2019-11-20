@@ -18,7 +18,8 @@ enum bubbleType {
 }
 class Bubble : SKSpriteNode {
     let fontName = "Helvetica Neue Light"
-    let cornerRadius : CGFloat = 20
+    let cornerRadius : CGFloat = 15
+    var height : CGFloat = 0
 
     
     var shapeNode = SKShapeNode()
@@ -36,6 +37,7 @@ class Bubble : SKSpriteNode {
         shapeNode = SKShapeNode(path: createPath(type, size).cgPath)
         shapeNode.fillColor = color
         shapeNode.strokeColor = color
+        
         addChild(shapeNode)
     }
     
@@ -46,7 +48,7 @@ class Bubble : SKSpriteNode {
         textNode.verticalAlignmentMode = .center
         textNode.fontSize = size
         textNode.numberOfLines = 0
-        textNode.preferredMaxLayoutWidth = self.frame.width - cornerRadius
+        textNode.preferredMaxLayoutWidth = self.frame.width - cornerRadius * 2
         textNode.color = color
         addChild(textNode)
         
@@ -63,10 +65,11 @@ class Bubble : SKSpriteNode {
                                             attributes: [.font : label.font],
                                             context: nil)
         
-        let bubbleSize = CGSize(width: ceil(boundingBox.width) + cornerRadius,
-                                     height: ceil(boundingBox.height) + cornerRadius)
+        let bubbleSize = CGSize(width: ceil(boundingBox.width) + cornerRadius * 2,
+                                     height: ceil(boundingBox.height) + cornerRadius * 2)
         
         textNode.position = CGPoint(x: cornerRadius, y: bubbleSize.height/2)
+        height = bubbleSize.height
 
         return(bubbleSize)
     }

@@ -53,22 +53,6 @@ class MainMenu: SKScene {
 //        addChild(selectChapter)
     }
     
-    func addBubble(){
-        let text = "Used this answer, but Leo Dabus deserves credit. Please comment if you can explain whether it's equally valid to define a new convenience initializer as Leo did or override the default initializer as this answer does, or if one is preferable to the other."
-        let bubble = Bubble()
-        let width : CGFloat = 400
-        let position = CGPoint(x: 100, y: 250)
-        bubble.createBubble(position: position, width: width, bubbleColor: .black, type: .bottomRight, text: text, textColor: .yellow, textSize : 16)
-        addChild(bubble)
-        
-        let text2 = "Used this answer, but Leo Dabus deserves credit. Please comment if you can explain whether it's equally valid to define a new convenience"
-               let bubble2 = Bubble()
-               let width2 : CGFloat = 600
-               let position2 = CGPoint(x: 200, y: 50)
-               bubble2.createBubble(position: position2, width: width2, bubbleColor: .blue, type: .bottomRight, text: text2, textColor: .white, textSize : 18)
-               addChild(bubble2)
-    }
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
         let location = touch.location(in: self)

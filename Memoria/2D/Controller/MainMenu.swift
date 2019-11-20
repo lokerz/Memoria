@@ -50,6 +50,7 @@ class MainMenu: SKScene {
         addChild(playButton)
         addChild(backgroundImage)
         
+//        addBubble()
 //        addChild(selectChapter)
     }
     

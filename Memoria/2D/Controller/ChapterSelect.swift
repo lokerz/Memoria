@@ -13,11 +13,11 @@ class ChapterSelect: SKScene {
     
     let chapterName = [
     "",
-    "Go Back Home",
-    "Chapter 2",
-    "Chapter 3",
-    "Chapter 4",
-    "Chapter 5",
+    "Memoire 1 ~ Emptiness",
+    "Memoire 2 ~ Journey",
+    "Memoire 3 ~ Breeze",
+    "Memoire 4 ~ Return/Home",
+    "Memoire 5 ~ You",
     ]
     let chapterTitle = SKLabelNode()
     
@@ -41,14 +41,7 @@ class ChapterSelect: SKScene {
     var spriteManager = SpriteManager.instance
     
     override func didMove(to view: SKView) {
-        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
-        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
-            
-        swipeLeft.direction = .left
-        view.addGestureRecognizer(swipeLeft)
-        
-        swipeRight.direction = .right
-        view.addGestureRecognizer(swipeRight)
+        addGesture(to : view)
         
         chapterTitle.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
         chapterTitle.zPosition = 2
@@ -136,7 +129,7 @@ class ChapterSelect: SKScene {
                         let scene = SpriteManager.instance.callScene(index: 2)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                     case 3:
-                        let scene = SpriteManager.instance.callScene(index: 5)
+                        let scene = SpriteManager.instance.callScene(index: 3)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                     case 4:
                         break
@@ -158,6 +151,18 @@ class ChapterSelect: SKScene {
                 }
             }
         }
+    }
+    
+    func addGesture(to view: SKView){
+        
+        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
+        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
+            
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+        
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer){
@@ -271,12 +276,6 @@ class ChapterSelect: SKScene {
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                 self.view!.isUserInteractionEnabled = true
             }
-        }
-    }
-    
-    override func willMove(from view: SKView) {
-        for gesture in view.gestureRecognizers!{
-            view.removeGestureRecognizer(gesture)
         }
     }
 }

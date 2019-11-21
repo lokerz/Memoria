@@ -32,11 +32,6 @@ class InHouse : SKScene{
     var stateGeser = 0
     
     override func didMove(to view: SKView) {
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(InHouse.swipedDirection(sender:)))
-        
-        swipeUp.direction = .up
-        
-        view.addGestureRecognizer(swipeUp)
         
         pulang1.name = "Pulang_1"
         pulang1.size = CGSize(width: view.frame.width, height: view.frame.height)
@@ -91,7 +86,27 @@ class InHouse : SKScene{
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.pulang1.run(SKAction.moveTo(y: view.frame.height/2, duration: 1.2))
         }
+        
+        addGesture(to : view)
+
     }
+    
+    func addGesture(to view : SKView){
+        removeGestures(to : view)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDirection(sender:)))
+        
+        swipe.direction = .up
+        
+        view.addGestureRecognizer(swipe)
+    }
+    
+    func removeGestures(to view : SKView){
+        for gesture in view.gestureRecognizers!{
+            print(#function, gesture)
+            view.removeGestureRecognizer(gesture)
+        }
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
@@ -164,6 +179,7 @@ class InHouse : SKScene{
     }
     
     @objc func swipedDirection(sender: UISwipeGestureRecognizer){
+        print(#function)
         let goUp = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration)
         let goUp2 = SKAction.moveTo(y: 3*view!.frame.height/2, duration: animationDuration)
         

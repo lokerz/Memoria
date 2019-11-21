@@ -47,7 +47,6 @@ class PaperWork: SKScene {
     
     
     override func didMove(to view: SKView) {
-        
         let Paper = SKTexture(imageNamed: "Kertas")
         let setPaper = SKAction.setTexture(Paper)
         
@@ -295,5 +294,3 @@ class PaperWork: SKScene {
     }
 
 }
-
-

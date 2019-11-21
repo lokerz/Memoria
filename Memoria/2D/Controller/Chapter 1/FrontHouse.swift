@@ -21,11 +21,7 @@ class FrontHouse: SKScene{
     let houseNightAlbert = SKSpriteNode(imageNamed: "House_Night_Albert")
     
     override func didMove(to view: SKView) {
-        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FrontHouse.swipedDirection(sender:)))
-        
-        swipeDown.direction = .down
-        
-        view.addGestureRecognizer(swipeDown)
+        addGestures(to: view)
         
         houseNightAlbert.size = CGSize(width: view.frame.width, height: view.frame.height)
         houseNightAlbert.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
@@ -66,6 +62,17 @@ class FrontHouse: SKScene{
         }
     }
     
+    func addGestures(to view: SKView){
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
+        }
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FrontHouse.swipedDirection(sender:)))
+        
+        swipeDown.direction = .down
+        
+        view.addGestureRecognizer(swipeDown)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
         let location = touch.location(in: self)
@@ -95,5 +102,4 @@ class FrontHouse: SKScene{
             self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
         }
     }
-
 }

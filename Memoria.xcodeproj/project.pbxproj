@@ -34,9 +34,9 @@
 		47B7A1CF23585BCE0027AA1F /* MemoriaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1CE23585BCE0027AA1F /* MemoriaUITests.swift */; };
 		47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E423585D050027AA1F /* GestureManager.swift */; };
 		47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1E623587F120027AA1F /* HapticGenerator.swift */; };
+		47F2ADA8237E9E6A0093F313 /* Player3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADA7237E9E6A0093F313 /* Player3.swift */; };
 		47F2ADAB237EACD50093F313 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADAA237EACD50093F313 /* Bubble.swift */; };
 		47F2ADAF2383D0930093F313 /* MainMenuViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADAE2383D0930093F313 /* MainMenuViewContoller.swift */; };
-		47F2ADA8237E9E6A0093F313 /* Player3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADA7237E9E6A0093F313 /* Player3.swift */; };
 		47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AE723740F7F007993D4 /* MainViewController.swift */; };
 		47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AEA2375633A007993D4 /* SoundGenerator.swift */; };
 		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
@@ -130,9 +130,9 @@
 		47B7A1D023585BCE0027AA1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47B7A1E423585D050027AA1F /* GestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureManager.swift; sourceTree = "<group>"; };
 		47B7A1E623587F120027AA1F /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
+		47F2ADA7237E9E6A0093F313 /* Player3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player3.swift; sourceTree = "<group>"; };
 		47F2ADAA237EACD50093F313 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		47F2ADAE2383D0930093F313 /* MainMenuViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewContoller.swift; sourceTree = "<group>"; };
-		47F2ADA7237E9E6A0093F313 /* Player3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player3.swift; sourceTree = "<group>"; };
 		47FE5AE723740F7F007993D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		47FE5AEA2375633A007993D4 /* SoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
 		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
@@ -883,7 +883,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DYL2G75B8U;
+				DEVELOPMENT_TEAM = 7K72X54MJB;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -901,7 +901,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DYL2G75B8U;
+				DEVELOPMENT_TEAM = 7K72X54MJB;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

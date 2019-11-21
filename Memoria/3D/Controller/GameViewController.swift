@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate {
-    var level = 2
+    var level = 1
     
     var sceneView : SCNView!
     var scene : SCNScene!
@@ -46,6 +46,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         if !levelManager.isStarting{
             levelManager.autoRotateSystem()
         }
+        print(levelManager.gears.first?.childNodes.first?.physicsBody?.angularVelocityFactor)
     }
     
     func setupWorld(){
@@ -57,7 +58,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.showsStatistics = true
         view.addSubview(sceneView)
 //        sceneView.scene!.physicsWorld.contactDelegate = self
-//        sceneView.debugOptions = [.showPhysicsShapes]
+        sceneView.debugOptions = [.showPhysicsShapes]
     }
     
     

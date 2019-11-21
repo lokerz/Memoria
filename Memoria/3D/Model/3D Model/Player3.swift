@@ -17,7 +17,6 @@ class Player3 : Player {
     
     
     override func movePlayer(hitTestResult : SCNHitTestResult){
-//        playerNode.physicsBody!.isAffectedByGravity = false
         isMovable = false
         pathIndex = 1
         synchronize()
@@ -40,11 +39,17 @@ class Player3 : Player {
         let coordinate = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
         let move = SCNAction.move(to: coordinate, duration: 1)
         playerNode.runAction(move)
+        rotate(to: destination)
+    }
+    
+    func rotate(to destination : SCNVector3){
+        let direction = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
+        SCNTransaction.animationDuration = 1
+        playerNode.look(at: direction)
     }
     
     override func stop(){
-        synchronize()
-        isMovable = false
+        super.stop()
         playerNode.removeAllActions()
     }
     
@@ -55,6 +60,7 @@ class Player3 : Player {
     }
     
     override func checkPosition(){
+//        print(playerNode.eulerAngles.y, eulerAngles.y, playerNode.physicsBody!.angularVelocity.w)
         if isMovable {
             if checkLastPos(){
                 stop()

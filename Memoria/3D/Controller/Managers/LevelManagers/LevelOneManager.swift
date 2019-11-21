@@ -48,11 +48,13 @@ class LevelOneManager : LevelManager{
         if hitResults.count > 0 {
             let pannedPiece = hitResults.first?.node
             
-            if pannedPiece == gears[0].childNodes.first {
-                gearSystem(gearA: gears[0], gearB: gears[1], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)
-            }
-            else if pannedPiece == gears[1].childNodes.first {
-                gearSystem(gearA: gears[1], gearB: gears[0], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)
+            if hitResults.first!.worldCoordinates.z > 0 {
+                if pannedPiece == gears[0].childNodes.first {
+                    gearSystem(gearA: gears[0], gearB: gears[1], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)
+                }
+                else if pannedPiece == gears[1].childNodes.first {
+                    gearSystem(gearA: gears[1], gearB: gears[0], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)
+                }
             }
         }
         

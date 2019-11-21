@@ -16,6 +16,7 @@ class Player : SCNNode{
     var destination = SCNVector3()
     var playerNode = SCNNode()
     var velocity = SCNVector3()
+    var scaleFactor : Float = 0.5
     var velocityFactor : Float = 0.5
     var playerRadius : Float = 1.25
     var beginningPosition =  SCNVector3()
@@ -31,7 +32,7 @@ class Player : SCNNode{
     
     init(on position : SCNVector3){
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/player.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/player2.scn") else { return }
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
@@ -104,7 +105,8 @@ class Player : SCNNode{
     func stop(){
         synchronize()
         isMovable = false
-        playerNode.physicsBody!.velocity = SCNVector3Zero 
+        playerNode.physicsBody!.velocity = SCNVector3Zero
+        playerNode.physicsBody?.angularVelocity = SCNVector4Make(0, 1, 0, 0)
     }
     
     func fall(){

@@ -96,7 +96,7 @@ class FrontHouse: SKScene{
         let rotate = SKAction.rotate(byAngle: 3.14/6, duration: 0.6)
         knob.run(rotate)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.view?.isUserInteractionEnabled = true
             let scene = SpriteManager.instance.callScene(index: 7)
             self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))

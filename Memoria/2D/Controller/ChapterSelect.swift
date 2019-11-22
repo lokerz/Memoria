@@ -150,7 +150,7 @@ class ChapterSelect: SKScene {
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                         PlaySound.instance.player?.stop()
                     case 3:
-                        let scene = SpriteManager.instance.callScene(index: 3)
+                        let scene = SpriteManager.instance.callScene(index: 5)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                         PlaySound.instance.player?.stop()
                     case 4:

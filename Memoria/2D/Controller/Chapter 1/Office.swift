@@ -11,6 +11,7 @@ import UIKit
 
 class Office: SKScene{
     var state = 1
+    var i = 1
     
     let button = SKSpriteNode(imageNamed: "nextButton")
     let border = SKSpriteNode()
@@ -63,10 +64,9 @@ class Office: SKScene{
         addChild(mobA)
         addChild(albertBG)
         addChild(border)
-        addChild(button)
 
         addBubble()
-        
+        moveBubble()
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -81,6 +81,10 @@ class Office: SKScene{
                 }
                 if node.name == "background"{
                     moveBubble()
+                    i += 1
+                    if i == bubbles.count{
+                        addChild(button)
+                    }
                 }
             }
         }
@@ -125,7 +129,7 @@ class Office: SKScene{
         bubbles.append(bubble3)
         
         let bubble4 = Bubble()
-        let text4 = "Erm.. not really, why?"
+        let text4 = "Not really, why?"
         let position4 = CGPoint(x: bubbleAlbertPosition, y: view!.frame.height/2)
         bubble4.createBubble(position: position4, width: widthOffice, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, text: text4, textColor: .white, textSize : tSize)
         bubbles.append(bubble4)
@@ -139,7 +143,7 @@ class Office: SKScene{
         let bubble6 = Bubble()
         let text6 = ["Sorry James, I think I'll pass","Where do you want to go anyways?"]
         let position6 = CGPoint(x: bubbleAlbertPosition, y: view!.frame.height/2)
-        bubble6.createChoiceBubble(position: position6, width: widthOffice, bubbleColor: #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), type: .bottomLeft, choices: text6, textColor: .white, textSize : tSize)
+        bubble6.createChoiceBubble(position: position6, width: widthOffice, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, choices: text6, textColor: .white, textSize : tSize)
         bubbles.append(bubble6)
         
         let bubble7 = Bubble()
@@ -217,14 +221,16 @@ class Office: SKScene{
     
     func moveBubble(){
         if index < bubbles.count {
+            addChild(bubbles[index])
             height = bubbles[index].height + 5
             if index != 0 {
                 for i in 0..<index{
                     bubbles[i].run(SKAction.moveBy(x: 0, y: height, duration: 0.5))
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.addChild(self.bubbles[self.index])
+            bubbles[index].alpha = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.bubbles[self.index-1].run(SKAction.fadeAlpha(to: 1, duration: 0.3))
             }
             index += 1
 
@@ -259,37 +265,3 @@ extension SKTexture
         self.init(image: image)
     }
 }
-
-//extension String {
-//    var characterArray: [Character]{
-//        var characterArray = [Character]()
-//        for character in String {
-//            characterArray.append(character)
-//        }
-//        return characterArray
-//    }
-//}
-//
-//extension UITextView {
-//    func typeOn(string: String) {
-//        let characterArray = string.characterArray
-//        var characterIndex = 0
-//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
-//            if characterArray[characterIndex] != "$" {
-//                while characterArray[characterIndex] == " " {
-//                    self.text.append(" ")
-//                    characterIndex += 1
-//                    if characterIndex == characterArray.count {
-//                        timer.invalidate()
-//                        return
-//                    }
-//                }
-//                self.text.append(characterArray[characterIndex])
-//            }
-//            characterIndex += 1
-//            if characterIndex == characterArray.count {
-//                timer.invalidate()
-//            }
-//        }
-//    }
-//}

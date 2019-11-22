@@ -13,8 +13,8 @@ class Prologue: SKScene {
     let background = SKSpriteNode()
     var stateBacot = 1
     var stateSekarang = 1
-    let fadeIn = SKAction.fadeAlpha(to: 1, duration: 0.5)
-    let fadeOut = SKAction.fadeAlpha(to: 0, duration: 0.5)
+    let fadeIn = SKAction.fadeAlpha(to: 1, duration: 0.7)
+    let fadeOut = SKAction.fadeAlpha(to: 0, duration: 0.7)
     
     let button = SKSpriteNode(imageNamed: "nextButton")
     
@@ -57,7 +57,7 @@ class Prologue: SKScene {
         
         self.prologue.run(self.fadeIn)
         prologue.text = bacot[0]
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.prologue.run(self.fadeOut)
         }
         
@@ -67,7 +67,7 @@ class Prologue: SKScene {
             if i < self.bacot.count{
                 self.prologue.run(self.fadeIn)
                 self.prologue.text = self.bacot[i]
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.prologue.run(self.fadeOut)
                 }
                 i += 1
@@ -79,98 +79,6 @@ class Prologue: SKScene {
         }
         
         RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let touch = touches.first {
-//        let location = touch.location(in: self)
-//        let nodesarray = nodes(at: location)
-//
-//            for node in nodesarray {
-//                stateBacot += 1
-//                 if node.name == "background" {
-//                    switch stateBacot {
-//                    case 2:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "fallen into the wheel of life that keeps on spinning, and you are trapped inside,"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 3:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "so you couldn’t help but move along the cycle that even you don't know when and where it will stop,"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 4:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "all you can do is keep moving without having the slightest chance to think and understand about what really happens,"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 5:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "is this really the life you really want to live?"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 6:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "Therefore, this time I want to talk about a journey"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 7:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "yup a journey that will lead me to a destination, a meaning that helps me to know which way this step will tread,"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 8:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "in what place this body will stop, and the answer to life which could satisfy the curiosity of the contents inside this mind."
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 9:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "my name is Albert"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 10:
-//                        view!.isUserInteractionEnabled = false
-//                        prologue.run(fadeOut)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            self.prologue.run(self.fadeIn)
-//                            self.prologue.text = "and this is my story"
-//                            self.view!.isUserInteractionEnabled = true
-//                        }
-//                    case 11:
-//                        let scene = SpriteManager.instance.callScene(index: 2)
-//                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
-//                    default:
-//                        break
-//                    }
-//                }
-//
-//            }
-//        }
     }
     
 }

@@ -96,15 +96,6 @@ class PhotoScene: SKScene {
             view.removeGestureRecognizer(gesture)
         }
         
-        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedDirection(sender:)))
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedDirection(sender:)))
-        
-        swipeDown.direction = .down
-        swipeUp.direction = .up
-        
-        view.addGestureRecognizer(swipeDown)
-        view.addGestureRecognizer(swipeUp)
-        
         let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
             
@@ -115,7 +106,7 @@ class PhotoScene: SKScene {
         view.addGestureRecognizer(swipeRight)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
         let location = touch.location(in: self)
         let nodesarray = nodes(at: location)
@@ -204,17 +195,5 @@ class PhotoScene: SKScene {
             }
         }
     }
-    
-    @objc func swipedDirection(sender: UISwipeGestureRecognizer){
-        if stateGesture == 3{
-            background.removeFromParent()
-            photo1.removeFromParent()
-            photo2.removeFromParent()
-            photo3.removeFromParent()
-            photo4.removeFromParent()
-            
-            let scene = SpriteManager.instance.callScene(index: 4)
-            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
-        }
-    }
+
 }

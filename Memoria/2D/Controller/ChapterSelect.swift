@@ -20,6 +20,7 @@ class ChapterSelect: SKScene {
     "Memoire 5 ~ You",
     ]
     let chapterTitle = SKLabelNode()
+    let dropShadowTitle = SKLabelNode()
     
     let chapter1 = SKSpriteNode(imageNamed: "House")
     let chapter2 = SKSpriteNode(imageNamed: "PH1")
@@ -50,6 +51,15 @@ class ChapterSelect: SKScene {
         chapterTitle.fontName = "Roboto-Medium"
         chapterTitle.name = "Chapter Name"
         chapterTitle.text = chapterName[1]
+        
+        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: 3*view.frame.height/4 - 2)
+        dropShadowTitle.zPosition = chapterTitle.zPosition - 0.1
+        dropShadowTitle.fontColor = .black
+        dropShadowTitle.fontSize = chapterTitle.fontSize
+        dropShadowTitle.fontName = chapterTitle.fontName
+        dropShadowTitle.name = "Chapter Shadow"
+        dropShadowTitle.text = chapterName[1]
+        dropShadowTitle.alpha = 0.5
         
         chapter1.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         chapter1.size = CGSize(width: view.frame.width, height: view.frame.height)
@@ -94,14 +104,16 @@ class ChapterSelect: SKScene {
         play.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 150)
         
         leftButton.name = "leftButton"
-        leftButton.position = CGPoint(x: 50, y: view.frame.height/2)
+        leftButton.position = CGPoint(x: 75, y: view.frame.height/2)
         leftButton.zPosition = 2
         
         rightButton.name = "rightButton"
-        rightButton.position = CGPoint(x: view.frame.width-50, y: view.frame.height/2)
+        rightButton.position = CGPoint(x: view.frame.width-75, y: view.frame.height/2)
         rightButton.zPosition = 2
         
         addChild(chapterTitle)
+        addChild(dropShadowTitle)
+        
         addChild(chapter1)
         addChild(whiteBorder)
         
@@ -112,6 +124,11 @@ class ChapterSelect: SKScene {
         
         addChild(leftButton)
         addChild(rightButton)
+        
+        let moveRightArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: view.frame.width-52, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: view.frame.width-75, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
+        let moveLeftArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: 52, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: 75, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
+        leftButton.run(SKAction.repeatForever(SKAction.sequence(moveLeftArrow)))
+        rightButton.run(SKAction.repeatForever(SKAction.sequence(moveRightArrow)))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -127,19 +144,21 @@ class ChapterSelect: SKScene {
                     case 1:
                         let scene = SpriteManager.instance.callScene(index: 1)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                        PlaySound.instance.player?.stop()
                     case 2:
                         let scene = SpriteManager.instance.callScene(index: 2)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
+                        PlaySound.instance.player?.stop()
                     case 3:
                         let scene = SpriteManager.instance.callScene(index: 3)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
-                        
+                        PlaySound.instance.player?.stop()
                     case 4:
-                        break
+                        PlaySound.instance.player?.stop()
                     case 5:
-                        break
+                        PlaySound.instance.player?.stop()
                     default:
-                        break
+                        PlaySound.instance.player?.stop()
                     }
                 }
                 else if node.name == "leftButton"{
@@ -182,18 +201,22 @@ class ChapterSelect: SKScene {
             removeChapters()
             chapterMoveNext(chapter1: chapter1, chapter2: chapter2)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         case 2:
             removeChapters()
             chapterMoveNext(chapter1: chapter2, chapter2: chapter3)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         case 3:
             removeChapters()
             chapterMoveNext(chapter1: chapter3, chapter2: chapter4)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         case 4:
             removeChapters()
             chapterMoveNext(chapter1: chapter4, chapter2: chapter5)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         default:
             print(state)
         }
@@ -205,18 +228,22 @@ class ChapterSelect: SKScene {
             removeChapters()
             chapterMovePrev(chapter1: chapter2, chapter2: chapter1)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         case 3:
             removeChapters()
             chapterMovePrev(chapter1: chapter3, chapter2: chapter2)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         case 4:
             removeChapters()
             chapterMovePrev(chapter1: chapter4, chapter2: chapter3)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         case 5:
             removeChapters()
             chapterMovePrev(chapter1: chapter5, chapter2: chapter4)
             chapterTitle.text = chapterName[state]
+            dropShadowTitle.text = chapterName[state]
         default:
             print(state)
         }

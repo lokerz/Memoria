@@ -22,12 +22,14 @@ class MainMenu: SKScene {
         let baling = SKSpriteNode(imageNamed: "Baling")
         let langitBiru = SKSpriteNode(imageNamed: "Sora_Aoi")
         
-        let dropShadow = SKLabelNode()
+        let dropShadowTitle = SKLabelNode()
+        let dropShadowPlay = SKLabelNode()
         
         let fadeIn = SKAction.fadeAlpha(to: 1, duration: 1)
+        let fadeInShadow = SKAction.fadeAlpha(to: 0.5, duration: 1)
         
         PlaySound.instance.playSound(for: part.mainMenu, index: 1)
-//        PlaySound.instance.player?.numberOfLoops = -1
+        PlaySound.instance.player?.numberOfLoops = -1
         
         let images = [
             UIImage(named: "Awan")!,
@@ -54,22 +56,29 @@ class MainMenu: SKScene {
         gameTitle.zPosition = 2
         gameTitle.alpha = 0
         
-        dropShadow.fontColor = .black
-        dropShadow.fontSize = gameTitle.fontSize
-        dropShadow.fontName = gameTitle.fontName
-        dropShadow.text = gameTitle.text
-        dropShadow.position = CGPoint(x: view.frame.width/2 + 2, y: view.frame.height/2 - 2)
-        dropShadow.zPosition = 1
-        dropShadow.alpha = 0.8
-        dropShadow.alpha = gameTitle.alpha
+        dropShadowTitle.fontColor = .black
+        dropShadowTitle.fontSize = gameTitle.fontSize
+        dropShadowTitle.fontName = gameTitle.fontName
+        dropShadowTitle.text = gameTitle.text
+        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: view.frame.height/2 - 2)
+        dropShadowTitle.zPosition = 1
+        dropShadowTitle.alpha = gameTitle.alpha
     
-        playButton.fontColor = .black
+        playButton.fontColor = .white
         playButton.fontSize = 18
         playButton.fontName = "Roboto-Regular"
         playButton.text = "touch to start"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 110)
         playButton.zPosition = 2
         playButton.alpha = 0
+        
+        dropShadowPlay.fontColor = .black
+        dropShadowPlay.fontSize = playButton.fontSize
+        dropShadowPlay.fontName = playButton.fontName
+        dropShadowPlay.text = playButton.text
+        dropShadowPlay.position = CGPoint(x: view.frame.width/2 + 1, y: view.frame.height/2 - 111)
+        dropShadowPlay.zPosition = 1
+        dropShadowPlay.alpha = playButton.alpha
         
         backgroundImage.name = "bg"
         backgroundImage.size = CGSize(width: view.frame.width, height: view.frame.height)
@@ -90,30 +99,30 @@ class MainMenu: SKScene {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             gameTitle.run(fadeIn)
-            dropShadow.run(fadeIn)
             self.addChild(gameTitle)
-            self.addChild(dropShadow)
+            self.addChild(dropShadowTitle)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                dropShadowTitle.run(fadeInShadow)
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             playButton.run(fadeIn)
             self.addChild(playButton)
+            self.addChild(dropShadowPlay)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                dropShadowPlay.run(fadeInShadow)
+            }
         }
 
         baling.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 20)))
         
         let blinking = [SKAction.wait(forDuration: 3) ,SKAction.fadeAlpha(to: 0, duration: 1),SKAction.fadeAlpha(to: 1, duration: 1)]
+        let blinkingShadow = [SKAction.wait(forDuration: 3) ,SKAction.fadeAlpha(to: 0, duration: 1),SKAction.fadeAlpha(to: 0.5, duration: 1)]
         playButton.run(SKAction.repeatForever(SKAction.sequence(blinking)))
+        dropShadowPlay.run(SKAction.repeatForever(SKAction.sequence(blinkingShadow)))
     }
-    
-//    func addBubble(){aiowsyz ≈
-//        let text = ["> Used this answer, but Leo Dabus deserves credit.", "> Please comment if you can explain whether it's equally valid to define a new.", "> Convenience initializer as Leo did or override the default initializer as this answer does", "> or if one is preferable to the other."]
-//        let bubble = Bubble()
-//        let width : CGFloat = 400
-//        let position = CGPoint(x: frame.width/2, y: frame.height/2)
-//        bubble.createChoiceBubble(position: position, width: width, bubbleColor: .black, type: .upperLeft, choices: text, textColor: .yellow, textSize : 16)
-//        addChild(bubble)
-//
-//    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {

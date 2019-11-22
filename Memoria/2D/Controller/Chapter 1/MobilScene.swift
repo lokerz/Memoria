@@ -30,17 +30,6 @@ class MobilScene: SKScene {
     let border = SKSpriteNode()
     
     override func didMove(to view: SKView) {
-//        let linearGradientSize = size
-//        let linearGradientColors = [UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1),
-//                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.5),
-//                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0)]
-//        let linearGradientLocations: [CGFloat] = [0, 0.5, 1]
-//        let textureCount = 8
-//        let textures = (0..<textureCount).map { (index) -> SKTexture in
-//            let angle : CGFloat = 33/7
-//          return SKTexture(linearGradientWithAngle: angle, colors: linearGradientColors, locations: linearGradientLocations, size: linearGradientSize)
-//        }
-//        let border = SKSpriteNode(texture: textures.first)
         
         border.texture = SKTexture(imageNamed: "Monologue")
         
@@ -99,7 +88,7 @@ class MobilScene: SKScene {
         addChild(ibuAnak)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Registering Touch Actions
         if let touch = touches.first {
         let location = touch.location(in: self)

@@ -165,6 +165,10 @@ class PaperWork: SKScene {
             self.paper2.run(self.fadeIn)
             self.pen.run(self.fadeIn)
         }
+        
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
+        }
 
     }
     

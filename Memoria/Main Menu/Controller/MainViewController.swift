@@ -30,7 +30,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showSpriteKit()
+//        showSpriteKit()
+        showSceneKit()
         setupUI()
     }
     

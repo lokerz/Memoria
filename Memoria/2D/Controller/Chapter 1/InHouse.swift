@@ -168,7 +168,7 @@ class InHouse : SKScene{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let node = self.currentNode {
-            if node.position.y > 280 && stateGeser == 0{
+            if node.position.y >= 280 && stateGeser == 0{
                stateGeser += 1
                addChild(lastFoto)
                frameDepan.removeFromParent()

@@ -89,7 +89,7 @@ class ChapterSelect: SKScene {
         backBlack.position = back.position
         backBlack.zPosition = 1
         
-        play.name = "playButton"
+        play.name = "play"
         play.zPosition = 1
         play.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 150)
         
@@ -115,12 +115,14 @@ class ChapterSelect: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(#function)
     if let touch = touches.first {
         let location = touch.location(in: self)
         let nodesarray = nodes(at: location)
 
             for node in nodesarray {
-                if node.name == "playButton"{
+                if node.name == "play"{
+                    print(state)
                     switch state {
                     case 1:
                         let scene = SpriteManager.instance.callScene(index: 1)
@@ -131,6 +133,7 @@ class ChapterSelect: SKScene {
                     case 3:
                         let scene = SpriteManager.instance.callScene(index: 3)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
+                        
                     case 4:
                         break
                     case 5:

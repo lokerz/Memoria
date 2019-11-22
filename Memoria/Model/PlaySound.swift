@@ -29,7 +29,8 @@ class PlaySound{
     var player: AVAudioPlayer?
     
     var mainTheme = [
-    ""
+        "",
+    "A_Quiet_Thought"
     ]
     
     var soundChapter1 = [

@@ -16,6 +16,7 @@ class Player : SCNNode{
     var destination = SCNVector3()
     var playerNode = SCNNode()
     var velocity = SCNVector3()
+    var scaleFactor : Float = 0.5
     var velocityFactor : Float = 0.5
     var playerRadius : Float = 1.25
     var beginningPosition =  SCNVector3()
@@ -39,12 +40,18 @@ class Player : SCNNode{
         playerNode = self.childNodes.first!
         beginningPosition = position
         playerNode.position = position
+        playerNode.rotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
         lastHeight = Int(roundf(playerNode.position.y * 10))
         
+        setupPointOfView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func setupPointOfView(){
+        
     }
     
     func movePlayer(hitTestResult : SCNHitTestResult){
@@ -104,7 +111,8 @@ class Player : SCNNode{
     func stop(){
         synchronize()
         isMovable = false
-        playerNode.physicsBody!.velocity = SCNVector3Zero 
+        playerNode.physicsBody!.velocity = SCNVector3Zero
+        playerNode.physicsBody?.angularVelocity = SCNVector4Make(0, 1, 0, 0)
     }
     
     func fall(){

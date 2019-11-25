@@ -78,7 +78,7 @@ class LevelManager : NSObject {
     
     func openingAnimation(){
         isStarting = false
-        let _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+        let _ = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false) { _ in
             self.isStarting = true
         }
     }

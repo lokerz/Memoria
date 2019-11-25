@@ -51,7 +51,7 @@ class Gear : SCNNode{
         initialAngle = rotation.w
         currentAngle = initialAngle
         newAngle = initialAngle
-        
+
     }
     
     required init?(coder: NSCoder) {
@@ -60,7 +60,6 @@ class Gear : SCNNode{
     
     func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
         newAngle = Float(translation.x) * Float(Double.pi / 180)
-        newAngle = hitResult.worldCoordinates.z > 0 ? newAngle : 0
         newAngle = newAngle * angularVelocity
         newAngle += currentAngle
         newAngle = checkAngle()

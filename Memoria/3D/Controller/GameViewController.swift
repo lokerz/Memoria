@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate {
-    var level = 2
+    var level = 1
     
     var sceneView : SCNView!
     var scene : SCNScene!
@@ -57,7 +57,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.showsStatistics = true
         view.addSubview(sceneView)
 //        sceneView.scene!.physicsWorld.contactDelegate = self
-//        sceneView.debugOptions = [.showPhysicsShapes]
+        sceneView.debugOptions = [.showPhysicsShapes]
     }
     
     

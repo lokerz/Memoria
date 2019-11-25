@@ -11,18 +11,18 @@ import SceneKit
 
 class LevelThreeManager : LevelManager {
     
-
+    
     let playerPosition = SCNVector3Make(-6.68, 7.5, 0)
     
     let pillarPosition = SCNVector3Make(-6.68, 4.465, 0)
     let finishPillarPosition = SCNVector3Make(4.29, -0.56, 0)
-
+    
     let gearOnePosition = SCNVector3Make(-2.78, 0, 0)
     let gearOneRotation = SCNVector4Make(0, 0, 0, 0)
     
     let gearTwoPosition = SCNVector3Make(2.34, 0, 0)
     let gearTwoRotation = SCNVector4Make(0, 0, 0, 0.528)
-
+    
     
     
     override func setupLevel(){
@@ -44,12 +44,14 @@ class LevelThreeManager : LevelManager {
     
     @objc override func handlePan(_ gestureRecognizer : UIPanGestureRecognizer){
         super.handlePan(gestureRecognizer)
-
+        
         if hitResults.count > 0 {
             let pannedPiece = hitResults.first?.node
             
-            if pannedPiece == gears[0].childNodes.first {
-                halfGearSystem(gear: gears[0], halfGear: halfGears[0], hitResult: hitResults.first!, translation: translation)
+            if hitResults.first!.worldCoordinates.z > 0 {
+                if pannedPiece == gears[0].childNodes.first {
+                    halfGearSystem(gear: gears[0], halfGear: halfGears[0], hitResult: hitResults.first!, translation: translation)
+                }
             }
         }
         

@@ -14,10 +14,12 @@ class Player3 : Player {
     var lastDestination = SCNVector3()
     var pathIndex = 1
     var isLastDestination = false
+    var isMoving = false
+    var moveDuration = 2.0
     
-    
+    var pointOfViewNode = SCNNode()
+
     override func movePlayer(hitTestResult : SCNHitTestResult){
-//        playerNode.physicsBody!.isAffectedByGravity = false
         isMovable = false
         pathIndex = 1
         synchronize()
@@ -35,16 +37,35 @@ class Player3 : Player {
         }
     }
     
+    override func setupPointOfView(){
+        self.addChildNode(pointOfViewNode)
+        let geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        pointOfViewNode.geometry = geometry
+
+    }
+    
     func move(to destination : SCNVector3){
         synchronize()
         let coordinate = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
-        let move = SCNAction.move(to: coordinate, duration: 1)
+        let move = SCNAction.move(to: coordinate, duration: moveDuration)
         playerNode.runAction(move)
+        rotate(to: coordinate)
+    }
+    
+    func rotate(to direction : SCNVector3){
+        if !isMoving {
+            pointOfViewNode.position = direction
+            isMoving = true
+        }else{
+            let move = SCNAction.move(to: direction, duration: moveDuration/4)
+            move.timingMode = .easeInEaseOut
+            pointOfViewNode.runAction(move)
+        }
     }
     
     override func stop(){
-        synchronize()
-        isMovable = false
+        super.stop()
+        
         playerNode.removeAllActions()
     }
     
@@ -55,11 +76,18 @@ class Player3 : Player {
     }
     
     override func checkPosition(){
+//        print(isMoving)
+//        print(playerNode.position.y, height)
+        
         if isMovable {
             if checkLastPos(){
                 stop()
             }else if checkNextDestination(){
                 nextDestination()
+            }
+            
+            if isMoving {
+                playerNode.look(at: pointOfViewNode.position)
             }
         }
         checkFinished()

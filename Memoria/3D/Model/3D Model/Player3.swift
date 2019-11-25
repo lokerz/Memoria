@@ -78,14 +78,16 @@ class Player3 : Player {
     override func checkPosition(){
 //        print(isMoving)
 //        print(playerNode.position.y, height)
-        if isMoving {
-            playerNode.look(at: pointOfViewNode.position)
-        }
+        
         if isMovable {
             if checkLastPos(){
                 stop()
             }else if checkNextDestination(){
                 nextDestination()
+            }
+            
+            if isMoving {
+                playerNode.look(at: pointOfViewNode.position)
             }
         }
         checkFinished()

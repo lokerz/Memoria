@@ -32,7 +32,7 @@ class Player : SCNNode{
     
     init(on position : SCNVector3){
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/player2.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/player.scn") else { return }
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
@@ -40,12 +40,18 @@ class Player : SCNNode{
         playerNode = self.childNodes.first!
         beginningPosition = position
         playerNode.position = position
+        playerNode.rotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
         lastHeight = Int(roundf(playerNode.position.y * 10))
         
+        setupPointOfView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func setupPointOfView(){
+        
     }
     
     func movePlayer(hitTestResult : SCNHitTestResult){

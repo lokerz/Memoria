@@ -46,7 +46,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         if !levelManager.isStarting{
             levelManager.autoRotateSystem()
         }
-        print(levelManager.gears.first?.childNodes.first?.physicsBody?.angularVelocityFactor)
     }
     
     func setupWorld(){

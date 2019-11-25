@@ -51,7 +51,7 @@ class Gear : SCNNode{
         initialAngle = rotation.w
         currentAngle = initialAngle
         newAngle = initialAngle
-        
+
     }
     
     required init?(coder: NSCoder) {

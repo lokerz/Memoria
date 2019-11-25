@@ -14,8 +14,11 @@ class Player3 : Player {
     var lastDestination = SCNVector3()
     var pathIndex = 1
     var isLastDestination = false
+    var isMoving = false
+    var moveDuration = 2.0
     
-    
+    var pointOfViewNode = SCNNode()
+
     override func movePlayer(hitTestResult : SCNHitTestResult){
         isMovable = false
         pathIndex = 1
@@ -34,22 +37,35 @@ class Player3 : Player {
         }
     }
     
+    override func setupPointOfView(){
+        self.addChildNode(pointOfViewNode)
+        let geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        pointOfViewNode.geometry = geometry
+
+    }
+    
     func move(to destination : SCNVector3){
         synchronize()
         let coordinate = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
-        let move = SCNAction.move(to: coordinate, duration: 1)
+        let move = SCNAction.move(to: coordinate, duration: moveDuration)
         playerNode.runAction(move)
-        rotate(to: destination)
+        rotate(to: coordinate)
     }
     
-    func rotate(to destination : SCNVector3){
-        let direction = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
-        SCNTransaction.animationDuration = 1
-        playerNode.look(at: direction)
+    func rotate(to direction : SCNVector3){
+        if !isMoving {
+            pointOfViewNode.position = direction
+            isMoving = true
+        }else{
+            let move = SCNAction.move(to: direction, duration: moveDuration/4)
+            move.timingMode = .easeInEaseOut
+            pointOfViewNode.runAction(move)
+        }
     }
     
     override func stop(){
         super.stop()
+        
         playerNode.removeAllActions()
     }
     
@@ -60,7 +76,11 @@ class Player3 : Player {
     }
     
     override func checkPosition(){
-//        print(playerNode.eulerAngles.y, eulerAngles.y, playerNode.physicsBody!.angularVelocity.w)
+//        print(isMoving)
+//        print(playerNode.position.y, height)
+        if isMoving {
+            playerNode.look(at: pointOfViewNode.position)
+        }
         if isMovable {
             if checkLastPos(){
                 stop()

@@ -24,14 +24,19 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorld()
-        setupLevelManager()
-        setupGesture()
-        startGame()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        setup(level : level)
+    }
+    
+    func setup(level : Int){
+        self.level = level
+        setupLevelManager()
+        setupGesture()
+        startGame()
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -79,9 +84,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     func startGame(){
         levelManager.setupLevel()
     }
-    
-    
-    
+        
     func nextLevel(){
         isLoading = true
         levelManager.endLevel()

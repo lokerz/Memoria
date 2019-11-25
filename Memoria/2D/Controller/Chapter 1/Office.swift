@@ -77,8 +77,7 @@ class Office: SKScene{
             
             for node in nodesarray {
                 if node.name == "nextButton"{
-                    let scene = spriteManager.callScene(index: 6)
-                    self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    spriteManager.callScene(index: 6, transition: .fade(withDuration: 1))
                 }
                 if node.name == "background"{
                     moveBubble()

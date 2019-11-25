@@ -98,8 +98,7 @@ class FrontHouse: SKScene{
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.view?.isUserInteractionEnabled = true
-            let scene = SpriteManager.instance.callScene(index: 7)
-            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+            SpriteManager.instance.callScene(index: 7, transition: .fade(withDuration: 1))
         }
     }
 }

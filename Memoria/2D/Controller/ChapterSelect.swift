@@ -157,25 +157,14 @@ class ChapterSelect: SKScene {
                 if node.name == "play"{
                     print(state)
                     switch state {
-                    case 1:
-                        let scene = SpriteManager.instance.callScene(index: 1)
-                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
-                        PlaySound.instance.player?.stop()
-                    case 2:
-                        let scene = SpriteManager.instance.callScene(index: 6)
-                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
-                        PlaySound.instance.player?.stop()
-                    case 3:
-                        let scene = SpriteManager.instance.callScene(index: 5)
-                        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
-                        PlaySound.instance.player?.stop()
-                    case 4:
-                        PlaySound.instance.player?.stop()
-                    case 5:
-                        PlaySound.instance.player?.stop()
-                    default:
-                        PlaySound.instance.player?.stop()
+                    case 1: spriteManager.callScene(index: 1, transition: .fade(withDuration: 1))
+                    case 2: spriteManager.callScene(index: 6, transition: .fade(withDuration: 0.5))
+                    case 3: spriteManager.callScene(index: 5, transition: .fade(withDuration: 0.5))
+                    case 4: break
+                    case 5: break
+                    default: break
                     }
+                    PlaySound.instance.player?.stop()
                 }
                 else if node.name == "leftButton"{
                     prevChapter()
@@ -184,8 +173,7 @@ class ChapterSelect: SKScene {
                    nextChapter()
                 }
                 else if node.name == "back"{
-                    let scene = SpriteManager.instance.callScene(index: 100)
-                          self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    spriteManager.callScene(index: 100, transition: .fade(withDuration: 1))
                 }
             }
         }
@@ -212,26 +200,20 @@ class ChapterSelect: SKScene {
     }
     
     func nextChapter(){
+        removeChapters()
         switch state {
         case 1:
-            removeChapters()
             chapterMoveNext(chapter1: chapter1, chapter2: chapter2)
-            chapterTitleChange()
         case 2:
-            removeChapters()
             chapterMoveNext(chapter1: chapter2, chapter2: chapter3)
-            chapterTitleChange()
         case 3:
-            removeChapters()
             chapterMoveNext(chapter1: chapter3, chapter2: chapter4)
-            chapterTitleChange()
         case 4:
-            removeChapters()
             chapterMoveNext(chapter1: chapter4, chapter2: chapter5)
-            chapterTitleChange()
         default:
             print(state)
         }
+        chapterTitleChange()
     }
     
     func prevChapter(){

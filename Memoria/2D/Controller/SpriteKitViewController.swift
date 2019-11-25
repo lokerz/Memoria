@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class SpriteKitViewController: UIViewController {
-    
+    var spriteManager = SpriteManager.instance
     @IBOutlet weak var mainSkView: SKView!
     
     override func viewDidLoad() {
@@ -23,19 +23,11 @@ class SpriteKitViewController: UIViewController {
     
     func setupSKView(){
         if let view = mainSkView {
-             
-             if let scene1 = SKScene(fileNamed: "MainMenu") {
-                 scene1.scaleMode = .resizeFill
-                 
-                 view.presentScene(scene1)
-             }
-             
-             view.ignoresSiblingOrder = true
-             
-             view.showsFPS = true
-             view.showsNodeCount = true
-         }
-     }
-
+            spriteManager.setupView(view: view)
+            spriteManager.callScene(index: 0)
+        }
+    }
+    
+    
 }
 

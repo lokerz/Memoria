@@ -156,8 +156,7 @@ class MobilScene: SKScene {
                 }
             }
             else if node.name == "nextButton" {
-                   let scene = SpriteManager.instance.callScene(index: 3)
-                   self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                   SpriteManager.instance.callScene(index: 3, transition: .fade(withDuration: 1))
             }
             }
         }

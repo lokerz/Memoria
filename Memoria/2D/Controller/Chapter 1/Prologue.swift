@@ -73,8 +73,7 @@ class Prologue: SKScene {
                 i += 1
             }
             else{
-                let scene = SpriteManager.instance.callScene(index: 2)
-                self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                SpriteManager.instance.callScene(index: 2, transition: .fade(withDuration: 1))
             }
         }
         

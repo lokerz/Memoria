@@ -10,9 +10,16 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+
+@objc protocol MainViewDelegate{
+    @objc optional func showSpriteKit()
+    @objc optional func showSceneKit()
+}
+
 class MainViewController: UIViewController {
     var uiview = GameUIView()
     var spriteManager = SpriteManager.instance
+    var mainDelegate : MainViewDelegate?
     
     @IBOutlet weak var containerView: UIView!
     
@@ -53,6 +60,7 @@ class MainViewController: UIViewController {
     func showSceneKit(){
         spriteViewController.view.isHidden = true
         gameViewController.view.isHidden = false
+//        gameViewController.setup(level: 3)
     }
     
     func addChildController(_ childController: UIViewController) {
@@ -104,8 +112,7 @@ extension MainViewController : GameUIDelegate{
     
     func exitButton() {
         showSpriteKit()
-        let scene = spriteManager.callScene(index: -1)
-        spriteViewController.mainSkView.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+        spriteManager.callScene(index: 0)
         hideUI()
         saveGame()
     }

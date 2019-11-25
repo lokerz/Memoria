@@ -132,8 +132,7 @@ class MainMenu: SKScene {
             for node in nodesarray {
                 if node.name == "bg"{
                     print("a")
-                    let scene = SpriteManager.instance.callScene(index: 99)
-                    view!.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    SpriteManager.instance.callScene(index: 99, transition: .fade(withDuration: 1))
                 }
             }
         }

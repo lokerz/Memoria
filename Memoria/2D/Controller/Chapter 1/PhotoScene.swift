@@ -124,8 +124,7 @@ class PhotoScene: SKScene {
                     state += 1
                 }
                 else if node.name == "nextButton" {
-                    let scene = SpriteManager.instance.callScene(index: 4)
-                    self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    SpriteManager.instance.callScene(index: 4, transition: .fade(withDuration: 1))
                 }
             }
         }

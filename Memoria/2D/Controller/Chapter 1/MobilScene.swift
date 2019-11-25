@@ -21,8 +21,8 @@ class MobilScene: SKScene {
     
     let monologue = SKLabelNode()
     
-    let fadeIn = SKAction.fadeAlpha(by: 1, duration: 1)
-    let fadeOut = SKAction.fadeAlpha(by: -1, duration: 1)
+    let fadeIn = SKAction.fadeAlpha(by: 1, duration: 0.5)
+    let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
     
     var statePaper = 1
     var stateButton = 1
@@ -30,17 +30,6 @@ class MobilScene: SKScene {
     let border = SKSpriteNode()
     
     override func didMove(to view: SKView) {
-//        let linearGradientSize = size
-//        let linearGradientColors = [UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1),
-//                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.5),
-//                                    UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0)]
-//        let linearGradientLocations: [CGFloat] = [0, 0.5, 1]
-//        let textureCount = 8
-//        let textures = (0..<textureCount).map { (index) -> SKTexture in
-//            let angle : CGFloat = 33/7
-//          return SKTexture(linearGradientWithAngle: angle, colors: linearGradientColors, locations: linearGradientLocations, size: linearGradientSize)
-//        }
-//        let border = SKSpriteNode(texture: textures.first)
         
         border.texture = SKTexture(imageNamed: "Monologue")
         
@@ -94,12 +83,12 @@ class MobilScene: SKScene {
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 4
         button.name = "nextButton"
-        button.setScale(0.4)
+        button.size = CGSize(width: 110, height: 100)
         
         addChild(ibuAnak)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Registering Touch Actions
         if let touch = touches.first {
         let location = touch.location(in: self)
@@ -154,8 +143,8 @@ class MobilScene: SKScene {
                     addChild(border)
                     addChild(monologue)
                     
-                    border.run(SKAction.fadeIn(withDuration: 1))
-                    monologue.run(SKAction.fadeIn(withDuration: 1))
+                    border.run(SKAction.fadeIn(withDuration: 0.5))
+                    monologue.run(SKAction.fadeIn(withDuration: 0.5))
                     monologue.text = "because i was picked up by these people whom will be my new parents"
                     
                     button.removeFromParent()

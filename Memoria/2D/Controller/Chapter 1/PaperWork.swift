@@ -18,8 +18,6 @@ class PaperWork: SKScene {
     
     var writeState = 1
     
-    let backBlack = SKShapeNode(circleOfRadius: 30)
-    
     let paper1_1 = SKSpriteNode()
     let paper1_2 = SKSpriteNode()
     let paper1_3 = SKSpriteNode()
@@ -37,7 +35,7 @@ class PaperWork: SKScene {
     let text33 = SKSpriteNode(imageNamed: "text_33")
     
     let detector = SKSpriteNode()
-    let button = SKSpriteNode(imageNamed: "nextButton")
+    let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     
     let paperSize = CGSize(width: 300, height: 380)
     
@@ -47,7 +45,6 @@ class PaperWork: SKScene {
     
     
     override func didMove(to view: SKView) {
-        
         let Paper = SKTexture(imageNamed: "Kertas")
         let setPaper = SKAction.setTexture(Paper)
         
@@ -142,11 +139,7 @@ class PaperWork: SKScene {
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 7
         button.name = "nextButton"
-        button.setScale(0.4)
-        
-        backBlack.fillColor = .black
-        backBlack.position = button.position
-        backBlack.zPosition = 6
+        button.size = CGSize(width: 110, height: 100)
         
         addChild(detector)
         addChild(albertWork)
@@ -166,6 +159,10 @@ class PaperWork: SKScene {
             self.paper2.run(self.fadeIn)
             self.pen.run(self.fadeIn)
         }
+        
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
+        }
 
     }
     
@@ -179,7 +176,7 @@ class PaperWork: SKScene {
                     if node.name == "detector" {
                         startTouch = location
                         nodePosition = node.position
-            
+                        HapticGenerator.instance.play(4)
                         albertAnimation()
                     }
                         
@@ -207,7 +204,6 @@ class PaperWork: SKScene {
                     else if touchLocation != startTouch{
                         print(touchLocation)
                         pen.position = touchLocation
-                        HapticGenerator.instance.play(4)
                         
                         writeState += 1
                         if writeState == 5{
@@ -269,7 +265,6 @@ class PaperWork: SKScene {
                             text33.run(fadeInSlow)
                             
                             addChild(button)
-                            addChild(backBlack)
                         }
                     }
                 }
@@ -277,6 +272,7 @@ class PaperWork: SKScene {
             super.touchesMoved(touches, with: event)
         }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        HapticGenerator.instance.play(4)
         albertWork.removeAction(forKey: "Key")
     }
     
@@ -295,5 +291,3 @@ class PaperWork: SKScene {
     }
 
 }
-
-

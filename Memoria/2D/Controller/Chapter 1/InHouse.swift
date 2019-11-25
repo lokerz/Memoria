@@ -14,8 +14,6 @@ class InHouse : SKScene{
     
     let animationDuration = 1.2
     
-    let background = SKSpriteNode()
-    
     let pulang1 = SKSpriteNode(imageNamed: "Pulang_1")
     let pulang2 = SKSpriteNode(imageNamed: "Pulang_2")
     let pulang3 = SKSpriteNode(imageNamed: "Pulang_3")
@@ -32,21 +30,12 @@ class InHouse : SKScene{
     var stateGeser = 0
     
     override func didMove(to view: SKView) {
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(InHouse.swipedDirection(sender:)))
-        
-        swipeUp.direction = .up
-        
-        view.addGestureRecognizer(swipeUp)
+        view.isUserInteractionEnabled = false
         
         pulang1.name = "Pulang_1"
         pulang1.size = CGSize(width: view.frame.width, height: view.frame.height)
         pulang1.position = CGPoint(x: view.frame.width/2, y: -view.frame.height/2)
         pulang1.zPosition = 1
-        
-        background.color = .white
-        background.size = pulang1.size
-        background.zPosition = -1
-        background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
         pulang2.name = "Pulang_2"
         pulang2.size = pulang1.size
@@ -83,15 +72,35 @@ class InHouse : SKScene{
         frameBelakang.position = pulang1.position
         frameBelakang.zPosition = 2
         
-        lastFoto.size = CGSize(width: view.frame.width/2, height: view.frame.height)
+        lastFoto.size = CGSize(width: view.frame.width, height: view.frame.height)
         lastFoto.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
         addChild(pulang1)
-        addChild(background)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.view?.isUserInteractionEnabled = true
             self.pulang1.run(SKAction.moveTo(y: view.frame.height/2, duration: 1.2))
         }
+        
+        addGesture(to : view)
+
     }
+    
+    func addGesture(to view : SKView){
+        removeGestures(to : view)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDirection(sender:)))
+        
+        swipe.direction = .up
+        
+        view.addGestureRecognizer(swipe)
+    }
+    
+    func removeGestures(to view : SKView){
+        for gesture in view.gestureRecognizers!{
+            print(#function, gesture)
+            view.removeGestureRecognizer(gesture)
+        }
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
@@ -136,27 +145,26 @@ class InHouse : SKScene{
             }
                 //left
             else{
-                if node.position.x > 420{
+                if node.position.x > 430{
                     newLocx = -(startTouch.x - touchLocation.x)
                 }
             }
             
             startTouch = touchLocation
             
-            print(node.position.y)
-            if node.position.y > 300{
-                node.position.y = node.position.y
+            if node.position.y <= 280{
+                node.position.y = node.position.y + newLocy/2.8
+                node.position.x = node.position.x + newLocx/2.8
             }
-            else {
-                node.position.y = node.position.y + newLocy
-                node.position.x = node.position.x + newLocx
+            else{
+                node.position.y = 280
             }
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let node = self.currentNode {
-            if node.position.y > 300 && stateGeser == 0{
+            if node.position.y >= 280 && stateGeser == 0{
                stateGeser += 1
                addChild(lastFoto)
                frameDepan.removeFromParent()
@@ -167,6 +175,7 @@ class InHouse : SKScene{
     }
     
     @objc func swipedDirection(sender: UISwipeGestureRecognizer){
+        print(#function)
         let goUp = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration)
         let goUp2 = SKAction.moveTo(y: 3*view!.frame.height/2, duration: animationDuration)
         

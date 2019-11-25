@@ -9,9 +9,7 @@
 import SpriteKit
 
 class PhotoScene: SKScene {
-    let backBlack = SKShapeNode(circleOfRadius: 30)
-    
-    let button = SKSpriteNode(imageNamed: "nextButton")
+    let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     let background = SKSpriteNode()
     
     let photo1 = SKSpriteNode(imageNamed: "Photo1")
@@ -37,24 +35,7 @@ class PhotoScene: SKScene {
     let fadeOut = SKAction.fadeOut(withDuration: 1.2)
 
     override func didMove(to view: SKView) {
-        //Gesture
-        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedDirection(sender:)))
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedDirection(sender:)))
-        
-        swipeDown.direction = .down
-        swipeUp.direction = .up
-        
-        view.addGestureRecognizer(swipeDown)
-        view.addGestureRecognizer(swipeUp)
-        
-        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
-        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
-            
-        swipeLeft.direction = .left
-        view.addGestureRecognizer(swipeLeft)
-        
-        swipeRight.direction = .right
-        view.addGestureRecognizer(swipeRight)
+        addGestures(to : view)
         
         
         border.zPosition = 3
@@ -100,15 +81,25 @@ class PhotoScene: SKScene {
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 5
         button.name = "nextButton"
-        button.setScale(0.4)
-        
-        backBlack.fillColor = .black
-        backBlack.position = button.position
-        backBlack.zPosition = 4
-
+        button.size = CGSize(width: 110, height: 100)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    func addGestures(to view: SKView){
+        for gesture in view.gestureRecognizers!{
+            view.removeGestureRecognizer(gesture)
+        }
+        
+        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
+        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
+            
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+        
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
         let location = touch.location(in: self)
         let nodesarray = nodes(at: location)
@@ -166,9 +157,7 @@ class PhotoScene: SKScene {
         if self.stateGesture == 3{
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                 self.button.removeFromParent()
-                self.backBlack.removeFromParent()
                 self.addChild(self.button)
-                self.addChild(self.backBlack)
             }
                 
         }
@@ -197,23 +186,5 @@ class PhotoScene: SKScene {
             }
         }
     }
-    
-    @objc func swipedDirection(sender: UISwipeGestureRecognizer){
-        if stateGesture == 3{
-            background.removeFromParent()
-            photo1.removeFromParent()
-            photo2.removeFromParent()
-            photo3.removeFromParent()
-            photo4.removeFromParent()
-            
-            let scene = SpriteManager.instance.callScene(index: 4)
-            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
-        }
-    }
 
-    override func willMove(from view: SKView) {
-        for gesture in view.gestureRecognizers!{
-            view.removeGestureRecognizer(gesture)
-        }
-    }
 }

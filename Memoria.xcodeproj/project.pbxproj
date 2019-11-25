@@ -77,6 +77,8 @@
 		F1728AE2238288A70027A617 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
+		F1E66BA923869BCA000633A6 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */; };
+		F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,8 @@
 		F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
+		F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
+		F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A_Quiet_Thought.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,7 +242,6 @@
 			children = (
 				47F2ADA9237EACC50093F313 /* Model */,
 				F15732382375552700E7891E /* View */,
-				F157322E237554EF00E7891E /* SpriteManager.swift */,
 				F1573226237554E700E7891E /* Controller */,
 			);
 			path = 2D;
@@ -369,6 +372,7 @@
 		47F2ADA9237EACC50093F313 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F157322E237554EF00E7891E /* SpriteManager.swift */,
 				47F2ADAA237EACD50093F313 /* Bubble.swift */,
 			);
 			path = Model;
@@ -421,6 +425,7 @@
 		47FE5AE923756317007993D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */,
 				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
 				47FE5AEA2375633A007993D4 /* SoundGenerator.swift */,
 				F1685EA1238131F1008D710E /* PlaySound.swift */,
@@ -491,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */,
+				F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */,
 			);
 			path = "Sound Effect";
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				F157323C2375585B00E7891E /* Office.sks in Resources */,
 				F1728ADD238288A70027A617 /* Roboto-Medium.ttf in Resources */,
 				4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */,
+				F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */,
 				F1728AE1238288A70027A617 /* Roboto-Black.ttf in Resources */,
 				F157323E2375586B00E7891E /* PaperWork.sks in Resources */,
 				F1728ADC238288A70027A617 /* Roboto-BlackItalic.ttf in Resources */,
@@ -700,6 +707,7 @@
 				F157322F237554EF00E7891E /* SpriteManager.swift in Sources */,
 				4705CA3D2362FF2800E874EB /* PathfindingManager.swift in Sources */,
 				F1573250237567F500E7891E /* ChapterSelect.swift in Sources */,
+				F1E66BA923869BCA000633A6 /* InfiniteScrollingBackground.swift in Sources */,
 				F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */,
 				4705CA9D236AFEDB00E874EB /* ObjectExtension.swift in Sources */,
 				F157324E237567DE00E7891E /* MainMenu.swift in Sources */,
@@ -883,7 +891,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = DYL2G75B8U;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -901,7 +909,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = DYL2G75B8U;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

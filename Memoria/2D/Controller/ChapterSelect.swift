@@ -9,6 +9,7 @@
 import SpriteKit
 
 class ChapterSelect: SKScene {
+
     var state = 1
     
     let chapterName = [

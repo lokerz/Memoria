@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="-152.00892857142856" y="-108.69565217391305"/>
         </scene>
-        <!--Main Menu View Controller-->
+        <!--Sprite Kit View Controller-->
         <scene sceneID="Svx-9j-wij">
             <objects>
-                <viewController storyboardIdentifier="MainMenuViewController" id="kmE-sq-fsi" customClass="MainMenuViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpriteKitViewController" id="kmE-sq-fsi" customClass="SpriteKitViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uj2-9z-trA">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,7 @@
                             </skView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="t4j-P4-jdR"/>
                     </view>
                     <navigationItem key="navigationItem" id="XPu-yn-4Rd"/>
                     <connections>

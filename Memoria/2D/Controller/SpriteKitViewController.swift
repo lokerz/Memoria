@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class MainMenuViewController: UIViewController {
+class SpriteKitViewController: UIViewController {
     
     @IBOutlet weak var mainSkView: SKView!
     

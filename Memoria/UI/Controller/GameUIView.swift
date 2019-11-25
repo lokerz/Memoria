@@ -26,7 +26,6 @@ class GameUIView: UIView{
     
     var delegate : GameUIDelegate?
     var isToggle = false
-    var isMainMenu = false
     
     var soundCenter = CGPoint()
     var hapticCenter = CGPoint()
@@ -62,11 +61,7 @@ class GameUIView: UIView{
     
     func setupButton(){
         hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
-        
-        if isMainMenu {
-            exitButtonOutlet.isHidden = true
-        }
-        
+       
         buttons.append(soundButtonOutlet)
         buttons.append(hapticButtonOutlet)
         buttons.append(exitButtonOutlet)

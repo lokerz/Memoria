@@ -27,6 +27,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         setupLevelManager()
         setupGesture()
         startGame()
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,4 +106,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         return true
     }
     
+    func setupUI(){
+        if let parent = self.parent as? MainViewController {
+            parent.uiview.isHidden = false
+        }
+    }
 }

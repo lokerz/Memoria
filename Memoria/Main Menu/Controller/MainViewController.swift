@@ -11,12 +11,14 @@ import SpriteKit
 import GameplayKit
 
 class MainViewController: UIViewController {
-    var  uiview = GameUIView()
+    var uiview = GameUIView()
+    var spriteManager = SpriteManager.instance
+    
     @IBOutlet weak var containerView: UIView!
     
-    lazy var spriteViewController : MainMenuViewController = {
+    lazy var spriteViewController : SpriteKitViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "MainMenuViewController") as! MainMenuViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "SpriteKitViewController") as! SpriteKitViewController
         self.addChildController(viewController)
         return viewController
     }()
@@ -30,20 +32,22 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        showSpriteKit()
-        showSceneKit()
         setupUI()
+        showSpriteKit()
+//        showSceneKit()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        uiview.fadeInPauseButton()
+        hideUI()
+
     }
     
+    
     func showSpriteKit(){
-        spriteViewController.view.isHidden = false
         gameViewController.view.isHidden = true
+        spriteViewController.view.isHidden = false
     }
     
     func showSceneKit(){
@@ -82,9 +86,12 @@ extension MainViewController : GameUIDelegate{
     func setupUI(){
         uiview = GameUIView(frame: view.frame)
         uiview.delegate = self
-        uiview.isMainMenu = true
         uiview.setupButton()
         view.addSubview(uiview)
+    }
+    
+    func hideUI(){
+        uiview.isHidden = true
     }
     
     func bringUIFront(){
@@ -96,6 +103,14 @@ extension MainViewController : GameUIDelegate{
     }
     
     func exitButton() {
+        showSpriteKit()
+        let scene = spriteManager.callScene(index: -1)
+        spriteViewController.mainSkView.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+        hideUI()
+        saveGame()
+    }
+    
+    func saveGame(){
         
     }
 }

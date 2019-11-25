@@ -20,7 +20,10 @@ class ChapterSelect: SKScene {
     "Memoire 5 ~ You",
     ]
     let chapterTitle = SKLabelNode()
-    let dropShadowTitle = SKLabelNode()
+//    let dropShadowTitle = SKLabelNode()
+    
+    let chapterBox = SKShapeNode(rectOf: CGSize(width: 400, height: 65))
+    let dropShadowChapterBox = SKShapeNode(rectOf: CGSize(width: 400, height: 65))
     
     let chapter1 = SKSpriteNode(imageNamed: "House")
     let chapter2 = SKSpriteNode(imageNamed: "PH1")
@@ -28,14 +31,16 @@ class ChapterSelect: SKScene {
     let chapter4 = SKSpriteNode(imageNamed: "PH3")
     let chapter5 = SKSpriteNode(imageNamed: "PH4")
     
-    let whiteBorder = SKSpriteNode(imageNamed: "CS_Brush")
+    let whiteBorder = SKSpriteNode(imageNamed: "CS_Brush_Circle")
     
     let durationMove = 1.0
     
-    let back = SKSpriteNode(imageNamed: "nextButton")
-    let backBlack = SKShapeNode(circleOfRadius: 30)
+    let back = SKSpriteNode(imageNamed: "backButton")
     
-    let play = SKSpriteNode(imageNamed: "CS_Play")
+    let playText = SKLabelNode()
+    let playBox = SKShapeNode(rectOf: CGSize(width: 114.5, height: 49.5))
+    let dropShadowPlayBox = SKShapeNode(rectOf: CGSize(width: 114.5, height: 49.5))
+    
     let leftButton = SKSpriteNode(imageNamed: "CS_Left")
     let rightButton = SKSpriteNode(imageNamed: "CS_Right")
     
@@ -47,20 +52,22 @@ class ChapterSelect: SKScene {
         chapterTitle.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
         chapterTitle.zPosition = 2
         chapterTitle.fontColor = .black
-        chapterTitle.fontSize = 48
-        chapterTitle.fontName = "Roboto-Medium"
+        chapterTitle.fontSize = 20
+        chapterTitle.fontName = "Roboto-Light"
         chapterTitle.name = "Chapter Name"
         chapterTitle.text = chapterName[1]
         
-        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: 3*view.frame.height/4 - 2)
-        dropShadowTitle.zPosition = chapterTitle.zPosition - 0.1
-        dropShadowTitle.fontColor = .black
-        dropShadowTitle.fontSize = chapterTitle.fontSize
-        dropShadowTitle.fontName = chapterTitle.fontName
-        dropShadowTitle.name = "Chapter Shadow"
-        dropShadowTitle.text = chapterName[1]
-        dropShadowTitle.alpha = 0.5
+        chapterBox.name = "box"
+        chapterBox.fillColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        chapterBox.zPosition = 1
+        chapterBox.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4 + 10)
+        chapterBox.strokeColor = .black
         
+        dropShadowChapterBox.fillColor = .black
+        dropShadowChapterBox.zPosition = 0.9
+        dropShadowChapterBox.position = CGPoint(x: view.frame.width/2 + 5, y: 3*view.frame.height/4 + 5)
+        dropShadowChapterBox.strokeColor = .clear
+            
         chapter1.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         chapter1.size = CGSize(width: view.frame.width, height: view.frame.height)
         chapter1.zPosition = -1
@@ -90,49 +97,57 @@ class ChapterSelect: SKScene {
         whiteBorder.size = chapter1.size
         
         back.name = "back"
-        back.xScale = -1.0
         back.zPosition = 2
-        back.position = CGPoint(x: 50, y: view.frame.height - 50)
-        back.setScale(0.4)
+        back.position = CGPoint(x: 70, y: view.frame.height - 40)
         
-        backBlack.fillColor = .black
-        backBlack.position = back.position
-        backBlack.zPosition = 1
+        playText.text = "PLAY"
+        playText.fontName = "Roboto-Medium"
+        playText.fontColor = .black
+        playText.fontSize = 14
+        playText.zPosition = 3
+        playText.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 157)
         
-        play.name = "play"
-        play.zPosition = 1
-        play.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 150)
+        playBox.fillColor = UIColor.init(red: 255/255, green: 229/255, blue: 139/255, alpha: 1)
+        playBox.zPosition = 2
+        playBox.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 150)
+        playBox.strokeColor = .black
+        
+        dropShadowPlayBox.zPosition = 1
+        dropShadowPlayBox.fillColor = .black
+        dropShadowPlayBox.strokeColor = .clear
+        dropShadowPlayBox.position = CGPoint(x: view.frame.width/2 + 5, y: view.frame.height/2 - 155)
         
         leftButton.name = "leftButton"
-        leftButton.position = CGPoint(x: 75, y: view.frame.height/2)
+        leftButton.position = CGPoint(x: 200, y: view.frame.height/2)
         leftButton.zPosition = 2
         
         rightButton.name = "rightButton"
-        rightButton.position = CGPoint(x: view.frame.width-75, y: view.frame.height/2)
+        rightButton.position = CGPoint(x: view.frame.width - 200, y: view.frame.height/2)
         rightButton.zPosition = 2
         
         addChild(chapterTitle)
-        addChild(dropShadowTitle)
+        addChild(chapterBox)
+        addChild(dropShadowChapterBox)
         
         addChild(chapter1)
         addChild(whiteBorder)
         
         addChild(back)
-        addChild(backBlack)
         
-        addChild(play)
+        addChild(playText)
+        addChild(playBox)
+        addChild(dropShadowPlayBox)
         
         addChild(leftButton)
         addChild(rightButton)
         
-        let moveRightArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: view.frame.width-52, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: view.frame.width-75, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
-        let moveLeftArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: 52, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: 75, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
+        let moveRightArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: view.frame.width-180, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: view.frame.width-200, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
+        let moveLeftArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: 180, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: 200, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
         leftButton.run(SKAction.repeatForever(SKAction.sequence(moveLeftArrow)))
         rightButton.run(SKAction.repeatForever(SKAction.sequence(moveRightArrow)))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(#function)
     if let touch = touches.first {
         let location = touch.location(in: self)
         let nodesarray = nodes(at: location)
@@ -146,7 +161,7 @@ class ChapterSelect: SKScene {
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
                         PlaySound.instance.player?.stop()
                     case 2:
-                        let scene = SpriteManager.instance.callScene(index: 2)
+                        let scene = SpriteManager.instance.callScene(index: 6)
                         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
                         PlaySound.instance.player?.stop()
                     case 3:
@@ -200,23 +215,19 @@ class ChapterSelect: SKScene {
         case 1:
             removeChapters()
             chapterMoveNext(chapter1: chapter1, chapter2: chapter2)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         case 2:
             removeChapters()
             chapterMoveNext(chapter1: chapter2, chapter2: chapter3)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         case 3:
             removeChapters()
             chapterMoveNext(chapter1: chapter3, chapter2: chapter4)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         case 4:
             removeChapters()
             chapterMoveNext(chapter1: chapter4, chapter2: chapter5)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         default:
             print(state)
         }
@@ -227,25 +238,29 @@ class ChapterSelect: SKScene {
         case 2:
             removeChapters()
             chapterMovePrev(chapter1: chapter2, chapter2: chapter1)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         case 3:
             removeChapters()
             chapterMovePrev(chapter1: chapter3, chapter2: chapter2)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         case 4:
             removeChapters()
             chapterMovePrev(chapter1: chapter4, chapter2: chapter3)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         case 5:
             removeChapters()
             chapterMovePrev(chapter1: chapter5, chapter2: chapter4)
-            chapterTitle.text = chapterName[state]
-            dropShadowTitle.text = chapterName[state]
+            chapterTitleChange()
         default:
             print(state)
+        }
+    }
+    
+    func chapterTitleChange(){
+        chapterTitle.run(SKAction.fadeAlpha(to: 0, duration: durationMove/2))
+        DispatchQueue.main.asyncAfter(deadline: .now() + durationMove/2) {
+            self.chapterTitle.text = self.chapterName[self.state]
+            self.chapterTitle.run(SKAction.fadeAlpha(to: 1, duration: self.durationMove/2))
         }
     }
     

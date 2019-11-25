@@ -83,7 +83,7 @@ class MobilScene: SKScene {
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 4
         button.name = "nextButton"
-        button.setScale(0.4)
+        button.size = CGSize(width: 110, height: 100)
         
         addChild(ibuAnak)
     }

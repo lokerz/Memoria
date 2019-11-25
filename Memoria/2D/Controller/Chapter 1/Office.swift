@@ -52,10 +52,11 @@ class Office: SKScene{
         monolog.numberOfLines = 3
         monolog.preferredMaxLayoutWidth = view.frame.width-100
         
+        button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 1
         button.name = "nextButton"
-        button.setScale(0.4)
+        button.size = CGSize(width: 110, height: 100)
         
         mobA.size = CGSize(width: view.frame.width, height: view.frame.height)
         mobA.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)

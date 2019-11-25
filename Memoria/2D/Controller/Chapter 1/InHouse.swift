@@ -14,8 +14,6 @@ class InHouse : SKScene{
     
     let animationDuration = 1.2
     
-    let background = SKSpriteNode()
-    
     let pulang1 = SKSpriteNode(imageNamed: "Pulang_1")
     let pulang2 = SKSpriteNode(imageNamed: "Pulang_2")
     let pulang3 = SKSpriteNode(imageNamed: "Pulang_3")
@@ -32,16 +30,12 @@ class InHouse : SKScene{
     var stateGeser = 0
     
     override func didMove(to view: SKView) {
+        view.isUserInteractionEnabled = false
         
         pulang1.name = "Pulang_1"
         pulang1.size = CGSize(width: view.frame.width, height: view.frame.height)
         pulang1.position = CGPoint(x: view.frame.width/2, y: -view.frame.height/2)
         pulang1.zPosition = 1
-        
-        background.color = .white
-        background.size = pulang1.size
-        background.zPosition = -1
-        background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
         pulang2.name = "Pulang_2"
         pulang2.size = pulang1.size
@@ -82,8 +76,8 @@ class InHouse : SKScene{
         lastFoto.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
         addChild(pulang1)
-        addChild(background)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.view?.isUserInteractionEnabled = true
             self.pulang1.run(SKAction.moveTo(y: view.frame.height/2, duration: 1.2))
         }
         
@@ -158,10 +152,12 @@ class InHouse : SKScene{
             
             startTouch = touchLocation
             
-            print(node.position.y)
-            if node.position.y < 280{
-                node.position.y = node.position.y + newLocy
-                node.position.x = node.position.x + newLocx
+            if node.position.y <= 280{
+                node.position.y = node.position.y + newLocy/2.8
+                node.position.x = node.position.x + newLocx/2.8
+            }
+            else{
+                node.position.y = 280
             }
         }
     }

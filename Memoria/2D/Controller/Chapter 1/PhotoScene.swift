@@ -9,9 +9,7 @@
 import SpriteKit
 
 class PhotoScene: SKScene {
-    let backBlack = SKShapeNode(circleOfRadius: 30)
-    
-    let button = SKSpriteNode(imageNamed: "nextButton")
+    let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     let background = SKSpriteNode()
     
     let photo1 = SKSpriteNode(imageNamed: "Photo1")
@@ -83,12 +81,7 @@ class PhotoScene: SKScene {
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 5
         button.name = "nextButton"
-        button.setScale(0.4)
-        
-        backBlack.fillColor = .black
-        backBlack.position = button.position
-        backBlack.zPosition = 4
-
+        button.size = CGSize(width: 110, height: 100)
     }
     
     func addGestures(to view: SKView){
@@ -164,9 +157,7 @@ class PhotoScene: SKScene {
         if self.stateGesture == 3{
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                 self.button.removeFromParent()
-                self.backBlack.removeFromParent()
                 self.addChild(self.button)
-                self.addChild(self.backBlack)
             }
                 
         }

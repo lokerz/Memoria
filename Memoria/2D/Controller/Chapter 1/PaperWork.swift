@@ -18,8 +18,6 @@ class PaperWork: SKScene {
     
     var writeState = 1
     
-    let backBlack = SKShapeNode(circleOfRadius: 30)
-    
     let paper1_1 = SKSpriteNode()
     let paper1_2 = SKSpriteNode()
     let paper1_3 = SKSpriteNode()
@@ -37,7 +35,7 @@ class PaperWork: SKScene {
     let text33 = SKSpriteNode(imageNamed: "text_33")
     
     let detector = SKSpriteNode()
-    let button = SKSpriteNode(imageNamed: "nextButton")
+    let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     
     let paperSize = CGSize(width: 300, height: 380)
     
@@ -141,11 +139,7 @@ class PaperWork: SKScene {
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 7
         button.name = "nextButton"
-        button.setScale(0.4)
-        
-        backBlack.fillColor = .black
-        backBlack.position = button.position
-        backBlack.zPosition = 6
+        button.size = CGSize(width: 110, height: 100)
         
         addChild(detector)
         addChild(albertWork)
@@ -271,7 +265,6 @@ class PaperWork: SKScene {
                             text33.run(fadeInSlow)
                             
                             addChild(button)
-                            addChild(backBlack)
                         }
                     }
                 }

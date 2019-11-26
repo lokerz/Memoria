@@ -14,6 +14,7 @@ import GameplayKit
 class SpriteKitViewController: UIViewController {
     var spriteManager = SpriteManager.instance
     var delegate : TransitionDelegate?
+    var isActive = false
     
     @IBOutlet weak var mainSkView: SKView!
     
@@ -28,9 +29,21 @@ class SpriteKitViewController: UIViewController {
         if let view = mainSkView {
             spriteManager.setupView(view: view)
             spriteManager.callScene(index: 0)
+            spriteManager.setupDelegate(delegate : self)
+        }
+    }
+}
+
+extension SpriteKitViewController : SKSceneDelegate{
+    func update(_ currentTime: TimeInterval, for scene: SKScene){
+        if isActive {
+            if spriteManager.isChangingToSceneKit {
+                print(#function)
+                spriteManager.isChangingToSceneKit = false
+                self.delegate!.showSceneKit!(level : spriteManager.gameLevel)
+            }
         }
     }
     
     
 }
-

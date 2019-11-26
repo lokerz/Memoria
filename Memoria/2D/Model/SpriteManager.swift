@@ -16,7 +16,12 @@ import SpriteKit
 
 class SpriteManager {
     static var instance = SpriteManager()
+    
+    var isChangingToSceneKit = false
+    var gameLevel = 0
+    
     var skView = SKView()
+    var skDelegate : SKSceneDelegate?
     var sceneNumber = 0
     
     var sceneMain = "MainMenu"
@@ -41,7 +46,11 @@ class SpriteManager {
 //        view.showsNodeCount = true
     }
     
-    func callScene(index : Int){
+    func setupDelegate(delegate : SKSceneDelegate){
+        skDelegate = delegate
+    }
+    
+    func loadScene(_ index: Int) -> SKScene{
         var scene = SKScene()
         switch index {
         case 1 : scene = Prologue(fileNamed: scenes[index])!
@@ -55,27 +64,20 @@ class SpriteManager {
         default : scene = MainMenu(fileNamed: sceneMain)!
         }
         scene.scaleMode = .resizeFill
-          
-        skView.presentScene(scene)
+        scene.delegate = skDelegate
+        return scene
+    }
+    
+    func callScene(index : Int){
+        skView.presentScene(loadScene(index))
     }
     
     func callScene(index : Int, transition : SKTransition){
-        var scene = SKScene()
-        switch index {
-        case 1 : scene = Prologue(fileNamed: scenes[index])!
-        case 2 : scene = MobilScene(fileNamed: scenes[index])!
-        case 3 : scene = PhotoScene(fileNamed: scenes[index])!
-        case 4 : scene = PaperWork(fileNamed: scenes[index])!
-        case 5 : scene = Office(fileNamed: scenes[index])!
-        case 6 : scene = FrontHouse(fileNamed: scenes[index])!
-        case 7 : scene = InHouse(fileNamed: scenes[index])!
-        case 99 : scene = ChapterSelect(fileNamed: sceneChapter)!
-        default : scene = MainMenu(fileNamed: sceneMain)!
-        }
-        scene.scaleMode = .resizeFill
-          
-        skView.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+        skView.presentScene(loadScene(index), transition: SKTransition.fade(withDuration: 1))
     }
     
-    
+    func loadGame(level : Int){
+        gameLevel = level
+        isChangingToSceneKit = true
+    }
 }

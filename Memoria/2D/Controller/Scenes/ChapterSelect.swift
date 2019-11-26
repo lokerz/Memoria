@@ -9,19 +9,19 @@
 import SpriteKit
 
 class ChapterSelect: SKScene {
-
+    
     var state = 1
     
     let chapterName = [
-    "",
-    "Memoire 1 ~ Emptiness",
-    "Memoire 2 ~ Journey",
-    "Memoire 3 ~ Breeze",
-    "Memoire 4 ~ Return/Home",
-    "Memoire 5 ~ You",
+        "",
+        "Memoire 1 ~ Emptiness",
+        "Memoire 2 ~ Journey",
+        "Memoire 3 ~ Breeze",
+        "Memoire 4 ~ Return/Home",
+        "Memoire 5 ~ You",
     ]
     let chapterTitle = SKLabelNode()
-//    let dropShadowTitle = SKLabelNode()
+    //    let dropShadowTitle = SKLabelNode()
     
     let chapterBox = SKShapeNode(rectOf: CGSize(width: 400, height: 65))
     let dropShadowChapterBox = SKShapeNode(rectOf: CGSize(width: 400, height: 65))
@@ -68,7 +68,7 @@ class ChapterSelect: SKScene {
         dropShadowChapterBox.zPosition = 0.9
         dropShadowChapterBox.position = CGPoint(x: view.frame.width/2 + 5, y: 3*view.frame.height/4 + 5)
         dropShadowChapterBox.strokeColor = .clear
-            
+        
         chapter1.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         chapter1.size = CGSize(width: view.frame.width, height: view.frame.height)
         chapter1.zPosition = -1
@@ -82,7 +82,7 @@ class ChapterSelect: SKScene {
         chapter3.size = chapter1.size
         chapter3.zPosition = -1
         chapter3.alpha = 0
-    
+        
         chapter4.position = CGPoint(x: 3 * view.frame.width/4, y: view.frame.height/2)
         chapter4.size = chapter1.size
         chapter4.zPosition = -1
@@ -102,6 +102,7 @@ class ChapterSelect: SKScene {
         back.position = CGPoint(x: 70, y: view.frame.height - 40)
         
         playText.text = "PLAY"
+        playText.name = "play"
         playText.fontName = "Roboto-Medium"
         playText.fontColor = .black
         playText.fontSize = 14
@@ -149,10 +150,10 @@ class ChapterSelect: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    if let touch = touches.first {
-        let location = touch.location(in: self)
-        let nodesarray = nodes(at: location)
-
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
             for node in nodesarray {
                 if node.name == "play"{
                     print(state)
@@ -160,20 +161,28 @@ class ChapterSelect: SKScene {
                     case 1: spriteManager.callScene(index: 1, transition: .fade(withDuration: 1))
                     case 2: spriteManager.callScene(index: 6, transition: .fade(withDuration: 0.5))
                     case 3: spriteManager.callScene(index: 5, transition: .fade(withDuration: 0.5))
-                    case 4: break
-                    case 5: break
+                    case 4: spriteManager.loadGame(level : 1)
+                    case 5: spriteManager.callScene(index: 7, transition: .fade(withDuration: 0.5))
                     default: break
                     }
                     PlaySound.instance.player?.stop()
+                    HapticGenerator.instance.play(4)
+                    
                 }
                 else if node.name == "leftButton"{
                     prevChapter()
+                    HapticGenerator.instance.play(4)
+                    
                 }
                 else if node.name == "rightButton"{
-                   nextChapter()
+                    nextChapter()
+                    HapticGenerator.instance.play(4)
+                    
                 }
                 else if node.name == "back"{
                     spriteManager.callScene(index: 100, transition: .fade(withDuration: 1))
+                    HapticGenerator.instance.play(4)
+                    
                 }
             }
         }
@@ -183,7 +192,7 @@ class ChapterSelect: SKScene {
         
         let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
-            
+        
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
         
@@ -258,15 +267,15 @@ class ChapterSelect: SKScene {
     func chapterMoveNext(chapter1: SKNode, chapter2: SKNode){
         addChild(chapter1)
         addChild(chapter2)
-
+        
         let point1 = CGPoint(x: chapter1.position.x - self.view!.frame.width/4, y: view!.frame.height/2)
         let point2 = CGPoint(x: chapter2.position.x - self.view!.frame.width/4, y: view!.frame.height/2)
-
+        
         let move1 = SKAction.move(to: point1, duration: durationMove)
         move1.timingMode = SKActionTimingMode.easeInEaseOut
         let move2 = SKAction.move(to: point2, duration: durationMove)
         move2.timingMode = SKActionTimingMode.easeInEaseOut
-
+        
         if self.state < 5{
             chapter1.run(move1)
             chapter2.run(move2)
@@ -284,19 +293,19 @@ class ChapterSelect: SKScene {
     func chapterMovePrev(chapter1: SKNode, chapter2: SKNode){
         addChild(chapter1)
         addChild(chapter2)
-
+        
         let point1 = CGPoint(x: chapter1.position.x + self.view!.frame.width/4, y: view!.frame.height/2)
         let point2 = CGPoint(x: chapter2.position.x + self.view!.frame.width/4, y: view!.frame.height/2)
-
+        
         let move1 = SKAction.move(to: point1, duration: durationMove)
         move1.timingMode = SKActionTimingMode.easeInEaseOut
         let move2 = SKAction.move(to: point2, duration: durationMove)
         move2.timingMode = SKActionTimingMode.easeInEaseOut
-
+        
         if self.state > 1{
             chapter1.run(move1)
             chapter2.run(move2)
-        
+            
             chapter1.run(SKAction.fadeAlpha(to: 0, duration: durationMove))
             chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
             self.state -= 1

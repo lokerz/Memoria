@@ -11,48 +11,45 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate {
-    var level = 1
-    
     var sceneView : SCNView!
     var scene : SCNScene!
+    
+    var level = 0
     
     var levelManager = LevelManager()
     var gestureManager = GestureManager.instance
     var delegate : TransitionDelegate?
     var isLoading = false
+    var isActive = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorld()
-        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setup(level : level)
     }
     
     func setup(level : Int){
         self.level = level
-        setupLevelManager()
+        setupLevelManager(level : level)
         setupGesture()
         startGame()
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        if levelManager.player.isFinished && !isLoading{
-//            nextLevel()
-            self.delegate?.showSpriteKit?()
-        }
-        
-        levelManager.checkPlayer()
-//        if levelManager.isPanning{
-//            levelManager.player.playerNode.physicsBody?.isAffectedByGravity = true
-//            print(levelManager.player.playerNode.physicsBody?.isAffectedByGravity)
-//        }
-        if !levelManager.isStarting{
-            levelManager.autoRotateSystem()
+        if isActive{
+            if levelManager.player.isFinished && !isLoading{
+                endLevel()
+            }
+            
+            levelManager.checkPlayer()
+            
+            if !levelManager.isStarting{
+                levelManager.autoRotateSystem()
+            }
         }
     }
     
@@ -64,12 +61,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.delegate = self
         sceneView.showsStatistics = true
         view.addSubview(sceneView)
-//        sceneView.scene!.physicsWorld.contactDelegate = self
+        //        sceneView.scene!.physicsWorld.contactDelegate = self
         sceneView.debugOptions = [.showPhysicsShapes]
     }
     
     
-    func setupLevelManager(){
+    func setupLevelManager(level : Int){
         switch level {
         case 1 : levelManager = LevelOneManager()
         case 3 : levelManager = LevelTwoManager()
@@ -85,19 +82,16 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     func startGame(){
         levelManager.setupLevel()
+        levelManager.player.isFinished = false
     }
-        
-    func nextLevel(){
+    
+    func endLevel(){
         isLoading = true
         levelManager.endLevel()
         gestureManager.removeGesture(sceneView)
-        level = level + 1 > 3 ? 1 : level + 1
-
+        level += 1
         let _ = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (Timer) in
-            self.setupLevelManager()
-            self.levelManager.setupLevel()
-            self.levelManager.player.isFinished = false
-            self.gestureManager.setupGesture(self.sceneView, self.levelManager)
+            self.setup(level: self.level)
             self.isLoading = false
         }
     }
@@ -109,11 +103,5 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     override var prefersStatusBarHidden: Bool {
         return true
-    }
-    
-    func setupUI(){
-        if let parent = self.parent as? MainViewController {
-            parent.uiview.isHidden = false
-        }
     }
 }

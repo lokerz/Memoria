@@ -899,7 +899,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DYL2G75B8U;
+				DEVELOPMENT_TEAM = 7K72X54MJB;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -917,7 +917,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DYL2G75B8U;
+				DEVELOPMENT_TEAM = 7K72X54MJB;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

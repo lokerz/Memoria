@@ -62,6 +62,7 @@
                     </state>
                     <connections>
                         <action selector="exitButtonAction:" destination="-1" eventType="touchUpInside" id="XaT-la-MrP"/>
+                        <action selector="exitButtonTouchDown:" destination="-1" eventType="touchDown" id="GPg-xT-IcA"/>
                     </connections>
                 </button>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQ2-Q4-8eo">

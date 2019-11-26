@@ -118,9 +118,12 @@ class GameUIView: UIView{
     
     @IBAction func exitButtonAction(_ sender: Any) {
         self.delegate?.exitButton?()
-        HapticGenerator.instance.play(4)
+        pauseButtonAction(self)
     }
     
+    @IBAction func exitButtonTouchDown(_ sender: Any) {
+        HapticGenerator.instance.play(4)
+    }
     
     func rotate(button : UIButton, duration : TimeInterval){
         let degree = isToggle ? GLKMathDegreesToRadians(-180) : 0 //the value in degrees

@@ -89,7 +89,7 @@ class Player : SCNNode{
     
     func checkFinished(){
         let position = SCNVector3Make(playerNode.presentation.worldPosition.x, 0, playerNode.presentation.worldPosition.z)
-        //        print(calculateDistance(nodeA: position, nodeB: finishLocation))
+        print(calculateDistance(from: position, to: finishLocation))
         if calculateDistance(from: position, to: finishLocation) < 0.8 {
             isFinished = true
         }

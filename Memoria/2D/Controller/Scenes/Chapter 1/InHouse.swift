@@ -72,6 +72,7 @@ class InHouse : SKScene{
         frameBelakang.position = pulang1.position
         frameBelakang.zPosition = 2
         
+        lastFoto.name = "last"
         lastFoto.size = CGSize(width: view.frame.width, height: view.frame.height)
         lastFoto.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         
@@ -82,7 +83,7 @@ class InHouse : SKScene{
         }
         
         addGesture(to : view)
-
+        
     }
     
     func addGesture(to view : SKView){
@@ -104,11 +105,11 @@ class InHouse : SKScene{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-        let location = touch.location(in: self)
-        let nodesarray = nodes(at: location)
-           
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
             for node in nodesarray {
-                 if node.name == "Foto" {
+                if node.name == "Foto" {
                     
                     for gesture in view!.gestureRecognizers!{
                         view!.removeGestureRecognizer(gesture)
@@ -165,12 +166,23 @@ class InHouse : SKScene{
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let node = self.currentNode {
             if node.position.y >= 280 && stateGeser == 0{
-               stateGeser += 1
-               addChild(lastFoto)
-               frameDepan.removeFromParent()
-               frameBelakang.removeFromParent()
-               frameFoto.removeFromParent()
-           }
+                stateGeser += 1
+                addChild(lastFoto)
+                frameDepan.removeFromParent()
+                frameBelakang.removeFromParent()
+                frameFoto.removeFromParent()
+            }
+        }
+        
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
+            for node in nodesarray {
+                if node.name == "last" {
+                    SpriteManager.instance.loadGame(level : 1)
+                }
+            }
         }
     }
     

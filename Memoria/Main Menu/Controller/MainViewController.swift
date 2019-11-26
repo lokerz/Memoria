@@ -11,8 +11,8 @@ import SpriteKit
 import GameplayKit
 
 @objc protocol TransitionDelegate{
-    @objc optional func showSpriteKit()
-    @objc optional func showSceneKit()
+    @objc optional func showSpriteKit(index : Int, transition : SKTransition)
+    @objc optional func showSceneKit(level : Int)
 }
 
 class MainViewController: UIViewController, TransitionDelegate {
@@ -47,24 +47,31 @@ class MainViewController: UIViewController, TransitionDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideUI()
 
     }
     
     
     func showSpriteKit(index : Int, transition : SKTransition){
         DispatchQueue.main.async {
-            self.spriteManager.callScene(index: index, transition: transition)
+            self.spriteManager.callScene(index: index)
             self.gameViewController.view.isHidden = true
             self.spriteViewController.view.isHidden = false
+            self.gameViewController.isActive = false
+            self.spriteViewController.isActive = true
+
         }
     }
     
     func showSceneKit(level : Int){
+        print(#function, level)
         DispatchQueue.main.async {
             self.gameViewController.setup(level: level)
-            self.gameViewController.view.isHidden = true
-            self.spriteViewController.view.isHidden = false
+            self.gameViewController.view.isHidden = false
+            self.spriteViewController.view.isHidden = true
+            self.uiview.isHidden = false
+            self.gameViewController.isActive = true
+            self.spriteViewController.isActive = false
+
         }
     }
     
@@ -101,12 +108,9 @@ extension MainViewController : GameUIDelegate{
         uiview.delegate = self
         uiview.setupButton()
         view.addSubview(uiview)
-        hideUI()
-    }
-    
-    func hideUI(){
         uiview.isHidden = true
     }
+    
     
     func bringUIFront(){
         view.bringSubviewToFront(uiview)
@@ -118,7 +122,7 @@ extension MainViewController : GameUIDelegate{
     
     func exitButton() {
         showSpriteKit(index: -1, transition: .fade(withDuration: 0.5))
-        hideUI()
+        uiview.isHidden = true
         saveGame()
     }
     

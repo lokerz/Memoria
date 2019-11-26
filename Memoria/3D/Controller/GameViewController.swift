@@ -18,6 +18,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     var levelManager = LevelManager()
     var gestureManager = GestureManager.instance
+    var delegate : TransitionDelegate?
     var isLoading = false
     
     
@@ -41,7 +42,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if levelManager.player.isFinished && !isLoading{
-            nextLevel()
+//            nextLevel()
+            self.delegate?.showSpriteKit?()
         }
         
         levelManager.checkPlayer()

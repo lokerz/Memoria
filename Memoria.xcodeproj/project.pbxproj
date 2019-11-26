@@ -405,6 +405,16 @@
 			path = "Chapter 1";
 			sourceTree = "<group>";
 		};
+		47F933CA238BF189002FCB6C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F157324D237567DE00E7891E /* MainMenu.swift */,
+				F157324F237567F500E7891E /* ChapterSelect.swift */,
+				47F2ADAC2383CF590093F313 /* Chapter 1 */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		47FE5AE523740F17007993D4 /* Main Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,14 +475,12 @@
 			isa = PBXGroup;
 			children = (
 				47F2ADAE2383D0930093F313 /* SpriteKitViewController.swift */,
-				F157324D237567DE00E7891E /* MainMenu.swift */,
-				F157324F237567F500E7891E /* ChapterSelect.swift */,
-				47F2ADAC2383CF590093F313 /* Chapter 1 */,
+				47F933CA238BF189002FCB6C /* Scenes */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		F1573230237554FA00E7891E /* Scene */ = {
+		F1573230237554FA00E7891E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				F17B8BB2237D483A003E61D3 /* Prologue.sks */,
@@ -480,13 +488,13 @@
 				F157324B237567B100E7891E /* ChapterSelect.sks */,
 				47F2ADAD2383CF6D0093F313 /* Chapter 1 */,
 			);
-			path = Scene;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		F15732382375552700E7891E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F1573230237554FA00E7891E /* Scene */,
+				F1573230237554FA00E7891E /* Scenes */,
 				F15732392375553800E7891E /* 2D.storyboard */,
 			);
 			path = View;

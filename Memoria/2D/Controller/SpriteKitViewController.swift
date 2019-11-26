@@ -10,8 +10,11 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+
 class SpriteKitViewController: UIViewController {
     var spriteManager = SpriteManager.instance
+    var delegate : TransitionDelegate?
+    
     @IBOutlet weak var mainSkView: SKView!
     
     override func viewDidLoad() {

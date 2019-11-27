@@ -181,7 +181,8 @@ class PaperWork: SKScene {
                     }
                         
                     else if node.name == "nextButton"{
-                       SpriteManager.instance.callScene(index: 5, transition: .fade(withDuration: 1))
+                        SpriteManager.instance.callScene(index: 5, transition: .fade(withDuration: 1))
+
                     }
                 }
             }
@@ -201,7 +202,6 @@ class PaperWork: SKScene {
                         
                     }
                     else if touchLocation != startTouch{
-                        print(touchLocation)
                         pen.position = touchLocation
                         
                         writeState += 1

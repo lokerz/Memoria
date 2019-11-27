@@ -9,34 +9,41 @@
 import SpriteKit
 
 class PhotoScene: SKScene {
+    var mono = 0
     let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     let background = SKSpriteNode()
+    
+    let text = ["This is the start of a new journey in my life",
+    "Because of my parents love and affection, I grow up to be a happy and healthy boy.",
+    "And I also have a good grade at my school, everything was going well until that accident happen.",
+    "My father was diagnosed with a heart attack, and not long after that, he left the world.",
+    "It’s the toughest time in my life. Although it takes time, I manage to recover because I know I still need to take care of my mom, a figure whom I need to protect no matter what it takes."
+    ]
     
     let photo1 = SKSpriteNode(imageNamed: "Photo1")
     let photo2 = SKSpriteNode(imageNamed: "Photo2")
     let photo3 = SKSpriteNode(imageNamed: "Photo3")
     let photo4 = SKSpriteNode(imageNamed: "Photo4")
     
+    let border = SKSpriteNode(imageNamed: "Monologue")
+    let monologue = SKLabelNode()
+    let monologueName = SKLabelNode()
+    
     let house = SKSpriteNode(imageNamed: "House")
     var state = 1
     var stateGesture = 0
     
-    let border = SKSpriteNode()
-    
-    //Photo Size
     var photoWidth = 300
     var photoHeight = 400
     
-    //Photo Scrolling
     var distanceMove : CGFloat = 500
     var durationMove = 0.8
     
-    let fadeIn = SKAction.fadeIn(withDuration: 1.2)
-    let fadeOut = SKAction.fadeOut(withDuration: 1.2)
+    let fadeIn = SKAction.fadeAlpha(to: 1, duration: 0.8)
+    let fadeOut = SKAction.fadeAlpha(to: 0, duration: 0.8)
 
     override func didMove(to view: SKView) {
         addGestures(to : view)
-        
         
         border.zPosition = 3
         border.anchorPoint = CGPoint(x: 0.5, y: 0)
@@ -44,7 +51,26 @@ class PhotoScene: SKScene {
         border.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
         border.alpha = 0
         
-        //Declaring Node
+        monologue.horizontalAlignmentMode = .center
+        monologue.verticalAlignmentMode = .center
+        monologue.preferredMaxLayoutWidth = view.frame.width - 200
+        monologue.fontSize = 16
+        monologue.numberOfLines = 2
+        monologue.position.x = border.position.x
+        monologue.position.y = border.position.y + view.frame.height/8
+        monologue.zPosition = 4
+        monologue.fontColor = .black
+        monologue.alpha = 0
+        monologue.fontName = "Roboto-Light"
+        
+        monologueName.text = "Elio"
+        monologueName.position = CGPoint(x: 100, y: view.frame.height - 30)
+        monologueName.fontSize = 22
+        monologueName.fontName = "Roboto-Medium"
+        monologueName.fontColor = .black
+        monologueName.zPosition = 4
+        monologueName.alpha = 0
+        
         house.name = "house"
         house.size = CGSize(width: view.frame.width, height: view.frame.height)
         house.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
@@ -55,10 +81,8 @@ class PhotoScene: SKScene {
         background.size = CGSize(width: view.frame.width, height: view.frame.height)
         background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         background.color = UIColor.init(red: 140, green: 107, blue: 79, alpha: 0.6)
-//        background.color = UIColor.init(hue: 40, saturation: 20, brightness: 1, alpha: 1)
         background.zPosition = 2
 
-        
         photo1.size = CGSize(width: 770, height: 360)
         photo1.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 )
         photo1.alpha = 0
@@ -82,6 +106,9 @@ class PhotoScene: SKScene {
         button.zPosition = 5
         button.name = "nextButton"
         button.size = CGSize(width: 110, height: 100)
+        
+        monologueFadeIn()
+        monologue.text = text[stateGesture]
     }
     
     func addGestures(to view: SKView){
@@ -112,7 +139,8 @@ class PhotoScene: SKScene {
                     photo1.run(fadeIn)
                     photo2.run(fadeIn)
                     
-//                    self.addChild(self.background)
+                    monologue.text = text[stateGesture + 1]
+                    
                     self.addChild(self.photo1)
                     self.addChild(self.photo2)
                     self.addChild(self.photo3)
@@ -147,6 +175,13 @@ class PhotoScene: SKScene {
             photo3.run(move3)
             photo4.run(move4)
             self.stateGesture += 1
+            
+            if mono <= stateGesture {
+                monologueFadeIn()
+                mono = stateGesture + 1
+                monologue.text = text[mono]
+            }
+            
             view!.isUserInteractionEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                 self.view!.isUserInteractionEnabled = true
@@ -179,6 +214,11 @@ class PhotoScene: SKScene {
                 photo3.run(move3)
                 photo4.run(move4)
                 self.stateGesture -= 1
+            
+            if mono >= stateGesture {
+                monologueFadeOut()
+            }
+            
                 view!.isUserInteractionEnabled = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
                     self.view!.isUserInteractionEnabled = true
@@ -186,4 +226,21 @@ class PhotoScene: SKScene {
         }
     }
 
+    func monologueFadeIn(){
+        border.removeFromParent()
+        monologue.removeFromParent()
+        monologueName.removeFromParent()
+        addChild(border)
+        addChild(monologue)
+        addChild(monologueName)
+        border.run(fadeIn)
+        monologue.run(fadeIn)
+        monologueName.run(fadeIn)
+    }
+    
+    func monologueFadeOut(){
+        border.run(fadeOut)
+        monologueName.run(fadeOut)
+        monologue.run(fadeOut)
+    }
 }

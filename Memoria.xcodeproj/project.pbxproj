@@ -37,8 +37,9 @@
 		47F2ADA8237E9E6A0093F313 /* Player3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADA7237E9E6A0093F313 /* Player3.swift */; };
 		47F2ADAB237EACD50093F313 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADAA237EACD50093F313 /* Bubble.swift */; };
 		47F2ADAF2383D0930093F313 /* SpriteKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADAE2383D0930093F313 /* SpriteKitViewController.swift */; };
+		47F933CD238D319A002FCB6C /* PlayClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47F933CB238D319A002FCB6C /* PlayClick.mp3 */; };
+		47F933CE238D319A002FCB6C /* Book_Flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47F933CC238D319A002FCB6C /* Book_Flip.mp3 */; };
 		47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AE723740F7F007993D4 /* MainViewController.swift */; };
-		47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AEA2375633A007993D4 /* SoundGenerator.swift */; };
 		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
 		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
 		47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */; };
@@ -116,7 +117,7 @@
 		4705CAAD2372BF2E00E874EB /* 3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = 3D.storyboard; sourceTree = "<group>"; };
 		4705CAB02372C0FD00E874EB /* GameUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUIView.swift; sourceTree = "<group>"; };
 		4705CAB82372C5ED00E874EB /* GameUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameUIView.xib; sourceTree = "<group>"; };
-		47B7A1A923585BCA0027AA1F /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47B7A1A923585BCA0027AA1F /* elio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		47B7A1B023585BCA0027AA1F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -135,8 +136,9 @@
 		47F2ADA7237E9E6A0093F313 /* Player3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player3.swift; sourceTree = "<group>"; };
 		47F2ADAA237EACD50093F313 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		47F2ADAE2383D0930093F313 /* SpriteKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitViewController.swift; sourceTree = "<group>"; };
+		47F933CB238D319A002FCB6C /* PlayClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlayClick.mp3; sourceTree = "<group>"; };
+		47F933CC238D319A002FCB6C /* Book_Flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Book_Flip.mp3; sourceTree = "<group>"; };
 		47FE5AE723740F7F007993D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		47FE5AEA2375633A007993D4 /* SoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
 		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
 		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
 		47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGearPath.swift; sourceTree = "<group>"; };
@@ -302,7 +304,7 @@
 		47B7A1AA23585BCA0027AA1F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				47B7A1A923585BCA0027AA1F /* Memoria.app */,
+				47B7A1A923585BCA0027AA1F /* elio.app */,
 				47B7A1BF23585BCD0027AA1F /* MemoriaTests.xctest */,
 				47B7A1CA23585BCE0027AA1F /* MemoriaUITests.xctest */,
 			);
@@ -437,7 +439,6 @@
 			children = (
 				F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */,
 				47B7A1E623587F120027AA1F /* HapticGenerator.swift */,
-				47FE5AEA2375633A007993D4 /* SoundGenerator.swift */,
 				F1685EA1238131F1008D710E /* PlaySound.swift */,
 			);
 			path = Model;
@@ -503,6 +504,8 @@
 		F1685EA323813439008D710E /* Sound Effect */ = {
 			isa = PBXGroup;
 			children = (
+				47F933CC238D319A002FCB6C /* Book_Flip.mp3 */,
+				47F933CB238D319A002FCB6C /* PlayClick.mp3 */,
 				F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */,
 				F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */,
 			);
@@ -545,7 +548,7 @@
 			);
 			name = Memoria;
 			productName = Memoria;
-			productReference = 47B7A1A923585BCA0027AA1F /* Memoria.app */;
+			productReference = 47B7A1A923585BCA0027AA1F /* elio.app */;
 			productType = "com.apple.product-type.application";
 		};
 		47B7A1BE23585BCD0027AA1F /* MemoriaTests */ = {
@@ -632,6 +635,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47F933CE238D319A002FCB6C /* Book_Flip.mp3 in Resources */,
 				47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */,
 				F1685EA523813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 in Resources */,
 				F1728ADF238288A70027A617 /* Roboto-MediumItalic.ttf in Resources */,
@@ -660,6 +664,7 @@
 				47B7A1B423585BCA0027AA1F /* Main.storyboard in Resources */,
 				F1728AE0238288A70027A617 /* Roboto-ThinItalic.ttf in Resources */,
 				F157324A2375679500E7891E /* MainMenu.sks in Resources */,
+				47F933CD238D319A002FCB6C /* PlayClick.mp3 in Resources */,
 				F1728AE2238288A70027A617 /* Roboto-LightItalic.ttf in Resources */,
 				F157323A2375553800E7891E /* 2D.storyboard in Resources */,
 			);
@@ -702,7 +707,6 @@
 				4705CA3F236409E500E874EB /* LevelTwoManager.swift in Sources */,
 				F15732452375587800E7891E /* PaperWork.swift in Sources */,
 				47F2ADAF2383D0930093F313 /* SpriteKitViewController.swift in Sources */,
-				47FE5AEB2375633A007993D4 /* SoundGenerator.swift in Sources */,
 				4705CAA323715E7900E874EB /* Player2.swift in Sources */,
 				F15732432375587800E7891E /* Office.swift in Sources */,
 				4705CA3B23617DFE00E874EB /* Pillar.swift in Sources */,
@@ -905,8 +909,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mentimunmulus.Memoria;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentimunmulus.elio;
+				PRODUCT_NAME = elio;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -923,8 +927,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mentimunmulus.Memoria;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mentimunmulus.elio;
+				PRODUCT_NAME = elio;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

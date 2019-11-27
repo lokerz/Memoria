@@ -11,7 +11,10 @@ import SpriteKit
 class ChapterSelect: SKScene {
     
     var state = 1
-    
+    let playPosition : CGFloat = 160
+    var hapticIntensity : Float = 0.5
+    var hapticSharpness : Float = 0.5
+
     let chapterName = [
         "",
         "Memoire 1 ~ Emptiness",
@@ -98,30 +101,35 @@ class ChapterSelect: SKScene {
         whiteBorder.size = chapter1.size
         
         back.name = "back"
+        back.run(SKAction.setTexture(SKTexture(imageNamed: "backButton"),resize: true))
         back.zPosition = 2
         back.position = CGPoint(x: 70, y: view.frame.height - 40)
         
-        playText.text = "PLAY"
-        playText.name = "play"
-        playText.fontName = "Roboto-Medium"
-        playText.fontColor = .black
-        playText.fontSize = 14
-        playText.zPosition = 3
-        playText.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 157)
+        let attrs: [NSAttributedString.Key : Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont(name: "Roboto-Black", size: 15) as Any,
+            .kern: 2
+        ]
+        playText.attributedText = NSAttributedString(string: "PLAY", attributes: attrs)
         
+        playText.zPosition = 3
+        playText.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - playPosition - 7)
+        
+        playBox.name = "play"
         playBox.fillColor = UIColor.init(red: 255/255, green: 229/255, blue: 139/255, alpha: 1)
         playBox.zPosition = 2
-        playBox.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 150)
+        playBox.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - playPosition)
         playBox.strokeColor = .black
         
         dropShadowPlayBox.zPosition = 1
         dropShadowPlayBox.fillColor = .black
         dropShadowPlayBox.strokeColor = .clear
-        dropShadowPlayBox.position = CGPoint(x: view.frame.width/2 + 5, y: view.frame.height/2 - 155)
+        dropShadowPlayBox.position = CGPoint(x: view.frame.width/2 + 5, y: view.frame.height/2 - playPosition - 5)
         
         leftButton.name = "leftButton"
         leftButton.position = CGPoint(x: 200, y: view.frame.height/2)
         leftButton.zPosition = 2
+        leftButton.alpha = 0
         
         rightButton.name = "rightButton"
         rightButton.position = CGPoint(x: view.frame.width - 200, y: view.frame.height/2)
@@ -142,21 +150,34 @@ class ChapterSelect: SKScene {
         
         addChild(leftButton)
         addChild(rightButton)
-        
-        let moveRightArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: view.frame.width-180, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: view.frame.width-200, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
-        let moveLeftArrow = [SKAction.wait(forDuration: 2),SKAction.moveTo(x: 180, duration: 1),SKAction.fadeAlpha(to: 0, duration: 1),SKAction.moveTo(x: 200, duration: 0.5),SKAction.fadeAlpha(to: 1, duration: 1)]
-        leftButton.run(SKAction.repeatForever(SKAction.sequence(moveLeftArrow)))
-        rightButton.run(SKAction.repeatForever(SKAction.sequence(moveRightArrow)))
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
             let nodesarray = nodes(at: location)
             
             for node in nodesarray {
                 if node.name == "play"{
-                    print(state)
+                    playBox.fillColor = UIColor.init(red: 251/255, green: 247/255, blue: 221/255, alpha: 1)
+                }
+                if node.name == "back"{
+                    back.run(SKAction.setTexture(SKTexture(imageNamed: "backButtonSelected"),resize: true))
+                }
+            }
+        }
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetButton()
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
+            for node in nodesarray {
+                if node.name == "play"{
+                    HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     switch state {
                     case 1: spriteManager.callScene(index: 1, transition: .fade(withDuration: 1))
                     case 2: spriteManager.callScene(index: 6, transition: .fade(withDuration: 0.5))
@@ -166,23 +187,21 @@ class ChapterSelect: SKScene {
                     default: break
                     }
                     PlaySound.instance.player?.stop()
-                    HapticGenerator.instance.play(4)
                     
                 }
                 else if node.name == "leftButton"{
+                    HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     prevChapter()
-                    HapticGenerator.instance.play(4)
-                    
+
                 }
                 else if node.name == "rightButton"{
+                    HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     nextChapter()
-                    HapticGenerator.instance.play(4)
-                    
+
                 }
                 else if node.name == "back"{
+                    HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     spriteManager.callScene(index: 100, transition: .fade(withDuration: 1))
-                    HapticGenerator.instance.play(4)
-                    
                 }
             }
         }
@@ -202,17 +221,46 @@ class ChapterSelect: SKScene {
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer){
         nextChapter()
+        resetButton()
+        
     }
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer){
         prevChapter()
+        resetButton()
+        
+    }
+    
+    func rightArrowMove(alpha : CGFloat){
+        let moveRightArrow = [SKAction.moveTo(x: view!.frame.width-170, duration: durationMove/3),SKAction.fadeAlpha(to: 0, duration: durationMove/3),SKAction.moveTo(x: view!.frame.width-200, duration: 0.3),SKAction.fadeAlpha(to:alpha, duration: durationMove/3)]
+        rightButton.run(SKAction.sequence(moveRightArrow))
+    }
+    
+    func leftArrowMove(alpha : CGFloat){
+        let moveLeftArrow = [SKAction.moveTo(x: 170, duration: durationMove/3),SKAction.fadeAlpha(to: 0, duration: durationMove/3),SKAction.moveTo(x: 200, duration: 0.3),SKAction.fadeAlpha(to: alpha, duration: durationMove/3)]
+        leftButton.run(SKAction.sequence(moveLeftArrow))
+    }
+    
+    func fadeIn(node : SKNode){
+        let fadeIn = SKAction.fadeAlpha(to: 1, duration: durationMove)
+        node.run(fadeIn)
+    }
+    
+    func fadeOut(node : SKNode){
+        let fadeOut = SKAction.fadeAlpha(to: 0, duration: durationMove)
+        node.run(fadeOut)
     }
     
     func nextChapter(){
-        removeChapters()
+        if state < 5 {
+            removeChapters()
+            chapterTitleChange()
+            rightArrowMove(alpha : state == 4 ? 0 : 1)
+        }
         switch state {
         case 1:
             chapterMoveNext(chapter1: chapter1, chapter2: chapter2)
+            fadeIn(node : leftButton)
         case 2:
             chapterMoveNext(chapter1: chapter2, chapter2: chapter3)
         case 3:
@@ -222,27 +270,24 @@ class ChapterSelect: SKScene {
         default:
             print(state)
         }
-        chapterTitleChange()
     }
     
     func prevChapter(){
+        if state > 1 {
+            removeChapters()
+            chapterTitleChange()
+            leftArrowMove(alpha : state == 2 ? 0 : 1)
+        }
         switch state {
         case 2:
-            removeChapters()
             chapterMovePrev(chapter1: chapter2, chapter2: chapter1)
-            chapterTitleChange()
         case 3:
-            removeChapters()
             chapterMovePrev(chapter1: chapter3, chapter2: chapter2)
-            chapterTitleChange()
         case 4:
-            removeChapters()
             chapterMovePrev(chapter1: chapter4, chapter2: chapter3)
-            chapterTitleChange()
         case 5:
-            removeChapters()
             chapterMovePrev(chapter1: chapter5, chapter2: chapter4)
-            chapterTitleChange()
+            fadeIn(node: rightButton)
         default:
             print(state)
         }
@@ -264,55 +309,60 @@ class ChapterSelect: SKScene {
         chapter5.removeFromParent()
     }
     
-    func chapterMoveNext(chapter1: SKNode, chapter2: SKNode){
-        addChild(chapter1)
-        addChild(chapter2)
-        
-        let point1 = CGPoint(x: chapter1.position.x - self.view!.frame.width/4, y: view!.frame.height/2)
-        let point2 = CGPoint(x: chapter2.position.x - self.view!.frame.width/4, y: view!.frame.height/2)
-        
-        let move1 = SKAction.move(to: point1, duration: durationMove)
-        move1.timingMode = SKActionTimingMode.easeInEaseOut
-        let move2 = SKAction.move(to: point2, duration: durationMove)
-        move2.timingMode = SKActionTimingMode.easeInEaseOut
-        
-        if self.state < 5{
-            chapter1.run(move1)
-            chapter2.run(move2)
-            
-            chapter1.run(SKAction.fadeAlpha(to: 0, duration: durationMove))
-            chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
-            self.state += 1
-            view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                self.view!.isUserInteractionEnabled = true
-            }
-        }
-    }
-    
-    func chapterMovePrev(chapter1: SKNode, chapter2: SKNode){
-        addChild(chapter1)
-        addChild(chapter2)
-        
-        let point1 = CGPoint(x: chapter1.position.x + self.view!.frame.width/4, y: view!.frame.height/2)
-        let point2 = CGPoint(x: chapter2.position.x + self.view!.frame.width/4, y: view!.frame.height/2)
-        
-        let move1 = SKAction.move(to: point1, duration: durationMove)
-        move1.timingMode = SKActionTimingMode.easeInEaseOut
-        let move2 = SKAction.move(to: point2, duration: durationMove)
-        move2.timingMode = SKActionTimingMode.easeInEaseOut
-        
-        if self.state > 1{
-            chapter1.run(move1)
-            chapter2.run(move2)
-            
-            chapter1.run(SKAction.fadeAlpha(to: 0, duration: durationMove))
-            chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
-            self.state -= 1
-            view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                self.view!.isUserInteractionEnabled = true
-            }
-        }
-    }
+     func chapterMoveNext(chapter1: SKNode, chapter2: SKNode){
+           addChild(chapter1)
+           addChild(chapter2)
+           
+           let point1 = CGPoint(x: chapter1.position.x - self.view!.frame.width/4, y: view!.frame.height/2)
+           let point2 = CGPoint(x: chapter2.position.x - self.view!.frame.width/4, y: view!.frame.height/2)
+           
+           let move1 = SKAction.move(to: point1, duration: durationMove)
+           move1.timingMode = SKActionTimingMode.easeInEaseOut
+           let move2 = SKAction.move(to: point2, duration: durationMove)
+           move2.timingMode = SKActionTimingMode.easeInEaseOut
+           
+           if self.state < 5{
+               chapter1.run(move1)
+               chapter2.run(move2)
+               
+               chapter1.run(SKAction.fadeAlpha(to: 0, duration: durationMove))
+               chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
+               self.state += 1
+               view!.isUserInteractionEnabled = false
+               DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                   self.view!.isUserInteractionEnabled = true
+               }
+           }
+       }
+       
+       func chapterMovePrev(chapter1: SKNode, chapter2: SKNode){
+           addChild(chapter1)
+           addChild(chapter2)
+           
+           let point1 = CGPoint(x: chapter1.position.x + self.view!.frame.width/4, y: view!.frame.height/2)
+           let point2 = CGPoint(x: chapter2.position.x + self.view!.frame.width/4, y: view!.frame.height/2)
+           
+           let move1 = SKAction.move(to: point1, duration: durationMove)
+           move1.timingMode = SKActionTimingMode.easeInEaseOut
+           let move2 = SKAction.move(to: point2, duration: durationMove)
+           move2.timingMode = SKActionTimingMode.easeInEaseOut
+           
+           if self.state > 1{
+               chapter1.run(move1)
+               chapter2.run(move2)
+               
+               chapter1.run(SKAction.fadeAlpha(to: 0, duration: durationMove))
+               chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
+               self.state -= 1
+               view!.isUserInteractionEnabled = false
+               DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+                   self.view!.isUserInteractionEnabled = true
+               }
+           }
+       }
+       
+       func resetButton(){
+           playBox.fillColor = UIColor.init(red: 255/255, green: 229/255, blue: 139/255, alpha: 1)
+           back.run(SKAction.setTexture(SKTexture(imageNamed: "backButton"),resize: true))
+       }
 }

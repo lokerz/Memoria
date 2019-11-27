@@ -21,7 +21,7 @@ class Office: SKScene{
     
     let message = "Come with me, and see what has been foretold..."
     
-    let albertBG = SKSpriteNode(imageNamed: "Kerja_3")
+    let elioBG = SKSpriteNode(imageNamed: "Kerja_3")
     
     var spriteManager = SpriteManager.instance
     
@@ -38,10 +38,10 @@ class Office: SKScene{
         border.size = CGSize(width: view.frame.width, height: view.frame.height/4)
         border.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
         
-        albertBG.name = "background"
-        albertBG.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
-        albertBG.zPosition = -1
-        albertBG.size = CGSize(width: view.frame.width, height: view.frame.height)
+        elioBG.name = "background"
+        elioBG.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        elioBG.zPosition = -1
+        elioBG.size = CGSize(width: view.frame.width, height: view.frame.height)
         
         monolog.text = ""
         monolog.zPosition = 2
@@ -63,7 +63,7 @@ class Office: SKScene{
         mobA.zPosition = -0.5
         
         addChild(mobA)
-        addChild(albertBG)
+        addChild(elioBG)
         addChild(border)
 
         addBubble()
@@ -77,7 +77,8 @@ class Office: SKScene{
             
             for node in nodesarray {
                 if node.name == "nextButton"{
-                    spriteManager.callScene(index: 6, transition: .fade(withDuration: 1))
+                    SpriteManager.instance.callScene(index: 6, transition: .fade(withDuration: 1))
+
                 }
                 if node.name == "background"{
                     moveBubble()

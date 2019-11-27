@@ -19,15 +19,15 @@ class Prologue: SKScene {
     let button = SKSpriteNode(imageNamed: "nextButton")
     
     let bacot = [
-        "Lost",
-        "Stucked",
-        "Trapped in the spinning wheel of life",
-        "To the point where you could not think",
-        "What is the purpose of your life?",
-        "Now I will share a story",
-        "A story which will change my whole life forever",
-        "My name is Albert",
-        "And this is my story"
+        "lost without direction...",
+        "trapped in ",
+        "in this constantly spinning wheel of life",
+        "to the point where one could not think",
+        "what is the purpose of your life?",
+//        "Now I will share a story",
+//        "A story which will change my whole life forever",
+        "I am elio",
+//        "And this is my story"
     ]
     
     override func didMove(to view: SKView) {
@@ -42,7 +42,7 @@ class Prologue: SKScene {
         background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         background.size = CGSize(width: view.frame.width, height: view.frame.height)
         
-        prologue.fontName = "Helvetica Neue Light"
+        prologue.fontName = "Roboto-Regular"
         prologue.horizontalAlignmentMode = .center
         prologue.verticalAlignmentMode = .center
         prologue.name = "prologue"
@@ -74,6 +74,7 @@ class Prologue: SKScene {
             }
             else{
                 SpriteManager.instance.callScene(index: 2, transition: .fade(withDuration: 1))
+
             }
         }
         

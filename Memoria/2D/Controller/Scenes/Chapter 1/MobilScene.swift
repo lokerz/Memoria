@@ -9,9 +9,6 @@
 import SpriteKit
 
 class MobilScene: SKScene {
-    var stateMonologue = 0
-    var stateMono = 0
-    
     let button = SKSpriteNode(imageNamed: "nextButton.png")
     let ibuAnak = SKSpriteNode(imageNamed: "Ibu Anak")
     let ayah = SKSpriteNode(imageNamed: "Ayah Ibu Anak")
@@ -20,6 +17,7 @@ class MobilScene: SKScene {
     let blocker = SKSpriteNode()
     
     let monologue = SKLabelNode()
+    let monologueName = SKLabelNode()
     
     let fadeIn = SKAction.fadeAlpha(by: 1, duration: 0.5)
     let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
@@ -71,13 +69,22 @@ class MobilScene: SKScene {
         monologue.horizontalAlignmentMode = .center
         monologue.verticalAlignmentMode = .center
         monologue.preferredMaxLayoutWidth = view.frame.width - 200
-        monologue.fontSize = 22
+        monologue.fontSize = 16
         monologue.numberOfLines = 2
         monologue.position.x = border.position.x
         monologue.position.y = border.position.y + view.frame.height/8
         monologue.zPosition = 4
         monologue.fontColor = .black
         monologue.alpha = 0
+        monologue.fontName = "Roboto-Light"
+        
+        monologueName.text = "Elio"
+        monologueName.position = CGPoint(x: 100, y: view.frame.height - 30)
+        monologueName.fontSize = 22
+        monologueName.fontName = "Roboto-Medium"
+        monologueName.fontColor = .black
+        monologueName.zPosition = 4
+        monologueName.alpha = 0
         
         button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         button.position = CGPoint(x:view.frame.width-60, y: 60)
@@ -86,42 +93,37 @@ class MobilScene: SKScene {
         button.size = CGSize(width: 110, height: 100)
         
         addChild(ibuAnak)
+        
+        monologueFadeIn()
+        monologue.text = "Today is a special day for me"
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Registering Touch Actions
         if let touch = touches.first {
-        let location = touch.location(in: self)
-        let nodesarray = nodes(at: location)
-            
-        for node in nodesarray {
-            if node.name == "paper" {
-                switch statePaper {
-                case 1:
-                    addChild(blocker)
-                    addChild(paperBig)
-                    
-                    paperBig.run(SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.2))
-
-                    statePaper += 1
-                    break
-                default:
-                    break
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+                
+            for node in nodesarray {
+                if node.name == "paper" {
+                    switch statePaper {
+                    case 1:
+                        addChild(blocker)
+                        addChild(paperBig)
+                        
+                        paperBig.run(SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.2))
+                        monologueFadeOut()
+                        button.removeFromParent()
+                        addChild(button)
+                        statePaper += 1
+                        break
+                    default:
+                        break
+                    }
                 }
-            }
-            else if node.name == "ibuAnak" {
-                if stateMonologue == 0{
-                    stateMonologue += 1
-                    addChild(border)
-                    addChild(monologue)
-                    border.run(fadeIn)
-                    monologue.run(fadeIn)
+                else if node.name == "ibuAnak" {
+                    monologueFadeOut()
                     
-                    monologue.text = "Today is a special day day for me"
-                }
-                else if stateMonologue == 1{
-                    border.run(fadeOut)
-                    monologue.run(fadeOut)
                     ayah.removeFromParent()
                     paper.removeFromParent()
                     
@@ -133,33 +135,33 @@ class MobilScene: SKScene {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         self.ayah.run(SKAction.fadeIn(withDuration: 1))
+                        self.monologueFadeIn()
+                        self.monologue.text = "Because I was picked up by these people whom will be my new parents"
                     }
                 }
-            }
-            else if node.name == "paperBig"{
-                if stateMono == 0{
-                    border.removeFromParent()
-                    monologue.removeFromParent()
-                    addChild(border)
-                    addChild(monologue)
-                    
-                    border.run(SKAction.fadeIn(withDuration: 0.5))
-                    monologue.run(SKAction.fadeIn(withDuration: 0.5))
-                    monologue.text = "because i was picked up by these people whom will be my new parents"
-                    
-                    button.removeFromParent()
-                    stateMono += 1
+                else if node.name == "nextButton" {
+                    SpriteManager.instance.callScene(index: 3, transition: .fade(withDuration: 1))
                 }
-                else if stateMono == 1{
-                    button.removeFromParent()
-                    addChild(button)
-                }
-            }
-            else if node.name == "nextButton" {
-                   SpriteManager.instance.callScene(index: 3, transition: .fade(withDuration: 1))
-            }
             }
         }
+    }
+    
+    func monologueFadeIn(){
+        border.removeFromParent()
+        monologue.removeFromParent()
+        monologueName.removeFromParent()
+        addChild(border)
+        addChild(monologue)
+        addChild(monologueName)
+        border.run(fadeIn)
+        monologue.run(fadeIn)
+        monologueName.run(fadeIn)
+    }
+    
+    func monologueFadeOut(){
+        border.run(fadeOut)
+        monologueName.run(fadeOut)
+        monologue.run(fadeOut)
     }
 
 }

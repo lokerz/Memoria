@@ -18,16 +18,16 @@ class FrontHouse: SKScene{
     let fadeIn = SKAction.fadeAlpha(to: 1, duration: 1)
     
     let houseNight = SKSpriteNode(imageNamed: "House_Night")
-    let houseNightAlbert = SKSpriteNode(imageNamed: "House_Night_Albert")
+    let houseNightElio = SKSpriteNode(imageNamed: "House_Night_Albert")
     
     override func didMove(to view: SKView) {
         addGestures(to: view)
         
-        houseNightAlbert.size = CGSize(width: view.frame.width, height: view.frame.height)
-        houseNightAlbert.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
-        houseNightAlbert.name = "background"
-        houseNightAlbert.zPosition = 0
-        houseNightAlbert.alpha = 0
+        houseNightElio.size = CGSize(width: view.frame.width, height: view.frame.height)
+        houseNightElio.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        houseNightElio.name = "background"
+        houseNightElio.zPosition = 0
+        houseNightElio.alpha = 0
         
         houseNight.size = CGSize(width: view.frame.width, height: view.frame.height)
         houseNight.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
@@ -52,8 +52,8 @@ class FrontHouse: SKScene{
         view.isUserInteractionEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.addChild(self.houseNightAlbert)
-            self.houseNightAlbert.run(SKAction.fadeIn(withDuration: 1))
+            self.addChild(self.houseNightElio)
+            self.houseNightElio.run(SKAction.fadeIn(withDuration: 1))
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -99,6 +99,7 @@ class FrontHouse: SKScene{
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.view?.isUserInteractionEnabled = true
             SpriteManager.instance.callScene(index: 7, transition: .fade(withDuration: 1))
+
         }
     }
 }

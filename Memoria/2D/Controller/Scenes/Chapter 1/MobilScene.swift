@@ -22,6 +22,9 @@ class MobilScene: SKScene {
     let fadeIn = SKAction.fadeAlpha(by: 1, duration: 0.5)
     let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
     
+    let hint = SKSpriteNode(imageNamed: "Hint")
+    let pulse = [SKAction.fadeAlpha(to: 0.8, duration: 1), SKAction.wait(forDuration: 0.3), SKAction.fadeAlpha(to: 0, duration: 1), SKAction.wait(forDuration: 0.3)]
+    
     var statePaper = 1
     var stateButton = 1
     
@@ -83,6 +86,12 @@ class MobilScene: SKScene {
         nextButton.isHidden = true
         addChild(nextButton)
         
+        hint.position = paper.position
+        hint.zPosition = 5
+        hint.size = CGSize(width: 100, height: 100)
+        hint.alpha = 0
+        hint.run(SKAction.repeatForever(SKAction.sequence(pulse)))
+        
         addChild(ibuAnak)
         addChild(ayah)
         addChild(paper)
@@ -142,32 +151,19 @@ class MobilScene: SKScene {
                     ibuAnak.run(move)
                     ibuAnak.run(scale)
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                        self.ayah.run(SKAction.fadeIn(withDuration: 1))
+                    let dadAdd = SKAction.customAction(withDuration: duration) { (SKNode, CGFloat) in
+                        self.ayah.run(SKAction.fadeIn(withDuration: duration))
                         self.monologue.changeText(to: self.monologues[1])
                         self.monologue.fadeIn()
                     }
+                    
+                    self.run(SKAction.sequence([SKAction.wait(forDuration: duration), dadAdd]))
                 }
                 else if node.name == "nextButton" {
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
                     SpriteManager.instance.callScene(index: 3, transition: .fade(withDuration: 1))
                 }
             }
-        }
-    }
-}
-
-extension SKSpriteNode {
-    func aspectFillToSize(fillSize: CGSize) {
-        if texture != nil {
-            self.size = texture!.size()
-
-            let verticalRatio = fillSize.height / self.texture!.size().height
-            let horizontalRatio = fillSize.width /  self.texture!.size().width
-
-            let scaleRatio = horizontalRatio > verticalRatio ? horizontalRatio : verticalRatio
-
-            self.setScale(scaleRatio)
         }
     }
 }

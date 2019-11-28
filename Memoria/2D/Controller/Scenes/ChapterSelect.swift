@@ -17,11 +17,11 @@ class ChapterSelect: SKScene {
     
     let chapterName = [
         "",
-        "Memoire 1 ~ Emptiness",
-        "Memoire 2 ~ Journey",
-        "Memoire 3 ~ Breeze",
-        "Memoire 4 ~ Return/Home",
-        "Memoire 5 ~ You",
+        "Mémoire 1 ~ Emptiness",
+        "Mémoire 2 ~ Journey",
+        "Mémoire 3 ~ Breeze",
+        "Mémoire 4 ~ Return",
+        "Mémoire 5 ~ You",
     ]
     let chapterTitle = SKLabelNode()
     //    let dropShadowTitle = SKLabelNode()

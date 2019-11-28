@@ -94,7 +94,7 @@ extension MainViewController : GameUIDelegate{
         uiview.delegate = self
         uiview.setupButton()
         view.addSubview(uiview)
-        uiview.isHidden = true
+        uiview.alpha = 0
     }
     
     
@@ -108,7 +108,7 @@ extension MainViewController : GameUIDelegate{
     
     func exitButton() {
         showSpriteKit(index: -1, transition: .fade(withDuration: 0.5))
-        uiview.isHidden = true
+        uiview.fadeOut()
         saveGame()
     }
     
@@ -119,13 +119,13 @@ extension MainViewController : GameUIDelegate{
 
 extension MainViewController : TransitionDelegate {
     func setupUI(state: Int) {
-        if state == 1 && uiview.isHidden{
+        if state == 1 && uiview.alpha == 0{
             DispatchQueue.main.async {
-                self.uiview.isHidden = false
+                self.uiview.fadeIn()
             }
-        } else if state == 0 && !uiview.isHidden{
+        } else if state == 0 && uiview.alpha != 0{
             DispatchQueue.main.async {
-                self.uiview.isHidden = true
+                self.uiview.fadeOut()
             }
         }
     }
@@ -151,6 +151,7 @@ extension MainViewController : TransitionDelegate {
     
     func showSceneKit(level : Int){
         print(#function, level)
+
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1, animations: {
                 self.loadingView.alpha = 1
@@ -160,13 +161,13 @@ extension MainViewController : TransitionDelegate {
                 self.spriteViewController.view.isHidden = true
                 self.gameViewController.isActive = true
                 self.spriteViewController.isActive = false
-                self.uiview.isHidden = false
                 UIView.animate(withDuration: 1, animations: {
                     self.loadingView.alpha = 0
                 }) { _ in
-                    print(self.uiview.isHidden)
+                    self.uiview.fadeIn()
                 }
             }
         }
+
     }
 }

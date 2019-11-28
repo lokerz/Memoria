@@ -93,9 +93,21 @@ class GameUIView: UIView{
         isToggle = false
     }
     
-    func fadeInPauseButton(){
-        pauseButtonOutlet.alpha = 0
-        fadeIn(button: pauseButtonOutlet, duration: 2)
+//    func fadeInPauseButton(){
+//        pauseButtonOutlet.alpha = 0
+//        fadeIn(button: pauseButtonOutlet, duration: 2)
+//    }
+//
+    func fadeIn(){
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+            self.alpha = 1
+        })
+    }
+    
+    func fadeOut(){
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+            self.alpha = 0
+        })
     }
     
     func animateButton(){

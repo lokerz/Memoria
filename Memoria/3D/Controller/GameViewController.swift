@@ -62,7 +62,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.showsStatistics = true
         view.addSubview(sceneView)
         //        sceneView.scene!.physicsWorld.contactDelegate = self
-        sceneView.debugOptions = [.showPhysicsShapes]
+        //        sceneView.debugOptions = [.showPhysicsShapes]
     }
     
     
@@ -89,10 +89,16 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         isLoading = true
         levelManager.endLevel()
         gestureManager.removeGesture(sceneView)
-        level += 1
-        let _ = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (Timer) in
-            self.setup(level: self.level)
-            self.isLoading = false
+        
+        let _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (Timer) in
+            if self.level == 3 {
+                self.delegate?.showSpriteKit?(index: 8, transition: .fade(withDuration: 1))
+            }
+            else {
+                self.level += 1
+                self.setup(level: self.level)
+                self.isLoading = false
+            }
         }
     }
     

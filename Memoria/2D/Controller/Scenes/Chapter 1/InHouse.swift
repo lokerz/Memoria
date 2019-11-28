@@ -12,7 +12,7 @@ class InHouse : SKScene{
     private var currentNode: SKNode?
     var startTouch = CGPoint()
     
-    let animationDuration = 0.85
+    let animationDuration = 0.75
     
     let pulang1 = SKSpriteNode(imageNamed: "Pulang_1")
     let pulang2 = SKSpriteNode(imageNamed: "Pulang_2")
@@ -28,6 +28,7 @@ class InHouse : SKScene{
     
     var state = 0
     var stateGeser = 0
+    var isReadyToChange = false
     
     override func didMove(to view: SKView) {
         view.isUserInteractionEnabled = false
@@ -75,6 +76,7 @@ class InHouse : SKScene{
         frameBelakang.alpha = frameDepan.alpha
         frameBelakang.zPosition = 2
         
+        lastFoto.name = "lastFoto"
         lastFoto.size = CGSize(width: view.frame.width, height: view.frame.height)
         lastFoto.position = CGPoint(x: view.frame.width/2, y: -view.frame.height/2)
         lastFoto.zPosition = 3
@@ -82,8 +84,8 @@ class InHouse : SKScene{
         addChild(pulang1)
         addChild(pulang2)
         
-        let moveUp = [SKAction.wait(forDuration: 0.2), SKAction.moveTo(y: view.frame.height/2, duration: self.animationDuration)]
-        let moveUp2 = [SKAction.wait(forDuration: 0.2), SKAction.moveTo(y: -view.frame.height/3, duration: self.animationDuration)]
+        let moveUp = [SKAction.wait(forDuration: 0.2).easeInOut(), SKAction.moveTo(y: view.frame.height/2, duration: self.animationDuration).easeInOut()]
+        let moveUp2 = [SKAction.wait(forDuration: 0.2).easeInOut(), SKAction.moveTo(y: -view.frame.height/3, duration: self.animationDuration).easeInOut()]
         
         pulang1.run(SKAction.sequence(moveUp))
         pulang2.run(SKAction.sequence(moveUp2)){
@@ -91,7 +93,7 @@ class InHouse : SKScene{
         }
         
         addGesture(to : view)
-
+        
     }
     
     func addGesture(to view : SKView){
@@ -107,19 +109,21 @@ class InHouse : SKScene{
     }
     
     func removeGestures(to view : SKView){
-        for gesture in view.gestureRecognizers!{
-            view.removeGestureRecognizer(gesture)
+        if view.gestureRecognizers != nil {
+            for gesture in view.gestureRecognizers!{
+                view.removeGestureRecognizer(gesture)
+            }
         }
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-        let location = touch.location(in: self)
-        let nodesarray = nodes(at: location)
-           
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
             for node in nodesarray {
-                 if node.name == "Foto" {
+                if node.name == "Foto" {
                     
                     for gesture in view!.gestureRecognizers!{
                         view!.removeGestureRecognizer(gesture)
@@ -178,19 +182,38 @@ class InHouse : SKScene{
             if node.position.y >= 280 && stateGeser == 0{
                 stateGeser += 1
                 addChild(lastFoto)
-                frameFoto.run(SKAction.fadeAlpha(to: 0, duration: animationDuration/2))
-                lastFoto.run(SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration))
-           }
+                frameFoto.run(SKAction.fadeAlpha(to: 0, duration: animationDuration/2).easeInOut())
+                let move = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration)
+                lastFoto.run(move.easeInOut()) {
+                    self.isReadyToChange = true
+                }
+            }
+        }
+        
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+
+            for node in nodesarray {
+                if node.name == "lastFoto" {
+                    let scale = SKAction.scale(by: 10, duration: 4).easeIn()
+                    node.run(scale)
+                    self.run(SKAction.wait(forDuration: 1)){
+                        SpriteManager.instance.loadGame(level: 1)
+                    }
+                }
+            }
         }
     }
     
     @objc func swipedDirectionUp(sender: UISwipeGestureRecognizer){
-        let moveMain = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration)
-        let moveHigh = SKAction.moveTo(y: 4*view!.frame.height/3, duration: animationDuration)
-        let moveLow = SKAction.moveTo(y: -view!.frame.height/3, duration: animationDuration)
+        let moveHigher = SKAction.moveTo(y: 13 * view!.frame.height/6, duration: animationDuration).easeInOut()
+        let moveMain = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration).easeInOut()
+        let moveHigh = SKAction.moveTo(y: 4*view!.frame.height/3, duration: animationDuration).easeInOut()
+        let moveLow = SKAction.moveTo(y: -view!.frame.height/3, duration: animationDuration).easeInOut()
         
-        let fadeIn = SKAction.fadeAlpha(to: 1, duration: animationDuration)
-        let fadeOut = SKAction.fadeAlpha(to: 0, duration: animationDuration)
+        let fadeIn = SKAction.fadeAlpha(to: 1, duration: animationDuration).easeInOut()
+        let fadeOut = SKAction.fadeAlpha(to: 0, duration: animationDuration).easeInOut()
         
         switch state {
         case 0:
@@ -206,9 +229,11 @@ class InHouse : SKScene{
         case 1:
             wait()
             removePulang()
+            addChild(pulang1)
             addChild(pulang2)
             addChild(pulang3)
             addChild(pulang4)
+            pulang1.run(moveHigher)
             pulang2.run(moveHigh)
             pulang3.run(moveMain)
             pulang4.run(moveLow)
@@ -219,6 +244,8 @@ class InHouse : SKScene{
             addChild(pulang3)
             addChild(pulang4)
             addChild(pulang5)
+            addChild(pulang2)
+            pulang2.run(moveHigher)
             pulang3.run(moveHigh)
             pulang4.run(moveMain)
             pulang5.run(moveLow)
@@ -226,15 +253,19 @@ class InHouse : SKScene{
         case 3:
             wait()
             removePulang()
+            addChild(pulang3)
             addChild(pulang4)
             addChild(pulang5)
+            pulang3.run(moveHigher)
             pulang4.run(moveHigh)
             pulang5.run(moveMain)
             state += 1
         case 4:
             wait()
             removePulang()
+            addChild(pulang4)
             addChild(pulang5)
+            pulang4.run(moveHigher)
             pulang5.run(moveHigh)
             pulang5.run(fadeOut)
             addChild(frameDepan)
@@ -254,10 +285,10 @@ class InHouse : SKScene{
     }
     
     @objc func swipedDirectionDown(sender: UISwipeGestureRecognizer){
-        let moveMain = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration)
-        let moveHigh = SKAction.moveTo(y: 4*view!.frame.height/3, duration: animationDuration)
-        let moveLow = SKAction.moveTo(y: -view!.frame.height/3, duration: animationDuration)
-        let moveOut = SKAction.moveTo(y: -7*view!.frame.height/6, duration: animationDuration)
+        let moveMain = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration).easeInOut()
+        let moveHigh = SKAction.moveTo(y: 4*view!.frame.height/3, duration: animationDuration).easeInOut()
+        let moveLow = SKAction.moveTo(y: -view!.frame.height/3, duration: animationDuration).easeInOut()
+        let moveOut = SKAction.moveTo(y: -7*view!.frame.height/6, duration: animationDuration).easeInOut()
         
         switch state {
         case 1:

@@ -35,7 +35,8 @@ class SpriteManager {
         "PaperWork",
         "Office",
         "FrontHouse",
-        "InHouse"
+        "InHouse",
+        "EndingOne"
     ]
     
     func setupView(view : SKView){
@@ -61,6 +62,7 @@ class SpriteManager {
         case 5 : scene = Office(fileNamed: scenes[index])!
         case 6 : scene = FrontHouse(fileNamed: scenes[index])!
         case 7 : scene = InHouse(fileNamed: scenes[index])!
+        case 8 : scene = EndingOne(fileNamed: scenes[index])!
         case 99 : scene = ChapterSelect(fileNamed: sceneChapter)!
         default : scene = MainMenu(fileNamed: sceneMain)!
         }
@@ -80,5 +82,9 @@ class SpriteManager {
     func loadGame(level : Int){
         gameLevel = level
         isChangingToSceneKit = true
+    }
+    
+    func callChapterSelect(index : Int, transition : SKTransition){
+        
     }
 }

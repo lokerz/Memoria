@@ -39,9 +39,9 @@ class PaperWork: SKScene {
     
     let paperSize = CGSize(width: 300, height: 380)
     
-    let fadeIn = SKAction.fadeIn(withDuration: 1.2)
-    let fadeInSlow = SKAction.fadeIn(withDuration: 2)
-    let fadeOut = SKAction.fadeOut(withDuration: 1.2)
+    let fadeIn = SKAction.fadeIn(withDuration: 1.2).easeInOut()
+    let fadeInSlow = SKAction.fadeIn(withDuration: 2).easeInOut()
+    let fadeOut = SKAction.fadeOut(withDuration: 1.2).easeInOut()
     
     
     override func didMove(to view: SKView) {

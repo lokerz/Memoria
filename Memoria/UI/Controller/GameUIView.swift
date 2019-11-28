@@ -45,7 +45,6 @@ class GameUIView: UIView{
     func commonInit(){
         Bundle.main.loadNibNamed("GameUIView", owner: self, options: nil)
         self.addSubview(contentView)
-        
     }
     
     func setupSize(_ frame : CGRect){

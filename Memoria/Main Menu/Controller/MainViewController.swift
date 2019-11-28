@@ -13,7 +13,7 @@ import GameplayKit
 @objc protocol TransitionDelegate{
     @objc optional func showSpriteKit(index : Int, transition : SKTransition)
     @objc optional func showSceneKit(level : Int)
-    @objc optional func showUI()
+    @objc optional func setupUI(state : Int)
 }
 
 class MainViewController: UIViewController {
@@ -118,10 +118,14 @@ extension MainViewController : GameUIDelegate{
 }
 
 extension MainViewController : TransitionDelegate {
-    func showUI() {
-        if uiview.isHidden{
+    func setupUI(state: Int) {
+        if state == 1 && uiview.isHidden{
             DispatchQueue.main.async {
                 self.uiview.isHidden = false
+            }
+        } else if state == 0 && !uiview.isHidden{
+            DispatchQueue.main.async {
+                self.uiview.isHidden = true
             }
         }
     }
@@ -154,13 +158,13 @@ extension MainViewController : TransitionDelegate {
                 self.gameViewController.setup(level: level)
                 self.gameViewController.view.isHidden = false
                 self.spriteViewController.view.isHidden = true
-                self.uiview.isHidden = false
                 self.gameViewController.isActive = true
                 self.spriteViewController.isActive = false
+                self.uiview.isHidden = false
                 UIView.animate(withDuration: 1, animations: {
                     self.loadingView.alpha = 0
                 }) { _ in
-                    
+                    print(self.uiview.isHidden)
                 }
             }
         }

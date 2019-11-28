@@ -48,12 +48,18 @@ class PaperWork: SKScene {
         let Paper = SKTexture(imageNamed: "Kertas")
         let setPaper = SKAction.setTexture(Paper)
         
+        removeGesture(for : view)
+        
         albertWork.run(SKAction.setTexture(SKTexture(imageNamed: "Kerja_1")))
         albertWork.name = "Albert"
         albertWork.size = CGSize(width: view.frame.width, height: view.frame.height)
         albertWork.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         albertWork.zPosition = 1
-        albertWork.alpha=0
+        albertWork.alpha = 0
+        
+        albertWork.position = CGPoint(x: view.frame.width/2 - 870, y: view.frame.height/2 + 340)
+        albertWork.setScale(5)
+        
         
         paper1_1.run(setPaper)
         paper1_1.name = "paper11"
@@ -92,7 +98,7 @@ class PaperWork: SKScene {
         text12.position = paper1_1.position
         text12.zPosition = 5
         text12.alpha = 0
-    
+        
         text13.size = paperSize
         text13.position = paper1_1.position
         text13.zPosition = 5
@@ -107,7 +113,7 @@ class PaperWork: SKScene {
         text22.position = paper1_2.position
         text22.zPosition = 5
         text22.alpha = 0
-
+        
         text31.size = paperSize
         text31.position = paper1_3.position
         text31.zPosition = 5
@@ -117,12 +123,12 @@ class PaperWork: SKScene {
         text32.position = paper1_3.position
         text32.zPosition = 5
         text32.alpha = 0
-
+        
         text33.size = paperSize
         text33.position = paper1_3.position
         text33.zPosition = 5
         text33.alpha = 0
-
+        
         detector.name = "detector"
         detector.position = CGPoint(x: 4*view.frame.width/5, y: view.frame.height/2)
         detector.size = CGSize(width: view.frame.width/3, height: 4*view.frame.height/5)
@@ -152,124 +158,149 @@ class PaperWork: SKScene {
         
         albertWork.run(fadeIn)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        let wait = SKAction.wait(forDuration: 2)
+        let action1 = SKAction.customAction(withDuration: 2) { (SKNode, CGFloat) in
+            let scale = SKAction.scale(to: 1, duration: 2)
+            let move = SKAction.move(to: CGPoint(x: view.frame.width/2, y: view.frame.height/2), duration: 2)
+            scale.timingMode = .easeIn
+            move.timingMode = scale.timingMode
+            self.albertWork.run(scale)
+            self.albertWork.run(move)
+        }
+        let action2 = SKAction.customAction(withDuration: 2) { (SKNode, CGFloat) in
             self.paper1_1.run(self.fadeIn)
             self.paper1_2.run(self.fadeIn)
             self.paper1_3.run(self.fadeIn)
             self.paper2.run(self.fadeIn)
             self.pen.run(self.fadeIn)
         }
-        
-        for gesture in view.gestureRecognizers!{
-            view.removeGestureRecognizer(gesture)
+        let sequence = SKAction.sequence([wait, action1, wait])
+        sequence.timingMode = .easeInEaseOut
+        self.run(sequence){
+            self.run(action2)
         }
-
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        //            self.paper1_1.run(self.fadeIn)
+        //            self.paper1_2.run(self.fadeIn)
+        //            self.paper1_3.run(self.fadeIn)
+        //            self.paper2.run(self.fadeIn)
+        //            self.pen.run(self.fadeIn)
+        //        }
+        //
+    }
+    
+    func removeGesture(for view : SKView){
+        if view.gestureRecognizers != nil{
+            for gesture in view.gestureRecognizers!{
+                view.removeGestureRecognizer(gesture)
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-            if let touch = touches.first {
+        if let touch = touches.first {
             let location = touch.location(in: self)
             let nodesarray = nodes(at: location)
-
-                for node in nodesarray {
-                    if node.name == "detector" {
-                        startTouch = location
-                        nodePosition = node.position
-                        HapticGenerator.instance.play(4)
-                        albertAnimation()
-                    }
-                        
-                    else if node.name == "nextButton"{
-                        SpriteManager.instance.callScene(index: 5, transition: .fade(withDuration: 1))
-
-                    }
+            
+            for node in nodesarray {
+                if node.name == "detector" {
+                    startTouch = location
+                    nodePosition = node.position
+                    HapticGenerator.instance.play(4)
+                    albertAnimation()
+                }
+                    
+                else if node.name == "nextButton"{
+                    SpriteManager.instance.callScene(index: 5, transition: .fade(withDuration: 1))
+                    
                 }
             }
-
         }
         
-        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-            let point1 = CGPoint(x: self.paper1_1.position.x - 100, y: view!.frame.height/2)
-            let point2 = CGPoint(x: self.paper1_2.position.x - 100, y: view!.frame.height/2 - 10)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let point1 = CGPoint(x: self.paper1_1.position.x - 100, y: view!.frame.height/2)
+        let point2 = CGPoint(x: self.paper1_2.position.x - 100, y: view!.frame.height/2 - 10)
+        
+        let move1 = SKAction.move(to: point1, duration: 1)
+        let move2 = SKAction.move(to: point2, duration: 1)
+        
+        if let touch = touches.first{
+            let touchLocation = touch.location(in: self)
+            if touchLocation.x < paper2.position.x - 100{
                 
-            let move1 = SKAction.move(to: point1, duration: 1)
-            let move2 = SKAction.move(to: point2, duration: 1)
-            
-                if let touch = touches.first{
-                    let touchLocation = touch.location(in: self)
-                    if touchLocation.x < paper2.position.x - 100{
-                        
-                    }
-                    else if touchLocation != startTouch{
-                        pen.position = touchLocation
-                        
-                        writeState += 1
-                        if writeState == 5{
-                            addChild(text11)
-                            text11.run(fadeInSlow)
-                        }
-                        if writeState == 100{
-                            addChild(text12)
-                            text12.run(fadeInSlow)
-                        }
-                        if writeState == 200{
-                            addChild(text13)
-                            text13.run(fadeInSlow)
-                        }
-                        if writeState == 300{
-                            self.paper1_1.run(move1)
-                            self.text11.run(move1)
-                            self.text12.run(move1)
-                            self.text13.run(move1)
-                            self.paper1_1.run(self.fadeOut)
-                            self.text11.run(self.fadeOut)
-                            self.text12.run(self.fadeOut)
-                            self.text13.run(self.fadeOut)
-                        }
-                        if writeState == 400{
-                            paper1_1.removeFromParent()
-                            text11.removeFromParent()
-                            text12.removeFromParent()
-                            text13.removeFromParent()
-                            addChild(text21)
-                            text21.run(fadeInSlow)
-                        }
-                        if writeState == 500{
-                            addChild(text22)
-                            text22.run(fadeInSlow)
-                        }
-
-                        if writeState == 600{
-                            self.paper1_2.run(move2)
-                            self.text21.run(move2)
-                            self.text22.run(move2)
-                            self.paper1_2.run(self.fadeOut)
-                            self.text21.run(self.fadeOut)
-                            self.text22.run(self.fadeOut)
-                        }
-                        if writeState == 700{
-                            paper1_2.removeFromParent()
-                            text21.removeFromParent()
-                            text22.removeFromParent()
-                            addChild(text31)
-                            text31.run(fadeInSlow)
-                        }
-                        if writeState == 800{
-                            addChild(text32)
-                            text32.run(fadeInSlow)
-                        }
-                        if writeState == 900{
-                            addChild(text33)
-                            text33.run(fadeInSlow)
-                            
-                            addChild(button)
-                        }
-                    }
+            }
+            else if touchLocation != startTouch{
+                pen.position = touchLocation
+                
+                writeState += 1
+                if writeState == 5{
+                    addChild(text11)
+                    text11.run(fadeInSlow)
                 }
-            
-            super.touchesMoved(touches, with: event)
+                if writeState == 100{
+                    addChild(text12)
+                    text12.run(fadeInSlow)
+                }
+                if writeState == 200{
+                    addChild(text13)
+                    text13.run(fadeInSlow)
+                }
+                if writeState == 300{
+                    self.paper1_1.run(move1)
+                    self.text11.run(move1)
+                    self.text12.run(move1)
+                    self.text13.run(move1)
+                    self.paper1_1.run(self.fadeOut)
+                    self.text11.run(self.fadeOut)
+                    self.text12.run(self.fadeOut)
+                    self.text13.run(self.fadeOut)
+                }
+                if writeState == 400{
+                    paper1_1.removeFromParent()
+                    text11.removeFromParent()
+                    text12.removeFromParent()
+                    text13.removeFromParent()
+                    addChild(text21)
+                    text21.run(fadeInSlow)
+                }
+                if writeState == 500{
+                    addChild(text22)
+                    text22.run(fadeInSlow)
+                }
+                
+                if writeState == 600{
+                    self.paper1_2.run(move2)
+                    self.text21.run(move2)
+                    self.text22.run(move2)
+                    self.paper1_2.run(self.fadeOut)
+                    self.text21.run(self.fadeOut)
+                    self.text22.run(self.fadeOut)
+                }
+                if writeState == 700{
+                    paper1_2.removeFromParent()
+                    text21.removeFromParent()
+                    text22.removeFromParent()
+                    addChild(text31)
+                    text31.run(fadeInSlow)
+                }
+                if writeState == 800{
+                    addChild(text32)
+                    text32.run(fadeInSlow)
+                }
+                if writeState == 900{
+                    addChild(text33)
+                    text33.run(fadeInSlow)
+                    
+                    addChild(button)
+                }
+            }
         }
+        
+        super.touchesMoved(touches, with: event)
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         HapticGenerator.instance.play(4)
         albertWork.removeAction(forKey: "Key")
@@ -282,11 +313,11 @@ class PaperWork: SKScene {
         let f3 = SKTexture.init(imageNamed: "Kerja_4")
         let f4 = SKTexture.init(imageNamed: "Kerja_5")
         let frames: [SKTexture] = [f0, f1, f2, f3, f4, f3, f2, f1]
-
+        
         // Change the frame per 0.2 sec
         let animation = SKAction.animate(with: frames, timePerFrame: 0.15)
         albertWork.run(SKAction.repeatForever(animation), withKey: "Key")
-
+        
     }
-
+    
 }

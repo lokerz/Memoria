@@ -44,7 +44,10 @@ extension SpriteKitViewController : SKSceneDelegate{
         }
         
         if spriteManager.sceneNumber > 0 && spriteManager.sceneNumber <= spriteManager.scenes.count {
-            self.delegate!.showUI!()
+            print(spriteManager.sceneNumber)
+            self.delegate!.setupUI!(state : 1)
+        } else {
+            self.delegate!.setupUI!(state : 0)
         }
     }
     

@@ -126,6 +126,18 @@ class ChapterSelect: SKScene {
         
         addChild(leftButton)
         addChild(rightButton)
+        
+        changeChapter()
+        
+    }
+    
+    func changeChapter(){
+        if spriteManager.chapter != 0{
+            
+            let _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (Timer) in
+                self.nextChapter()
+            }
+        }
     }
     
     func createPlayButton(for view : SKView){

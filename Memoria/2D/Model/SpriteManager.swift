@@ -27,6 +27,8 @@ class SpriteManager {
     var sceneMain = "MainMenu"
     var sceneChapter = "ChapterSelect"
     
+    var chapter = 0
+    
     var scenes = [
         "",
         "Prologue",
@@ -85,6 +87,7 @@ class SpriteManager {
     }
     
     func callChapterSelect(index : Int, transition : SKTransition){
-        
+        chapter = 2
+        skView.presentScene(loadScene(99), transition: transition)
     }
 }

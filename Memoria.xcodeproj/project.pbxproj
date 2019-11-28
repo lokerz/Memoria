@@ -39,6 +39,8 @@
 		47F2ADAF2383D0930093F313 /* SpriteKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2ADAE2383D0930093F313 /* SpriteKitViewController.swift */; };
 		47F933CD238D319A002FCB6C /* PlayClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47F933CB238D319A002FCB6C /* PlayClick.mp3 */; };
 		47F933CE238D319A002FCB6C /* Book_Flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47F933CC238D319A002FCB6C /* Book_Flip.mp3 */; };
+		47F933D0238E9EF3002FCB6C /* Monologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F933CF238E9EF3002FCB6C /* Monologue.swift */; };
+		47F933D2238EAE45002FCB6C /* YellowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F933D1238EAE45002FCB6C /* YellowButton.swift */; };
 		47FE5AE823740F7F007993D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AE723740F7F007993D4 /* MainViewController.swift */; };
 		47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF2237A8D52007993D4 /* GearPath.swift */; };
 		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
@@ -138,6 +140,8 @@
 		47F2ADAE2383D0930093F313 /* SpriteKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitViewController.swift; sourceTree = "<group>"; };
 		47F933CB238D319A002FCB6C /* PlayClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlayClick.mp3; sourceTree = "<group>"; };
 		47F933CC238D319A002FCB6C /* Book_Flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Book_Flip.mp3; sourceTree = "<group>"; };
+		47F933CF238E9EF3002FCB6C /* Monologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monologue.swift; sourceTree = "<group>"; };
+		47F933D1238EAE45002FCB6C /* YellowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowButton.swift; sourceTree = "<group>"; };
 		47FE5AE723740F7F007993D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		47FE5AF2237A8D52007993D4 /* GearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearPath.swift; sourceTree = "<group>"; };
 		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 			children = (
 				F157322E237554EF00E7891E /* SpriteManager.swift */,
 				47F2ADAA237EACD50093F313 /* Bubble.swift */,
+				47F933CF238E9EF3002FCB6C /* Monologue.swift */,
+				47F933D1238EAE45002FCB6C /* YellowButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,13 +389,13 @@
 		47F2ADAC2383CF590093F313 /* Chapter 1 */ = {
 			isa = PBXGroup;
 			children = (
-				F1573228237554E700E7891E /* Office.swift */,
 				F17B8BB4237D4852003E61D3 /* Prologue.swift */,
-				F157322A237554E700E7891E /* PaperWork.swift */,
-				F157322B237554E700E7891E /* InHouse.swift */,
 				F157322C237554E700E7891E /* MobilScene.swift */,
-				F157322D237554E700E7891E /* FrontHouse.swift */,
 				F1573227237554E700E7891E /* PhotoScene.swift */,
+				F157322A237554E700E7891E /* PaperWork.swift */,
+				F1573228237554E700E7891E /* Office.swift */,
+				F157322D237554E700E7891E /* FrontHouse.swift */,
+				F157322B237554E700E7891E /* InHouse.swift */,
 			);
 			path = "Chapter 1";
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 				4705CA4323640A4100E874EB /* LevelManager.swift in Sources */,
 				4705CA3F236409E500E874EB /* LevelTwoManager.swift in Sources */,
 				F15732452375587800E7891E /* PaperWork.swift in Sources */,
+				47F933D0238E9EF3002FCB6C /* Monologue.swift in Sources */,
 				47F2ADAF2383D0930093F313 /* SpriteKitViewController.swift in Sources */,
 				4705CAA323715E7900E874EB /* Player2.swift in Sources */,
 				F15732432375587800E7891E /* Office.swift in Sources */,
@@ -726,6 +733,7 @@
 				4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */,
 				F15732462375587800E7891E /* InHouse.swift in Sources */,
+				47F933D2238EAE45002FCB6C /* YellowButton.swift in Sources */,
 				47F2ADA8237E9E6A0093F313 /* Player3.swift in Sources */,
 				47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */,
 				4705CAB22372C0FD00E874EB /* GameUIView.swift in Sources */,

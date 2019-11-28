@@ -22,7 +22,7 @@ class GameUIView: UIView{
     @IBOutlet weak var exitButtonOutlet: UIButton!
     var buttons = [UIButton]()
     var centers = [CGPoint]()
-    
+    var buttonColor = #colorLiteral(red: 1, green: 0.8980392157, blue: 0.5450980392, alpha: 1)
     
     var delegate : GameUIDelegate?
     var isToggle = false
@@ -35,6 +35,7 @@ class GameUIView: UIView{
         super.init(frame: frame)
         commonInit()
         setupSize(frame)
+        setupShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -60,11 +61,29 @@ class GameUIView: UIView{
     }
     
     func setupButton(){
+//        pauseButtonOutlet.setTitleColor(buttonColor, for: .normal)
         hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
        
         buttons.append(soundButtonOutlet)
         buttons.append(hapticButtonOutlet)
         buttons.append(exitButtonOutlet)
+        
+        setupShadow()
+    }
+    
+    func setupShadow(){
+        setShadow(button: pauseButtonOutlet)
+        for button in buttons{
+            setShadow(button: button)
+        }
+    }
+    
+    func setShadow(button : UIButton){
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 1
+        button.layer.shadowRadius = 0
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.masksToBounds = true
     }
     
     func resetButton(){
@@ -108,6 +127,9 @@ class GameUIView: UIView{
     @IBAction func soundButtonAction(_ sender: Any) {
         //SoundGenerator.instance.isSound = !SoundeGenerator.instance.isSound
         HapticGenerator.instance.play(4)
+        PlaySound.instance.volume = PlaySound.instance.volume == 1 ? 0 : 1
+        soundButtonOutlet.setTitleColor(PlaySound.instance.volume == 1 ? .white : .gray, for: .normal)
+        
     }
     
     @IBAction func hapticButtonAction(_ sender: Any) {
@@ -128,7 +150,7 @@ class GameUIView: UIView{
     func rotate(button : UIButton, duration : TimeInterval){
         let degree = isToggle ? GLKMathDegreesToRadians(-180) : 0 //the value in degrees
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-            button.transform = CGAffineTransform(rotationAngle: CGFloat(degree))
+            button.titleLabel?.transform = CGAffineTransform(rotationAngle: CGFloat(degree))
         })
     }
     

@@ -27,7 +27,7 @@ class PlaySound{
     static var instance = PlaySound()
     
     var player: AVAudioPlayer?
-    
+    var volume : Float = 1
     var mainTheme = [
         "",
     "A_Quiet_Thought"
@@ -64,7 +64,8 @@ class PlaySound{
 
             
             guard let player = player else { return }
-
+            player.volume = volume
+            player.stop()
             player.play()
 
         } catch let error {

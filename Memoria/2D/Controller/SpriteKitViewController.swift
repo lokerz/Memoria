@@ -20,16 +20,15 @@ class SpriteKitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainSkView.ignoresSiblingOrder = true
-        setupSKView()
     }
     
     
     func setupSKView(){
         if let view = mainSkView {
+            view.ignoresSiblingOrder = true
             spriteManager.setupView(view: view)
-            spriteManager.callScene(index: 0)
             spriteManager.setupDelegate(delegate : self)
+//            spriteManager.callScene(index: 0, transition: .fade(withDuration: 1))
         }
     }
 }
@@ -42,6 +41,10 @@ extension SpriteKitViewController : SKSceneDelegate{
                 spriteManager.isChangingToSceneKit = false
                 self.delegate!.showSceneKit!(level : spriteManager.gameLevel)
             }
+        }
+        
+        if spriteManager.sceneNumber > 0 && spriteManager.sceneNumber <= spriteManager.scenes.count {
+            self.delegate!.showUI!()
         }
     }
     

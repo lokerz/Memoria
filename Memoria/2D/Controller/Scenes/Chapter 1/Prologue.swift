@@ -18,20 +18,21 @@ class Prologue: SKScene {
     
     let button = SKSpriteNode(imageNamed: "nextButton")
     
-    let bacot = [
-        "lost without direction...",
-        "trapped in ",
-        "in this constantly spinning wheel of life",
-        "to the point where one could not think",
-        "what is the purpose of your life?",
+    let prologues = [
+        "Lost without direction...",
+        "trapped in inhibition...",
+        "In this stagnant life...",
+//        "to the point where one could not think",
+//        "what is the purpose of your life?",
 //        "Now I will share a story",
 //        "A story which will change my whole life forever",
+        "what do you live for?",
         "I am elio",
 //        "And this is my story"
     ]
+    var sequences = [SKAction]()
     
     override func didMove(to view: SKView) {
-        button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 4
         button.name = "nextButton"
@@ -47,7 +48,7 @@ class Prologue: SKScene {
         prologue.verticalAlignmentMode = .center
         prologue.name = "prologue"
         prologue.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
-        prologue.fontSize = 32
+        prologue.fontSize = 28
         prologue.numberOfLines = 3
         prologue.preferredMaxLayoutWidth = view.frame.width - 200
         prologue.alpha = 0
@@ -55,30 +56,33 @@ class Prologue: SKScene {
         addChild(background)
         addChild(prologue)
         
-        self.prologue.run(self.fadeIn)
-        prologue.text = bacot[0]
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.prologue.run(self.fadeOut)
-        }
+        showText(string: prologues[0], duration: 2)
+        showText(string: prologues[1], duration: 2)
+        showText(string: prologues[2], duration: 2)
+        showText(string: prologues[3], duration: 3)
+        showText(string: prologues[4], duration: 3)
+        changeScene()
         
-        var i = 1
-        
-        let timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (timer) in
-            if i < self.bacot.count{
-                self.prologue.run(self.fadeIn)
-                self.prologue.text = self.bacot[i]
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.prologue.run(self.fadeOut)
-                }
-                i += 1
-            }
-            else{
-                SpriteManager.instance.callScene(index: 2, transition: .fade(withDuration: 1))
-
-            }
-        }
-        
-        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+        let sequence = SKAction.sequence(sequences)
+        prologue.run(sequence)
     }
     
+    func showText(string: String, duration : Double){
+        let changeText = SKAction.customAction(withDuration: 1) { _,_  in
+            self.prologue.text = string
+        }
+        let wait = SKAction.wait(forDuration: duration)
+        sequences.append(changeText)
+        sequences.append(fadeIn)
+        sequences.append(wait)
+        sequences.append(fadeOut)
+    }
+    
+    func changeScene(){
+        let changeScene = SKAction.customAction(withDuration: 0) { (SKNode, CGFloat) in
+            SpriteManager.instance.callScene(index: 2, transition: .fade(withDuration: 1))
+        }
+        sequences.append(changeScene)
+        
+    }
 }

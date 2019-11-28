@@ -66,8 +66,11 @@ class LevelManager : NSObject {
     }
     
     func endLevel(){
-        pillars.last!.moveDown(by: 20, duration: 3)
-        black.fadeIn()
+        let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            self.pillars.last!.moveDown(by: 20, duration: 3)
+            self.black.fadeIn()
+        }
+        
     }
     
     func autoRotateSystem(){

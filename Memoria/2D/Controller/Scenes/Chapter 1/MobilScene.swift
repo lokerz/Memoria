@@ -16,8 +16,8 @@ class MobilScene: SKScene {
     let paperBig = SKSpriteNode(imageNamed: "Paper")
     let blocker = SKSpriteNode()
     
-    let monologue = SKLabelNode()
-    let monologueName = SKLabelNode()
+    var monologue = Monologue()
+    var nextButton = YellowButton()
     
     let fadeIn = SKAction.fadeAlpha(by: 1, duration: 0.5)
     let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
@@ -25,17 +25,19 @@ class MobilScene: SKScene {
     var statePaper = 1
     var stateButton = 1
     
-    let border = SKSpriteNode()
+    var border = SKSpriteNode()
+    var secondMonologueOut = false
+    
+    let monologues = [
+    "That day was a special day for me.",
+    "It was the day I first met my new family."
+    ]
     
     override func didMove(to view: SKView) {
-        
-        border.texture = SKTexture(imageNamed: "Monologue")
-        
-        border.zPosition = 3
-        border.anchorPoint = CGPoint(x: 0.5, y: 0)
-        border.size = CGSize(width: view.frame.width, height: view.frame.height/4)
-        border.position = CGPoint(x: view.frame.width/2, y: 3*view.frame.height/4)
-        border.alpha = 0
+        monologue = Monologue(for: view)
+        monologue.changeText(to: monologues[0])
+        addChild(monologue)
+        monologue.fadeIn()
         
         //Declaring Node
         ibuAnak.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -59,47 +61,52 @@ class MobilScene: SKScene {
         blocker.zPosition = 2
         blocker.size = CGSize(width: view.frame.width, height: view.frame.height)
         blocker.color = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        blocker.alpha = 0.4
+        blocker.alpha = 0
         
         paperBig.name = "paperBig"
         paperBig.zPosition = 2
         paperBig.position = CGPoint(x: view.frame.width/2, y: -view.frame.height/2)
         paperBig.size = CGSize(width: 950, height: 500)
-        
-        monologue.horizontalAlignmentMode = .center
-        monologue.verticalAlignmentMode = .center
-        monologue.preferredMaxLayoutWidth = view.frame.width - 200
-        monologue.fontSize = 16
-        monologue.numberOfLines = 2
-        monologue.position.x = border.position.x
-        monologue.position.y = border.position.y + view.frame.height/8
-        monologue.zPosition = 4
-        monologue.fontColor = .black
-        monologue.alpha = 0
-        monologue.fontName = "Roboto-Light"
-        
-        monologueName.text = "Elio"
-        monologueName.position = CGPoint(x: 100, y: view.frame.height - 30)
-        monologueName.fontSize = 22
-        monologueName.fontName = "Roboto-Medium"
-        monologueName.fontColor = .black
-        monologueName.zPosition = 4
-        monologueName.alpha = 0
-        
+                
         button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         button.position = CGPoint(x:view.frame.width-60, y: 60)
         button.zPosition = 4
         button.name = "nextButton"
         button.size = CGSize(width: 110, height: 100)
+        button.alpha = 0
+        
+        nextButton = YellowButton(with: CGSize(width: 60, height: 60), text: "➤", textSize: 25)
+        nextButton.position = CGPoint(x:view.frame.width-60, y: 60)
+        nextButton.zPosition = 4
+        nextButton.name = "nextButton"
+        nextButton.move(to: .down)
+        nextButton.isHidden = true
+        addChild(nextButton)
         
         addChild(ibuAnak)
-        
-        monologueFadeIn()
-        monologue.text = "Today is a special day for me"
+        addChild(ayah)
+        addChild(paper)
+        addChild(blocker)
+        addChild(paperBig)
+//        addChild(button)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
+            for node in nodesarray {
+                if node.name == "nextButton" {
+                    nextButton.highlight()
+                }
+            }
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Registering Touch Actions
+        nextButton.reset()
         if let touch = touches.first {
             let location = touch.location(in: self)
             let nodesarray = nodes(at: location)
@@ -108,62 +115,46 @@ class MobilScene: SKScene {
                 if node.name == "paper" {
                     switch statePaper {
                     case 1:
-                        addChild(blocker)
-                        addChild(paperBig)
-                        
-                        paperBig.run(SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.2))
-                        monologueFadeOut()
-                        button.removeFromParent()
-                        addChild(button)
+                        blocker.run(SKAction.fadeAlpha(to: 0.5, duration: 1))
+                        let upAction = SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.5)
+                        upAction.timingMode = .easeInEaseOut
+                        paperBig.run(upAction){
+                            self.nextButton.isHidden = false
+                            self.nextButton.move(to: .up)
+                        }
+                        button.alpha = 1
+                        monologue.fadeOut()
                         statePaper += 1
                         break
                     default:
                         break
                     }
                 }
-                else if node.name == "ibuAnak" {
-                    monologueFadeOut()
+                else if node.name == "ibuAnak" && !secondMonologueOut {
+                    let duration = 1.0
+                    let timing : SKActionTimingMode = .easeOut
+                    secondMonologueOut = true
+                    monologue.fadeOut()
+                    let scale = SKAction.scale(to: 0.5, duration: duration)
+                    let move = SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: duration)
+                    scale.timingMode = timing
+                    move.timingMode = timing
+                    ibuAnak.run(move)
+                    ibuAnak.run(scale)
                     
-                    ayah.removeFromParent()
-                    paper.removeFromParent()
-                    
-                    ibuAnak.run(SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.5))
-                    ibuAnak.run(SKAction.scale(to: 0.5, duration: 1.5))
-                    
-                    addChild(ayah)
-                    addChild(paper)
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                         self.ayah.run(SKAction.fadeIn(withDuration: 1))
-                        self.monologueFadeIn()
-                        self.monologue.text = "Because I was picked up by these people whom will be my new parents"
+                        self.monologue.changeText(to: self.monologues[1])
+                        self.monologue.fadeIn()
                     }
                 }
                 else if node.name == "nextButton" {
+                    HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
                     SpriteManager.instance.callScene(index: 3, transition: .fade(withDuration: 1))
                 }
             }
         }
     }
-    
-    func monologueFadeIn(){
-        border.removeFromParent()
-        monologue.removeFromParent()
-        monologueName.removeFromParent()
-        addChild(border)
-        addChild(monologue)
-        addChild(monologueName)
-        border.run(fadeIn)
-        monologue.run(fadeIn)
-        monologueName.run(fadeIn)
-    }
-    
-    func monologueFadeOut(){
-        border.run(fadeOut)
-        monologueName.run(fadeOut)
-        monologue.run(fadeOut)
-    }
-
 }
 
 extension SKSpriteNode {

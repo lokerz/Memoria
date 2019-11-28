@@ -51,6 +51,7 @@ class SpriteManager {
     }
     
     func loadScene(_ index: Int) -> SKScene{
+        sceneNumber = index
         var scene = SKScene()
         switch index {
         case 1 : scene = Prologue(fileNamed: scenes[index])!
@@ -73,7 +74,7 @@ class SpriteManager {
     }
     
     func callScene(index : Int, transition : SKTransition){
-        skView.presentScene(loadScene(index), transition: SKTransition.fade(withDuration: 1))
+        skView.presentScene(loadScene(index), transition: transition)
     }
     
     func loadGame(level : Int){

@@ -9,7 +9,10 @@
 import SpriteKit
 
 class MainMenu: SKScene {
+    let title = "[ e l i o ]"
+    
     var scroller : InfiniteScrollingBackground?
+    let spriteManager = SpriteManager.instance
     
     let gameTitle = SKLabelNode()
     let playButton = SKLabelNode()
@@ -35,6 +38,8 @@ class MainMenu: SKScene {
         setupObjects(view : view)
         fadeInTitle()
         
+        addChild(gameTitle)
+        addChild(dropShadowTitle)
         addChild(langitBiru)
         addChild(backgroundImage)
         addChild(baling)
@@ -47,7 +52,7 @@ class MainMenu: SKScene {
         gameTitle.fontColor = .white
         gameTitle.fontSize = 60
         gameTitle.fontName = "Roboto-Medium"
-        gameTitle.text = "[ e l i o ]"
+        gameTitle.text = title
         gameTitle.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 15)
         gameTitle.zPosition = 2
         gameTitle.alpha = 0
@@ -63,11 +68,11 @@ class MainMenu: SKScene {
         playButton.fontColor = .white
         playButton.fontSize = 20
         playButton.fontName = "Roboto-Regular"
-        playButton.text = "touch to start"
+        playButton.text = "tap anywhere to start"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 100)
         playButton.zPosition = 2
         playButton.alpha = 0
-        let blinking = [SKAction.wait(forDuration: 1) ,SKAction.fadeAlpha(to: 0, duration: 1.5), SKAction.wait(forDuration: 1) , SKAction.fadeAlpha(to: 1, duration: 1.5)]
+        let blinking = [SKAction.wait(forDuration: 1), SKAction.fadeAlpha(to: 1, duration: 1.5), SKAction.wait(forDuration: 1) , SKAction.fadeAlpha(to: 0, duration: 1.5)]
         playButton.run(SKAction.repeatForever(SKAction.sequence(blinking)))
         
         dropShadowPlay.fontColor = .black
@@ -77,7 +82,7 @@ class MainMenu: SKScene {
         dropShadowPlay.position = CGPoint(x: view.frame.width/2 + 1, y: view.frame.height/2 - 100 - 1)
         dropShadowPlay.zPosition = 1
         dropShadowPlay.alpha = 0
-        let blinkingShadow = [SKAction.wait(forDuration: 1) ,SKAction.fadeAlpha(to: 0, duration: 1.5), SKAction.wait(forDuration: 1) , SKAction.fadeAlpha(to: 0.5, duration: 1.5)]
+        let blinkingShadow = [SKAction.wait(forDuration: 1), SKAction.fadeAlpha(to: 0.5, duration: 1.5), SKAction.wait(forDuration: 1) , SKAction.fadeAlpha(to: 0, duration: 1.5)]
         dropShadowPlay.run(SKAction.repeatForever(SKAction.sequence(blinkingShadow)))
 
         backgroundImage.name = "bg"
@@ -99,9 +104,6 @@ class MainMenu: SKScene {
         let fadeIn = SKAction.fadeAlpha(to: 1, duration: 1)
         let fadeInShadow = SKAction.fadeAlpha(to: 0.5, duration: 1)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.66) {
-            self.addChild(self.gameTitle)
-            self.addChild(self.dropShadowTitle)
-            
             self.gameTitle.run(fadeIn)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.dropShadowTitle.run(fadeInShadow)
@@ -133,14 +135,15 @@ class MainMenu: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        HapticGenerator.instance.play(sharpnessValue: 0.5, intensityValue: 0.5)
         if let touch = touches.first {
             let location = touch.location(in: self)
             let nodesarray = nodes(at: location)
             
             for node in nodesarray {
                 if node.name == "bg"{
-                    SpriteManager.instance.callScene(index: 99, transition: .fade(withDuration: 1))
+                    HapticGenerator.instance.play(sharpnessValue: 0.5, intensityValue: 0.5)
+                    spriteManager.callScene(index: 99, transition: .fade(withDuration: 3))
+                    break
                 }
             }
         }

@@ -13,9 +13,11 @@ import GameplayKit
 @objc protocol TransitionDelegate{
     @objc optional func showSpriteKit(index : Int, transition : SKTransition)
     @objc optional func showSceneKit(level : Int)
+    @objc optional func showUI()
 }
 
-class MainViewController: UIViewController, TransitionDelegate {
+class MainViewController: UIViewController {
+    var loadingView = UIView()
     var uiview = GameUIView()
     var spriteManager = SpriteManager.instance
     
@@ -40,39 +42,15 @@ class MainViewController: UIViewController, TransitionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        showSpriteKit(index: -1, transition: .fade(withDuration: 0.5))
-//        showSceneKit(level: 3)
+        setupLoadingView()
+        spriteViewController.setupSKView()
+        showSpriteKit(index: -1, transition: .fade(withDuration: 1))
+        //        showSceneKit(level: 1)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-    }
-    
-    
-    func showSpriteKit(index : Int, transition : SKTransition){
-        DispatchQueue.main.async {
-            self.spriteManager.callScene(index: index)
-            self.gameViewController.view.isHidden = true
-            self.spriteViewController.view.isHidden = false
-            self.gameViewController.isActive = false
-            self.spriteViewController.isActive = true
-
-        }
-    }
-    
-    func showSceneKit(level : Int){
-        print(#function, level)
-        DispatchQueue.main.async {
-            self.gameViewController.setup(level: level)
-            self.gameViewController.view.isHidden = false
-            self.spriteViewController.view.isHidden = true
-            self.uiview.isHidden = false
-            self.gameViewController.isActive = true
-            self.spriteViewController.isActive = false
-
-        }
+        
     }
     
     func addChildController(_ childController: UIViewController) {
@@ -97,6 +75,14 @@ class MainViewController: UIViewController, TransitionDelegate {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func setupLoadingView(){
+        loadingView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        loadingView.backgroundColor = .white
+        loadingView.alpha = 0
+        view.addSubview(loadingView)
+        view.bringSubviewToFront(loadingView)
     }
     
     
@@ -131,3 +117,52 @@ extension MainViewController : GameUIDelegate{
     }
 }
 
+extension MainViewController : TransitionDelegate {
+    func showUI() {
+        if uiview.isHidden{
+            DispatchQueue.main.async {
+                self.uiview.isHidden = false
+            }
+        }
+    }
+    
+    func showSpriteKit(index : Int, transition : SKTransition){
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1, animations: {
+                self.loadingView.alpha = 1
+            }) { _ in
+                self.spriteManager.callScene(index: index, transition: transition)
+                self.gameViewController.view.isHidden = true
+                self.spriteViewController.view.isHidden = false
+                self.gameViewController.isActive = false
+                self.spriteViewController.isActive = true
+                UIView.animate(withDuration: 1, animations: {
+                    self.loadingView.alpha = 0
+                }) { _ in
+                    
+                }
+            }
+        }
+    }
+    
+    func showSceneKit(level : Int){
+        print(#function, level)
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1, animations: {
+                self.loadingView.alpha = 1
+            }) { _ in
+                self.gameViewController.setup(level: level)
+                self.gameViewController.view.isHidden = false
+                self.spriteViewController.view.isHidden = true
+                self.uiview.isHidden = false
+                self.gameViewController.isActive = true
+                self.spriteViewController.isActive = false
+                UIView.animate(withDuration: 1, animations: {
+                    self.loadingView.alpha = 0
+                }) { _ in
+                    
+                }
+            }
+        }
+    }
+}

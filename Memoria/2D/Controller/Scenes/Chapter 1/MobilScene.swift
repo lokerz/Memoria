@@ -23,7 +23,7 @@ class MobilScene: SKScene {
     let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
     
     let hint = SKSpriteNode(imageNamed: "Hint")
-    let pulse = [SKAction.fadeAlpha(to: 0.8, duration: 1), SKAction.wait(forDuration: 0.3), SKAction.fadeAlpha(to: 0, duration: 1), SKAction.wait(forDuration: 0.3)]
+    let pulse = [SKAction.fadeAlpha(to: 0.8, duration: 1), SKAction.wait(forDuration: 0.3), SKAction.fadeAlpha(to: 0, duration: 1), SKAction.wait(forDuration: 0.8)]
     
     var statePaper = 1
     var stateButton = 1
@@ -88,16 +88,14 @@ class MobilScene: SKScene {
         
         hint.position = paper.position
         hint.zPosition = 5
-        hint.size = CGSize(width: 100, height: 100)
+        hint.size = CGSize(width: 150, height: 150)
         hint.alpha = 0
-        hint.run(SKAction.repeatForever(SKAction.sequence(pulse)))
         
         addChild(ibuAnak)
         addChild(ayah)
         addChild(paper)
         addChild(blocker)
         addChild(paperBig)
-//        addChild(button)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -122,8 +120,7 @@ class MobilScene: SKScene {
                 
             for node in nodesarray {
                 if node.name == "paper" {
-                    switch statePaper {
-                    case 1:
+                    if statePaper == 1{
                         blocker.run(SKAction.fadeAlpha(to: 0.5, duration: 1))
                         let upAction = SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.5)
                         upAction.timingMode = .easeInEaseOut
@@ -134,9 +131,8 @@ class MobilScene: SKScene {
                         button.alpha = 1
                         monologue.fadeOut()
                         statePaper += 1
-                        break
-                    default:
-                        break
+                        
+                        hint.removeFromParent()
                     }
                 }
                 else if node.name == "ibuAnak" && !secondMonologueOut {
@@ -158,6 +154,10 @@ class MobilScene: SKScene {
                     }
                     
                     self.run(SKAction.sequence([SKAction.wait(forDuration: duration), dadAdd]))
+                    self.addChild(hint)
+                    self.run(SKAction.wait(forDuration: 8)){
+                        self.hint.run(SKAction.repeatForever(SKAction.sequence(self.pulse)))
+                    }
                 }
                 else if node.name == "nextButton" {
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)

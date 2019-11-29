@@ -176,11 +176,15 @@ class PhotoScene: SKScene {
             photo4.run(move4)
             self.stateGesture += 1
             
-            if mono <= stateGesture {
-                monologue.run(fadeIn)
-                mono = stateGesture + 1
-                monologue.changeText(to: text[mono])
-            }
+            //dont disappear
+            monologue.changeText(to: text[stateGesture+1])
+            
+            //disappear
+//            if mono <= stateGesture {
+//                monologue.run(fadeIn)
+//                mono = stateGesture + 1
+//                monologue.changeText(to: text[mono])
+//            }
             
             view!.isUserInteractionEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
@@ -215,9 +219,11 @@ class PhotoScene: SKScene {
             photo4.run(move4)
             self.stateGesture -= 1
             
-            if mono >= stateGesture {
-                monologue.run(fadeOut)
-            }
+            monologue.changeText(to: text[stateGesture+1])
+            
+//            if mono >= stateGesture {
+//                monologue.run(fadeOut)
+//            }
             
             view!.isUserInteractionEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {

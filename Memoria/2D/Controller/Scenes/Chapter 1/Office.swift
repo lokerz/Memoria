@@ -108,7 +108,7 @@ class Office: SKScene{
     }
     
     func addBubble(){
-        let widthOfficeBubble: CGFloat = 270
+        let widthOfficeBubble: CGFloat = 260
         let bubbleAlbertPosition = view!.frame.width/2 - 130
         let bubbleJamesPosition = view!.frame.width/2 + 170
         let tSize : CGFloat = 16
@@ -145,9 +145,9 @@ class Office: SKScene{
         bubbles.append(bubble5)
         
         let bubble6 = Bubble()
-        let text6 = ["Sorry James, I think I'll pass","Where do you want to go anyways?"]
+        let text6 = "Where do you want to              go anyways?"
         let position6 = CGPoint(x: bubbleAlbertPosition, y: view!.frame.height/2)
-        bubble6.createChoiceBubble(position: position6, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, choices: text6, textColor: .white, textSize : tSize)
+        bubble6.createBubble(position: position6, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, text: text6, textColor: .white, textSize : tSize)
         bubbles.append(bubble6)
         
         let bubble7 = Bubble()
@@ -175,43 +175,43 @@ class Office: SKScene{
         bubbles.append(bubble10)
         
         let bubble11 = Bubble()
-        let text11 = "C'mon Albert, these past few days you have been so quiet, do you have a problem? You can share it with me if you want."
+        let text11 = "C'mon Elio, these past few days you have been so quiet, do you have a problem?"
         let position11 = CGPoint(x: bubbleJamesPosition, y: view!.frame.height/2)
         bubble11.createBubble(position: position11, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), type: .bottomRight, text: text11, textColor: .white, textSize : tSize)
         bubbles.append(bubble11)
         
+        let bubble11a = Bubble()
+        let text11a = "You can share it with me if      you want."
+        let position11a = CGPoint(x: bubbleJamesPosition, y: view!.frame.height/2)
+        bubble11a.createBubble(position: position11a, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), type: .bottomRight, text: text11a, textColor: .white, textSize : tSize)
+        bubbles.append(bubble11a)
+        
         let bubble12 = Bubble()
-        let text12 = ["I just need a bit of time for myself.","Yeah, I have something in my mind, but I think I can solve it by myself."]
+        let text12 = "I just need a bit of time \nfor myself."
         let position12 = CGPoint(x: bubbleAlbertPosition, y: view!.frame.height/2)
-        bubble12.createChoiceBubble(position: position12, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, choices: text12, textColor: .white, textSize : tSize)
+        bubble12.createBubble(position: position12, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, text: text12, textColor: .white, textSize : tSize)
         bubbles.append(bubble12)
         
         let bubble13 = Bubble()
-        let text13 = "You should enjoy your life from time to time, I think it would be a pity when you have a very good career but you cannot enjoy it yourself."
+        let text13 = "You should enjoy your life from time to time."
         let position13 = CGPoint(x: bubbleJamesPosition, y: view!.frame.height/2)
         bubble13.createBubble(position: position13, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), type: .bottomRight, text: text13, textColor: .white, textSize : 16)
         bubbles.append(bubble13)
         
+        let bubble13a = Bubble()
+        let text13a = "I think it would be a pity when you have a very good career but you cannot enjoy it yourself."
+        let position13a = CGPoint(x: bubbleJamesPosition, y: view!.frame.height/2)
+        bubble13a.createBubble(position: position13a, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), type: .bottomRight, text: text13a, textColor: .white, textSize : 16)
+        bubbles.append(bubble13a)
+        
         let bubble14 = Bubble()
-        let text14 = ["Haha yeah I know, I'll try to enjoy it when the time is right.","Haha, I think it's still too soon for me to enjoy my time"]
+        let text14 = "Haha yeah I know, I'll try to enjoy it when the time is right."
         let position14 = CGPoint(x: bubbleAlbertPosition, y: view!.frame.height/2)
-        bubble14.createChoiceBubble(position: position14, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, choices: text14, textColor: .white, textSize: tSize)
+        bubble14.createBubble(position: position14, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, text: text14, textColor: .white, textSize: tSize)
         bubbles.append(bubble14)
         
-        let bubble15 = Bubble()
-        let text15 = "But you know, working too hard is not good for your body and mind"
-        let position15 = CGPoint(x: bubbleJamesPosition, y: view!.frame.height/2)
-        bubble15.createBubble(position: position15, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), type: .bottomRight, text: text15, textColor: .white, textSize : tSize)
-        bubbles.append(bubble15)
-        
-        let bubble16 = Bubble()
-        let text16 = "Relax, I'm already used to this kind of job."
-        let position16 = CGPoint(x: bubbleAlbertPosition, y: view!.frame.height/2)
-        bubble16.createBubble(position: position16, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), type: .bottomLeft, text: text16, textColor: .white, textSize : tSize)
-        bubbles.append(bubble16)
-        
         let bubble17 = Bubble()
-        let text17 = "Hahaha okay then, if you change your mind, just call me later okay?"
+        let text17 = "Okay then, if you change your mind, just call me later okay?"
         let position17 = CGPoint(x: bubbleJamesPosition, y: view!.frame.height/2)
         bubble17.createBubble(position: position17, width: widthOfficeBubble, bubbleColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), type: .bottomRight, text: text17, textColor: .white, textSize : tSize)
         bubbles.append(bubble17)

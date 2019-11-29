@@ -45,8 +45,8 @@ class SpriteManager {
         skView = view
         skView.ignoresSiblingOrder = true
         
-//        view.showsFPS = true
-//        view.showsNodeCount = true
+        //        view.showsFPS = true
+        //        view.showsNodeCount = true
     }
     
     func setupDelegate(delegate : SKSceneDelegate){
@@ -89,5 +89,13 @@ class SpriteManager {
     func callChapterSelect(index : Int, transition : SKTransition){
         chapter = 2
         skView.presentScene(loadScene(99), transition: transition)
+    }
+    
+    func removeGesture(from view: SKView){
+        if view.gestureRecognizers != nil {
+            for gesture in view.gestureRecognizers!{
+                view.removeGestureRecognizer(gesture)
+            }
+        }
     }
 }

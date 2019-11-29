@@ -17,7 +17,7 @@ class Player : SCNNode{
     var playerNode = SCNNode()
     var velocity = SCNVector3()
     var scaleFactor : Float = 0.5
-    var velocityFactor : Float = 0.5
+    var velocityFactor : Float = 0.75
     var playerRadius : Float = 1.25
     var beginningPosition =  SCNVector3()
     var finishLocation = SCNVector3()

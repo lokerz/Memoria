@@ -32,8 +32,8 @@ class MobilScene: SKScene {
     var secondMonologueOut = false
     
     let monologues = [
-    "That day was a special day for me.",
-    "It was the day I first met my new family."
+    "The earliest memory I could still remember is that day...",
+    "The day I met them, my 'new' family."
     ]
     
     override func didMove(to view: SKView) {

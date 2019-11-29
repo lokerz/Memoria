@@ -55,7 +55,7 @@ class PaperWork: SKScene {
         let Paper = SKTexture(imageNamed: "Kertas")
         let setPaper = SKAction.setTexture(Paper)
         
-        removeGesture(for : view)
+        SpriteManager.instance.removeGesture(from : view)
         
         albertWork.run(SKAction.setTexture(SKTexture(imageNamed: "Kerja_1")))
         albertWork.name = "Albert"
@@ -159,7 +159,7 @@ class PaperWork: SKScene {
         
         albertWork.run(fadeIn)
         
-        let wait = SKAction.wait(forDuration: 2)
+        let wait = SKAction.wait(forDuration: 1)
         let action1 = SKAction.customAction(withDuration: 2) { (SKNode, CGFloat) in
             let scale = SKAction.scale(to: 1, duration: 2)
             let move = SKAction.move(to: CGPoint(x: view.frame.width/2, y: view.frame.height/2), duration: 2)
@@ -182,20 +182,12 @@ class PaperWork: SKScene {
             self.pen.run(self.fadeIn)
 //            self.pen.run(SKAction.sequence([SKAction.wait(forDuration: 2), self.fadeIn]))
         }
-        let sequence = SKAction.sequence([wait, action1, wait])
+        let sequence = SKAction.sequence([wait, action1, wait, wait])
         sequence.timingMode = .easeInEaseOut
         self.run(sequence){
             self.run(action2)
             self.run(wait){
                 view.isUserInteractionEnabled = true
-            }
-        }
-    }
-    
-    func removeGesture(for view : SKView){
-        if view.gestureRecognizers != nil{
-            for gesture in view.gestureRecognizers!{
-                view.removeGestureRecognizer(gesture)
             }
         }
     }

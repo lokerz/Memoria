@@ -13,11 +13,11 @@ class PhotoScene: SKScene {
     let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     let background = SKSpriteNode()
     
-    let text = ["This is the start of a new journey in my life",
-                "Because of my parents love and affection, I grow up to be a happy and healthy boy.",
-                "And I also have a good grade at my school, everything was going well until that accident happen.",
-                "My father was diagnosed with a heart attack, and not long after that, he left the world.",
-                "It’s the toughest time in my life. Although it takes time, I manage to recover because I know I still need to take care of my mom, a figure whom I need to protect no matter what it takes."
+    let text = ["It was the start of a new life for me. At first I was afraid.",
+                "They told me they had lost their child due to an accident, and took me in to their family.",
+                "They gave me a happy childhood and they loved me just like I was their real child.",
+                "Until my father was diagnosed with a heart attack, and had to leave me and mother alone.",
+                "It was the toughest time in our life. But I guess that's enough for the sad story."
     ]
     
     let photo1 = SKSpriteNode(imageNamed: "Photo1")
@@ -97,9 +97,8 @@ class PhotoScene: SKScene {
     }
     
     func addGestures(to view: SKView){
-        for gesture in view.gestureRecognizers!{
-            view.removeGestureRecognizer(gesture)
-        }
+        SpriteManager.instance.removeGesture(from : view)
+        
         
         let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))
@@ -164,10 +163,10 @@ class PhotoScene: SKScene {
         let point3 = CGPoint(x: self.photo3.position.x - self.distanceMove, y: view!.frame.height/2)
         let point4 = CGPoint(x: self.photo4.position.x - self.distanceMove, y: view!.frame.height/2)
         
-        let move1 = SKAction.move(to: point1, duration: durationMove)
-        let move2 = SKAction.move(to: point2, duration: durationMove)
-        let move3 = SKAction.move(to: point3, duration: durationMove)
-        let move4 = SKAction.move(to: point4, duration: durationMove)
+        let move1 = SKAction.move(to: point1, duration: durationMove).easeInOut()
+        let move2 = SKAction.move(to: point2, duration: durationMove).easeInOut()
+        let move3 = SKAction.move(to: point3, duration: durationMove).easeInOut()
+        let move4 = SKAction.move(to: point4, duration: durationMove).easeInOut()
         
         if self.stateGesture < 3{
             photo1.run(move1)
@@ -203,10 +202,10 @@ class PhotoScene: SKScene {
         let point3 = CGPoint(x: self.photo3.position.x + self.distanceMove, y: view!.frame.height/2)
         let point4 = CGPoint(x: self.photo4.position.x + self.distanceMove, y: view!.frame.height/2)
         
-        let move1 = SKAction.move(to: point1, duration: durationMove)
-        let move2 = SKAction.move(to: point2, duration: durationMove)
-        let move3 = SKAction.move(to: point3, duration: durationMove)
-        let move4 = SKAction.move(to: point4, duration: durationMove)
+        let move1 = SKAction.move(to: point1, duration: durationMove).easeInOut()
+        let move2 = SKAction.move(to: point2, duration: durationMove).easeInOut()
+        let move3 = SKAction.move(to: point3, duration: durationMove).easeInOut()
+        let move4 = SKAction.move(to: point4, duration: durationMove).easeInOut()
         
         if self.stateGesture > 0 {
             photo1.run(move1)
@@ -216,7 +215,10 @@ class PhotoScene: SKScene {
             self.stateGesture -= 1
             
             if mono >= stateGesture {
-                monologue.run(fadeOut)
+//                monologue.fadeOut()
+                monologue.run(fadeIn)
+                mono = stateGesture + 1
+                monologue.changeText(to: text[mono])
             }
             
             view!.isUserInteractionEnabled = false

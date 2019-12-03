@@ -63,6 +63,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.antialiasingMode = .multisampling4X
         view.addSubview(sceneView)
         
+        if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path)  {
+                let dict2 = dict as! [String : AnyObject]
+                let technique = SCNTechnique(dictionary:dict2)
+                sceneView.technique = technique
+            }
+        }
         //        sceneView.showsStatistics = true
         //        sceneView.scene!.physicsWorld.contactDelegate = self
 //                sceneView.debugOptions = [.showPhysicsShapes, .showWireframe]

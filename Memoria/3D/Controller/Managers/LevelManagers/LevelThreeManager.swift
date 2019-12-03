@@ -12,26 +12,28 @@ import SceneKit
 class LevelThreeManager : LevelManager {
     
     
-    let playerPosition = SCNVector3Make(-6.68, 7.5, 0)
+    let playerPosition = SCNVector3Make(-6.06, 7.77, 0)
     
-    let pillarPosition = SCNVector3Make(-6.68, 4.465, 0)
-    let finishPillarPosition = SCNVector3Make(4.29, -0.56, 0)
+    let pillarPosition = SCNVector3Make(-6.06, 4.60, 0)
+    let pillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
+    let finishPillarPosition = SCNVector3Make(5.74, -0.42, 0)
+    let finishPillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(90))
     
-    let gearOnePosition = SCNVector3Make(-2.78, 0, 0)
+    let gearOnePosition = SCNVector3Make(-2.71, 0, 0)
     let gearOneRotation = SCNVector4Make(0, 0, 0, 0)
     
     let gearTwoPosition = SCNVector3Make(2.34, 0, 0)
-    let gearTwoRotation = SCNVector4Make(0, 0, 0, 0.528)
+    let gearTwoRotation = SCNVector4Make(0, 0, 0, GLKMathDegreesToRadians(100))
     
     
     
     override func setupLevel(){
         super.setupLevel()
         spawnPlayer(on: playerPosition, with: playerVelocity)
-        spawnPillar(on: pillarPosition)
-        spawnGear(on: gearOnePosition, with: gearOneRotation, minAngle: -0.02, maxAngle: 1.13)
-        spawnHalfGear(on: gearTwoPosition, with: gearTwoRotation, minAngle: -0.61, maxAngle: 0.54, isCounterRotate : true)
-        spawnPillar(on: finishPillarPosition)
+        spawnPillar(on: pillarPosition, with: pillarRotation)
+        spawnGear(on: gearOnePosition, with: gearOneRotation, minAngle: GLKMathDegreesToRadians(-79), maxAngle: GLKMathDegreesToRadians(100))
+        spawnHalfGear(on: gearTwoPosition, with: gearTwoRotation, minAngle: GLKMathDegreesToRadians(1), maxAngle: GLKMathDegreesToRadians(179), isCounterRotate : true)
+        spawnPillar(on: finishPillarPosition, with: finishPillarRotation)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
         

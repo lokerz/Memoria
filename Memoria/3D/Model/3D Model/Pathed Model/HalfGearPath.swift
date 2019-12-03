@@ -14,7 +14,7 @@ class HalfGearPath : HalfGear {
     var nodes = [GKGraphNode]()
     var firstNode : GKGraphNode?
     var lastNode : GKGraphNode?
-    var radius : Float = 1.75
+    var radius : Float = 1.9
     
     override func synchronize() {
         super.synchronize()

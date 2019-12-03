@@ -40,6 +40,7 @@ class Pillar : SCNNode{
         guard let object = SCNScene(named: "art.scnassets/newPillar.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
+//            setupShader(for: node)
         }
         self.name = "Pillar"
         self.position = position

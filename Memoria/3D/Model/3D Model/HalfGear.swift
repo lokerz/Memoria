@@ -12,7 +12,7 @@ class HalfGear : Gear{
     
     override init(on position : SCNVector3, with rotation : SCNVector4, minAngle: Float, maxAngle : Float) {
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/halfgear.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/newHalfGear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }

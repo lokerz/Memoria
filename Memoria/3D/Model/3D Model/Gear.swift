@@ -44,7 +44,9 @@ class Gear : SCNNode{
         guard let object = SCNScene(named: "art.scnassets/newGear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
-//            self.addChildNode(duplicateNode(node))
+//            setupShader(for: node) //flat shadow but no shadow
+//            self.addChildNode(duplicateNode(node)) // outline but bugged
+//            node.setHighlighted() //glow
         }
         self.name = "gear"
         self.position = position
@@ -52,10 +54,6 @@ class Gear : SCNNode{
         initialAngle = rotation.w
         currentAngle = initialAngle
         newAngle = initialAngle
-        
-        
-//        setupShader(for : self.childNodes.first!)
-//        setupShader(for: self.childNodes[1])
     }
     
     required init?(coder: NSCoder) {
@@ -71,6 +69,7 @@ class Gear : SCNNode{
         
         self.eulerAngles.y = newAngle
         haptic(eulerAngles.y)
+        print(GLKMathRadiansToDegrees(eulerAngles.y))
     }
     
     func rotateGear(by degree : Float){

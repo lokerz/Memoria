@@ -63,12 +63,15 @@ class Office: SKScene{
         addChild(elioBG)
         addChild(border)
         
+        view.isUserInteractionEnabled = false
+        
         self.run(SKAction.wait(forDuration: 1)){
             self.mobA.run(SKAction.fadeAlpha(to: 1, duration: 0.5)){
                 view.isUserInteractionEnabled = true
                 self.addBubble()
                 self.addBubble2()
                 self.moveBubble()
+                self.view?.isUserInteractionEnabled = true
             }
         }
     }
@@ -88,6 +91,7 @@ class Office: SKScene{
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view?.isUserInteractionEnabled = false
         if let touch = touches.first {
             let location = touch.location(in: self)
             let nodesarray = nodes(at: location)
@@ -100,6 +104,9 @@ class Office: SKScene{
                 else if node.name == "background"{
                     if i<bubbles.count{
                         moveBubble()
+                        self.run(SKAction.wait(forDuration: 0.5)){
+                            self.view?.isUserInteractionEnabled = true
+                        }
                         i += 1
                     }
                     else if i == bubbles.count{
@@ -110,16 +117,23 @@ class Office: SKScene{
                                 }
                             }
                         }
+                        self.run(SKAction.wait(forDuration: 1)){
+                            self.view?.isUserInteractionEnabled = true
+                        }
                         i += 2
                     }
                     else if i > bubbles.count{
                         a += 1
                         moveBubble2()
+                        self.run(SKAction.wait(forDuration: 0.5)){
+                            self.view?.isUserInteractionEnabled = true
+                        }
                         }
                     if a == soloBubble.count{
                         self.run(SKAction.wait(forDuration: 1)){
                         self.nextButton.isHidden = false
                         self.nextButton.move(to: .up)
+                        self.view?.isUserInteractionEnabled = true
                         }
                     }
                 }

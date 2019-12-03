@@ -22,17 +22,27 @@ class Pillar : SCNNode{
     
     init(on position : SCNVector3) {
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/pillar.scn") else { return }
+        commonInit(on: position)
+        
+    }
+    
+    init(on position : SCNVector3, with rotation : SCNVector4) {
+        super.init()
+        commonInit(on: position)
+        self.rotation = rotation
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func commonInit(on position : SCNVector3){
+        guard let object = SCNScene(named: "art.scnassets/newPillar.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
         self.name = "Pillar"
         self.position = position
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
     
     func moveDown(by val : Float, duration : TimeInterval){

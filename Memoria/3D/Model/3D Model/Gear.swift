@@ -41,22 +41,27 @@ class Gear : SCNNode{
     }
     
     func commonInit(on position : SCNVector3, with rotation :  SCNVector4){
-        guard let object = SCNScene(named: "art.scnassets/gear.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/newGear.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
+//            self.addChildNode(duplicateNode(node))
         }
-        self.name = "Gear"
+        self.name = "gear"
         self.position = position
         self.rotation = rotation
         initialAngle = rotation.w
         currentAngle = initialAngle
         newAngle = initialAngle
-
+        
+        
+//        setupShader(for : self.childNodes.first!)
+//        setupShader(for: self.childNodes[1])
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
     
     func rotateGear(from hitResult : SCNHitTestResult, by translation : CGPoint){
         newAngle = Float(translation.x) * Float(Double.pi / 180)

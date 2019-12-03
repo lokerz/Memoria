@@ -24,7 +24,7 @@ class Player : SCNNode{
     var lastHeight : Int = 0
     
     var pathManager = PathfindingManager.instance
-
+    
     
     override init(){
         super.init()
@@ -43,12 +43,14 @@ class Player : SCNNode{
         playerNode.rotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
         lastHeight = Int(roundf(playerNode.position.y * 10))
         
+//        setupShader(for: playerNode.childNodes.first!)
         setupPointOfView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
     
     func setupPointOfView(){
         
@@ -63,7 +65,7 @@ class Player : SCNNode{
             HapticGenerator.instance.play(5)
             destination = hitTestResult.worldCoordinates
             velocity = calculateVelocity(to: destination)
-
+            
             move()
         }
     }

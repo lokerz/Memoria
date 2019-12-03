@@ -84,8 +84,6 @@ class MainViewController: UIViewController {
         view.addSubview(loadingView)
         view.bringSubviewToFront(loadingView)
     }
-    
-    
 }
 
 extension MainViewController : GameUIDelegate{

@@ -97,7 +97,6 @@ class LevelManager : NSObject {
         if hitResults.count > 0 {
             // retrieved the first clicked object
             let tappedPiece = hitResults.first!.node
-            
             if tappedPiece.name == "gear" || tappedPiece.name == "pillar"{
                 player.movePlayer(hitTestResult: hitResults.first!)
             }

@@ -65,6 +65,14 @@ extension LevelManager{
         pillars.append(pillar)
     }
     
+    func spawnPillar(on position : SCNVector3, with rotation : SCNVector4){
+        let pillar = PillarPath(on: position, with : rotation)
+        pillar.setupPath()
+        pathfinder.setupPath(nodes: pillar.nodes, coordinates: pillar.coordinates)
+        rootNode.addChildNode(pillar)
+        pillars.append(pillar)
+    }
+    
     func spawnPlatform(on position : SCNVector3, min : Float, max : Float){
         let platform = PlatformPath(on: position, minHeight: min, maxHeight: max)
         platform.setupPath()

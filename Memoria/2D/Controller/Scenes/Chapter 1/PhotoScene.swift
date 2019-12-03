@@ -143,7 +143,7 @@ class PhotoScene: SKScene {
                     self.addChild(self.photo2)
                     self.addChild(self.photo3)
                     self.addChild(self.photo4)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.run(SKAction.wait(forDuration: 1.5)) {
                         self.view!.isUserInteractionEnabled = true
                         self.house.removeFromParent()
                     }
@@ -187,7 +187,7 @@ class PhotoScene: SKScene {
 //            }
             
             view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+            self.run(SKAction.wait(forDuration: durationMove)) {
                 self.view!.isUserInteractionEnabled = true
                 
             }

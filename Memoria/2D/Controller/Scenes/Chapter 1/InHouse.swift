@@ -319,7 +319,7 @@ class InHouse : SKScene{
     
     func wait(){
         view!.isUserInteractionEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+        self.run(SKAction.wait(forDuration: animationDuration)) {
             self.view!.isUserInteractionEnabled = true
         }
     }

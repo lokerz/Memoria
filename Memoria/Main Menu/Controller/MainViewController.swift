@@ -85,7 +85,9 @@ class MainViewController: UIViewController {
         view.bringSubviewToFront(loadingView)
     }
     
-    
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge{
+        return [.all]
+    }
 }
 
 extension MainViewController : GameUIDelegate{

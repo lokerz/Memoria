@@ -236,4 +236,8 @@ class PhotoScene: SKScene {
             }
         }
     }
+    
+    override func willMove(from view: SKView) {
+        PlaySound.instance.player?.stop()
+    }
 }

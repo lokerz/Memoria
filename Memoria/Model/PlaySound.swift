@@ -35,7 +35,11 @@ class PlaySound{
     
     var soundChapter1 = [
     "",
-    "Lulu_Is_the_Cat_I_Like_Best"
+    "Adoption letter",
+    "Drop",
+    "Open Door",
+    "OldPhoto",
+    "Write"
     ]
     
     var chapterSelect = [
@@ -47,7 +51,7 @@ class PlaySound{
         var resource = ""
         switch part {
             case .chapter1 : resource = soundChapter1[index]
-        case .chapterSelect : resource = chapterSelect[index]
+            case .chapterSelect : resource = chapterSelect[index]
             default : resource = mainTheme[index]
         }
         

@@ -29,6 +29,8 @@ class InHouse : SKScene{
     var state = 0
     var stateGeser = 0
     
+    var spriteManager = SpriteManager.instance  
+    
     override func didMove(to view: SKView) {
         view.isUserInteractionEnabled = false
         
@@ -75,6 +77,7 @@ class InHouse : SKScene{
         frameBelakang.alpha = frameDepan.alpha
         frameBelakang.zPosition = 2
         
+        lastFoto.name = "last"
         lastFoto.size = CGSize(width: view.frame.width, height: view.frame.height)
         lastFoto.position = CGPoint(x: view.frame.width/2, y: -view.frame.height/2)
         lastFoto.zPosition = 3
@@ -176,11 +179,15 @@ class InHouse : SKScene{
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let node = self.currentNode {
             if node.position.y >= 280 && stateGeser == 0{
+                playPhotoDragSound()
                 stateGeser += 1
                 addChild(lastFoto)
                 frameFoto.run(SKAction.fadeAlpha(to: 0, duration: animationDuration/2))
                 lastFoto.run(SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration))
            }
+            else if node.name == "last"{
+                spriteManager.loadGame(level : 1)
+            }
         }
     }
     
@@ -234,6 +241,7 @@ class InHouse : SKScene{
         case 4:
             wait()
             removePulang()
+            playPhotoDropSound()
             addChild(pulang5)
             pulang5.run(moveHigh)
             pulang5.run(fadeOut)
@@ -324,9 +332,11 @@ class InHouse : SKScene{
         }
     }
     
-    override func willMove(from view: SKView) {
-        for gesture in view.gestureRecognizers!{
-            view.removeGestureRecognizer(gesture)
-        }
+    func playPhotoDropSound(){
+        PlaySound.instance.playSound(for: part.chapter1, index: 2)
+    }
+    
+    func playPhotoDragSound(){
+        PlaySound.instance.playSound(for: part.chapter1, index: 4)
     }
 }

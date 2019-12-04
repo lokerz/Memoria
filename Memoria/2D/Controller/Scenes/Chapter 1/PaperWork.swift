@@ -208,6 +208,7 @@ class PaperWork: SKScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         let point1 = CGPoint(x: self.paper1_1.position.x, y: view!.frame.height/2 + 100)
         let point2 = CGPoint(x: self.paper1_2.position.x + 10, y: view!.frame.height/2 + 90)
         let point3 = CGPoint(x: self.paper1_3.position.x + 15, y: view!.frame.height/2 + 86)
@@ -222,6 +223,9 @@ class PaperWork: SKScene {
                 
             }
             else if touchLocation != startTouch{
+                if !PlaySound.instance.player!.isPlaying{
+                     playWriteSound()
+                }
                 pen.position = touchLocation
                 let a = 72
                 
@@ -300,6 +304,7 @@ class PaperWork: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         HapticGenerator.instance.play(4)
         albertWork.removeAction(forKey: "Key")
+        PlaySound.instance.player?.stop()
     }
     
     func albertAnimation(){
@@ -316,4 +321,7 @@ class PaperWork: SKScene {
         
     }
     
+    func playWriteSound(){
+        PlaySound.instance.playSound(for: part.chapter1, index: 5)
+    }
 }

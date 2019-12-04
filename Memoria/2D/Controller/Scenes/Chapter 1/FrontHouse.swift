@@ -93,10 +93,15 @@ class FrontHouse: SKScene{
         view?.isUserInteractionEnabled = false
         let rotate = SKAction.rotate(byAngle: 3.14/6, duration: 0.6)
         knob.run(rotate)
+        playDoorSound()
         
         self.run(SKAction.wait(forDuration: 0.4)) {
             self.view?.isUserInteractionEnabled = true
             SpriteManager.instance.callScene(index: 7, transition: .fade(withDuration: 1))
         }
+    }
+    
+    func playDoorSound(){
+        PlaySound.instance.playSound(for: part.chapter1, index: 3)
     }
 }

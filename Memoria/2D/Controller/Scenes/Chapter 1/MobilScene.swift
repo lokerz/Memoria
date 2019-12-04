@@ -121,6 +121,7 @@ class MobilScene: SKScene {
             for node in nodesarray {
                 if node.name == "paper" {
                     if statePaper == 1{
+                        playAdoptionSound()
                         blocker.run(SKAction.fadeAlpha(to: 0.5, duration: 1))
                         let upAction = SKAction.move(to: CGPoint(x: view!.frame.width/2, y: view!.frame.height/2), duration: 1.5)
                         upAction.timingMode = .easeInEaseOut
@@ -165,5 +166,9 @@ class MobilScene: SKScene {
                 }
             }
         }
+    }
+    
+    func playAdoptionSound(){
+        PlaySound.instance.playSound(for: part.chapter1, index: 1)
     }
 }

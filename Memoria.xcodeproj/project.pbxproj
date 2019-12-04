@@ -80,6 +80,11 @@
 		F1728AE2238288A70027A617 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
+		F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */; };
+		F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09512397A0A8003E4295 /* Open Door.mp3 */; };
+		F1BA09572397A0AA003E4295 /* Write.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09522397A0A9003E4295 /* Write.mp3 */; };
+		F1BA09582397A0AA003E4295 /* OldPhoto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09532397A0AA003E4295 /* OldPhoto.mp3 */; };
+		F1BA095C2397ACA0003E4295 /* Drop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA095B2397ACA0003E4295 /* Drop.mp3 */; };
 		F1E66BA923869BCA000633A6 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */; };
 		F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */; };
 /* End PBXBuildFile section */
@@ -181,6 +186,11 @@
 		F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
+		F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Adoption letter.mp3"; sourceTree = "<group>"; };
+		F1BA09512397A0A8003E4295 /* Open Door.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Open Door.mp3"; sourceTree = "<group>"; };
+		F1BA09522397A0A9003E4295 /* Write.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Write.mp3; sourceTree = "<group>"; };
+		F1BA09532397A0AA003E4295 /* OldPhoto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = OldPhoto.mp3; sourceTree = "<group>"; };
+		F1BA095B2397ACA0003E4295 /* Drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Drop.mp3; sourceTree = "<group>"; };
 		F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
 		F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A_Quiet_Thought.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -510,6 +520,11 @@
 		F1685EA323813439008D710E /* Sound Effect */ = {
 			isa = PBXGroup;
 			children = (
+				F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */,
+				F1BA095B2397ACA0003E4295 /* Drop.mp3 */,
+				F1BA09512397A0A8003E4295 /* Open Door.mp3 */,
+				F1BA09532397A0AA003E4295 /* OldPhoto.mp3 */,
+				F1BA09522397A0A9003E4295 /* Write.mp3 */,
 				47F933CC238D319A002FCB6C /* Book_Flip.mp3 */,
 				47F933CB238D319A002FCB6C /* PlayClick.mp3 */,
 				F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */,
@@ -641,13 +656,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1BA09582397A0AA003E4295 /* OldPhoto.mp3 in Resources */,
 				47F933CE238D319A002FCB6C /* Book_Flip.mp3 in Resources */,
 				47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */,
 				F1685EA523813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 in Resources */,
+				F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */,
 				F1728ADF238288A70027A617 /* Roboto-MediumItalic.ttf in Resources */,
 				F1728AD9238288A70027A617 /* Roboto-Bold.ttf in Resources */,
 				F15732412375586B00E7891E /* InHouse.sks in Resources */,
 				F1728ADA238288A70027A617 /* Roboto-Italic.ttf in Resources */,
+				F1BA095C2397ACA0003E4295 /* Drop.mp3 in Resources */,
 				4705CAAE2372BF2E00E874EB /* 3D.storyboard in Resources */,
 				F157323D2375586B00E7891E /* MobilScene.sks in Resources */,
 				F157323C2375585B00E7891E /* Office.sks in Resources */,
@@ -660,6 +678,8 @@
 				F1728AD7238288A70027A617 /* Roboto-Light.ttf in Resources */,
 				F157324C237567B100E7891E /* ChapterSelect.sks in Resources */,
 				F1728ADB238288A70027A617 /* Roboto-BoldItalic.ttf in Resources */,
+				F1BA09572397A0AA003E4295 /* Write.mp3 in Resources */,
+				F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */,
 				F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */,
 				F157323F2375586B00E7891E /* FrontHouse.sks in Resources */,
 				47B7A1B923585BCD0027AA1F /* LaunchScreen.storyboard in Resources */,

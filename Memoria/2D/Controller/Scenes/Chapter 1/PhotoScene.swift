@@ -238,6 +238,6 @@ class PhotoScene: SKScene {
     }
     
     override func willMove(from view: SKView) {
-        PlaySound.instance.player?.stop()
+        FirstPlayer.instance.player?.stop()
     }
 }

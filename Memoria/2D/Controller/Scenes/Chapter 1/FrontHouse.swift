@@ -102,6 +102,6 @@ class FrontHouse: SKScene{
     }
     
     func playDoorSound(){
-        PlaySound.instance.playSound(for: part.chapter1, index: 3)
+        FirstPlayer.instance.playSound(for: part.chapter1, index: 3)
     }
 }

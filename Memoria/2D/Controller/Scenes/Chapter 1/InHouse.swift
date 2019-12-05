@@ -29,7 +29,7 @@ class InHouse : SKScene{
     var state = 0
     var stateGeser = 0
     
-    var spriteManager = SpriteManager.instance  
+    var spriteManager = SpriteManager.instance
     
     override func didMove(to view: SKView) {
         view.isUserInteractionEnabled = false
@@ -241,7 +241,10 @@ class InHouse : SKScene{
         case 4:
             wait()
             removePulang()
-            playPhotoDropSound()
+            
+            self.run(SKAction.wait(forDuration: animationDuration/2)){
+                self.playPhotoDropSound()
+            }
             addChild(pulang5)
             pulang5.run(moveHigh)
             pulang5.run(fadeOut)
@@ -333,10 +336,10 @@ class InHouse : SKScene{
     }
     
     func playPhotoDropSound(){
-        PlaySound.instance.playSound(for: part.chapter1, index: 2)
+        FirstPlayer.instance.playSound(for: part.chapter1, index: 2)
     }
     
     func playPhotoDragSound(){
-        PlaySound.instance.playSound(for: part.chapter1, index: 4)
+        FirstPlayer.instance.playSound(for: part.chapter1, index: 4)
     }
 }

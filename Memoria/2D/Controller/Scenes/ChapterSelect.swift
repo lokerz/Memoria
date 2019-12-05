@@ -172,6 +172,7 @@ class ChapterSelect: SKScene {
                     default: break
                     }
                     playPlaySound()
+                    SecondPlayer.instance.player?.stop()
                 }
                 else if node.name == "leftButton"{
                     HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
@@ -348,15 +349,11 @@ class ChapterSelect: SKScene {
         back.run(SKAction.setTexture(SKTexture(imageNamed: "backButton"),resize: true))
     }
     
-    override func willMove(from view: SKView) {
-        PlaySound.instance.player?.stop()
-    }
-    
     func playNextSound(){
-        PlaySound.instance.playSound(for: part.chapterSelect, index: 1)
+        FirstPlayer.instance.playSound(for: part.chapterSelect, index: 1)
     }
     
     func playPlaySound(){
-        PlaySound.instance.playSound(for: part.chapterSelect, index: 2)
+        FirstPlayer.instance.playSound(for: part.chapterSelect, index: 2)
     }
 }

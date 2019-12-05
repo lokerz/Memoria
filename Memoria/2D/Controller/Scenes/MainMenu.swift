@@ -113,8 +113,8 @@ class MainMenu: SKScene {
     }
     
     func playSound(){
-        PlaySound.instance.playSound(for: part.mainMenu, index: 1)
-        PlaySound.instance.player?.numberOfLoops = -1
+        SecondPlayer.instance.playSound(for: part.mainMenu, index: 1)
+        SecondPlayer.instance.player?.numberOfLoops = -1
     }
     
     func playScroll(){

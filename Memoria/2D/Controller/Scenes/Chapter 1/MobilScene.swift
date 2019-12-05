@@ -169,6 +169,6 @@ class MobilScene: SKScene {
     }
     
     func playAdoptionSound(){
-        PlaySound.instance.playSound(for: part.chapter1, index: 1)
+        FirstPlayer.instance.playSound(for: part.chapter1, index: 1)
     }
 }

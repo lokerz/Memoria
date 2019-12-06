@@ -75,7 +75,6 @@
 		F157324E237567DE00E7891E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324D237567DE00E7891E /* MainMenu.swift */; };
 		F1573250237567F500E7891E /* ChapterSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157324F237567F500E7891E /* ChapterSelect.swift */; };
 		F1685EA2238131F1008D710E /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1685EA1238131F1008D710E /* SoundManager.swift */; };
-		F1685EA523813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */; };
 		F1728AD7238288A70027A617 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728ACB238288A50027A617 /* Roboto-Light.ttf */; };
 		F1728AD8238288A70027A617 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728ACC238288A50027A617 /* Roboto-Regular.ttf */; };
 		F1728AD9238288A70027A617 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728ACD238288A50027A617 /* Roboto-Bold.ttf */; };
@@ -197,7 +196,6 @@
 		F157324D237567DE00E7891E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		F157324F237567F500E7891E /* ChapterSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSelect.swift; sourceTree = "<group>"; };
 		F1685EA1238131F1008D710E /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		F1685EA423813449008D710E /* Lulu_Is_the_Cat_I_Like_Best.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lulu_Is_the_Cat_I_Like_Best.mp3; sourceTree = "<group>"; };
 		F1728ACB238288A50027A617 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		F1728ACC238288A50027A617 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		F1728ACD238288A50027A617 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -1025,7 +1023,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1043,7 +1041,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1062,7 +1060,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MemoriaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1084,7 +1082,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MemoriaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1105,7 +1103,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MemoriaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1125,7 +1123,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MemoriaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

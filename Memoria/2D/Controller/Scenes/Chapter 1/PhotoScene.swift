@@ -128,7 +128,7 @@ class PhotoScene: SKScene {
             let nodesarray = nodes(at: location)
             
             for node in nodesarray {
-                if node.name == "house" && state == 1{
+                if node.name == "house" && state == 0{
                     addGestures(to: view!)
                     house.run(fadeOut)
                     view!.isUserInteractionEnabled = false

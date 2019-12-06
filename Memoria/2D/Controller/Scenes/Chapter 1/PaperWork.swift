@@ -38,9 +38,9 @@ class PaperWork: SKScene {
     let paperSize = CGSize(width: 300, height: 380)
     let textSize = CGSize(width: 270, height: 370)
     
-    let fadeIn = SKAction.fadeIn(withDuration: 1.2).easeInOut()
-    let fadeInSlow = SKAction.fadeIn(withDuration: 2).easeInOut()
-    let fadeOut = SKAction.fadeOut(withDuration: 1.2).easeInOut()
+    let fadeIn = SKAction.fadeIn(withDuration: 1.2)
+    let fadeInSlow = SKAction.fadeIn(withDuration: 2)
+    let fadeOut = SKAction.fadeOut(withDuration: 1.2)
     
     
     override func didMove(to view: SKView) {
@@ -157,10 +157,10 @@ class PaperWork: SKScene {
             self.albertWork.run(scale)
             self.albertWork.run(move)
         }
-        let action2 = SKAction.customAction(withDuration: 2) { (SKNode, CGFloat) in
-            let moveIn1 = SKAction.moveTo(x: 7 * view.frame.width/10, duration: 1.2)
-            let moveIn2 = SKAction.moveTo(x: 7 * view.frame.width/10 + 10, duration: 1.2)
-            let moveIn3 = SKAction.moveTo(x: 7 * view.frame.width/10 + 15, duration: 1.2)
+        let action2 = SKAction.customAction(withDuration: 1.2) { (SKNode, CGFloat) in
+            let moveIn1 = SKAction.moveTo(x: 7 * view.frame.width/10, duration: 1.2).easeOut()
+            let moveIn2 = SKAction.moveTo(x: 7 * view.frame.width/10 + 10, duration: 1.2).easeOut()
+            let moveIn3 = SKAction.moveTo(x: 7 * view.frame.width/10 + 15, duration: 1.2).easeOut()
             self.paper1_1.run(moveIn1)
             self.paper1_2.run(moveIn2)
             self.paper1_3.run(moveIn3)
@@ -172,7 +172,6 @@ class PaperWork: SKScene {
 //            self.pen.run(SKAction.sequence([SKAction.wait(forDuration: 2), self.fadeIn]))
         }
         let sequence = SKAction.sequence([wait, action1, wait, wait])
-        sequence.timingMode = .easeInEaseOut
         self.run(sequence){
             self.run(action2)
             self.run(wait){

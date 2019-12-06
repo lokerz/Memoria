@@ -71,8 +71,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 //                sceneView.technique = technique
 //            }
 //        }
-        //        sceneView.showsStatistics = true
-        //        sceneView.scene!.physicsWorld.contactDelegate = self
+//                sceneView.showsStatistics = true
 //                sceneView.debugOptions = [.showPhysicsShapes, .showWireframe]
     }
     

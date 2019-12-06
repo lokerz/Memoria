@@ -17,7 +17,7 @@ class PhotoScene: SKScene {
                 "They told me they had lost their child due to an accident, and took me in to their family.",
                 "They gave me a happy childhood and they loved me just like I was their real child.",
                 "Until my father was diagnosed with a heart attack, and had to leave me and mother alone.",
-                "It was the toughest time in our life. But I guess that's enough for the sad story."
+                "It was the toughest time in our life. But we managed to hold out."
     ]
     
     let photo1 = SKSpriteNode(imageNamed: "Photo1")
@@ -30,7 +30,7 @@ class PhotoScene: SKScene {
     
     
     let house = SKSpriteNode(imageNamed: "House")
-    var state = 1
+    var state = 0
     var stateGesture = 0
     
     var photoWidth = 300
@@ -43,8 +43,6 @@ class PhotoScene: SKScene {
     let fadeOut = SKAction.fadeAlpha(to: 0, duration: 0.8)
     
     override func didMove(to view: SKView) {
-        addGestures(to : view)
-        
         monologue = Monologue(for: view)
         addChild(monologue)
         monologue.changeText(to: text[stateGesture])
@@ -121,6 +119,7 @@ class PhotoScene: SKScene {
             }
         }
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         nextButton.reset()
         if let touch = touches.first {
@@ -129,6 +128,7 @@ class PhotoScene: SKScene {
             
             for node in nodesarray {
                 if node.name == "house" && state == 1{
+                    addGestures(to: view!)
                     house.run(fadeOut)
                     view!.isUserInteractionEnabled = false
                     

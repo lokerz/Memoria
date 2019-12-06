@@ -51,15 +51,13 @@ class FrontHouse: SKScene{
         
         view.isUserInteractionEnabled = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        self.run(SKAction.wait(forDuration: 1)){
             self.addChild(self.houseNightElio)
-            self.houseNightElio.run(SKAction.fadeIn(withDuration: 1))
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.houseNight.removeFromParent()
-            self.view?.isUserInteractionEnabled = true
-        }
+            self.houseNightElio.run(SKAction.fadeAlpha(to: 1, duration: 1)){
+                self.houseNight.removeFromParent()
+                self.view?.isUserInteractionEnabled = true
+                }
+            }
     }
     
     func addGestures(to view: SKView){
@@ -93,11 +91,15 @@ class FrontHouse: SKScene{
         view?.isUserInteractionEnabled = false
         let rotate = SKAction.rotate(byAngle: 3.14/6, duration: 0.6)
         knob.run(rotate)
+        playDoorSound()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        self.run(SKAction.wait(forDuration: 0.4)) {
             self.view?.isUserInteractionEnabled = true
             SpriteManager.instance.callScene(index: 7, transition: .fade(withDuration: 1))
-
         }
+    }
+    
+    func playDoorSound(){
+        FirstPlayer.instance.playSound(for: part.chapter1, index: 3)
     }
 }

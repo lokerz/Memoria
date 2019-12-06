@@ -21,7 +21,6 @@ class PaperWork: SKScene {
     let paper1_1 = SKSpriteNode()
     let paper1_2 = SKSpriteNode()
     let paper1_3 = SKSpriteNode()
-    let paper2 = SKSpriteNode()
     
     let text11 = SKSpriteNode(imageNamed: "text_11")
     let text12 = SKSpriteNode(imageNamed: "text_12")
@@ -35,8 +34,6 @@ class PaperWork: SKScene {
     let text33 = SKSpriteNode(imageNamed: "text_33")
     
     let detector = SKSpriteNode()
-    
-    var nextButton = YellowButton()
     
     let paperSize = CGSize(width: 300, height: 380)
     let textSize = CGSize(width: 270, height: 370)
@@ -141,14 +138,6 @@ class PaperWork: SKScene {
         pen.setScale(0.12)
         pen.alpha = 0
         
-        nextButton = YellowButton(with: CGSize(width: 60, height: 60), text: "➤", textSize: 25)
-        nextButton.position = CGPoint(x:view.frame.width-60, y: 60)
-        nextButton.zPosition = 7
-        nextButton.name = "nextButton"
-        nextButton.move(to: .down)
-        nextButton.isHidden = true
-        addChild(nextButton)
-        
         addChild(detector)
         addChild(albertWork)
         
@@ -205,21 +194,20 @@ class PaperWork: SKScene {
                     HapticGenerator.instance.play(4)
                     albertAnimation()
                 }
-                    
-                else if node.name == "nextButton"{
-                    nextButton.highlight()
-                }
             }
         }
         
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         let point1 = CGPoint(x: self.paper1_1.position.x, y: view!.frame.height/2 + 100)
         let point2 = CGPoint(x: self.paper1_2.position.x + 10, y: view!.frame.height/2 + 90)
+        let point3 = CGPoint(x: self.paper1_3.position.x + 15, y: view!.frame.height/2 + 86)
         
         let move1 = SKAction.move(to: point1, duration: 1)
         let move2 = SKAction.move(to: point2, duration: 1)
+        let move3 = SKAction.move(to: point3, duration: 1)
         
         if let touch = touches.first{
             let touchLocation = touch.location(in: self)
@@ -227,6 +215,9 @@ class PaperWork: SKScene {
                 
             }
             else if touchLocation != startTouch{
+                if !FirstPlayer.instance.player!.isPlaying{
+                     playWriteSound()
+                }
                 pen.position = touchLocation
                 let a = 72
                 
@@ -241,17 +232,16 @@ class PaperWork: SKScene {
                 }
                 if writeState == 2 * a{
                     addChild(text13)
-                    text13.run(fadeInSlow)
-                }
-                if writeState == 3 * a{
-                    self.paper1_1.run(move1)
-                    self.text11.run(move1)
-                    self.text12.run(move1)
-                    self.text13.run(move1)
-                    self.paper1_1.run(self.fadeOut)
-                    self.text11.run(self.fadeOut)
-                    self.text12.run(self.fadeOut)
-                    self.text13.run(self.fadeOut)
+                    text13.run(fadeInSlow){
+                        self.paper1_1.run(move1)
+                        self.text11.run(move1)
+                        self.text12.run(move1)
+                        self.text13.run(move1)
+                        self.paper1_1.run(self.fadeOut)
+                        self.text11.run(self.fadeOut)
+                        self.text12.run(self.fadeOut)
+                        self.text13.run(self.fadeOut)
+                    }
                 }
                 if writeState == 4 * a{
                     paper1_1.removeFromParent()
@@ -263,16 +253,14 @@ class PaperWork: SKScene {
                 }
                 if writeState == 5 * a{
                     addChild(text22)
-                    text22.run(fadeInSlow)
-                }
-                
-                if writeState == 6 * a{
-                    self.paper1_2.run(move2)
-                    self.text21.run(move2)
-                    self.text22.run(move2)
-                    self.paper1_2.run(self.fadeOut)
-                    self.text21.run(self.fadeOut)
-                    self.text22.run(self.fadeOut)
+                    text22.run(fadeInSlow){
+                        self.paper1_2.run(move2)
+                        self.text21.run(move2)
+                        self.text22.run(move2)
+                        self.paper1_2.run(self.fadeOut)
+                        self.text21.run(self.fadeOut)
+                        self.text22.run(self.fadeOut)
+                    }
                 }
                 if writeState == 7 * a{
                     paper1_2.removeFromParent()
@@ -288,8 +276,16 @@ class PaperWork: SKScene {
                 if writeState == 9 * a{
                     addChild(text33)
                     text33.run(fadeInSlow){
-                        self.nextButton.isHidden = false
-                        self.nextButton.move(to: .up)
+                        self.paper1_3.run(move3)
+                        self.text31.run(move3)
+                        self.text32.run(move3)
+                        self.text33.run(move3)
+                        self.paper1_3.run(self.fadeOut)
+                        self.text31.run(self.fadeOut)
+                        self.text32.run(self.fadeOut)
+                        self.text33.run(self.fadeOut){
+                            SpriteManager.instance.callScene(index: 5)
+                        }
                     }
                 }
             }
@@ -298,21 +294,9 @@ class PaperWork: SKScene {
         super.touchesMoved(touches, with: event)
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        nextButton.reset()
         HapticGenerator.instance.play(4)
         albertWork.removeAction(forKey: "Key")
-        
-        if let touch = touches.first {
-        let location = touch.location(in: self)
-        let nodesarray = nodes(at: location)
-            
-            for node in nodesarray {
-                if node.name == "nextButton" {
-                    HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
-                    SpriteManager.instance.callScene(index: 5)
-                }
-            }
-        }
+        FirstPlayer.instance.player?.stop()
     }
     
     func albertAnimation(){
@@ -329,4 +313,7 @@ class PaperWork: SKScene {
         
     }
     
+    func playWriteSound(){
+        FirstPlayer.instance.playSound(for: part.chapter1, index: 5)
+    }
 }

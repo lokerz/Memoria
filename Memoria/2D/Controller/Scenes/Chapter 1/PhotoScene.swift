@@ -142,7 +142,7 @@ class PhotoScene: SKScene {
                     self.addChild(self.photo2)
                     self.addChild(self.photo3)
                     self.addChild(self.photo4)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.run(SKAction.wait(forDuration: 1.5)) {
                         self.view!.isUserInteractionEnabled = true
                         self.house.removeFromParent()
                     }
@@ -175,14 +175,18 @@ class PhotoScene: SKScene {
             photo4.run(move4)
             self.stateGesture += 1
             
-            if mono <= stateGesture {
-                monologue.run(fadeIn)
-                mono = stateGesture + 1
-                monologue.changeText(to: text[mono])
-            }
+            //dont disappear
+            monologue.changeText(to: text[stateGesture+1])
+            
+            //disappear
+//            if mono <= stateGesture {
+//                monologue.run(fadeIn)
+//                mono = stateGesture + 1
+//                monologue.changeText(to: text[mono])
+//            }
             
             view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+            self.run(SKAction.wait(forDuration: durationMove)) {
                 self.view!.isUserInteractionEnabled = true
                 
             }
@@ -231,5 +235,9 @@ class PhotoScene: SKScene {
                 self.nextButton.move(to: .down)
             }
         }
+    }
+    
+    override func willMove(from view: SKView) {
+        FirstPlayer.instance.player?.stop()
     }
 }

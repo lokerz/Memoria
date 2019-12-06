@@ -138,8 +138,8 @@ class GameUIView: UIView{
     @IBAction func soundButtonAction(_ sender: Any) {
         //SoundGenerator.instance.isSound = !SoundeGenerator.instance.isSound
         HapticGenerator.instance.play(4)
-        PlaySound.instance.volume = PlaySound.instance.volume == 1 ? 0 : 1
-        soundButtonOutlet.setTitleColor(PlaySound.instance.volume == 1 ? .white : .gray, for: .normal)
+        FirstPlayer.instance.volume = FirstPlayer.instance.volume == 1 ? 0 : 1
+        soundButtonOutlet.setTitleColor(FirstPlayer.instance.volume == 1 ? .white : .gray, for: .normal)
         
     }
     

@@ -177,13 +177,14 @@ class ChapterSelect: SKScene {
                     HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     switch state {
                     case 1: spriteManager.callScene(index: 1, transition: .fade(withDuration: 1))
-                    case 2: spriteManager.callScene(index: 4, transition: .fade(withDuration: 0.5))
-                    case 3: spriteManager.callScene(index: 5, transition: .fade(withDuration: 0.5))
+                    case 2: spriteManager.callScene(index: 5, transition: .fade(withDuration: 0.5))
+                    case 3: spriteManager.callScene(index: 7, transition: .fade(withDuration: 0.5))
                     case 4: spriteManager.loadGame(level : 1)
                     case 5: spriteManager.callScene(index: 7, transition: .fade(withDuration: 0.5))
                     default: break
                     }
-                    PlaySound.instance.player?.stop()
+                    playPlaySound()
+                    SecondPlayer.instance.player?.stop()
                 }
                 else if node.name == "leftButton"{
                     HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
@@ -287,7 +288,7 @@ class ChapterSelect: SKScene {
     
     func chapterTitleChange(){
         chapterTitle.run(SKAction.fadeAlpha(to: 0, duration: durationMove/2))
-        DispatchQueue.main.asyncAfter(deadline: .now() + durationMove/2) {
+        self.run(SKAction.wait(forDuration: durationMove/2)) {
             self.chapterTitle.text = self.chapterName[self.state]
             self.chapterTitle.run(SKAction.fadeAlpha(to: 1, duration: self.durationMove/2))
         }
@@ -302,6 +303,7 @@ class ChapterSelect: SKScene {
     }
     
     func chapterMoveNext(chapter1: SKNode, chapter2: SKNode){
+        playNextSound()
         addChild(chapter1)
         addChild(chapter2)
         
@@ -321,13 +323,14 @@ class ChapterSelect: SKScene {
             chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
             self.state += 1
             view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+            self.run(SKAction.wait(forDuration: durationMove)) {
                 self.view!.isUserInteractionEnabled = true
             }
         }
     }
     
     func chapterMovePrev(chapter1: SKNode, chapter2: SKNode){
+        playNextSound()
         addChild(chapter1)
         addChild(chapter2)
         
@@ -347,7 +350,7 @@ class ChapterSelect: SKScene {
             chapter2.run(SKAction.fadeAlpha(to: 1, duration: durationMove))
             self.state -= 1
             view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
+            self.run(SKAction.wait(forDuration: durationMove)) {
                 self.view!.isUserInteractionEnabled = true
             }
         }
@@ -356,5 +359,13 @@ class ChapterSelect: SKScene {
     func resetButton(){
         playButton.reset()
         back.run(SKAction.setTexture(SKTexture(imageNamed: "backButton"),resize: true))
+    }
+    
+    func playNextSound(){
+        FirstPlayer.instance.playSound(for: part.chapterSelect, index: 1)
+    }
+    
+    func playPlaySound(){
+        FirstPlayer.instance.playSound(for: part.chapterSelect, index: 2)
     }
 }

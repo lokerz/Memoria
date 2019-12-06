@@ -31,7 +31,11 @@ class FirstPlayer{
     var volume : Float = 1
     var mainTheme = [
     "",
-    "A_Quiet_Thought"
+    "A_Quiet_Thought",
+    "Piano In Blue",
+    "PianoDreams",
+    "full_ThisBeautifulWorld",
+    "mainfile_sweet-love-piano"
     ]
     
     var soundChapter1 = [
@@ -40,13 +44,16 @@ class FirstPlayer{
     "Drop",
     "Open Door",
     "OldPhoto",
-    "Write"
+    "Write",
+    "Car Ambience",
+    "car-interior-ambience-01-sound-effect"
     ]
     
     var chapterSelect = [
     "",
     "Book_Flip",
-    "PlayClick"]
+    "PlayClick"
+    ]
     
     func playSound(for part : part, index: Int) {
         var resource = ""
@@ -84,7 +91,7 @@ class SecondPlayer{
     
     var player: AVAudioPlayer?
     
-    func playSound(for part : part, index: Int) {
+    func playSound(for part : part, index: Int, volume: Float) {
         var resource = ""
         switch part {
         case .chapter1 : resource = FirstPlayer.instance.soundChapter1[index]
@@ -93,10 +100,10 @@ class SecondPlayer{
         }
         
         guard let url = Bundle.main.url(forResource: resource, withExtension: "mp3") else { return }
-        play(url: url)
+        play(url: url, volume: volume)
     }
     
-    func play(url : URL){
+    func play(url : URL, volume: Float){
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -105,10 +112,9 @@ class SecondPlayer{
 
             
             guard let player = player else { return }
-            player.volume = FirstPlayer.instance.volume
+            player.volume = volume
             player.stop()
             player.play()
-
         } catch let error {
             print(error.localizedDescription)
         }

@@ -92,6 +92,7 @@ class PhotoScene: SKScene {
         nextButton.move(to: .down)
         nextButton.isHidden = true
         addChild(nextButton)
+
     }
     
     func addGestures(to view: SKView){

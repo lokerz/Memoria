@@ -113,7 +113,9 @@ class MainMenu: SKScene {
     }
     
     func playSound(){
-        SecondPlayer.instance.playSound(for: part.mainMenu, index: 1)
+        let random = Int.random(in: 1...5)
+        
+        SecondPlayer.instance.playSound(for: part.mainMenu, index: random, volume: 1.0)
         SecondPlayer.instance.player?.numberOfLoops = -1
     }
     

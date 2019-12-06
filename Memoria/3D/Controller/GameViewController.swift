@@ -15,6 +15,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     var scene : SCNScene!
     
     var level = 0
+    var finishLevel = 2
     
     var levelManager = LevelManager()
     var gestureManager = GestureManager.instance
@@ -63,13 +64,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.antialiasingMode = .multisampling4X
         view.addSubview(sceneView)
         
-        if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
-            if let dict = NSDictionary(contentsOfFile: path)  {
-                let dict2 = dict as! [String : AnyObject]
-                let technique = SCNTechnique(dictionary:dict2)
-                sceneView.technique = technique
-            }
-        }
+//        if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
+//            if let dict = NSDictionary(contentsOfFile: path)  {
+//                let dict2 = dict as! [String : AnyObject]
+//                let technique = SCNTechnique(dictionary:dict2)
+//                sceneView.technique = technique
+//            }
+//        }
         //        sceneView.showsStatistics = true
         //        sceneView.scene!.physicsWorld.contactDelegate = self
 //                sceneView.debugOptions = [.showPhysicsShapes, .showWireframe]
@@ -100,7 +101,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         gestureManager.removeGesture(sceneView)
         
         let _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (Timer) in
-            if self.level == 3 {
+            if self.level == self.finishLevel {
                 self.delegate?.showSpriteKit?(index: 8, transition: .fade(withDuration: 1))
             }
             else {

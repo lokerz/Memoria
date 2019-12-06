@@ -23,6 +23,7 @@ enum part {
     case BGM3D
     case soundEffect3D
 }
+
 class FirstPlayer{
     static var instance = FirstPlayer()
     

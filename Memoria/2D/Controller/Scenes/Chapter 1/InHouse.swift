@@ -99,7 +99,7 @@ class InHouse : SKScene{
     }
     
     func addGesture(to view : SKView){
-        SpriteManager.instance.removeGesture(from: view)
+        view.removeGestures()
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipedDirectionUp(sender:)))
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipedDirectionDown(sender:)))
         

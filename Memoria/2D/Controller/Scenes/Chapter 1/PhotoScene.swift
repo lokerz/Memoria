@@ -97,8 +97,7 @@ class PhotoScene: SKScene {
     }
     
     func addGestures(to view: SKView){
-        SpriteManager.instance.removeGesture(from : view)
-        
+        view.removeGestures()        
         
         let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedLeft(sender:)))
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PhotoScene.swipedRight(sender:)))

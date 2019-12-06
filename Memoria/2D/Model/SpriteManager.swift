@@ -90,12 +90,4 @@ class SpriteManager {
         chapter = 2
         skView.presentScene(loadScene(99), transition: transition)
     }
-    
-    func removeGesture(from view: SKView){
-        if view.gestureRecognizers != nil {
-            for gesture in view.gestureRecognizers!{
-                view.removeGestureRecognizer(gesture)
-            }
-        }
-    }
 }

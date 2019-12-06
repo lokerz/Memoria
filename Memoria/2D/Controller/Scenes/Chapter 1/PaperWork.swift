@@ -52,7 +52,7 @@ class PaperWork: SKScene {
         let Paper = SKTexture(imageNamed: "Kertas")
         let setPaper = SKAction.setTexture(Paper)
         
-        SpriteManager.instance.removeGesture(from : view)
+        view.removeGestures()
         
         albertWork.run(SKAction.setTexture(SKTexture(imageNamed: "Kerja_1")))
         albertWork.name = "Albert"

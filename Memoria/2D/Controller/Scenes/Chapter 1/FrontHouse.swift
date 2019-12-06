@@ -61,7 +61,7 @@ class FrontHouse: SKScene{
     }
     
     func addGestures(to view: SKView){
-        SpriteManager.instance.removeGesture(from: view)
+        view.removeGestures()
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FrontHouse.swipedDirection(sender:)))
         
         swipeDown.direction = .down

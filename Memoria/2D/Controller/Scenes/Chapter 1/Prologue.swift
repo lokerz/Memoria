@@ -11,6 +11,9 @@ import SpriteKit
 class Prologue: SKScene {
     let prologue = SKLabelNode()
     let background = SKSpriteNode()
+    
+    let skipButton = SKSpriteNode()
+    
     var stateBacot = 1
     var stateSekarang = 1
     let fadeIn = SKAction.fadeAlpha(to: 1, duration: 0.7)
@@ -53,8 +56,20 @@ class Prologue: SKScene {
         prologue.preferredMaxLayoutWidth = view.frame.width - 200
         prologue.alpha = 0
         
+        skipButton.name = "Skip"
+        skipButton.run(SKAction.setTexture(SKTexture(imageNamed: "SkipWhite"),resize: true))
+        skipButton.zPosition = 4
+        skipButton.position = CGPoint(x: view.frame.width - 70, y: 40)
+        skipButton.alpha = 0
+        
+        addChild(skipButton)
+        
         addChild(background)
         addChild(prologue)
+        
+        let fadeInSkip = [SKAction.wait(forDuration: 5), SKAction.fadeAlpha(to: 1, duration: 1)]
+
+        skipButton.run(SKAction.sequence(fadeInSkip))
         
         showText(string: prologues[0], duration: 2)
         showText(string: prologues[1], duration: 2)
@@ -65,6 +80,35 @@ class Prologue: SKScene {
         
         let sequence = SKAction.sequence(sequences)
         prologue.run(sequence)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
+            for node in nodesarray {
+                if node.name == "Skip"{
+                    skipButton.run(SKAction.setTexture(SKTexture(imageNamed: "SkipSelected"),resize: true))
+                }
+            }
+        }
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetButton()
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            let nodesarray = nodes(at: location)
+            
+            for node in nodesarray {
+                if node.name == "Skip"{
+                    HapticGenerator.instance.play(sharpnessValue: 0.5, intensityValue: 0.5)
+                    SpriteManager.instance.callScene(index: 2, transition: .fade(withDuration: 1))
+                }
+            }
+        }
     }
     
     func showText(string: String, duration : Double){
@@ -84,5 +128,9 @@ class Prologue: SKScene {
         }
         sequences.append(changeScene)
         
+    }
+    
+    func resetButton(){
+        skipButton.run(SKAction.setTexture(SKTexture(imageNamed: "SkipWhite"),resize: true))
     }
 }

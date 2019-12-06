@@ -39,7 +39,7 @@ class ChapterSelect: SKScene {
     
     let durationMove = 1.0
     
-    let back = SKSpriteNode(imageNamed: "backButton")
+    let back = SKSpriteNode()
     
     var playButton = YellowButton()
     

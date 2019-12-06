@@ -187,6 +187,8 @@ class InHouse : SKScene{
            }
             else if node.name == "last"{
                 spriteManager.loadGame(level : 1)
+                FirstPlayer.instance.player?.stop()
+                SecondPlayer.instance.player?.stop()
             }
         }
     }

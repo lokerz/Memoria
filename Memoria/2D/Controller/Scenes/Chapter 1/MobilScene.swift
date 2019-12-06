@@ -96,6 +96,9 @@ class MobilScene: SKScene {
         addChild(paper)
         addChild(blocker)
         addChild(paperBig)
+        
+        SecondPlayer.instance.playSound(for: .chapter1, index: 7, volume: 0.3)
+        SecondPlayer.instance.player?.numberOfLoops = -1
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -163,6 +166,7 @@ class MobilScene: SKScene {
                 else if node.name == "nextButton" {
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
                     SpriteManager.instance.callScene(index: 3, transition: .fade(withDuration: 1))
+                    SecondPlayer.instance.player?.stop()
                 }
             }
         }

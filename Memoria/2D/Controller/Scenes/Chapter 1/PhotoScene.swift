@@ -43,8 +43,6 @@ class PhotoScene: SKScene {
     let fadeOut = SKAction.fadeAlpha(to: 0, duration: 0.8)
     
     override func didMove(to view: SKView) {
-        addGestures(to : view)
-        
         monologue = Monologue(for: view)
         addChild(monologue)
         monologue.changeText(to: text[stateGesture])
@@ -94,6 +92,7 @@ class PhotoScene: SKScene {
         nextButton.move(to: .down)
         nextButton.isHidden = true
         addChild(nextButton)
+
     }
     
     func addGestures(to view: SKView){
@@ -131,6 +130,8 @@ class PhotoScene: SKScene {
             
             for node in nodesarray {
                 if node.name == "house" && state == 1{
+                    addGestures(to : view!)
+                    
                     house.run(fadeOut)
                     view!.isUserInteractionEnabled = false
                     

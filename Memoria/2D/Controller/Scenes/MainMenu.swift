@@ -33,7 +33,11 @@ class MainMenu: SKScene {
         firstPage?.scaleMode = .aspectFill
         view.isUserInteractionEnabled = false
 
-        playSound()
+        if SecondPlayer.instance.player?.isPlaying == true{
+        }
+        else {
+            playSound()
+        }
         playScroll()
         setupObjects(view : view)
         fadeInTitle()
@@ -113,9 +117,8 @@ class MainMenu: SKScene {
     }
     
     func playSound(){
-        let random = Int.random(in: 1...5)
         
-        SecondPlayer.instance.playSound(for: part.mainMenu, index: random, volume: 1.0)
+        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 1.0)
         SecondPlayer.instance.player?.numberOfLoops = -1
     }
     

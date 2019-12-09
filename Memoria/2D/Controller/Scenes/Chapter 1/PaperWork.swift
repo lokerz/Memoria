@@ -279,6 +279,7 @@ class PaperWork: SKScene {
                         self.text31.run(move3)
                         self.text32.run(move3)
                         self.text33.run(move3)
+                        FirstPlayer.instance.player?.stop()
                         self.paper1_3.run(self.fadeOut)
                         self.text31.run(self.fadeOut)
                         self.text32.run(self.fadeOut)

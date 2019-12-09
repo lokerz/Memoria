@@ -42,6 +42,9 @@ class LevelOneManager : LevelManager{
         
         pathfinder.setupNodes()
         
+        let crystal = Crystal(amount: 50)
+//        rootNode.addChildNode(crystal)
+        
     }
     
     @objc override func handlePan(_ gestureRecognizer : UIPanGestureRecognizer){

@@ -25,14 +25,16 @@ class Player3 : Player {
         synchronize()
         
         if !isFinished {
-            lastDestination = SCNVector3Make(hitTestResult.worldCoordinates.x, 0 , hitTestResult.worldCoordinates.z)
-            isLastDestination = false
             HapticGenerator.instance.play(5)
+            lastDestination = SCNVector3Make(hitTestResult.worldCoordinates.x, 0 , hitTestResult.worldCoordinates.z)
+//            isLastDestination = false
             path = nearestNode(to: lastDestination)
+            lastDestination = path.last!
             if path.count > 1 {
                 isMovable = true
                 destination = path[pathIndex]
                 move(to: destination)
+                startAnimation(for: "run")
             }
         }
     }
@@ -66,7 +68,6 @@ class Player3 : Player {
     
     override func stop(){
         super.stop()
-        
         playerNode.removeAllActions()
     }
     
@@ -81,23 +82,14 @@ class Player3 : Player {
 //        print(playerNode.position.y, height)
         
         if isMovable {
-            if checkLastPos(){
-                stop()
-            }else if checkNextDestination(){
+            if checkNextDestination(){
                 nextDestination()
             }
-            
             if isMoving {
                 playerNode.look(at: pointOfViewNode.position)
             }
         }
         checkFinished()
-    }
-    
-    func checkLastPos() -> Bool{
-        let worldPos = playerNode.presentation.worldPosition
-        let position = SCNVector3Make(worldPos.x, 0, worldPos.z)
-        return calculateDistance(from: position, to: lastDestination) < playerNode.scale.x * playerRadius
     }
     
     func checkNextDestination() -> Bool {
@@ -111,10 +103,11 @@ class Player3 : Player {
             pathIndex += 1
             destination = path[pathIndex]
             move(to: destination)
+            isMovable = true
         } else {
-            isLastDestination = true
+//            isLastDestination = true
+            stop()
 //            move(to: lastDestination)
         }
-        isMovable = true
     }
 }

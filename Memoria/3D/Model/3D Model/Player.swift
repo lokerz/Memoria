@@ -18,13 +18,13 @@ class Player : SCNNode{
     var velocity = SCNVector3()
     var scaleFactor : Float = 0.5
     var velocityFactor : Float = 0.75
-    var playerRadius : Float = 1.25
+    var playerRadius : Float = 1.75
     var beginningPosition =  SCNVector3()
     var finishLocation = SCNVector3()
     var lastHeight : Int = 0
     
     var pathManager = PathfindingManager.instance
-    
+    var animations = [String: CAAnimation]()
     
     override init(){
         super.init()
@@ -32,7 +32,7 @@ class Player : SCNNode{
     
     init(on position : SCNVector3){
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/player.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/player2.scn") else { return }
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
@@ -45,6 +45,8 @@ class Player : SCNNode{
         
 //        setupShader(for: playerNode.childNodes.first!)
         setupPointOfView()
+        loadAnimations()
+        startAnimation(for: "idle")
     }
     
     required init?(coder: NSCoder) {
@@ -110,10 +112,13 @@ class Player : SCNNode{
     }
     
     func stop(){
+        print(#function)
         synchronize()
         isMovable = false
         playerNode.physicsBody!.velocity = SCNVector3Zero
         playerNode.physicsBody?.angularVelocity = SCNVector4Make(0, 1, 0, 0)
+        stopAnimation(for: "run")
+        startAnimation(for: "idle")
     }
     
     func fall(){
@@ -154,4 +159,5 @@ class Player : SCNNode{
     func synchronize(){
         playerNode.position = playerNode.presentation.worldPosition
     }
+    
 }

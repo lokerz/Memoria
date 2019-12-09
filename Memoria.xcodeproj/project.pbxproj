@@ -24,6 +24,8 @@
 		4705CAAE2372BF2E00E874EB /* 3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4705CAAD2372BF2E00E874EB /* 3D.storyboard */; };
 		4705CAB22372C0FD00E874EB /* GameUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CAB02372C0FD00E874EB /* GameUIView.swift */; };
 		4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4705CAB82372C5ED00E874EB /* GameUIView.xib */; };
+		47076BAE239E285800EAE6E2 /* Crystal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47076BAD239E285800EAE6E2 /* Crystal.swift */; };
+		47076BB0239E55E600EAE6E2 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */; };
 		47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */; };
 		47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A1AE23585BCA0027AA1F /* art.scnassets */; };
 		47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1B023585BCA0027AA1F /* GameViewController.swift */; };
@@ -139,6 +141,8 @@
 		4705CAAD2372BF2E00E874EB /* 3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = 3D.storyboard; sourceTree = "<group>"; };
 		4705CAB02372C0FD00E874EB /* GameUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUIView.swift; sourceTree = "<group>"; };
 		4705CAB82372C5ED00E874EB /* GameUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameUIView.xib; sourceTree = "<group>"; };
+		47076BAD239E285800EAE6E2 /* Crystal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crystal.swift; sourceTree = "<group>"; };
+		47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
 		47B7A1A923585BCA0027AA1F /* elio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -518,9 +522,11 @@
 				4705CA34235D896F00E874EB /* Player.swift */,
 				4705CAA223715E7900E874EB /* Player2.swift */,
 				47F2ADA7237E9E6A0093F313 /* Player3.swift */,
+				47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */,
 				4705CA3A23617DFE00E874EB /* Pillar.swift */,
 				4705CA4623658E1700E874EB /* Platform.swift */,
 				4705CA44236588CE00E874EB /* Black.swift */,
+				47076BAD239E285800EAE6E2 /* Crystal.swift */,
 			);
 			path = "3D Model";
 			sourceTree = "<group>";
@@ -829,6 +835,7 @@
 				47E297B523964F59009E99B1 /* NodeRender.metal in Sources */,
 				47FE5AF3237A8D52007993D4 /* GearPath.swift in Sources */,
 				47F2ADAB237EACD50093F313 /* Bubble.swift in Sources */,
+				47076BAE239E285800EAE6E2 /* Crystal.swift in Sources */,
 				4705CA35235D896F00E874EB /* Player.swift in Sources */,
 				47E297B3239648EB009E99B1 /* outline.metal in Sources */,
 				F15732482375587800E7891E /* FrontHouse.swift in Sources */,
@@ -843,6 +850,7 @@
 				4705CA9D236AFEDB00E874EB /* ObjectExtension.swift in Sources */,
 				F157324E237567DE00E7891E /* MainMenu.swift in Sources */,
 				4705CA4E2366D26C00E874EB /* RelationExtension.swift in Sources */,
+				47076BB0239E55E600EAE6E2 /* PlayerAnimation.swift in Sources */,
 				47B7A1E523585D050027AA1F /* GestureManager.swift in Sources */,
 				F15732462375587800E7891E /* InHouse.swift in Sources */,
 				47F933D2238EAE45002FCB6C /* YellowButton.swift in Sources */,

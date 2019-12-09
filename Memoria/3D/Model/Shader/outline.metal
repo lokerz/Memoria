@@ -24,7 +24,7 @@ vertex VertexOut outline_vertex(VertexIn in                      [[stage_in]],
 {
     float3 modelNormal = normalize(in.normal);
     float3 modelPosition = in.position;
-    const float extrusionMagnitude = 0.025; // Ideally this would scale so as to be resolution and distance independent
+    const float extrusionMagnitude = 0.05; // Ideally this would scale so as to be resolution and distance independent
     modelPosition += modelNormal * extrusionMagnitude;
     
     VertexOut out;

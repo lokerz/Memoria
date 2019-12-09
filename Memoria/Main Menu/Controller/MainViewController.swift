@@ -44,8 +44,8 @@ class MainViewController: UIViewController {
         setupUI()
         setupLoadingView()
         spriteViewController.setupSKView()
-        showSpriteKit(index: -1, transition: .fade(withDuration: 1))
-//        showSceneKit(level: 2)
+//        showSpriteKit(index: -1, transition: .fade(withDuration: 1))
+        showSceneKit(level: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {

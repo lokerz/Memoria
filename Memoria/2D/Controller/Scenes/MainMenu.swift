@@ -74,8 +74,8 @@ class MainMenu: SKScene {
         
         playButton.fontColor = .white
         playButton.fontSize = 20
-        playButton.fontName = "Pigiarniq Regular"
-        playButton.text = "tap anywhere to start"
+        playButton.fontName = "Pigiarniq"
+        playButton.text = "Tap anywhere to start"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 100)
         playButton.zPosition = 2
         playButton.alpha = 0

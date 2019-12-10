@@ -60,6 +60,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         scene = SCNScene(named: "art.scnassets/World.scn")
         sceneView.scene = scene
         sceneView.delegate = self
+        sceneView.backgroundColor = .white
 //        sceneView.isJitteringEnabled = true
         sceneView.antialiasingMode = .multisampling4X
         view.addSubview(sceneView)

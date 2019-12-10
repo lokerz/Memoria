@@ -48,6 +48,7 @@ class LevelManager : NSObject {
     
     func setupLevel(){
         resetLevel()
+        rootNode.addChildNode(black)
         black.fadeOut()
         openingAnimation()
     }
@@ -58,7 +59,6 @@ class LevelManager : NSObject {
                 child.removeFromParentNode()
             }
         }
-        rootNode.addChildNode(black)
         gears.removeAll()
         platforms.removeAll()
         halfGears.removeAll()

@@ -44,6 +44,9 @@ class PaperWork: SKScene {
     
     
     override func didMove(to view: SKView) {
+        SecondPlayer.instance.playSound(for: .chapter1, index: 8, volume: 0.2)
+        SecondPlayer.instance.player?.numberOfLoops = -1
+        
         view.isUserInteractionEnabled = false
         let text1Pos = CGPoint(x: 7*view.frame.width/10, y: view.frame.height/2)
         let text2Pos = CGPoint(x: 7*view.frame.width/10 + 10, y: view.frame.height/2)

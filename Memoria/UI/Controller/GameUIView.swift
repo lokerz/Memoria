@@ -151,6 +151,9 @@ class GameUIView: UIView{
     
     @IBAction func exitButtonAction(_ sender: Any) {
         self.delegate?.exitButton?()
+        
+        FirstPlayer.instance.player?.stop()
+        SecondPlayer.instance.player?.stop()
         pauseButtonAction(self)
     }
     

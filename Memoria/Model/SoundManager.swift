@@ -22,6 +22,7 @@ enum part {
     case chapter5
     case BGM3D
     case soundEffect3D
+    case soundEffect2D
 }
 
 class FirstPlayer{
@@ -46,7 +47,8 @@ class FirstPlayer{
     "OldPhoto",
     "Write",
     "Car Ambience",
-    "car-interior-ambience-01-sound-effect"
+    "car-interior-ambience-01-sound-effect",
+    "household-clock-tick-tock"
     ]
     
     var chapterSelect = [
@@ -55,12 +57,19 @@ class FirstPlayer{
     "PlayClick"
     ]
     
+    var soundEffect2D = [
+    "",
+    "menubutton",
+    "skipbutton"
+    ]
+    
     func playSound(for part : part, index: Int) {
         var resource = ""
         switch part {
-            case .chapter1 : resource = soundChapter1[index]
-            case .chapterSelect : resource = chapterSelect[index]
-            default : resource = mainTheme[index]
+        case .chapter1 : resource = soundChapter1[index]
+        case .chapterSelect : resource = chapterSelect[index]
+        case .soundEffect2D : resource = soundEffect2D[index]
+        default : resource = mainTheme[index]
         }
         
         guard let url = Bundle.main.url(forResource: resource, withExtension: "mp3") else { return }

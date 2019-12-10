@@ -97,6 +97,9 @@
 		F195BA0F239E62180083A3B4 /* Pigiarniq Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FF239E60A60083A3B4 /* Pigiarniq Regular.ttf */; };
 		F195BA12239E63E40083A3B4 /* Quillain (DEMO).ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */; };
 		F195BA15239E65650083A3B4 /* Housky Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA14239E65650083A3B4 /* Housky Demo.ttf */; };
+		F195BA1A239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA19239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 */; };
+		F195BA1D239F8A4F0083A3B4 /* menubutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA1B239F8A4E0083A3B4 /* menubutton.mp3 */; };
+		F195BA1E239F8A4F0083A3B4 /* skipbutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA1C239F8A4F0083A3B4 /* skipbutton.mp3 */; };
 		F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */; };
 		F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09512397A0A8003E4295 /* Open Door.mp3 */; };
 		F1BA09572397A0AA003E4295 /* Write.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09522397A0A9003E4295 /* Write.mp3 */; };
@@ -226,6 +229,9 @@
 		F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Antique Cherry - Personal Use.ttf"; sourceTree = "<group>"; };
 		F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quillain (DEMO).ttf"; sourceTree = "<group>"; };
 		F195BA14239E65650083A3B4 /* Housky Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Housky Demo.ttf"; sourceTree = "<group>"; };
+		F195BA19239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "household-clock-tick-tock.mp3"; sourceTree = "<group>"; };
+		F195BA1B239F8A4E0083A3B4 /* menubutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menubutton.mp3; sourceTree = "<group>"; };
+		F195BA1C239F8A4F0083A3B4 /* skipbutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = skipbutton.mp3; sourceTree = "<group>"; };
 		F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Adoption letter.mp3"; sourceTree = "<group>"; };
 		F1BA09512397A0A8003E4295 /* Open Door.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Open Door.mp3"; sourceTree = "<group>"; };
 		F1BA09522397A0A9003E4295 /* Write.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Write.mp3; sourceTree = "<group>"; };
@@ -668,6 +674,7 @@
 				F1BA09532397A0AA003E4295 /* OldPhoto.mp3 */,
 				F1BA09522397A0A9003E4295 /* Write.mp3 */,
 				F1BA095D2398F5FA003E4295 /* Car Ambience.mp3 */,
+				F195BA19239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 */,
 			);
 			path = "Chapter 1";
 			sourceTree = "<group>";
@@ -689,6 +696,8 @@
 				F1BA096223990AF5003E4295 /* PianoDreams.mp3 */,
 				F1BA0968239910E4003E4295 /* full_ThisBeautifulWorld.mp3 */,
 				F1BA0969239910E7003E4295 /* mainfile_sweet-love-piano.mp3 */,
+				F195BA1B239F8A4E0083A3B4 /* menubutton.mp3 */,
+				F195BA1C239F8A4F0083A3B4 /* skipbutton.mp3 */,
 			);
 			path = "Main Menu";
 			sourceTree = "<group>";
@@ -823,9 +832,12 @@
 				F195BA0B239E62180083A3B4 /* Pigiarniq Bold.ttf in Resources */,
 				4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */,
 				F1BA096423990AF5003E4295 /* PianoDreams.mp3 in Resources */,
+				F195BA1E239F8A4F0083A3B4 /* skipbutton.mp3 in Resources */,
 				F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */,
 				F195BA0D239E62180083A3B4 /* Pigiarniq Italic.ttf in Resources */,
 				F1BA096B239910E7003E4295 /* mainfile_sweet-love-piano.mp3 in Resources */,
+				F195BA1D239F8A4F0083A3B4 /* menubutton.mp3 in Resources */,
+				F195BA1A239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 in Resources */,
 				F1728AE1238288A70027A617 /* Roboto-Black.ttf in Resources */,
 				F157323E2375586B00E7891E /* PaperWork.sks in Resources */,
 				F1BA095E2398F5FA003E4295 /* Car Ambience.mp3 in Resources */,

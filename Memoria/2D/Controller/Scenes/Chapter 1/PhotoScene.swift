@@ -47,7 +47,6 @@ class PhotoScene: SKScene {
         monologue.changeText(to: text[stateGesture])
         monologue.run(fadeIn)
         
-        
         house.name = "house"
         house.size = CGSize(width: view.frame.width, height: view.frame.height)
         house.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)

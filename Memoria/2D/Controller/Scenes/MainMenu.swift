@@ -56,7 +56,7 @@ class MainMenu: SKScene {
     func setupObjects(view : SKView){
         gameTitle.fontColor = .white
         gameTitle.fontSize = 180
-        gameTitle.fontName = "Quillain"
+        gameTitle.fontName = "Housky Demo"
         gameTitle.text = title
         gameTitle.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 10)
         gameTitle.zPosition = 2
@@ -120,8 +120,7 @@ class MainMenu: SKScene {
     }
     
     func playSound(){
-        
-        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 1.0)
+        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0.5)
         SecondPlayer.instance.player?.numberOfLoops = -1
     }
     

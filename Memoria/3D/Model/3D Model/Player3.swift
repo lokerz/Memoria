@@ -15,10 +15,9 @@ class Player3 : Player {
     var pathIndex = 1
     var isLastDestination = false
     var isMoving = false
-    var moveDuration = 2.0
     
     var pointOfViewNode = SCNNode()
-
+    
     override func movePlayer(hitTestResult : SCNHitTestResult){
         isMovable = false
         pathIndex = 1
@@ -27,7 +26,7 @@ class Player3 : Player {
         if !isFinished {
             HapticGenerator.instance.play(5)
             lastDestination = SCNVector3Make(hitTestResult.worldCoordinates.x, 0 , hitTestResult.worldCoordinates.z)
-//            isLastDestination = false
+            //            isLastDestination = false
             path = nearestNode(to: lastDestination)
             lastDestination = path.last!
             if path.count > 1 {
@@ -39,29 +38,37 @@ class Player3 : Player {
         }
     }
     
-    override func setupPointOfView(){
-        self.addChildNode(pointOfViewNode)
-        let geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-        pointOfViewNode.geometry = geometry
-        pointOfViewNode.isHidden = true
-
+    override func checkPosition(){
+        //        print(isMoving)
+        //        print(playerNode.position.y, height)
+        
+        if isMovable {
+            if checkNextDestination(){
+                nextDestination()
+            }
+            if isMoving {
+                playerNode.look(at: pointOfViewNode.position)
+            }
+        }
+        checkFinished()
     }
     
     func move(to destination : SCNVector3){
         synchronize()
         let coordinate = SCNVector3Make(destination.x, playerNode.position.y, destination.z)
-        let move = SCNAction.move(to: coordinate, duration: moveDuration)
+        let distance = calculateDistance(from: playerNode.position, to: coordinate)
+        let duration = calculateTime(velocity: velocityFactor, distance: distance)
+        let move = SCNAction.move(to: coordinate, duration: duration)
         playerNode.runAction(move)
-        rotate(to: coordinate)
+        rotate(to: coordinate, with: duration/3)
     }
     
-    func rotate(to direction : SCNVector3){
+    func rotate(to direction : SCNVector3, with duration : Double){
         if !isMoving {
             pointOfViewNode.position = direction
             isMoving = true
         }else{
-            let move = SCNAction.move(to: direction, duration: moveDuration/4)
-            move.timingMode = .easeInEaseOut
+            let move = SCNAction.move(to: direction, duration: duration).easeInOut()
             pointOfViewNode.runAction(move)
         }
     }
@@ -77,21 +84,6 @@ class Player3 : Player {
         return pathManager.calculateNode(from: position, to: destination)
     }
     
-    override func checkPosition(){
-//        print(isMoving)
-//        print(playerNode.position.y, height)
-        
-        if isMovable {
-            if checkNextDestination(){
-                nextDestination()
-            }
-            if isMoving {
-                playerNode.look(at: pointOfViewNode.position)
-            }
-        }
-        checkFinished()
-    }
-    
     func checkNextDestination() -> Bool {
         let worldPos = playerNode.presentation.worldPosition
         let position = SCNVector3Make(worldPos.x, 0, worldPos.z)
@@ -105,9 +97,14 @@ class Player3 : Player {
             move(to: destination)
             isMovable = true
         } else {
-//            isLastDestination = true
             stop()
-//            move(to: lastDestination)
         }
+    }
+    
+    override func setupPointOfView(){
+        self.addChildNode(pointOfViewNode)
+        let geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
+        pointOfViewNode.geometry = geometry
+        pointOfViewNode.isHidden = true
     }
 }

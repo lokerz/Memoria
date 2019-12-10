@@ -81,4 +81,12 @@ extension LevelManager{
         platforms.append(platform)
     }
     
+    func spawnPathnodes(){
+        for coordinate in pathfinder.coordinates {
+            let node = SCNNode()
+            node.geometry = SCNBox(width: 0.2, height: 0.5, length: 0.2, chamferRadius: 0.2)
+            node.position = SCNVector3Make(coordinate.x, 0.25, coordinate.z)
+            rootNode.addChildNode(node)
+        }
+    }
 }

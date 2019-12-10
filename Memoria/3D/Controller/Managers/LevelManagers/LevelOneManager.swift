@@ -41,6 +41,7 @@ class LevelOneManager : LevelManager{
         pillars.first!.moveDown(by: 5, duration: 3)
         
         pathfinder.setupNodes()
+//        spawnPathnodes()
         
         let crystal = Crystal(amount: 50)
 //        rootNode.addChildNode(crystal)

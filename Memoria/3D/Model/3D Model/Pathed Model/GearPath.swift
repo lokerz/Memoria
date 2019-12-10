@@ -12,7 +12,7 @@ import GameplayKit
 class GearPath : Gear {
     var coordinates = [SCNVector3]()
     var nodes = [GKGraphNode]()
-    var radius : Float = 1.9
+    var radius : Float = 2.1
     
     
     func setupPath(){

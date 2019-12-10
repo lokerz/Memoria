@@ -280,6 +280,7 @@
 		4705CAA42372BA0800E874EB /* 3D */ = {
 			isa = PBXGroup;
 			children = (
+				47076BB1239F75AF00EAE6E2 /* Assets */,
 				4705CAAA2372BEF000E874EB /* View */,
 				47B7A1DF23585C250027AA1F /* Model */,
 				47B7A1DD23585C160027AA1F /* Controller */,
@@ -337,6 +338,14 @@
 				4705CAAD2372BF2E00E874EB /* 3D.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		47076BB1239F75AF00EAE6E2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		47B7A1A023585BCA0027AA1F = {
@@ -515,7 +524,6 @@
 		47FE5AED237966F9007993D4 /* 3D Model */ = {
 			isa = PBXGroup;
 			children = (
-				47B7A1AE23585BCA0027AA1F /* art.scnassets */,
 				47FE5AF4237A8D58007993D4 /* Pathed Model */,
 				4705CA322359A71100E874EB /* Gear.swift */,
 				4705CA492365ADF500E874EB /* HalfGear.swift */,

@@ -11,7 +11,7 @@ import SceneKit
 
 class LevelManager : NSObject {
     var level = 0
-    let playerVelocity : Float = 0.5
+    let playerVelocity : Float = 1.25
     
     //scene variables
     var sceneView : SCNView! {
@@ -110,5 +110,4 @@ class LevelManager : NSObject {
         hitResults = sceneView.hitTest(location, options: [:])
         player.stop()
     }
-    
 }

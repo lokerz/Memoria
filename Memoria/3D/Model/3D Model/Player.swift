@@ -17,8 +17,8 @@ class Player : SCNNode{
     var playerNode = SCNNode()
     var velocity = SCNVector3()
     var scaleFactor : Float = 0.5
-    var velocityFactor : Float = 0.75
-    var playerRadius : Float = 1.75
+    var velocityFactor : Float = 0.5
+    var playerRadius : Float = 1.5
     var beginningPosition =  SCNVector3()
     var finishLocation = SCNVector3()
     var lastHeight : Int = 0
@@ -154,6 +154,10 @@ class Player : SCNNode{
         let z = (destination.z - position.z) / distance * velocityFactor
         let velocity = SCNVector3Make(x, y, z)
         return velocity
+    }
+    
+    func calculateTime(velocity: Float, distance: Float) -> Double{
+        return Double(distance/velocity)
     }
     
     func synchronize(){

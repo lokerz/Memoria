@@ -34,6 +34,12 @@
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Thin.ttf</string>
 		<string>Roboto-ThinItalic.ttf</string>
+		<string>Antique Cherry - Personal Use.ttf</string>
+		<string>Pigiarniq Bold.ttf</string>
+		<string>Pigiarniq Regular.ttf</string>
+		<string>Pigiarniq Light.ttf</string>
+		<string>Quillain (DEMO).ttf</string>
+		<string>Housky Demo.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

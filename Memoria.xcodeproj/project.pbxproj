@@ -89,6 +89,14 @@
 		F1728AE2238288A70027A617 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
+		F195BA0A239E62180083A3B4 /* Antique Cherry - Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */; };
+		F195BA0B239E62180083A3B4 /* Pigiarniq Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FC239E60A60083A3B4 /* Pigiarniq Bold.ttf */; };
+		F195BA0C239E62180083A3B4 /* Pigiarniq Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FB239E60A60083A3B4 /* Pigiarniq Heavy.ttf */; };
+		F195BA0D239E62180083A3B4 /* Pigiarniq Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FD239E60A60083A3B4 /* Pigiarniq Italic.ttf */; };
+		F195BA0E239E62180083A3B4 /* Pigiarniq Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FE239E60A60083A3B4 /* Pigiarniq Light.ttf */; };
+		F195BA0F239E62180083A3B4 /* Pigiarniq Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FF239E60A60083A3B4 /* Pigiarniq Regular.ttf */; };
+		F195BA12239E63E40083A3B4 /* Quillain (DEMO).ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */; };
+		F195BA15239E65650083A3B4 /* Housky Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA14239E65650083A3B4 /* Housky Demo.ttf */; };
 		F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */; };
 		F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09512397A0A8003E4295 /* Open Door.mp3 */; };
 		F1BA09572397A0AA003E4295 /* Write.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09522397A0A9003E4295 /* Write.mp3 */; };
@@ -210,6 +218,14 @@
 		F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
+		F195B9FB239E60A60083A3B4 /* Pigiarniq Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Heavy.ttf"; sourceTree = "<group>"; };
+		F195B9FC239E60A60083A3B4 /* Pigiarniq Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Bold.ttf"; sourceTree = "<group>"; };
+		F195B9FD239E60A60083A3B4 /* Pigiarniq Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Italic.ttf"; sourceTree = "<group>"; };
+		F195B9FE239E60A60083A3B4 /* Pigiarniq Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Light.ttf"; sourceTree = "<group>"; };
+		F195B9FF239E60A60083A3B4 /* Pigiarniq Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Regular.ttf"; sourceTree = "<group>"; };
+		F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Antique Cherry - Personal Use.ttf"; sourceTree = "<group>"; };
+		F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quillain (DEMO).ttf"; sourceTree = "<group>"; };
+		F195BA14239E65650083A3B4 /* Housky Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Housky Demo.ttf"; sourceTree = "<group>"; };
 		F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Adoption letter.mp3"; sourceTree = "<group>"; };
 		F1BA09512397A0A8003E4295 /* Open Door.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Open Door.mp3"; sourceTree = "<group>"; };
 		F1BA09522397A0A9003E4295 /* Write.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Write.mp3; sourceTree = "<group>"; };
@@ -578,6 +594,30 @@
 		F1728ACA2382888A0027A617 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F195BA16239E65700083A3B4 /* Housky */,
+				F195BA11239E63DB0083A3B4 /* Quillain */,
+				F195BA03239E60D20083A3B4 /* Antique Cherry */,
+				F195BA00239E60B20083A3B4 /* Pigiarniq */,
+				F195BA01239E60BF0083A3B4 /* Roboto */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F195BA00239E60B20083A3B4 /* Pigiarniq */ = {
+			isa = PBXGroup;
+			children = (
+				F195B9FC239E60A60083A3B4 /* Pigiarniq Bold.ttf */,
+				F195B9FB239E60A60083A3B4 /* Pigiarniq Heavy.ttf */,
+				F195B9FD239E60A60083A3B4 /* Pigiarniq Italic.ttf */,
+				F195B9FE239E60A60083A3B4 /* Pigiarniq Light.ttf */,
+				F195B9FF239E60A60083A3B4 /* Pigiarniq Regular.ttf */,
+			);
+			path = Pigiarniq;
+			sourceTree = "<group>";
+		};
+		F195BA01239E60BF0083A3B4 /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
 				F1728AD5238288A60027A617 /* Roboto-Black.ttf */,
 				F1728AD0238288A60027A617 /* Roboto-BlackItalic.ttf */,
 				F1728ACD238288A50027A617 /* Roboto-Bold.ttf */,
@@ -591,7 +631,31 @@
 				F1728AD2238288A60027A617 /* Roboto-Thin.ttf */,
 				F1728AD4238288A60027A617 /* Roboto-ThinItalic.ttf */,
 			);
-			path = Fonts;
+			path = Roboto;
+			sourceTree = "<group>";
+		};
+		F195BA03239E60D20083A3B4 /* Antique Cherry */ = {
+			isa = PBXGroup;
+			children = (
+				F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */,
+			);
+			path = "Antique Cherry";
+			sourceTree = "<group>";
+		};
+		F195BA11239E63DB0083A3B4 /* Quillain */ = {
+			isa = PBXGroup;
+			children = (
+				F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */,
+			);
+			path = Quillain;
+			sourceTree = "<group>";
+		};
+		F195BA16239E65700083A3B4 /* Housky */ = {
+			isa = PBXGroup;
+			children = (
+				F195BA14239E65650083A3B4 /* Housky Demo.ttf */,
+			);
+			path = Housky;
 			sourceTree = "<group>";
 		};
 		F1BA096523990B03003E4295 /* Chapter 1 */ = {
@@ -744,16 +808,23 @@
 				F1BA096D23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 in Resources */,
 				F1728AD9238288A70027A617 /* Roboto-Bold.ttf in Resources */,
 				F15732412375586B00E7891E /* InHouse.sks in Resources */,
+				F195BA0A239E62180083A3B4 /* Antique Cherry - Personal Use.ttf in Resources */,
 				47F933E223914C70002FCB6C /* toon_outline.shader in Resources */,
 				F1728ADA238288A70027A617 /* Roboto-Italic.ttf in Resources */,
 				F1BA095C2397ACA0003E4295 /* Drop.mp3 in Resources */,
+				F195BA0F239E62180083A3B4 /* Pigiarniq Regular.ttf in Resources */,
 				4705CAAE2372BF2E00E874EB /* 3D.storyboard in Resources */,
+				F195BA0C239E62180083A3B4 /* Pigiarniq Heavy.ttf in Resources */,
 				F157323D2375586B00E7891E /* MobilScene.sks in Resources */,
+				F195BA15239E65650083A3B4 /* Housky Demo.ttf in Resources */,
 				F157323C2375585B00E7891E /* Office.sks in Resources */,
 				F1728ADD238288A70027A617 /* Roboto-Medium.ttf in Resources */,
+				F195BA12239E63E40083A3B4 /* Quillain (DEMO).ttf in Resources */,
+				F195BA0B239E62180083A3B4 /* Pigiarniq Bold.ttf in Resources */,
 				4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */,
 				F1BA096423990AF5003E4295 /* PianoDreams.mp3 in Resources */,
 				F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */,
+				F195BA0D239E62180083A3B4 /* Pigiarniq Italic.ttf in Resources */,
 				F1BA096B239910E7003E4295 /* mainfile_sweet-love-piano.mp3 in Resources */,
 				F1728AE1238288A70027A617 /* Roboto-Black.ttf in Resources */,
 				F157323E2375586B00E7891E /* PaperWork.sks in Resources */,
@@ -772,6 +843,7 @@
 				47B7A1B623585BCD0027AA1F /* Assets.xcassets in Resources */,
 				F157323B2375585700E7891E /* PhotoScene.sks in Resources */,
 				F1728AD8238288A70027A617 /* Roboto-Regular.ttf in Resources */,
+				F195BA0E239E62180083A3B4 /* Pigiarniq Light.ttf in Resources */,
 				47F933DB238FE5D9002FCB6C /* EndingOne.sks in Resources */,
 				47B7A1B423585BCA0027AA1F /* Main.storyboard in Resources */,
 				F1728AE0238288A70027A617 /* Roboto-ThinItalic.ttf in Resources */,

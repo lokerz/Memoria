@@ -33,6 +33,7 @@ class Office: SKScene{
     
     
     override func didMove(to view: SKView) {
+        FirstPlayer.instance.player?.stop()
         index = 0
         view.isUserInteractionEnabled = false
         

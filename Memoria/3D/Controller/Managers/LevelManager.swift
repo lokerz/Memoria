@@ -108,6 +108,8 @@ class LevelManager : NSObject {
         location = gestureRecognizer.location(in: sceneView)
         translation = gestureRecognizer.translation(in: sceneView)
         hitResults = sceneView.hitTest(location, options: [:])
-        player.stop()
+        if player.isMovable {
+            player.stop()
+        }
     }
 }

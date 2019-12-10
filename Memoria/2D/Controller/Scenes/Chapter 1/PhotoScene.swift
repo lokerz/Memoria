@@ -10,7 +10,6 @@ import SpriteKit
 
 class PhotoScene: SKScene {
     var mono = 0
-    let button = SKSpriteNode(imageNamed: "nextButtonBlack")
     let background = SKSpriteNode()
     
     let text = ["It was the start of a new life for me. At first I was afraid.",
@@ -48,7 +47,6 @@ class PhotoScene: SKScene {
         monologue.changeText(to: text[stateGesture])
         monologue.run(fadeIn)
         
-        
         house.name = "house"
         house.size = CGSize(width: view.frame.width, height: view.frame.height)
         house.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
@@ -77,13 +75,6 @@ class PhotoScene: SKScene {
         photo4.size = CGSize(width: 770, height: 360)
         photo4.position = CGPoint(x: view.frame.width/2 + 1500, y: view.frame.height/2)
         photo4.zPosition = 1
-        
-        button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        button.position = CGPoint(x:view.frame.width-60, y: 60)
-        button.zPosition = 5
-        button.name = "nextButton"
-        button.size = CGSize(width: 110, height: 100)
-//        addChild(button)
         
         nextButton = YellowButton(with: CGSize(width: 60, height: 60), text: "➤", textSize: 25)
         nextButton.position = CGPoint(x:view.frame.width-60, y: 60)
@@ -158,6 +149,7 @@ class PhotoScene: SKScene {
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer){
+        view!.isUserInteractionEnabled = false
         let point1 = CGPoint(x: self.photo1.position.x - self.distanceMove, y: view!.frame.height/2)
         let point2 = CGPoint(x: self.photo2.position.x - self.distanceMove, y: view!.frame.height/2)
         let point3 = CGPoint(x: self.photo3.position.x - self.distanceMove, y: view!.frame.height/2)
@@ -184,12 +176,6 @@ class PhotoScene: SKScene {
 //                mono = stateGesture + 1
 //                monologue.changeText(to: text[mono])
 //            }
-            
-            view!.isUserInteractionEnabled = false
-            self.run(SKAction.wait(forDuration: durationMove)) {
-                self.view!.isUserInteractionEnabled = true
-                
-            }
         }
         if self.stateGesture == 3 && self.nextButton.position.y < 0{
             DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
@@ -197,10 +183,15 @@ class PhotoScene: SKScene {
                 self.nextButton.move(to: .up)
             }
         }
+        self.run(SKAction.wait(forDuration: durationMove + 0.33)) {
+            self.view!.isUserInteractionEnabled = true
+            
+        }
         print(stateGesture)
     }
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer){
+        view?.isUserInteractionEnabled = false
         let point1 = CGPoint(x: self.photo1.position.x + self.distanceMove, y: view!.frame.height/2)
         let point2 = CGPoint(x: self.photo2.position.x + self.distanceMove, y: view!.frame.height/2)
         let point3 = CGPoint(x: self.photo3.position.x + self.distanceMove, y: view!.frame.height/2)
@@ -224,16 +215,14 @@ class PhotoScene: SKScene {
                 mono = stateGesture + 1
                 monologue.changeText(to: text[mono])
             }
-            
-            view!.isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + durationMove) {
-                self.view!.isUserInteractionEnabled = true
-            }
         }
         if self.stateGesture == 2{
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.nextButton.move(to: .down)
             }
+        }
+        self.run(SKAction.wait(forDuration: durationMove)){
+            self.view?.isUserInteractionEnabled = true
         }
     }
     

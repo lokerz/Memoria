@@ -44,6 +44,9 @@ class PaperWork: SKScene {
     
     
     override func didMove(to view: SKView) {
+        SecondPlayer.instance.playSound(for: .chapter1, index: 8, volume: 0.2)
+        SecondPlayer.instance.player?.numberOfLoops = -1
+        
         view.isUserInteractionEnabled = false
         let text1Pos = CGPoint(x: 7*view.frame.width/10, y: view.frame.height/2)
         let text2Pos = CGPoint(x: 7*view.frame.width/10 + 10, y: view.frame.height/2)
@@ -210,7 +213,7 @@ class PaperWork: SKScene {
         
         if let touch = touches.first{
             let touchLocation = touch.location(in: self)
-            if touchLocation.x < paper1_1.position.x - 100{
+            if touchLocation.x < paper1_1.position.x - 100 || touchLocation.x > paper1_1.position.x + 150{
                 
             }
             else if touchLocation != startTouch{
@@ -279,7 +282,6 @@ class PaperWork: SKScene {
                         self.text31.run(move3)
                         self.text32.run(move3)
                         self.text33.run(move3)
-                        FirstPlayer.instance.player?.stop()
                         self.paper1_3.run(self.fadeOut)
                         self.text31.run(self.fadeOut)
                         self.text32.run(self.fadeOut)

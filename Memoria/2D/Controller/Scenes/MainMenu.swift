@@ -9,7 +9,7 @@
 import SpriteKit
 
 class MainMenu: SKScene {
-    let title = "[ e l i o ]"
+    let title = "Elio"
     
     var scroller : InfiniteScrollingBackground?
     let spriteManager = SpriteManager.instance
@@ -29,6 +29,7 @@ class MainMenu: SKScene {
     ]
     
     override func didMove(to view: SKView) {
+        
         let firstPage = MainMenu(fileNamed: "MainMenu")
         firstPage?.scaleMode = .aspectFill
         view.isUserInteractionEnabled = false
@@ -54,10 +55,10 @@ class MainMenu: SKScene {
     
     func setupObjects(view : SKView){
         gameTitle.fontColor = .white
-        gameTitle.fontSize = 60
-        gameTitle.fontName = "Roboto-Medium"
+        gameTitle.fontSize = 180
+        gameTitle.fontName = "Housky Demo"
         gameTitle.text = title
-        gameTitle.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 15)
+        gameTitle.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 10)
         gameTitle.zPosition = 2
         gameTitle.alpha = 0
         
@@ -65,13 +66,15 @@ class MainMenu: SKScene {
         dropShadowTitle.fontSize = gameTitle.fontSize
         dropShadowTitle.fontName = gameTitle.fontName
         dropShadowTitle.text = gameTitle.text
-        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: view.frame.height/2 - 2 - 15)
+        dropShadowTitle.position.x = gameTitle.position.x + 2
+        dropShadowTitle.position.y = gameTitle.position.y - 2
+//        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: view.frame.height/2 - 2 - 15)
         dropShadowTitle.zPosition = 1
         dropShadowTitle.alpha = gameTitle.alpha
         
         playButton.fontColor = .white
         playButton.fontSize = 20
-        playButton.fontName = "Roboto-Regular"
+        playButton.fontName = "Pigiarniq Regular"
         playButton.text = "tap anywhere to start"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 100)
         playButton.zPosition = 2
@@ -117,8 +120,7 @@ class MainMenu: SKScene {
     }
     
     func playSound(){
-        
-        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 1.0)
+        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0.5)
         SecondPlayer.instance.player?.numberOfLoops = -1
     }
     

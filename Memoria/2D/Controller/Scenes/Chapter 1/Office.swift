@@ -33,6 +33,7 @@ class Office: SKScene{
     
     
     override func didMove(to view: SKView) {
+        FirstPlayer.instance.player?.stop()
         index = 0
         view.isUserInteractionEnabled = false
         
@@ -100,6 +101,8 @@ class Office: SKScene{
                 if node.name == "nextButton"{
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
                     SpriteManager.instance.callScene(index: 6,transition: .fade(withDuration: 1))
+                    
+                    SecondPlayer.instance.player?.stop()
                 }
                 else if node.name == "background"{
                     if i<bubbles.count{

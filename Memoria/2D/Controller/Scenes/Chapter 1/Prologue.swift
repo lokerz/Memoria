@@ -106,6 +106,7 @@ class Prologue: SKScene {
                 if node.name == "Skip"{
                     HapticGenerator.instance.play(sharpnessValue: 0.5, intensityValue: 0.5)
                     SpriteManager.instance.callScene(index: 2, transition: .fade(withDuration: 1))
+                    FirstPlayer.instance.playSound(for: .soundEffect2D, index: 2)
                 }
             }
         }

@@ -10,7 +10,7 @@
         <!--Main View Controller-->
         <scene sceneID="Znb-2j-ojb">
             <objects>
-                <viewController id="MUd-wf-1Xp" customClass="MainViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MUd-wf-1Xp" customClass="MainViewController" customModule="elio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62P-qR-5in">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,9 +22,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiY-Yg-cct">
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiY-Yg-cct">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,7 +46,7 @@
         <!--Sprite Kit View Controller-->
         <scene sceneID="Svx-9j-wij">
             <objects>
-                <viewController storyboardIdentifier="SpriteKitViewController" id="kmE-sq-fsi" customClass="SpriteKitViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpriteKitViewController" id="kmE-sq-fsi" customClass="SpriteKitViewController" customModule="elio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uj2-9z-trA">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,11 +71,11 @@
         <!--Game View Controller-->
         <scene sceneID="iHT-Oj-NBK">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="XOr-4I-uMk" customClass="GameViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="XOr-4I-uMk" customClass="GameViewController" customModule="elio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bXF-0k-i19">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ti4-wV-OC3"/>
                     </view>
                     <navigationItem key="navigationItem" id="P3F-Su-mH9"/>

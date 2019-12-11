@@ -53,7 +53,6 @@ class LevelOneManager : LevelManager{
         
         if hitResults.count > 0 {
             if let pannedPiece = hitResults.first?.node{
-                print(pannedPiece.name)
                 if hitResults.first!.worldCoordinates.z > 0 {
                     if gears[0].childNodes.contains(pannedPiece){
                         gearSystem(gearA: gears[0], gearB: gears[1], relation: .oppositeDirection, hitResult: hitResults.first!, translation: translation)

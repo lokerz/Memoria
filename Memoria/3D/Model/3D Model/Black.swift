@@ -15,7 +15,7 @@ class Black : SCNNode{
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
         }
-        self.name = "Black"
+        self.name = "black"
     }
     
     
@@ -24,6 +24,7 @@ class Black : SCNNode{
     }
     
     func fadeIn(){
+        print(#function)
         let wait = SCNAction.wait(duration: 0.2)
         let fadeIn = SCNAction.fadeIn(duration: 2)
         fadeIn.timingMode = .easeIn
@@ -32,6 +33,7 @@ class Black : SCNNode{
     }
     
     func fadeOut(){
+        print(#function)
         let wait = SCNAction.wait(duration: 0.2)
         let fadeOut = SCNAction.fadeOut(duration: 3)
         fadeOut.timingMode = .easeOut

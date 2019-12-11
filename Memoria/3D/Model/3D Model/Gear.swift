@@ -9,7 +9,7 @@ import Foundation
 import SceneKit
 
 class Gear : SCNNode{
-    var angularVelocity : Float = 0.3
+    var angularVelocity : Float = 0.2
     var initialAngle : Float = 0.0
     var degreeAngle : Float = 0
     var currentAngle : Float = 0.0

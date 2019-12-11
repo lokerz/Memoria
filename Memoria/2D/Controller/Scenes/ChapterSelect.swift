@@ -56,7 +56,7 @@ class ChapterSelect: SKScene {
         chapterTitle.zPosition = 2
         chapterTitle.fontColor = .black
         chapterTitle.fontSize = 20
-        chapterTitle.fontName = "Roboto-Light"
+        chapterTitle.fontName = "Pigiarniq"
         chapterTitle.name = "Chapter Name"
         chapterTitle.text = chapterName[1]
         
@@ -184,7 +184,6 @@ class ChapterSelect: SKScene {
                     default: break
                     }
                     playPlaySound()
-                    SecondPlayer.instance.player?.stop()
                 }
                 else if node.name == "leftButton"{
                     HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
@@ -367,5 +366,12 @@ class ChapterSelect: SKScene {
     
     func playPlaySound(){
         FirstPlayer.instance.playSound(for: part.chapterSelect, index: 2)
+    }
+    
+    override func willMove(from view: SKView) {
+        SecondPlayer.instance.player?.setVolume(0, fadeDuration: 2)
+        self.run(SKAction.wait(forDuration: 2)){
+            SecondPlayer.instance.player?.stop()
+        }
     }
 }

@@ -38,7 +38,7 @@ class Monologue : SKSpriteNode {
         monologue.position.y = skView.frame.height - 35
         monologue.zPosition = 4
         monologue.fontColor = .black
-        monologue.fontName = "Roboto-Light"
+        monologue.fontName = "Pigiarniq"
 //
 //        let monologueName = SKLabelNode()
 //        monologueName.text = "Elio"

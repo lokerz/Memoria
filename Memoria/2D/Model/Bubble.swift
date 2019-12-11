@@ -18,7 +18,7 @@ enum bubbleType {
 }
 class Bubble : SKSpriteNode {
     var height : CGFloat = 0
-    let fontName = "Roboto-Regular"
+    let fontName = "Pigiarniq"
     let cornerRadius : CGFloat = 20
     let space : CGFloat = 5
     

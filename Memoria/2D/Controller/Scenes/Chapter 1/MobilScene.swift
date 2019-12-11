@@ -23,7 +23,7 @@ class MobilScene: SKScene {
     let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
     
     let hint = SKSpriteNode(imageNamed: "Hint")
-    let pulse = [SKAction.fadeAlpha(to: 0.8, duration: 1), SKAction.wait(forDuration: 0.3), SKAction.fadeAlpha(to: 0, duration: 1), SKAction.wait(forDuration: 0.8)]
+    let pulse = [SKAction.fadeAlpha(to: 1, duration: 1), SKAction.wait(forDuration: 0.3), SKAction.fadeAlpha(to: 0, duration: 1), SKAction.wait(forDuration: 0.8)]
     
     var statePaper = 1
     var stateButton = 1
@@ -97,7 +97,7 @@ class MobilScene: SKScene {
         addChild(blocker)
         addChild(paperBig)
         
-        SecondPlayer.instance.playSound(for: .chapter1, index: 7, volume: 0.3)
+        SecondPlayer.instance.playSound(for: .chapter1, index: 7, volume: 1)
         SecondPlayer.instance.player?.numberOfLoops = -1
     }
     
@@ -159,7 +159,7 @@ class MobilScene: SKScene {
                     
                     self.run(SKAction.sequence([SKAction.wait(forDuration: duration), dadAdd]))
                     self.addChild(hint)
-                    self.run(SKAction.wait(forDuration: 8)){
+                    self.run(SKAction.wait(forDuration: 5)){
                         self.hint.run(SKAction.repeatForever(SKAction.sequence(self.pulse)))
                     }
                 }

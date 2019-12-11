@@ -37,7 +37,7 @@ class MainMenu: SKScene {
         if SecondPlayer.instance.player?.isPlaying == true{
         }
         else {
-            playSound()
+            playBackgroundSound()
         }
         playScroll()
         setupObjects(view : view)
@@ -119,9 +119,10 @@ class MainMenu: SKScene {
         }
     }
     
-    func playSound(){
-        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0.5)
+    func playBackgroundSound(){
+        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0)
         SecondPlayer.instance.player?.numberOfLoops = -1
+        SecondPlayer.instance.player?.setVolume(0.5, fadeDuration: 2)
     }
     
     func playScroll(){

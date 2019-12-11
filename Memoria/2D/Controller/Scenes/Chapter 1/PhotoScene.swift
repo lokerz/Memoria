@@ -183,7 +183,7 @@ class PhotoScene: SKScene {
                 self.nextButton.move(to: .up)
             }
         }
-        self.run(SKAction.wait(forDuration: durationMove + 0.33)) {
+        self.run(SKAction.wait(forDuration: durationMove )) {
             self.view!.isUserInteractionEnabled = true
             
         }

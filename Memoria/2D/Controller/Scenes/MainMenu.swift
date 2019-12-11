@@ -73,7 +73,7 @@ class MainMenu: SKScene {
         dropShadowTitle.alpha = gameTitle.alpha
         
         playButton.fontColor = .white
-        playButton.fontSize = 20
+        playButton.fontSize = 13
         playButton.fontName = "Pigiarniq"
         playButton.text = "Tap anywhere to start"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 100)

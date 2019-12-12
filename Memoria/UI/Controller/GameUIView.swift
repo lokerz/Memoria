@@ -12,6 +12,7 @@ import GLKit
 @objc protocol GameUIDelegate{
     @objc optional func pauseButton()
     @objc optional func exitButton()
+    @objc optional func showText(_ text: String)
 }
 
 class GameUIView: UIView{
@@ -140,13 +141,15 @@ class GameUIView: UIView{
         HapticGenerator.instance.play(4)
         FirstPlayer.instance.volume = FirstPlayer.instance.volume == 1 ? 0 : 1
         soundButtonOutlet.setTitleColor(FirstPlayer.instance.volume == 1 ? .white : .gray, for: .normal)
-        
+        self.delegate?.showText?(FirstPlayer.instance.volume == 0 ? "Sound: OFF" : "Sound: ON")
     }
     
     @IBAction func hapticButtonAction(_ sender: Any) {
         HapticGenerator.instance.isHaptic = !HapticGenerator.instance.isHaptic
         hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
         HapticGenerator.instance.play(4)
+        self.delegate?.showText?(HapticGenerator.instance.isHaptic ? "Haptic: ON" : "Haptic: OFF")
+
     }
     
     @IBAction func exitButtonAction(_ sender: Any) {
@@ -185,6 +188,7 @@ class GameUIView: UIView{
             button.center = point
         })
     }
+    
     
     
     /*

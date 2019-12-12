@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     var loadingView = UIView()
     var uiview = GameUIView()
     var spriteManager = SpriteManager.instance
+    var label = UILabel()
     
     @IBOutlet weak var containerView: UIView!
     
@@ -97,6 +98,14 @@ extension MainViewController : GameUIDelegate{
         uiview.setupButton()
         view.addSubview(uiview)
         uiview.alpha = 0
+        
+        let frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        label = UILabel(frame: frame)
+        label.center = view.center
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont(name: "Pigiarniq", size: 14)
+        view.addSubview(label)
     }
     
     
@@ -109,9 +118,30 @@ extension MainViewController : GameUIDelegate{
     }
     
     func exitButton() {
-        showSpriteKit(index: -1, transition: .fade(withDuration: 0.5))
-        uiview.fadeOut()
-        saveGame()
+        showAlert()
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title: "Exit Chapter?", message: nil, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.saveGame()
+            self.showSpriteKit(index: -1, transition: .fade(withDuration: 0.5))
+            self.uiview.fadeOut()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
+    }
+    
+    func showText(_ text: String){
+        label.alpha = 1
+        label.text = text
+        view.bringSubviewToFront(label)
+        UIView.animate(withDuration: 1, delay: 0.5, animations: {
+            self.label.alpha = 0
+        }) { (Bool) in
+        }
     }
     
     func saveGame(){

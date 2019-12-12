@@ -369,9 +369,9 @@ class ChapterSelect: SKScene {
     }
     
     override func willMove(from view: SKView) {
-        SecondPlayer.instance.player?.setVolume(0, fadeDuration: 2)
+        BGMPlayer.instance.player?.setVolume(0, fadeDuration: 2)
         self.run(SKAction.wait(forDuration: 2)){
-            SecondPlayer.instance.player?.stop()
+            BGMPlayer.instance.player?.stop()
         }
     }
 }

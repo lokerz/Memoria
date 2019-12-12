@@ -34,7 +34,7 @@ class MainMenu: SKScene {
         firstPage?.scaleMode = .aspectFill
         view.isUserInteractionEnabled = false
 
-        if SecondPlayer.instance.player?.isPlaying == true{
+        if BGMPlayer.instance.player?.isPlaying == true{
         }
         else {
             playBackgroundSound()
@@ -120,9 +120,9 @@ class MainMenu: SKScene {
     }
     
     func playBackgroundSound(){
-        SecondPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0)
-        SecondPlayer.instance.player?.numberOfLoops = -1
-        SecondPlayer.instance.player?.setVolume(0.5, fadeDuration: 2)
+        BGMPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0)
+        BGMPlayer.instance.player?.numberOfLoops = -1
+        BGMPlayer.instance.player?.setVolume(0.5, fadeDuration: 2)
     }
     
     func playScroll(){

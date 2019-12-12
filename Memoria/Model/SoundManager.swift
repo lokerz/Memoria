@@ -95,8 +95,8 @@ class FirstPlayer{
     }
 }
 
-class SecondPlayer{
-    static var instance = SecondPlayer()
+class BGMPlayer{
+    static var instance = BGMPlayer()
     
     var player: AVAudioPlayer?
     

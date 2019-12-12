@@ -155,10 +155,6 @@ class GameUIView: UIView{
     }
     
     @IBAction func exitButtonAction(_ sender: Any) {
-        
-        FirstPlayer.instance.player?.stop()
-        SecondPlayer.instance.player?.stop()
-        
         isToggle = !isToggle
         rotate(button : pauseButtonOutlet, duration: 0.3)
         animateButton()

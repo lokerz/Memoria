@@ -83,7 +83,7 @@ class EndingOne: SKScene {
     }
     
     func playSound(){
-        FirstPlayer.instance.playSound(for: part.mainMenu, index: 1)
-        FirstPlayer.instance.player?.numberOfLoops = -1
+        BGMPlayer.instance.playSound(for: part.mainMenu, index: 1, volume: 0)
+        BGMPlayer.instance.player?.setVolume(1, fadeDuration: 1)
     }
 }

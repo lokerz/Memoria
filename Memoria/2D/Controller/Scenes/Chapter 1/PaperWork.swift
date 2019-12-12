@@ -320,8 +320,8 @@ class PaperWork: SKScene {
     }
     
     func playBackgroundSound(){
-        SecondPlayer.instance.playSound(for: .chapter1, index: 8, volume: 0)
-        SecondPlayer.instance.player?.numberOfLoops = -1
-        SecondPlayer.instance.player?.setVolume(0.1, fadeDuration: 2)
+        BGMPlayer.instance.playSound(for: .chapter1, index: 8, volume: 0)
+        BGMPlayer.instance.player?.numberOfLoops = -1
+        BGMPlayer.instance.player?.setVolume(0.1, fadeDuration: 2)
     }
 }

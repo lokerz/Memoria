@@ -67,7 +67,7 @@ class LevelManager : NSObject {
     
     func endLevel(){
         let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
-            self.pillars.last!.moveDown(by: 20, duration: 3)
+//            self.pillars.last!.moveDown(by: 20, duration: 3)
         }
         self.black.fadeIn()
     }

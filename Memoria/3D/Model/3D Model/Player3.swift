@@ -28,8 +28,8 @@ class Player3 : Player {
             lastDestination = SCNVector3Make(hitTestResult.worldCoordinates.x, 0 , hitTestResult.worldCoordinates.z)
             //            isLastDestination = false
             path = nearestNode(to: lastDestination)
-            lastDestination = path.last!
             if path.count > 1 {
+                lastDestination = path.last!
                 isMovable = true
                 destination = path[pathIndex]
                 move(to: destination)

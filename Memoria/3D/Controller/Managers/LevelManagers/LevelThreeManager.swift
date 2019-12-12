@@ -12,9 +12,9 @@ import SceneKit
 class LevelThreeManager : LevelManager {
     
     
-    let playerPosition = SCNVector3Make(-6.06, 7.77, 0)
+    let playerPosition = SCNVector3Make(-6.06, 0.05, 0)
     
-    let pillarPosition = SCNVector3Make(-6.06, 4.60, 0)
+    let pillarPosition = SCNVector3Make(-6.06, -0.42, 0)
     let pillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
     let finishPillarPosition = SCNVector3Make(5.74, -0.42, 0)
     let finishPillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(90))
@@ -37,9 +37,10 @@ class LevelThreeManager : LevelManager {
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
         
-        pillars.first!.moveDown(by: 5, duration: 3)
+//        pillars.first!.moveDown(by: 5, duration: 3)
         
         pathfinder.setupNodes()
+        spawnPathnodes()
     }
     
     

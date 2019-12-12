@@ -134,6 +134,8 @@ class GameUIView: UIView{
         isToggle = !isToggle
         rotate(button : pauseButtonOutlet, duration: 0.3)
         animateButton()
+        
+        FirstPlayer.instance.playSound(for: .soundEffect2D, index: 1)
     }
     
     @IBAction func soundButtonAction(_ sender: Any) {
@@ -153,11 +155,15 @@ class GameUIView: UIView{
     }
     
     @IBAction func exitButtonAction(_ sender: Any) {
-        self.delegate?.exitButton?()
         
         FirstPlayer.instance.player?.stop()
         SecondPlayer.instance.player?.stop()
-        pauseButtonAction(self)
+        
+        isToggle = !isToggle
+        rotate(button : pauseButtonOutlet, duration: 0.3)
+        animateButton()
+        
+        self.delegate?.exitButton?()
     }
     
     @IBAction func exitButtonTouchDown(_ sender: Any) {

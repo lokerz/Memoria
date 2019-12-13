@@ -58,6 +58,17 @@
 		47FE5AF6237A9848007993D4 /* PillarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF5237A9848007993D4 /* PillarPath.swift */; };
 		47FE5AF8237AA84D007993D4 /* HalfGearPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */; };
 		47FE5AFA237C0233007993D4 /* PlatformPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE5AF9237C0232007993D4 /* PlatformPath.swift */; };
+		F128019A23A2448A0004C79B /* Hero-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F128019723A2444B0004C79B /* Hero-Bold.ttf */; };
+		F128019B23A244910004C79B /* Hero-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F128019823A2444B0004C79B /* Hero-Light.ttf */; };
+		F128019C23A244910004C79B /* Hero-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F128019623A2444B0004C79B /* Hero-Regular.ttf */; };
+		F12801A523A245390004C79B /* SignikaNegative-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F128019D23A245380004C79B /* SignikaNegative-Bold.ttf */; };
+		F12801A623A245390004C79B /* Signika-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F128019E23A245390004C79B /* Signika-Regular.ttf */; };
+		F12801A723A245390004C79B /* SignikaNegative-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F128019F23A245390004C79B /* SignikaNegative-Light.ttf */; };
+		F12801A823A245390004C79B /* Signika-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F12801A023A245390004C79B /* Signika-Semibold.ttf */; };
+		F12801A923A245390004C79B /* SignikaNegative-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F12801A123A245390004C79B /* SignikaNegative-Semibold.ttf */; };
+		F12801AA23A245390004C79B /* SignikaNegative-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F12801A223A245390004C79B /* SignikaNegative-Regular.ttf */; };
+		F12801AB23A245390004C79B /* Signika-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F12801A323A245390004C79B /* Signika-Bold.ttf */; };
+		F12801AC23A245390004C79B /* Signika-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F12801A423A245390004C79B /* Signika-Light.ttf */; };
 		F157322F237554EF00E7891E /* SpriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157322E237554EF00E7891E /* SpriteManager.swift */; };
 		F157323A2375553800E7891E /* 2D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15732392375553800E7891E /* 2D.storyboard */; };
 		F157323B2375585700E7891E /* PhotoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1573231237554FA00E7891E /* PhotoScene.sks */; };
@@ -192,6 +203,17 @@
 		47FE5AF5237A9848007993D4 /* PillarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarPath.swift; sourceTree = "<group>"; };
 		47FE5AF7237AA84D007993D4 /* HalfGearPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfGearPath.swift; sourceTree = "<group>"; };
 		47FE5AF9237C0232007993D4 /* PlatformPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformPath.swift; sourceTree = "<group>"; };
+		F128019623A2444B0004C79B /* Hero-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hero-Regular.ttf"; sourceTree = "<group>"; };
+		F128019723A2444B0004C79B /* Hero-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hero-Bold.ttf"; sourceTree = "<group>"; };
+		F128019823A2444B0004C79B /* Hero-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hero-Light.ttf"; sourceTree = "<group>"; };
+		F128019D23A245380004C79B /* SignikaNegative-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignikaNegative-Bold.ttf"; sourceTree = "<group>"; };
+		F128019E23A245390004C79B /* Signika-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Regular.ttf"; sourceTree = "<group>"; };
+		F128019F23A245390004C79B /* SignikaNegative-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignikaNegative-Light.ttf"; sourceTree = "<group>"; };
+		F12801A023A245390004C79B /* Signika-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Semibold.ttf"; sourceTree = "<group>"; };
+		F12801A123A245390004C79B /* SignikaNegative-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignikaNegative-Semibold.ttf"; sourceTree = "<group>"; };
+		F12801A223A245390004C79B /* SignikaNegative-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignikaNegative-Regular.ttf"; sourceTree = "<group>"; };
+		F12801A323A245390004C79B /* Signika-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Bold.ttf"; sourceTree = "<group>"; };
+		F12801A423A245390004C79B /* Signika-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Light.ttf"; sourceTree = "<group>"; };
 		F1573227237554E700E7891E /* PhotoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScene.swift; sourceTree = "<group>"; };
 		F1573228237554E700E7891E /* Office.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Office.swift; sourceTree = "<group>"; };
 		F157322A237554E700E7891E /* PaperWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperWork.swift; sourceTree = "<group>"; };
@@ -572,6 +594,31 @@
 			path = "Pathed Model";
 			sourceTree = "<group>";
 		};
+		F128019923A244500004C79B /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				F128019723A2444B0004C79B /* Hero-Bold.ttf */,
+				F128019823A2444B0004C79B /* Hero-Light.ttf */,
+				F128019623A2444B0004C79B /* Hero-Regular.ttf */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		F12801AD23A2453E0004C79B /* Signika */ = {
+			isa = PBXGroup;
+			children = (
+				F12801A323A245390004C79B /* Signika-Bold.ttf */,
+				F12801A423A245390004C79B /* Signika-Light.ttf */,
+				F128019E23A245390004C79B /* Signika-Regular.ttf */,
+				F12801A023A245390004C79B /* Signika-Semibold.ttf */,
+				F128019D23A245380004C79B /* SignikaNegative-Bold.ttf */,
+				F128019F23A245390004C79B /* SignikaNegative-Light.ttf */,
+				F12801A223A245390004C79B /* SignikaNegative-Regular.ttf */,
+				F12801A123A245390004C79B /* SignikaNegative-Semibold.ttf */,
+			);
+			path = Signika;
+			sourceTree = "<group>";
+		};
 		F1573226237554E700E7891E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +662,8 @@
 		F1728ACA2382888A0027A617 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F12801AD23A2453E0004C79B /* Signika */,
+				F128019923A244500004C79B /* Hero */,
 				F195BA16239E65700083A3B4 /* Housky */,
 				F195BA11239E63DB0083A3B4 /* Quillain */,
 				F195BA03239E60D20083A3B4 /* Antique Cherry */,
@@ -829,17 +878,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				47F933DE23912F51002FCB6C /* toon_lighting.shader in Resources */,
+				F128019C23A244910004C79B /* Hero-Regular.ttf in Resources */,
 				F1BA096323990AF5003E4295 /* Piano In Blue.mp3 in Resources */,
 				F1BA09582397A0AA003E4295 /* OldPhoto.mp3 in Resources */,
+				F12801A923A245390004C79B /* SignikaNegative-Semibold.ttf in Resources */,
+				F12801AB23A245390004C79B /* Signika-Bold.ttf in Resources */,
 				47F933CE238D319A002FCB6C /* Book_Flip.mp3 in Resources */,
 				47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */,
 				F1BA096A239910E7003E4295 /* full_ThisBeautifulWorld.mp3 in Resources */,
 				F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */,
+				F12801A523A245390004C79B /* SignikaNegative-Bold.ttf in Resources */,
 				F1728ADF238288A70027A617 /* Roboto-MediumItalic.ttf in Resources */,
 				F1BA096D23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 in Resources */,
 				F1728AD9238288A70027A617 /* Roboto-Bold.ttf in Resources */,
 				F15732412375586B00E7891E /* InHouse.sks in Resources */,
 				F195BA0A239E62180083A3B4 /* Antique Cherry - Personal Use.ttf in Resources */,
+				F12801AC23A245390004C79B /* Signika-Light.ttf in Resources */,
 				47F933E223914C70002FCB6C /* toon_outline.shader in Resources */,
 				F1728ADA238288A70027A617 /* Roboto-Italic.ttf in Resources */,
 				F1BA095C2397ACA0003E4295 /* Drop.mp3 in Resources */,
@@ -849,11 +903,15 @@
 				F157323D2375586B00E7891E /* MobilScene.sks in Resources */,
 				F195BA15239E65650083A3B4 /* Housky Demo.ttf in Resources */,
 				F157323C2375585B00E7891E /* Office.sks in Resources */,
+				F128019A23A2448A0004C79B /* Hero-Bold.ttf in Resources */,
 				F1728ADD238288A70027A617 /* Roboto-Medium.ttf in Resources */,
 				F195BA12239E63E40083A3B4 /* Quillain (DEMO).ttf in Resources */,
 				F195BA0B239E62180083A3B4 /* Pigiarniq Bold.ttf in Resources */,
+				F128019B23A244910004C79B /* Hero-Light.ttf in Resources */,
+				F12801AA23A245390004C79B /* SignikaNegative-Regular.ttf in Resources */,
 				4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */,
 				F1BA096423990AF5003E4295 /* PianoDreams.mp3 in Resources */,
+				F12801A623A245390004C79B /* Signika-Regular.ttf in Resources */,
 				F195BA1E239F8A4F0083A3B4 /* skipbutton.mp3 in Resources */,
 				F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */,
 				F195BA0D239E62180083A3B4 /* Pigiarniq Italic.ttf in Resources */,
@@ -863,6 +921,7 @@
 				F1728AE1238288A70027A617 /* Roboto-Black.ttf in Resources */,
 				F157323E2375586B00E7891E /* PaperWork.sks in Resources */,
 				F1BA095E2398F5FA003E4295 /* Car Ambience.mp3 in Resources */,
+				F12801A723A245390004C79B /* SignikaNegative-Light.ttf in Resources */,
 				F1728ADC238288A70027A617 /* Roboto-BlackItalic.ttf in Resources */,
 				F1728AD7238288A70027A617 /* Roboto-Light.ttf in Resources */,
 				F157324C237567B100E7891E /* ChapterSelect.sks in Resources */,
@@ -872,6 +931,7 @@
 				F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */,
 				F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */,
 				F157323F2375586B00E7891E /* FrontHouse.sks in Resources */,
+				F12801A823A245390004C79B /* Signika-Semibold.ttf in Resources */,
 				47B7A1B923585BCD0027AA1F /* LaunchScreen.storyboard in Resources */,
 				F1728ADE238288A70027A617 /* Roboto-Thin.ttf in Resources */,
 				47B7A1B623585BCD0027AA1F /* Assets.xcassets in Resources */,

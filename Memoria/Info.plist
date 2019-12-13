@@ -40,6 +40,10 @@
 		<string>Pigiarniq Light.ttf</string>
 		<string>Quillain (DEMO).ttf</string>
 		<string>Housky Demo.ttf</string>
+		<string>Hero-Bold.ttf</string>
+		<string>Hero-Light.ttf</string>
+		<string>Hero-Regular.ttf</string>
+		<string>Signika-Regular.ttf</string>
 	</array>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationLandscapeRight</string>

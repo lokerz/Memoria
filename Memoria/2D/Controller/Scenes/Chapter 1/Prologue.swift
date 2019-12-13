@@ -46,7 +46,7 @@ class Prologue: SKScene {
         background.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         background.size = CGSize(width: view.frame.width, height: view.frame.height)
         
-        prologue.fontName = "Pigiarniq"
+        prologue.fontName = "Signika"
         prologue.horizontalAlignmentMode = .center
         prologue.verticalAlignmentMode = .center
         prologue.name = "prologue"

@@ -56,7 +56,7 @@ class ChapterSelect: SKScene {
         chapterTitle.zPosition = 2
         chapterTitle.fontColor = .black
         chapterTitle.fontSize = 20
-        chapterTitle.fontName = "Pigiarniq"
+        chapterTitle.fontName = "Signika"
         chapterTitle.name = "Chapter Name"
         chapterTitle.text = chapterName[1]
         

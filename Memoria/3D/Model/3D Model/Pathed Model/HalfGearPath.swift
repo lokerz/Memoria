@@ -24,13 +24,13 @@ class HalfGearPath : HalfGear {
     func setupPath(){
         setupCoordinates()
         setupNodes()
-        swapNodes(0, with: 2)
+        swapNodes(0, with: 3)
     }
     
     func setupCoordinates(){
-        let initialAngle = 90
+        let initialAngle = 45
         let incrementAngle = 45
-        for i in 0...4 {
+        for i in 0...6 {
             coordinates.append(calculateCoordinate(from: position, with: radius, rotation: Float(initialAngle + i * incrementAngle)))
         }
                 
@@ -57,16 +57,26 @@ class HalfGearPath : HalfGear {
     
     func checkRotation(){
         let angle = eulerAngles.y
+        let degreeAngle = GLKMathRadiansToDegrees(angle)
+        
+        print(degreeAngle)
+        if degreeAngle <= 140 && degreeAngle >= 40 {
+            nodes[3].removeConnections(to: [nodes[1]], bidirectional: true)
+            nodes[6].removeConnections(to: [nodes[5]], bidirectional: true)
+        } else{
+            nodes[3].addConnections(to: [nodes[1]], bidirectional: true)
+            nodes[6].addConnections(to: [nodes[5]], bidirectional: true)
+        }
         
         if angle >= maxAngle - 0.001{
-            pathManager.addConnection(from: nodes[2], with: .finishNode)
-            pathManager.removeConnection(from: nodes[4], with: .finishNode)
+            pathManager.addConnection(from: nodes[3], with: .finishNode)
+            pathManager.removeConnection(from: nodes[6], with: .finishNode)
         } else if angle <= minAngle + 0.001{
-            pathManager.addConnection(from: nodes[4], with: .finishNode)
-            pathManager.removeConnection(from: nodes[2], with: .finishNode)
+            pathManager.addConnection(from: nodes[6], with: .finishNode)
+            pathManager.removeConnection(from: nodes[3], with: .finishNode)
         } else {
-            pathManager.removeConnection(from: nodes[2], with: .finishNode)
-            pathManager.removeConnection(from: nodes[4], with: .finishNode)
+            pathManager.removeConnection(from: nodes[3], with: .finishNode)
+            pathManager.removeConnection(from: nodes[6], with: .finishNode)
         }
     }
     

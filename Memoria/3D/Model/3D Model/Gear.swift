@@ -69,7 +69,7 @@ class Gear : SCNNode{
         
         self.eulerAngles.y = newAngle
         haptic(eulerAngles.y)
-        print(GLKMathRadiansToDegrees(eulerAngles.y))
+//        print(GLKMathRadiansToDegrees(eulerAngles.y))
     }
     
     func rotateGear(by degree : Float){

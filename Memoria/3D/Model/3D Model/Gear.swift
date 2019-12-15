@@ -41,7 +41,7 @@ class Gear : SCNNode{
     }
     
     func commonInit(on position : SCNVector3, with rotation :  SCNVector4){
-        guard let object = SCNScene(named: "art.scnassets/newGear.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/newGear2.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
 //            setupShader(for: node) //flat shadow but no shadow

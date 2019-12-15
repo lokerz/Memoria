@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 class LevelTwoManager : LevelManager {
-    let playerPosition = SCNVector3Make(-7.6, 7.5, 0)
+    let playerPosition = SCNVector3Make(-7.6, 0.1, 0)
     
     let platformPosition = SCNVector3Make(0, -0.5, 0)
     
@@ -21,7 +21,7 @@ class LevelTwoManager : LevelManager {
     let gearTwoRotation = SCNVector4Make(0, 0, 0, 0)
     let gearTwoCounterRotate = true
     
-    let pillarPosition = SCNVector3Make(-7.6, 4.465, 0)
+    let pillarPosition = SCNVector3Make(-7.6, -0.56, 0)
     let finishPillarPosition = SCNVector3Make(7.6, -0.56, 0)
     
     

@@ -55,7 +55,7 @@ class LevelManager : NSObject {
     
     func resetLevel(){
         for child in rootNode.childNodes{
-            if child.name != "camera" && child.name != "staticLight"{
+            if child.name != "world"{
                 child.removeFromParentNode()
             }
         }

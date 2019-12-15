@@ -43,6 +43,7 @@ class Player : SCNNode{
         playerNode.rotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
         lastHeight = Int(roundf(playerNode.position.y * 10))
         
+        
 //        setupShader(for: playerNode.childNodes.first!)
         setupPointOfView()
         loadAnimations()

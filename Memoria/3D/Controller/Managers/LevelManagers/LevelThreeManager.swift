@@ -12,7 +12,7 @@ import SceneKit
 class LevelThreeManager : LevelManager {
     
     
-    let playerPosition = SCNVector3Make(-6.06, 0.05, 0)
+    let playerPosition = SCNVector3Make(-6.06, 0.1, 0)
     
     let pillarPosition = SCNVector3Make(-6.06, -0.42, 0)
     let pillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))

@@ -40,7 +40,7 @@ class LevelThreeManager : LevelManager {
 //        pillars.first!.moveDown(by: 5, duration: 3)
         
         pathfinder.setupNodes()
-        spawnPathnodes()
+//        spawnPathnodes()
     }
     
     

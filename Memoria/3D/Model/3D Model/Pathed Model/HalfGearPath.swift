@@ -60,7 +60,7 @@ class HalfGearPath : HalfGear {
         let degreeAngle = GLKMathRadiansToDegrees(angle)
         
         print(degreeAngle)
-        if degreeAngle <= 140 && degreeAngle >= 40 {
+        if degreeAngle <= maxAngle-39 && degreeAngle >= minAngle+39 {
             nodes[3].removeConnections(to: [nodes[1]], bidirectional: true)
             nodes[6].removeConnections(to: [nodes[5]], bidirectional: true)
         } else{

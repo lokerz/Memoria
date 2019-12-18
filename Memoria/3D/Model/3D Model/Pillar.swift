@@ -37,7 +37,7 @@ class Pillar : SCNNode{
     }
     
     func commonInit(on position : SCNVector3){
-        guard let object = SCNScene(named: "art.scnassets/newPillar.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/island.scn") else { return }
         for node in object.rootNode.childNodes as [SCNNode]{
             self.addChildNode(node)
 //            setupShader(for: node)

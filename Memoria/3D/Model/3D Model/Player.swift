@@ -163,6 +163,7 @@ class Player : SCNNode{
     
     func synchronize(){
         playerNode.position = playerNode.presentation.worldPosition
+        
     }
     
 }

@@ -12,18 +12,18 @@ import SceneKit
 class LevelThreeManager : LevelManager {
     
     
-    let playerPosition = SCNVector3Make(-6.06, 0.1, 0)
+    let playerPosition = SCNVector3Make(-7.2, 1, 0)
     
-    let pillarPosition = SCNVector3Make(-6.06, -0.42, 0)
-    let pillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(-90))
-    let finishPillarPosition = SCNVector3Make(5.74, -0.42, 0)
-    let finishPillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(90))
+    let pillarPosition = SCNVector3Make(-7.22, -0.42, 0) //6.06
+    let pillarRotation = SCNVector4Make(0, 1 , 0, 0)
+    let finishPillarPosition = SCNVector3Make(6.9, -0.42, 0)
+    let finishPillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(180))
     
     let gearOnePosition = SCNVector3Make(-2.71, 0, 0)
     let gearOneRotation = SCNVector4Make(0, 0, 0, 0)
     
     let gearTwoPosition = SCNVector3Make(2.34, 0, 0)
-    let gearTwoRotation = SCNVector4Make(0, 0, 0, GLKMathDegreesToRadians(100))
+    let gearTwoRotation = SCNVector4Make(0, 0, 0, GLKMathDegreesToRadians(10))
     
     
     
@@ -32,7 +32,7 @@ class LevelThreeManager : LevelManager {
         spawnPlayer(on: playerPosition, with: playerVelocity)
         spawnPillar(on: pillarPosition, with: pillarRotation)
         spawnGear(on: gearOnePosition, with: gearOneRotation, minAngle: GLKMathDegreesToRadians(-79), maxAngle: GLKMathDegreesToRadians(100))
-        spawnHalfGear(on: gearTwoPosition, with: gearTwoRotation, minAngle: GLKMathDegreesToRadians(1), maxAngle: GLKMathDegreesToRadians(179), isCounterRotate : true)
+        spawnHalfGear(on: gearTwoPosition, with: gearTwoRotation, minAngle: GLKMathDegreesToRadians(-90), maxAngle: GLKMathDegreesToRadians(89), isCounterRotate : true)
         spawnPillar(on: finishPillarPosition, with: finishPillarRotation)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition

@@ -100,6 +100,7 @@ class Office: SKScene{
             for node in nodesarray {
                 if node.name == "nextButton"{
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
+                    FirstPlayer.instance.playSound(for: .soundEffect2D, index: 3)
                     SpriteManager.instance.callScene(index: 6,transition: .fade(withDuration: 1))
                     
                     BGMPlayer.instance.player?.setVolume(0, fadeDuration: 2)

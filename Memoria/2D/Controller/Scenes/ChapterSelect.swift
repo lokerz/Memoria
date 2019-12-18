@@ -177,7 +177,7 @@ class ChapterSelect: SKScene {
                     HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     switch state {
                     case 1: spriteManager.callScene(index: 1, transition: .fade(withDuration: 1))
-                    case 2: break
+                    case 2: spriteManager.callScene(index: 6, transition: .fade(withDuration: 1))
                     case 3: break
                     case 4: break
                     case 5: break

@@ -98,6 +98,9 @@
 		F1728AE0238288A70027A617 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728AD4238288A60027A617 /* Roboto-ThinItalic.ttf */; };
 		F1728AE1238288A70027A617 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728AD5238288A60027A617 /* Roboto-Black.ttf */; };
 		F1728AE2238288A70027A617 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */; };
+		F177D55923AA194D00E28CFB /* menubutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F177D55723AA194D00E28CFB /* menubutton.mp3 */; };
+		F177D55C23AA1A3100E28CFB /* NextButton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F177D55B23AA1A3100E28CFB /* NextButton.mp3 */; };
+		F177D55E23AA1F3A00E28CFB /* Night Ambience.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F177D55D23AA1F3A00E28CFB /* Night Ambience.mp3 */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
 		F195BA0A239E62180083A3B4 /* Antique Cherry - Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */; };
@@ -108,9 +111,8 @@
 		F195BA0F239E62180083A3B4 /* Pigiarniq Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195B9FF239E60A60083A3B4 /* Pigiarniq Regular.ttf */; };
 		F195BA12239E63E40083A3B4 /* Quillain (DEMO).ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */; };
 		F195BA15239E65650083A3B4 /* Housky Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA14239E65650083A3B4 /* Housky Demo.ttf */; };
-		F195BA1A239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA19239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 */; };
+		F195BA1A239F8A3F0083A3B4 /* Clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA19239F8A3F0083A3B4 /* Clock.mp3 */; };
 		F195BA1E239F8A4F0083A3B4 /* skipbutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA1C239F8A4F0083A3B4 /* skipbutton.mp3 */; };
-		F195BA2123A0EEC40083A3B4 /* menubutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F195BA2023A0EEC40083A3B4 /* menubutton.mp3 */; };
 		F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */; };
 		F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09512397A0A8003E4295 /* Open Door.mp3 */; };
 		F1BA09572397A0AA003E4295 /* Write.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA09522397A0A9003E4295 /* Write.mp3 */; };
@@ -121,7 +123,7 @@
 		F1BA096423990AF5003E4295 /* PianoDreams.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA096223990AF5003E4295 /* PianoDreams.mp3 */; };
 		F1BA096A239910E7003E4295 /* full_ThisBeautifulWorld.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA0968239910E4003E4295 /* full_ThisBeautifulWorld.mp3 */; };
 		F1BA096B239910E7003E4295 /* mainfile_sweet-love-piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA0969239910E7003E4295 /* mainfile_sweet-love-piano.mp3 */; };
-		F1BA096D23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA096C23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 */; };
+		F1BA096D23991734003E4295 /* Road.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BA096C23991734003E4295 /* Road.mp3 */; };
 		F1E66BA923869BCA000633A6 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */; };
 		F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */; };
 /* End PBXBuildFile section */
@@ -241,6 +243,9 @@
 		F1728AD4238288A60027A617 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		F1728AD5238288A60027A617 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		F1728AD6238288A60027A617 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		F177D55723AA194D00E28CFB /* menubutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menubutton.mp3; sourceTree = "<group>"; };
+		F177D55B23AA1A3100E28CFB /* NextButton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NextButton.mp3; sourceTree = "<group>"; };
+		F177D55D23AA1F3A00E28CFB /* Night Ambience.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Night Ambience.mp3"; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
 		F195B9FB239E60A60083A3B4 /* Pigiarniq Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Heavy.ttf"; sourceTree = "<group>"; };
@@ -251,9 +256,8 @@
 		F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Antique Cherry - Personal Use.ttf"; sourceTree = "<group>"; };
 		F195BA10239E63D90083A3B4 /* Quillain (DEMO).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quillain (DEMO).ttf"; sourceTree = "<group>"; };
 		F195BA14239E65650083A3B4 /* Housky Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Housky Demo.ttf"; sourceTree = "<group>"; };
-		F195BA19239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "household-clock-tick-tock.mp3"; sourceTree = "<group>"; };
+		F195BA19239F8A3F0083A3B4 /* Clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Clock.mp3; sourceTree = "<group>"; };
 		F195BA1C239F8A4F0083A3B4 /* skipbutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = skipbutton.mp3; sourceTree = "<group>"; };
-		F195BA2023A0EEC40083A3B4 /* menubutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menubutton.mp3; sourceTree = "<group>"; };
 		F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Adoption letter.mp3"; sourceTree = "<group>"; };
 		F1BA09512397A0A8003E4295 /* Open Door.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Open Door.mp3"; sourceTree = "<group>"; };
 		F1BA09522397A0A9003E4295 /* Write.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Write.mp3; sourceTree = "<group>"; };
@@ -264,7 +268,7 @@
 		F1BA096223990AF5003E4295 /* PianoDreams.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PianoDreams.mp3; sourceTree = "<group>"; };
 		F1BA0968239910E4003E4295 /* full_ThisBeautifulWorld.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = full_ThisBeautifulWorld.mp3; sourceTree = "<group>"; };
 		F1BA0969239910E7003E4295 /* mainfile_sweet-love-piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mainfile_sweet-love-piano.mp3"; sourceTree = "<group>"; };
-		F1BA096C23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car-interior-ambience-01-sound-effect.mp3"; sourceTree = "<group>"; };
+		F1BA096C23991734003E4295 /* Road.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Road.mp3; sourceTree = "<group>"; };
 		F1E66BA823869BCA000633A6 /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
 		F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A_Quiet_Thought.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -717,8 +721,9 @@
 		F195BA1F23A0EEB10083A3B4 /* Sound Effect */ = {
 			isa = PBXGroup;
 			children = (
-				F195BA2023A0EEC40083A3B4 /* menubutton.mp3 */,
+				F177D55723AA194D00E28CFB /* menubutton.mp3 */,
 				F195BA1C239F8A4F0083A3B4 /* skipbutton.mp3 */,
+				F177D55B23AA1A3100E28CFB /* NextButton.mp3 */,
 			);
 			path = "Sound Effect";
 			sourceTree = "<group>";
@@ -726,14 +731,15 @@
 		F1BA096523990B03003E4295 /* Chapter 1 */ = {
 			isa = PBXGroup;
 			children = (
-				F1BA096C23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 */,
+				F1BA096C23991734003E4295 /* Road.mp3 */,
 				F1BA09502397A0A7003E4295 /* Adoption letter.mp3 */,
 				F1BA095B2397ACA0003E4295 /* Drop.mp3 */,
 				F1BA09512397A0A8003E4295 /* Open Door.mp3 */,
 				F1BA09532397A0AA003E4295 /* OldPhoto.mp3 */,
 				F1BA09522397A0A9003E4295 /* Write.mp3 */,
 				F1BA095D2398F5FA003E4295 /* Car Ambience.mp3 */,
-				F195BA19239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 */,
+				F195BA19239F8A3F0083A3B4 /* Clock.mp3 */,
+				F177D55D23AA1F3A00E28CFB /* Night Ambience.mp3 */,
 			);
 			path = "Chapter 1";
 			sourceTree = "<group>";
@@ -874,9 +880,10 @@
 				F1BA09552397A0AA003E4295 /* Adoption letter.mp3 in Resources */,
 				F12801A523A245390004C79B /* SignikaNegative-Bold.ttf in Resources */,
 				F1728ADF238288A70027A617 /* Roboto-MediumItalic.ttf in Resources */,
-				F1BA096D23991734003E4295 /* car-interior-ambience-01-sound-effect.mp3 in Resources */,
+				F1BA096D23991734003E4295 /* Road.mp3 in Resources */,
 				F1728AD9238288A70027A617 /* Roboto-Bold.ttf in Resources */,
 				F15732412375586B00E7891E /* InHouse.sks in Resources */,
+				F177D55C23AA1A3100E28CFB /* NextButton.mp3 in Resources */,
 				F195BA0A239E62180083A3B4 /* Antique Cherry - Personal Use.ttf in Resources */,
 				F12801AC23A245390004C79B /* Signika-Light.ttf in Resources */,
 				47F933E223914C70002FCB6C /* toon_outline.shader in Resources */,
@@ -899,17 +906,18 @@
 				F1E66BAB2386A391000633A6 /* A_Quiet_Thought.mp3 in Resources */,
 				F195BA0D239E62180083A3B4 /* Pigiarniq Italic.ttf in Resources */,
 				F1BA096B239910E7003E4295 /* mainfile_sweet-love-piano.mp3 in Resources */,
-				F195BA2123A0EEC40083A3B4 /* menubutton.mp3 in Resources */,
-				F195BA1A239F8A3F0083A3B4 /* household-clock-tick-tock.mp3 in Resources */,
+				F195BA1A239F8A3F0083A3B4 /* Clock.mp3 in Resources */,
 				F1728AE1238288A70027A617 /* Roboto-Black.ttf in Resources */,
 				F157323E2375586B00E7891E /* PaperWork.sks in Resources */,
 				F1BA095E2398F5FA003E4295 /* Car Ambience.mp3 in Resources */,
+				F177D55E23AA1F3A00E28CFB /* Night Ambience.mp3 in Resources */,
 				F12801A723A245390004C79B /* SignikaNegative-Light.ttf in Resources */,
 				F1728ADC238288A70027A617 /* Roboto-BlackItalic.ttf in Resources */,
 				F1728AD7238288A70027A617 /* Roboto-Light.ttf in Resources */,
 				F157324C237567B100E7891E /* ChapterSelect.sks in Resources */,
 				F1728ADB238288A70027A617 /* Roboto-BoldItalic.ttf in Resources */,
 				47E297B723964FF3009E99B1 /* NodeTechnique.plist in Resources */,
+				F177D55923AA194D00E28CFB /* menubutton.mp3 in Resources */,
 				F1BA09572397A0AA003E4295 /* Write.mp3 in Resources */,
 				F1BA09562397A0AA003E4295 /* Open Door.mp3 in Resources */,
 				F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */,

@@ -26,6 +26,7 @@
 		4705CAB92372C5ED00E874EB /* GameUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4705CAB82372C5ED00E874EB /* GameUIView.xib */; };
 		47076BAE239E285800EAE6E2 /* Crystal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47076BAD239E285800EAE6E2 /* Crystal.swift */; };
 		47076BB0239E55E600EAE6E2 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */; };
+		4711D2E423AA20C000D7D14C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4711D2E323AA20C000D7D14C /* Cloud.swift */; };
 		47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */; };
 		47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A1AE23585BCA0027AA1F /* art.scnassets */; };
 		47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1B023585BCA0027AA1F /* GameViewController.swift */; };
@@ -162,6 +163,7 @@
 		4705CAB82372C5ED00E874EB /* GameUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameUIView.xib; sourceTree = "<group>"; };
 		47076BAD239E285800EAE6E2 /* Crystal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crystal.swift; sourceTree = "<group>"; };
 		47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
+		4711D2E323AA20C000D7D14C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		47B7A1A923585BCA0027AA1F /* elio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				4705CA4623658E1700E874EB /* Platform.swift */,
 				4705CA44236588CE00E874EB /* Black.swift */,
 				47076BAD239E285800EAE6E2 /* Crystal.swift */,
+				4711D2E323AA20C000D7D14C /* Cloud.swift */,
 			);
 			path = "3D Model";
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				4705CA37235EF3B100E874EB /* LevelOneManager.swift in Sources */,
 				47B7A1E723587F120027AA1F /* HapticGenerator.swift in Sources */,
 				4705CA4323640A4100E874EB /* LevelManager.swift in Sources */,
+				4711D2E423AA20C000D7D14C /* Cloud.swift in Sources */,
 				47F933D9238FE598002FCB6C /* EndingOne.swift in Sources */,
 				4705CA3F236409E500E874EB /* LevelTwoManager.swift in Sources */,
 				F15732452375587800E7891E /* PaperWork.swift in Sources */,

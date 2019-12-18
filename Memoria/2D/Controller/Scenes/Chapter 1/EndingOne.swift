@@ -42,7 +42,7 @@ class EndingOne: SKScene {
             self.isClickable = true
         }
         
-        endingFoto = addImage(to: view, name: "endingFoto")
+        endingFoto = addImage(to: view, name: "photo_back")
         endingFoto.alpha = 0
 
         let widthOfficeBubble: CGFloat = 260
@@ -100,7 +100,7 @@ class EndingOne: SKScene {
                             }
                         }
                     }
-                } else if node.name == "endingFoto" && isClickable{
+                } else if node.name == "photo_back" && isClickable{
                     if state == 4{
                         monologue.changeText(to: monologues[2])
                         monologue.fadeIn()

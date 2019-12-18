@@ -58,7 +58,7 @@ class MainMenu: SKScene {
         gameTitle.fontSize = 180
         gameTitle.fontName = "Housky Demo"
         gameTitle.text = title
-        gameTitle.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 10)
+        gameTitle.position = CGPoint(x: view.frame.width/2 , y: view.frame.height/2 - 10)
         gameTitle.zPosition = 2
         gameTitle.alpha = 0
         
@@ -73,7 +73,7 @@ class MainMenu: SKScene {
         dropShadowTitle.alpha = gameTitle.alpha
         
         playButton.fontColor = .white
-        playButton.fontSize = 13
+        playButton.fontSize = 15
         playButton.fontName = "Signika"
         playButton.text = "Tap anywhere to start"
         playButton.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2 - 100)

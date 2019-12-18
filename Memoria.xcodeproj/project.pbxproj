@@ -101,6 +101,7 @@
 		F177D55923AA194D00E28CFB /* menubutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F177D55723AA194D00E28CFB /* menubutton.mp3 */; };
 		F177D55C23AA1A3100E28CFB /* NextButton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F177D55B23AA1A3100E28CFB /* NextButton.mp3 */; };
 		F177D55E23AA1F3A00E28CFB /* Night Ambience.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F177D55D23AA1F3A00E28CFB /* Night Ambience.mp3 */; };
+		F177D60623AA345800E28CFB /* ElioTitle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F177D60523AA345800E28CFB /* ElioTitle.atlas */; };
 		F17B8BB3237D483A003E61D3 /* Prologue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F17B8BB2237D483A003E61D3 /* Prologue.sks */; };
 		F17B8BB5237D4852003E61D3 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B8BB4237D4852003E61D3 /* Prologue.swift */; };
 		F195BA0A239E62180083A3B4 /* Antique Cherry - Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F195BA02239E60D00083A3B4 /* Antique Cherry - Personal Use.ttf */; };
@@ -246,6 +247,7 @@
 		F177D55723AA194D00E28CFB /* menubutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menubutton.mp3; sourceTree = "<group>"; };
 		F177D55B23AA1A3100E28CFB /* NextButton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NextButton.mp3; sourceTree = "<group>"; };
 		F177D55D23AA1F3A00E28CFB /* Night Ambience.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Night Ambience.mp3"; sourceTree = "<group>"; };
+		F177D60523AA345800E28CFB /* ElioTitle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ElioTitle.atlas; sourceTree = "<group>"; };
 		F17B8BB2237D483A003E61D3 /* Prologue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Prologue.sks; sourceTree = "<group>"; };
 		F17B8BB4237D4852003E61D3 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
 		F195B9FB239E60A60083A3B4 /* Pigiarniq Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pigiarniq Heavy.ttf"; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		47B7A1A023585BCA0027AA1F = {
 			isa = PBXGroup;
 			children = (
+				F177D60523AA345800E28CFB /* ElioTitle.atlas */,
 				47B7A1AB23585BCA0027AA1F /* Memoria */,
 				47B7A1C223585BCD0027AA1F /* MemoriaTests */,
 				47B7A1CD23585BCE0027AA1F /* MemoriaUITests */,
@@ -869,6 +872,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F177D60623AA345800E28CFB /* ElioTitle.atlas in Resources */,
 				47F933DE23912F51002FCB6C /* toon_lighting.shader in Resources */,
 				F1BA096323990AF5003E4295 /* Piano In Blue.mp3 in Resources */,
 				F1BA09582397A0AA003E4295 /* OldPhoto.mp3 in Resources */,
@@ -1183,7 +1187,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = DYL2G75B8U;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1202,7 +1206,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K72X54MJB;
+				DEVELOPMENT_TEAM = DYL2G75B8U;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

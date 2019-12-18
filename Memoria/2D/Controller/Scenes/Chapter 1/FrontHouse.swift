@@ -48,6 +48,9 @@ class FrontHouse: SKScene{
         knob.name = "knob"
         
         addChild(houseNight)
+        self.run(SKAction.wait(forDuration: 1.5)){
+            self.playAmbience()
+        }
         
         view.isUserInteractionEnabled = false
         
@@ -101,5 +104,12 @@ class FrontHouse: SKScene{
     
     func playDoorSound(){
         FirstPlayer.instance.playSound(for: part.chapter1, index: 3)
+    }
+    
+    func playAmbience(){
+        SecondPlayer.instance.player?.stop()
+        SecondPlayer.instance.playSound(for: .chapter1, index: 9, volume: 0)
+        SecondPlayer.instance.player?.setVolume(0.4, fadeDuration: 2)
+        SecondPlayer.instance.player?.numberOfLoops = -1
     }
 }

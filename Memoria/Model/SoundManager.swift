@@ -47,8 +47,9 @@ class FirstPlayer{
     "OldPhoto",
     "Write",
     "Car Ambience",
-    "car-interior-ambience-01-sound-effect",
-    "household-clock-tick-tock"
+    "Road",
+    "Clock",
+    "Night Ambience"
     ]
     
     var chapterSelect = [
@@ -60,7 +61,8 @@ class FirstPlayer{
     var soundEffect2D = [
     "",
     "menubutton",
-    "skipbutton"
+    "skipbutton",
+    "NextButton"
     ]
     
     func playSound(for part : part, index: Int) {

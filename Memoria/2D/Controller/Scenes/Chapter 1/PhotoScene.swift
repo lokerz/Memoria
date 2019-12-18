@@ -141,6 +141,7 @@ class PhotoScene: SKScene {
                 }
                 else if node.name == "nextButton" {
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
+                    FirstPlayer.instance.playSound(for: .soundEffect2D, index: 3)
                     SpriteManager.instance.callScene(index: 4, transition: .fade(withDuration: 1))
                 }
             }

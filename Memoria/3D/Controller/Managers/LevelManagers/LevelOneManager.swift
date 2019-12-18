@@ -43,8 +43,10 @@ class LevelOneManager : LevelManager{
         pathfinder.setupNodes()
 //        spawnPathnodes()
         
-        let crystal = Crystal(amount: 50)
+//        let crystal = Crystal(amount: 50)
 //        rootNode.addChildNode(crystal)
+        let cloud = Cloud()
+        rootNode.addChildNode(cloud)
         
     }
     

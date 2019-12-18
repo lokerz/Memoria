@@ -107,9 +107,9 @@ class FrontHouse: SKScene{
     }
     
     func playAmbience(){
-        SecondPlayer.instance.player?.stop()
-        SecondPlayer.instance.playSound(for: .chapter1, index: 9, volume: 0)
-        SecondPlayer.instance.player?.setVolume(0.4, fadeDuration: 2)
-        SecondPlayer.instance.player?.numberOfLoops = -1
+        BGMPlayer.instance.player?.stop()
+        BGMPlayer.instance.playSound(for: .chapter1, index: 9, volume: 0)
+        BGMPlayer.instance.player?.setVolume(0.4, fadeDuration: 2)
+        BGMPlayer.instance.player?.numberOfLoops = -1
     }
 }

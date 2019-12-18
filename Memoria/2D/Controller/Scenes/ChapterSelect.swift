@@ -177,6 +177,10 @@ class ChapterSelect: SKScene {
                     HapticGenerator.instance.play(sharpnessValue : hapticSharpness, intensityValue : hapticIntensity)
                     switch state {
                     case 1: spriteManager.callScene(index: 1, transition: .fade(withDuration: 1))
+                        BGMPlayer.instance.player?.setVolume(0, fadeDuration: 2)
+                        self.run(SKAction.wait(forDuration: 2)){
+                            BGMPlayer.instance.player?.stop()
+                        }
                     case 2: spriteManager.callScene(index: 6, transition: .fade(withDuration: 1))
                     case 3: break
                     case 4: break
@@ -368,10 +372,4 @@ class ChapterSelect: SKScene {
         FirstPlayer.instance.playSound(for: part.chapterSelect, index: 2)
     }
     
-    override func willMove(from view: SKView) {
-        BGMPlayer.instance.player?.setVolume(0, fadeDuration: 2)
-        self.run(SKAction.wait(forDuration: 2)){
-            BGMPlayer.instance.player?.stop()
-        }
-    }
 }

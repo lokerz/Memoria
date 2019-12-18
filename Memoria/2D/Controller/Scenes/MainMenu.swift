@@ -14,13 +14,13 @@ class MainMenu: SKScene {
     var scroller : InfiniteScrollingBackground?
     let spriteManager = SpriteManager.instance
     
-    let gameTitle = SKLabelNode()
+//    let gameTitle = SKLabelNode()
     let playButton = SKLabelNode()
     let backgroundImage = SKSpriteNode(imageNamed: "Main_Background")
     let baling = SKSpriteNode(imageNamed: "Baling")
     let langitBiru = SKSpriteNode(imageNamed: "Sora_Aoi")
     
-    let dropShadowTitle = SKLabelNode()
+//    let dropShadowTitle = SKLabelNode()
     let dropShadowPlay = SKLabelNode()
     
     let images = [
@@ -43,34 +43,34 @@ class MainMenu: SKScene {
         setupObjects(view : view)
         fadeInTitle()
         
-        addChild(gameTitle)
-        addChild(dropShadowTitle)
+//        addChild(gameTitle)
+//        addChild(dropShadowTitle)
         addChild(langitBiru)
         addChild(backgroundImage)
         addChild(baling)
         addChild(playButton)
         addChild(dropShadowPlay)
-        
+    
     }
     
     func setupObjects(view : SKView){
-        gameTitle.fontColor = .white
-        gameTitle.fontSize = 180
-        gameTitle.fontName = "Housky Demo"
-        gameTitle.text = title
-        gameTitle.position = CGPoint(x: view.frame.width/2 , y: view.frame.height/2 - 10)
-        gameTitle.zPosition = 2
-        gameTitle.alpha = 0
-        
-        dropShadowTitle.fontColor = .black
-        dropShadowTitle.fontSize = gameTitle.fontSize
-        dropShadowTitle.fontName = gameTitle.fontName
-        dropShadowTitle.text = gameTitle.text
-        dropShadowTitle.position.x = gameTitle.position.x + 2
-        dropShadowTitle.position.y = gameTitle.position.y - 2
-//        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: view.frame.height/2 - 2 - 15)
-        dropShadowTitle.zPosition = 1
-        dropShadowTitle.alpha = gameTitle.alpha
+//        gameTitle.fontColor = .white
+//        gameTitle.fontSize = 180
+//        gameTitle.fontName = "Housky Demo"
+//        gameTitle.text = title
+//        gameTitle.position = CGPoint(x: view.frame.width/2 , y: view.frame.height/2 - 10)
+//        gameTitle.zPosition = 2
+//        gameTitle.alpha = 0
+//
+//        dropShadowTitle.fontColor = .black
+//        dropShadowTitle.fontSize = gameTitle.fontSize
+//        dropShadowTitle.fontName = gameTitle.fontName
+//        dropShadowTitle.text = gameTitle.text
+//        dropShadowTitle.position.x = gameTitle.position.x + 2
+//        dropShadowTitle.position.y = gameTitle.position.y - 2
+////        dropShadowTitle.position = CGPoint(x: view.frame.width/2 + 2, y: view.frame.height/2 - 2 - 15)
+//        dropShadowTitle.zPosition = 1
+//        dropShadowTitle.alpha = gameTitle.alpha
         
         playButton.fontColor = .white
         playButton.fontSize = 15
@@ -108,12 +108,14 @@ class MainMenu: SKScene {
     }
     
     func fadeInTitle(){
-        let fadeIn = SKAction.fadeAlpha(to: 1, duration: 1)
-        let fadeInShadow = SKAction.fadeAlpha(to: 0.5, duration: 1)
+//        let fadeIn = SKAction.fadeAlpha(to: 1, duration: 1)
+//        let fadeInShadow = SKAction.fadeAlpha(to: 0.5, duration: 1)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.66) {
-            self.gameTitle.run(fadeIn)
+//            self.gameTitle.run(fadeIn)
+            self.titleAnimation()
+            self.animateTitle()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.dropShadowTitle.run(fadeInShadow)
+//                self.dropShadowTitle.run(fadeInShadow)
                 self.view?.isUserInteractionEnabled = true
             }
         }
@@ -154,6 +156,46 @@ class MainMenu: SKScene {
                     break
                 }
             }
+        }
+    }
+    
+    private var gTitle = SKSpriteNode()
+    private var titleFrames: [SKTexture] = []
+    
+    private var gTitleShadow = SKSpriteNode(imageNamed: "Title Shadow")
+    
+    func titleAnimation() {
+      let elioTitleAtlas = SKTextureAtlas(named: "ElioTitle")
+      var animationFrames: [SKTexture] = []
+
+        let numImages = elioTitleAtlas.textureNames.count
+      for i in 1...numImages {
+        let elioTextureName = "Elio\(i)"
+        animationFrames.append(elioTitleAtlas.textureNamed(elioTextureName))
+      }
+      titleFrames = animationFrames
+    
+        let firstFrameTexture = animationFrames[0]
+        gTitle = SKSpriteNode(texture: firstFrameTexture)
+        gTitle.setScale(0.2)
+        gTitle.zPosition = 2
+        gTitle.position = CGPoint(x: frame.midX, y: frame.midY + 50)
+        addChild(gTitle)
+        
+        gTitleShadow.setScale(0.2)
+        gTitleShadow.zPosition = 1
+        gTitleShadow.position.x = gTitle.position.x + 2
+        gTitleShadow.position.y = gTitle.position.y - 2
+        gTitleShadow.alpha = 0
+        addChild(gTitleShadow)
+    }
+    
+    func animateTitle() {
+      gTitle.run(SKAction.animate(with: titleFrames,
+                         timePerFrame: 0.1,
+                         resize: false,
+                         restore: false)){
+                            self.gTitleShadow.run(SKAction.fadeAlpha(to: 0.6, duration: 1))
         }
     }
 }

@@ -31,6 +31,7 @@ class LevelManager : NSObject {
     var pillars = [Pillar]()
     var halfGears = [HalfGear]()
     var platforms = [Platform]()
+    var hints = [Arrow]()
     var black = Black()
     
     // Boolean Variables
@@ -99,6 +100,9 @@ class LevelManager : NSObject {
             let tappedPiece = hitResults.first!.node
             if tappedPiece.name == "gear" || tappedPiece.name == "pillar" || tappedPiece.name == "island"{
                 player.movePlayer(hitTestResult: hitResults.first!)
+                if hints.first?.opacity == 1 && hints.first?.type == .tap{
+                    hints.first?.fadeOut()
+                }
             }
         }
     }
@@ -110,6 +114,9 @@ class LevelManager : NSObject {
         hitResults = sceneView.hitTest(location, options: [:])
         if player.isMovable {
             player.stop()
+        }
+        if hints.first?.opacity == 1 && hints.first?.type == .pan{
+            hints.first?.fadeOut()
         }
     }
 }

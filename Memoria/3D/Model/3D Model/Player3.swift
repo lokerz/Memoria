@@ -110,6 +110,6 @@ class Player3 : Player {
         self.addChildNode(pointOfViewNode)
         let geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
         pointOfViewNode.geometry = geometry
-//        pointOfViewNode.isHidden = true
+        pointOfViewNode.isHidden = true
     }
 }

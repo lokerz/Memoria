@@ -26,7 +26,7 @@ class Cloud : SCNNode{
         guard let object2 = SCNScene(named: "art.scnassets/cloud2.scn") else { return }
         let tempNode2 = SCNNode()
         tempNode2.name = "Cloud2"
-        tempNode2.position = SCNVector3Make(10.5, -2.9, -15.6)
+        tempNode2.position = SCNVector3Make(14.5, -2.9, -15.6)
         for node in object2.rootNode.childNodes as [SCNNode]{
             tempNode2.addChildNode(node)
         }
@@ -35,7 +35,7 @@ class Cloud : SCNNode{
         guard let object3 = SCNScene(named: "art.scnassets/cloud3.scn") else { return }
         let tempNode3 = SCNNode()
         tempNode3.name = "Cloud3"
-        tempNode3.position = SCNVector3Make(-18.2, -3.3, -15.2)
+        tempNode3.position = SCNVector3Make(-13.2, -3.3, -15.2)
         for node in object3.rootNode.childNodes as [SCNNode]{
             tempNode3.addChildNode(node)
         }

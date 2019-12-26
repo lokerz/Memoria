@@ -305,8 +305,8 @@
 		4705CA9B236AF32B00E874EB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				47B7A1E423585D050027AA1F /* GestureManager.swift */,
 				4705CA3C2362FF2800E874EB /* PathfindingManager.swift */,
+				47B7A1E423585D050027AA1F /* GestureManager.swift */,
 				4705CA4223640A4100E874EB /* LevelManager.swift */,
 				4705CA9E236C1EFB00E874EB /* LevelManagers */,
 			);

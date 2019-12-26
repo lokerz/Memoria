@@ -24,13 +24,13 @@ class HalfGearPath : HalfGear {
     func setupPath(){
         setupCoordinates()
         setupNodes()
-        swapNodes(0, with: 3)
+        swapNodes(4, with: 7)
     }
     
     func setupCoordinates(){
-        let initialAngle = 45
+        let initialAngle = -180
         let incrementAngle = 45
-        for i in 0...6 {
+        for i in 0...7 {
             coordinates.append(calculateCoordinate(from: position, with: radius, rotation: Float(initialAngle + i * incrementAngle)))
         }
                 
@@ -61,22 +61,19 @@ class HalfGearPath : HalfGear {
         
         print(degreeAngle)
         if degreeAngle <= maxAngle-39 && degreeAngle >= minAngle+39 {
-            nodes[3].removeConnections(to: [nodes[1]], bidirectional: true)
+            nodes[3].removeConnections(to: [nodes[2]], bidirectional: true)
             nodes[6].removeConnections(to: [nodes[5]], bidirectional: true)
         } else{
-            nodes[3].addConnections(to: [nodes[1]], bidirectional: true)
+            nodes[3].addConnections(to: [nodes[2]], bidirectional: true)
             nodes[6].addConnections(to: [nodes[5]], bidirectional: true)
         }
         
         if angle >= maxAngle - 0.001{
-            pathManager.addConnection(from: nodes[3], with: .finishNode)
-            pathManager.removeConnection(from: nodes[6], with: .finishNode)
+            pathManager.addConnection(from: nodes[7], with: .finishNode)
         } else if angle <= minAngle + 0.001{
-            pathManager.addConnection(from: nodes[6], with: .finishNode)
-            pathManager.removeConnection(from: nodes[3], with: .finishNode)
+            pathManager.addConnection(from: nodes[7], with: .finishNode)
         } else {
-            pathManager.removeConnection(from: nodes[3], with: .finishNode)
-            pathManager.removeConnection(from: nodes[6], with: .finishNode)
+            pathManager.removeConnection(from: nodes[7], with: .finishNode)
         }
     }
     

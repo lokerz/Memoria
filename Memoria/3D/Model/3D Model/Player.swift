@@ -32,7 +32,7 @@ class Player : SCNNode{
     
     init(on position : SCNVector3){
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/player2.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/player4.scn") else { return }
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }

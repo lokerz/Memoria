@@ -16,7 +16,7 @@ class LevelThreeManager : LevelManager {
     
     let pillarPosition = SCNVector3Make(-7.22, -0.42, 0) //6.06
     let pillarRotation = SCNVector4Make(0, 1 , 0, 0)
-    let finishPillarPosition = SCNVector3Make(6.9, -0.42, 0)
+    let finishPillarPosition = SCNVector3Make(6.78, -0.42, 0)
     let finishPillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(180))
     
     let gearOnePosition = SCNVector3Make(-2.71, 0, 0)

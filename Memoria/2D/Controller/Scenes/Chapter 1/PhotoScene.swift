@@ -26,11 +26,12 @@ class PhotoScene: SKScene {
     
     var monologue = Monologue()
     var nextButton = YellowButton()
-    
+    var hint = HintGesture()
     
     let house = SKSpriteNode(imageNamed: "House")
     var state = 0
     var stateGesture = 0
+    var stateHint = 0
     
     var photoWidth = 300
     var photoHeight = 400
@@ -84,6 +85,12 @@ class PhotoScene: SKScene {
         nextButton.isHidden = true
         addChild(nextButton)
 
+        hint = HintGesture(with: 15.0)
+        hint.position = CGPoint(x: frame.midX + 50, y: frame.midY)
+        hint.swipe(to: .left)
+        hint.alpha = 0
+        hint.zPosition = 4
+
     }
     
     func addGestures(to view: SKView){
@@ -136,6 +143,12 @@ class PhotoScene: SKScene {
                     self.run(SKAction.wait(forDuration: 1.5)) {
                         self.view!.isUserInteractionEnabled = true
                         self.house.removeFromParent()
+                        
+                        if self.stateHint == 0{
+                            self.run(SKAction.wait(forDuration: 3)){
+                                self.addChild(self.hint)
+                            }
+                        }
                     }
                     state += 1
                 }
@@ -150,6 +163,8 @@ class PhotoScene: SKScene {
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer){
+        hint.removeAllActions()
+        hint.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
         view!.isUserInteractionEnabled = false
         let point1 = CGPoint(x: self.photo1.position.x - self.distanceMove, y: view!.frame.height/2)
         let point2 = CGPoint(x: self.photo2.position.x - self.distanceMove, y: view!.frame.height/2)

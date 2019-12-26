@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
         setupUI()
         setupLoadingView()
         spriteViewController.setupSKView()
-        showSpriteKit(index: -1, transition: .fade(withDuration: 1))
+        showSpriteKit(index: 2, transition: .fade(withDuration: 1))
 //        showSceneKit(level: 1)
     }
     

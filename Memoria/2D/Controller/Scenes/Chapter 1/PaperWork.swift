@@ -42,6 +42,7 @@ class PaperWork: SKScene {
     let fadeInSlow = SKAction.fadeIn(withDuration: 2)
     let fadeOut = SKAction.fadeOut(withDuration: 1.2)
     
+    var hint = HintGesture()
     
     override func didMove(to view: SKView) {
         playBackgroundSound()
@@ -140,6 +141,16 @@ class PaperWork: SKScene {
         pen.setScale(0.12)
         pen.alpha = 0
         
+        //-100 -120
+        //100 0
+        //-100 -120
+        
+        hint = HintGesture(with: 15)
+        hint.zigzag(point1: CGVector(dx: -100, dy: -120), point2: CGVector(dx: 100, dy: 40), point3: CGVector(dx: -100, dy: -120), point4: CGVector(dx: 100, dy: 40))
+        hint.zPosition = 7
+        hint.position = CGPoint(x: 7 * view.frame.width/10 + 75, y: view.frame.height/2 + 120)
+        hint.alpha = 0
+        
         addChild(detector)
         addChild(albertWork)
         
@@ -173,11 +184,14 @@ class PaperWork: SKScene {
             self.pen.run(self.fadeIn)
 //            self.pen.run(SKAction.sequence([SKAction.wait(forDuration: 2), self.fadeIn]))
         }
-        let sequence = SKAction.sequence([wait, action1, wait, wait])
+        let sequence = SKAction.sequence([action1, wait, wait])
         self.run(sequence){
             self.run(action2)
             self.run(wait){
                 view.isUserInteractionEnabled = true
+                self.run(SKAction.wait(forDuration: 3)){
+                    self.addChild(self.hint)
+                }
             }
         }
     }
@@ -190,6 +204,8 @@ class PaperWork: SKScene {
             
             for node in nodesarray {
                 if node.name == "detector" {
+                    hint.removeAllActions()
+                    hint.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
                     startTouch = location
                     nodePosition = node.position
                     HapticGenerator.instance.play(4)

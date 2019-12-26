@@ -22,8 +22,8 @@ class MobilScene: SKScene {
     let fadeIn = SKAction.fadeAlpha(by: 1, duration: 0.5)
     let fadeOut = SKAction.fadeAlpha(by: -1, duration: 0.5)
     
-    let hint = SKSpriteNode(imageNamed: "Hint")
-    let pulse = [SKAction.fadeAlpha(to: 1, duration: 1), SKAction.wait(forDuration: 0.3), SKAction.fadeAlpha(to: 0, duration: 1), SKAction.wait(forDuration: 0.8)]
+    let hint = HintGesture(with: 15)
+    let hint2 = HintGesture(with: 15)
     
     var statePaper = 1
     var stateButton = 1
@@ -86,16 +86,25 @@ class MobilScene: SKScene {
         nextButton.isHidden = true
         addChild(nextButton)
         
-        hint.position = paper.position
+        hint.position = CGPoint(x: frame.midX + 150, y: frame.midY)
         hint.zPosition = 5
-        hint.size = CGSize(width: 150, height: 150)
         hint.alpha = 0
+        hint.tap()
+        
+        hint2.position = CGPoint(x: 230, y: 50)
+        hint2.zPosition = 5
+        hint2.alpha = 0
+        hint2.tap()
         
         addChild(ibuAnak)
         addChild(ayah)
         addChild(paper)
         addChild(blocker)
         addChild(paperBig)
+        
+        self.run(SKAction.wait(forDuration: 3)){
+            self.addChild(self.hint)
+        }
         
         BGMPlayer.instance.playSound(for: .chapter1, index: 7, volume: 1)
         BGMPlayer.instance.player?.numberOfLoops = -1
@@ -136,7 +145,8 @@ class MobilScene: SKScene {
                         monologue.fadeOut()
                         statePaper += 1
                         
-                        hint.removeFromParent()
+                        hint2.removeAllActions()
+                        hint2.run(SKAction.fadeAlpha(to: 0, duration: 1))
                     }
                 }
                 else if node.name == "ibuAnak" && !secondMonologueOut {
@@ -158,10 +168,12 @@ class MobilScene: SKScene {
                     }
                     
                     self.run(SKAction.sequence([SKAction.wait(forDuration: duration), dadAdd]))
-                    self.addChild(hint)
-                    self.run(SKAction.wait(forDuration: 5)){
-                        self.hint.run(SKAction.repeatForever(SKAction.sequence(self.pulse)))
+                    self.run(SKAction.wait(forDuration: 3)){
+                        self.addChild(self.hint2)
                     }
+                    
+                    hint.removeAllActions()
+                    hint.run(SKAction.fadeAlpha(to: 0, duration: 1))
                 }
                 else if node.name == "nextButton" {
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)

@@ -199,18 +199,11 @@ class PaperWork: SKScene {
             
             for node in nodesarray {
                 if node.name == "detector" {
-                    hint.run(SKAction.fadeAlpha(to: 0, duration: 0.5)){
-                        self.hint.removeFromParent()
-                    }
                     
                     startTouch = location
                     nodePosition = node.position
                     HapticGenerator.instance.play(4)
                     albertAnimation()
-                    
-                    self.run(SKAction.wait(forDuration: 7)){
-                        self.addChild(self.hint)
-                    }
                 }
             }
         }

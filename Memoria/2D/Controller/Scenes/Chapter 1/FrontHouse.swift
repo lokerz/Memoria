@@ -55,7 +55,7 @@ class FrontHouse: SKScene{
         hintTap.alpha = 0
         hintTap.tap()
         
-        hintSwipe.position = door.position
+        hintSwipe.position =  CGPoint(x: frame.midX, y: frame.midY + 50)
         hintSwipe.zPosition = 3
         hintSwipe.alpha = 0
         hintSwipe.swipe(to: .down)

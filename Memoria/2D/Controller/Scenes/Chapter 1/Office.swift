@@ -31,6 +31,7 @@ class Office: SKScene{
     var index2 = 0
     var height : CGFloat = 0
     
+    var hint = HintGesture(with: 15)
     
     override func didMove(to view: SKView) {
         FirstPlayer.instance.player?.stop()
@@ -49,7 +50,7 @@ class Office: SKScene{
         
         nextButton = YellowButton(with: CGSize(width: 60, height: 60), text: "➤", textSize: 25)
         nextButton.position = CGPoint(x:view.frame.width-60, y: 60)
-        nextButton.zPosition = 7
+        nextButton.zPosition = 2
         nextButton.name = "nextButton"
         nextButton.move(to: .down)
         nextButton.isHidden = true
@@ -59,6 +60,11 @@ class Office: SKScene{
         mobA.position = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
         mobA.zPosition = -0.5
         mobA.alpha = 0
+        
+        hint.position = CGPoint(x: frame.midX + 150, y: frame.midY)
+        hint.tap()
+        hint.alpha = 0
+        hint.zPosition = 2
         
         addChild(mobA)
         addChild(elioBG)
@@ -73,6 +79,8 @@ class Office: SKScene{
                 self.addBubble2()
                 self.moveBubble()
                 self.view?.isUserInteractionEnabled = true
+                
+                self.addChild(self.hint)
             }
         }
     }

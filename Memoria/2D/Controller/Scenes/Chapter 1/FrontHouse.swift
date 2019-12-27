@@ -20,6 +20,9 @@ class FrontHouse: SKScene{
     let houseNight = SKSpriteNode(imageNamed: "House_Night")
     let houseNightElio = SKSpriteNode(imageNamed: "House_Night_Albert")
     
+    var hintTap = HintGesture(with: 15)
+    var hintSwipe = HintGesture(with: 15)
+    
     override func didMove(to view: SKView) {
         addGestures(to: view)
         
@@ -47,8 +50,18 @@ class FrontHouse: SKScene{
         knob.zPosition = 2
         knob.name = "knob"
         
+        hintTap.position = door.position
+        hintTap.zPosition = 3
+        hintTap.alpha = 0
+        hintTap.tap()
+        
+        hintSwipe.position = door.position
+        hintSwipe.zPosition = 3
+        hintSwipe.alpha = 0
+        hintSwipe.swipe(to: .down)
+        
         addChild(houseNight)
-        self.run(SKAction.wait(forDuration: 1.5)){
+        self.run(SKAction.wait(forDuration: 1)){
             self.playAmbience()
         }
         
@@ -57,10 +70,14 @@ class FrontHouse: SKScene{
         self.run(SKAction.wait(forDuration: 1)){
             self.addChild(self.houseNightElio)
             self.houseNightElio.run(SKAction.fadeAlpha(to: 1, duration: 1)){
-                self.houseNight.removeFromParent()
-                self.view?.isUserInteractionEnabled = true
-                }
+            self.houseNight.removeFromParent()
+            self.view?.isUserInteractionEnabled = true
             }
+        }
+        
+        self.run(SKAction.wait(forDuration: 6)){
+            self.addChild(self.hintTap)
+        }
     }
     
     func addGestures(to view: SKView){
@@ -84,6 +101,12 @@ class FrontHouse: SKScene{
                     door.run(fadeIn)
                     knob.run(fadeIn)
                     state = 1
+                    hintTap.removeAllActions()
+                    hintTap.run(SKAction.fadeAlpha(to: 0, duration: 1))
+                    
+                    self.run(SKAction.wait(forDuration: 5)){
+                        self.addChild(self.hintSwipe)
+                    }
                 }
             }
             

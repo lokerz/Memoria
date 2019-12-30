@@ -26,7 +26,9 @@ class PhotoScene: SKScene {
     
     var monologue = Monologue()
     var nextButton = YellowButton()
-    var hint = HintGesture()
+    
+    var hintTap = HintGesture(with: 15)
+    var hintSwipe = HintGesture(with: 15)
     
     let house = SKSpriteNode(imageNamed: "House")
     var state = 0
@@ -85,11 +87,19 @@ class PhotoScene: SKScene {
         nextButton.isHidden = true
         addChild(nextButton)
 
-        hint = HintGesture(with: 15.0)
-        hint.position = CGPoint(x: frame.midX + 50, y: frame.midY)
-        hint.swipe(to: .left)
-        hint.alpha = 0
-        hint.zPosition = 4
+        hintTap.position = CGPoint(x: frame.midX + 150, y: frame.midY)
+        hintTap.tap()
+        hintTap.alpha = 0
+        hintTap.zPosition = 3
+        
+        hintSwipe.position = CGPoint(x: frame.midX + 50, y: frame.midY)
+        hintSwipe.swipe(to: .left)
+        hintSwipe.alpha = 0
+        hintSwipe.zPosition = 3
+        
+        self.run(SKAction.wait(forDuration: 6)){
+            self.addChild(self.hintTap)
+        }
 
     }
     
@@ -146,11 +156,14 @@ class PhotoScene: SKScene {
                         
                         if self.stateHint == 0{
                             self.run(SKAction.wait(forDuration: 3)){
-                                self.addChild(self.hint)
+                                self.addChild(self.hintSwipe)
                             }
                         }
                     }
                     state += 1
+                    
+                    hintTap.removeAllActions()
+                    hintTap.run(SKAction.fadeAlpha(to: 0, duration: 1))
                 }
                 else if node.name == "nextButton" {
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)
@@ -163,8 +176,8 @@ class PhotoScene: SKScene {
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer){
-        hint.removeAllActions()
-        hint.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
+        hintSwipe.removeAllActions()
+        hintSwipe.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
         view!.isUserInteractionEnabled = false
         let point1 = CGPoint(x: self.photo1.position.x - self.distanceMove, y: view!.frame.height/2)
         let point2 = CGPoint(x: self.photo2.position.x - self.distanceMove, y: view!.frame.height/2)

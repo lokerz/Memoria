@@ -32,6 +32,10 @@ class InHouse : SKScene{
     
     var spriteManager = SpriteManager.instance
     
+    var hintSwipe = HintGesture(with: 15)
+    var hintSwipe2 = HintGesture(with: 15)
+    var hintTap = HintGesture(with: 15)
+    
     override func didMove(to view: SKView) {
         view.isUserInteractionEnabled = false
         
@@ -96,6 +100,24 @@ class InHouse : SKScene{
         
         addGesture(to : view)
         
+        hintSwipe.position = CGPoint(x: frame.midX + 250, y: frame.midY)
+        hintSwipe.zPosition = 4
+        hintSwipe.alpha = 0
+        hintSwipe.swipe(to: .up)
+        
+        hintSwipe2.position = lastFoto.position
+        hintSwipe2.zPosition = 4
+        hintSwipe2.alpha = 0
+        hintSwipe2.swipe(to: .up)
+        
+        hintTap.position = CGPoint(x: frame.midX + 150, y: frame.midY)
+        hintTap.zPosition = 4
+        hintTap.alpha = 0
+        hintTap.tap()
+        
+        self.run(SKAction.wait(forDuration: 5)){
+            self.addChild(self.hintSwipe)
+        }
     }
     
     func addGesture(to view : SKView){
@@ -182,6 +204,10 @@ class InHouse : SKScene{
                 lastFoto.run(move.easeInOut()) {
                     self.isReadyToChange = true
                 }
+                
+                self.run(SKAction.wait(forDuration: 6)){
+                    self.addChild(self.hintTap)
+                }
             }
         }
         
@@ -202,6 +228,9 @@ class InHouse : SKScene{
     }
     
     @objc func swipedDirectionUp(sender: UISwipeGestureRecognizer){
+        hintSwipe.removeAllActions()
+        hintSwipe.run(SKAction.fadeAlpha(to: 0, duration: 1))
+        
         let moveHigher = SKAction.moveTo(y: 13 * view!.frame.height/6, duration: animationDuration).easeInOut()
         let moveMain = SKAction.moveTo(y: view!.frame.height/2, duration: animationDuration).easeInOut()
         let moveHigh = SKAction.moveTo(y: 4*view!.frame.height/3, duration: animationDuration).easeInOut()
@@ -276,7 +305,11 @@ class InHouse : SKScene{
             
             self.frameDepan.run(SKAction.sequence([SKAction.wait(forDuration: animationDuration) ,fadeIn]))
             self.frameBelakang.run(SKAction.sequence([SKAction.wait(forDuration: animationDuration),fadeIn]))
-            self.frameFoto.run(SKAction.sequence([SKAction.wait(forDuration: 4*animationDuration/3),fadeIn]))
+            self.frameFoto.run(SKAction.sequence([SKAction.wait(forDuration: 4*animationDuration/3),fadeIn])){
+                self.run(SKAction.wait(forDuration: 5)){
+                    self.addChild(self.hintSwipe2)
+                }
+            }
             state += 1
         default:
             break

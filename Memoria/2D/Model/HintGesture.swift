@@ -52,7 +52,6 @@ class HintGesture : SKNode{
             case .down : move = SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: fadeDuration),SKAction.moveBy(x: 0, y: -100, duration: moveDuration),SKAction.fadeAlpha(to: 0, duration: fadeDuration),SKAction.moveBy(x: 0, y: 100, duration: resetPositionDuration)])
             case .left : move = SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: fadeDuration),SKAction.moveBy(x: -100, y: 0, duration: moveDuration),SKAction.fadeAlpha(to: 0, duration: fadeDuration),SKAction.moveBy(x: 100, y: 0, duration: resetPositionDuration)])
             case .right : move = SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: fadeDuration),SKAction.moveBy(x: 100, y: 0, duration: moveDuration),SKAction.fadeAlpha(to: 0, duration: fadeDuration),SKAction.moveBy(x: -100, y: 0, duration: resetPositionDuration)])
-        default : break
         }
         self.run(SKAction.repeatForever(move))
     }
@@ -63,7 +62,7 @@ class HintGesture : SKNode{
         var move = SKAction()
         move.timingMode = .easeInEaseOut
         
-        move = SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: fadeDuration),SKAction.wait(forDuration: stayDuration),SKAction.fadeAlpha(to: 0, duration: fadeDuration)])
+        move = SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: fadeDuration),SKAction.wait(forDuration: stayDuration),SKAction.fadeAlpha(to: 0, duration: fadeDuration),SKAction.wait(forDuration: stayDuration/2)])
         self.run(SKAction.repeatForever(move))
     }
     

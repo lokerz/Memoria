@@ -42,7 +42,7 @@ class PaperWork: SKScene {
     let fadeInSlow = SKAction.fadeIn(withDuration: 2)
     let fadeOut = SKAction.fadeOut(withDuration: 1.2)
     
-    var hint = HintGesture()
+    var hint = HintGesture(with: 15)
     
     override func didMove(to view: SKView) {
         playBackgroundSound()
@@ -141,11 +141,6 @@ class PaperWork: SKScene {
         pen.setScale(0.12)
         pen.alpha = 0
         
-        //-100 -120
-        //100 0
-        //-100 -120
-        
-        hint = HintGesture(with: 15)
         hint.zigzag(point1: CGVector(dx: -100, dy: -120), point2: CGVector(dx: 100, dy: 40), point3: CGVector(dx: -100, dy: -120), point4: CGVector(dx: 100, dy: 40))
         hint.zPosition = 7
         hint.position = CGPoint(x: 7 * view.frame.width/10 + 75, y: view.frame.height/2 + 120)
@@ -204,8 +199,7 @@ class PaperWork: SKScene {
             
             for node in nodesarray {
                 if node.name == "detector" {
-                    hint.removeAllActions()
-                    hint.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
+                    
                     startTouch = location
                     nodePosition = node.position
                     HapticGenerator.instance.play(4)
@@ -244,6 +238,8 @@ class PaperWork: SKScene {
                     text11.run(fadeInSlow)
                 }
                 if writeState == a{
+                    hint.removeAllActions()
+                    hint.run(SKAction.fadeAlpha(to: 0, duration: 1))
                     addChild(text12)
                     text12.run(fadeInSlow)
                 }

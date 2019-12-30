@@ -62,13 +62,13 @@ class GameUIView: UIView{
     
     func setupButton(){
 //        pauseButtonOutlet.setTitleColor(buttonColor, for: .normal)
-        hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
+//        hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
        
         buttons.append(soundButtonOutlet)
         buttons.append(hapticButtonOutlet)
         buttons.append(exitButtonOutlet)
         
-//        setupShadow()
+        setupShadow()
     }
     
     func setupShadow(){
@@ -80,10 +80,10 @@ class GameUIView: UIView{
     
     func setShadow(button : UIButton){
         print(#function, button)
-        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 0
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
         button.layer.masksToBounds = true
     }
     

@@ -25,6 +25,9 @@ class LevelOneManager : LevelManager{
     let gearTwoRotation = SCNVector4Make(0, 1, 0, GLKMathDegreesToRadians(10))
     let gearTwoCounterRotate = true
     
+    let arrowLocation = SCNVector3Make(6.9, 0.5, 0)
+    let arrowRotation = SCNVector4Make(0, 1, 0, 0)
+    let arrowDelay = 2.0
     
     override func setupLevel(){
         super.setupLevel()
@@ -37,16 +40,13 @@ class LevelOneManager : LevelManager{
         spawnPillar(on: finishPillarPosition, with: finishPillarRotation)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
+        spawnArrow(on: arrowLocation, with: arrowRotation, delay: arrowDelay, animation: .tap)
+        spawnCloud()
         //        player.pathManager = LevelOnePathfindingManager()
 //        pillars.first!.moveDown(by: 5, duration: 3)
         
         pathfinder.setupNodes()
 //        spawnPathnodes()
-        
-//        let crystal = Crystal(amount: 50)
-//        rootNode.addChildNode(crystal)
-        let cloud = Cloud()
-        rootNode.addChildNode(cloud)
         
     }
     

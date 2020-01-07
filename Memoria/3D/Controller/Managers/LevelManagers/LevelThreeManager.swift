@@ -16,7 +16,7 @@ class LevelThreeManager : LevelManager {
     
     let pillarPosition = SCNVector3Make(-7.22, -0.42, 0) //6.06
     let pillarRotation = SCNVector4Make(0, 1 , 0, 0)
-    let finishPillarPosition = SCNVector3Make(6.9, -0.42, 0)
+    let finishPillarPosition = SCNVector3Make(6.78, -0.42, 0)
     let finishPillarRotation = SCNVector4Make(0, 1 , 0, GLKMathDegreesToRadians(180))
     
     let gearOnePosition = SCNVector3Make(-2.71, 0, 0)
@@ -25,7 +25,9 @@ class LevelThreeManager : LevelManager {
     let gearTwoPosition = SCNVector3Make(2.34, 0, 0)
     let gearTwoRotation = SCNVector4Make(0, 0, 0, GLKMathDegreesToRadians(10))
     
-    
+    let arrowLocation = SCNVector3Make(-2.71, 0, 3.1)
+    let arrowRotation = SCNVector4Make(0, 0, 1, GLKMathDegreesToRadians(90))
+    let arrowDelay = 3.0
     
     override func setupLevel(){
         super.setupLevel()
@@ -36,7 +38,8 @@ class LevelThreeManager : LevelManager {
         spawnPillar(on: finishPillarPosition, with: finishPillarRotation)
         let finishPosition = SCNVector3Make(finishPillarPosition.x, 0, finishPillarPosition.z)
         player.finishLocation = finishPosition
-        
+        spawnArrow(on: arrowLocation, with: arrowRotation, delay: arrowDelay, animation: .pan)
+        spawnCloud()
 //        pillars.first!.moveDown(by: 5, duration: 3)
         
         pathfinder.setupNodes()

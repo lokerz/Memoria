@@ -28,6 +28,7 @@ class SpriteKitViewController: UIViewController {
             view.ignoresSiblingOrder = true
             spriteManager.setupView(view: view)
             spriteManager.setupDelegate(delegate : self)
+//            mainSkView.showsFPS = true
             //            spriteManager.callScene(index: 0, transition: .fade(withDuration: 1))
         }
     }

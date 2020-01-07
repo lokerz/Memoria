@@ -32,7 +32,7 @@ class Player : SCNNode{
     
     init(on position : SCNVector3){
         super.init()
-        guard let object = SCNScene(named: "art.scnassets/player2.scn") else { return }
+        guard let object = SCNScene(named: "art.scnassets/player4.scn") else { return }
         for node in object.rootNode.childNodes{
             self.addChildNode(node)
         }
@@ -94,6 +94,7 @@ class Player : SCNNode{
     
     func checkFinished(){
         let position = SCNVector3Make(playerNode.presentation.worldPosition.x, 0, playerNode.presentation.worldPosition.z)
+//        print(calculateDistance(from: position, to: finishLocation))
         if calculateDistance(from: position, to: finishLocation) < 0.8 {
             isFinished = true
         }

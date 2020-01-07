@@ -89,4 +89,21 @@ extension LevelManager{
             rootNode.addChildNode(node)
         }
     }
+    
+    func spawnCloud(){
+        let cloud = Cloud()
+        rootNode.addChildNode(cloud)
+    }
+    
+    func spawnArrow(on position:  SCNVector3, with rotation : SCNVector4, delay : Double, animation : arrowAnimation){
+        let arrow = Arrow(on : position, with : rotation, delay : delay)
+        switch animation {
+            case .tap : arrow.tapAnimation()
+            case .pan : arrow.panAnimation()
+            case .none : break
+        }
+        rootNode.addChildNode(arrow)
+        hints.append(arrow)
+    }
 }
+

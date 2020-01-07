@@ -36,7 +36,7 @@ class GameUIView: UIView{
         super.init(frame: frame)
         commonInit()
         setupSize(frame)
-        setupShadow()
+//        setupShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -62,7 +62,7 @@ class GameUIView: UIView{
     
     func setupButton(){
 //        pauseButtonOutlet.setTitleColor(buttonColor, for: .normal)
-        hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
+//        hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
        
         buttons.append(soundButtonOutlet)
         buttons.append(hapticButtonOutlet)
@@ -79,10 +79,11 @@ class GameUIView: UIView{
     }
     
     func setShadow(button : UIButton){
-        button.layer.shadowColor = UIColor.black.cgColor
+        print(#function, button)
+        button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 0
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
         button.layer.masksToBounds = true
     }
     
@@ -142,13 +143,19 @@ class GameUIView: UIView{
         //SoundGenerator.instance.isSound = !SoundeGenerator.instance.isSound
         HapticGenerator.instance.play(4)
         FirstPlayer.instance.volume = FirstPlayer.instance.volume == 1 ? 0 : 1
-        soundButtonOutlet.setTitleColor(FirstPlayer.instance.volume == 1 ? .white : .gray, for: .normal)
+//        soundButtonOutlet.setTitleColor(FirstPlayer.instance.volume == 1 ? .white : .gray, for: .normal)
+        let soundOn = UIImage(named: "soundOn")
+        let soundOff = UIImage(named: "soundOff")
+        soundButtonOutlet.setImage(FirstPlayer.instance.volume == 1 ? soundOn : soundOff, for: .normal)
         self.delegate?.showText?(FirstPlayer.instance.volume == 0 ? "Sound: OFF" : "Sound: ON")
     }
     
     @IBAction func hapticButtonAction(_ sender: Any) {
         HapticGenerator.instance.isHaptic = !HapticGenerator.instance.isHaptic
         hapticButtonOutlet.setTitleColor(HapticGenerator.instance.isHaptic ? .white : .gray, for: .normal)
+        let hapticOn = UIImage(named: "hapticOn")
+        let hapticOff = UIImage(named: "hapticOff")
+        hapticButtonOutlet.setImage(HapticGenerator.instance.isHaptic ? hapticOn : hapticOff, for: .normal)
         HapticGenerator.instance.play(4)
         self.delegate?.showText?(HapticGenerator.instance.isHaptic ? "Haptic: ON" : "Haptic: OFF")
 
@@ -169,7 +176,7 @@ class GameUIView: UIView{
     func rotate(button : UIButton, duration : TimeInterval){
         let degree = isToggle ? GLKMathDegreesToRadians(-180) : 0 //the value in degrees
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-            button.titleLabel?.transform = CGAffineTransform(rotationAngle: CGFloat(degree))
+            button.transform = CGAffineTransform(rotationAngle: CGFloat(degree))
         })
     }
     

@@ -47,6 +47,7 @@ class Player3 : Player {
                 nextDestination()
             }
             if isMoving {
+                synchronizePOV()
                 playerNode.look(at: pointOfViewNode.position)
             }
         }
@@ -71,6 +72,10 @@ class Player3 : Player {
             let move = SCNAction.move(to: direction, duration: duration).easeInOut()
             pointOfViewNode.runAction(move)
         }
+    }
+    
+    func synchronizePOV() {
+        pointOfViewNode.position = SCNVector3Make(pointOfViewNode.position.x, playerNode.presentation.position.y, pointOfViewNode.position.z)
     }
     
     override func stop(){
@@ -105,6 +110,6 @@ class Player3 : Player {
         self.addChildNode(pointOfViewNode)
         let geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
         pointOfViewNode.geometry = geometry
-//        pointOfViewNode.isHidden = true
+        pointOfViewNode.isHidden = true
     }
 }

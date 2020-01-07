@@ -192,7 +192,7 @@ class MainMenu: SKScene {
     
     func animateTitle() {
       gTitle.run(SKAction.animate(with: titleFrames,
-                         timePerFrame: 0.1,
+                         timePerFrame: 0.05,
                          resize: false,
                          restore: false)){
                             self.gTitleShadow.run(SKAction.fadeAlpha(to: 0.6, duration: 1))

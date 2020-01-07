@@ -86,7 +86,7 @@ class MobilScene: SKScene {
         nextButton.isHidden = true
         addChild(nextButton)
         
-        hintTap.position = CGPoint(x: frame.midX + 150, y: frame.midY)
+        hintTap.position = CGPoint(x: frame.midX + 250, y: frame.midY)
         hintTap.zPosition = 5
         hintTap.alpha = 0
         hintTap.tap()

@@ -27,9 +27,13 @@ class EndingOne: SKScene {
     "I think I know where I should go..."
     ]
     
+    var hintTap = HintGesture(with: 15)
+    
     var isClickable = false
     
     override func didMove(to view: SKView) {
+        hintTap.position = CGPoint(x: frame.midX + 250, y: frame.midY)
+        
         monologue = Monologue(for: view)
         monologue.changeText(to: monologues[0])
         addChild(monologue)

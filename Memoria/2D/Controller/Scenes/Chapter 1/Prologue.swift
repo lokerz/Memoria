@@ -23,13 +23,13 @@ class Prologue: SKScene {
     
     let prologues = [
         "Lost without direction...",
-        "trapped in inhibition...",
+        "Trapped in inhibition...",
         "In this stagnant life...",
 //        "to the point where one could not think",
 //        "what is the purpose of your life?",
 //        "Now I will share a story",
 //        "A story which will change my whole life forever",
-        "what do you live for?",
+        "What do you live for?",
         "I am elio",
 //        "And this is my story"
     ]

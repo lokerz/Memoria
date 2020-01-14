@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
         setupUI()
         setupLoadingView()
         spriteViewController.setupSKView()
-        showSpriteKit(index: -1 , transition: .fade(withDuration: 1))
+        showSpriteKit(index: 5 , transition: .fade(withDuration: 1))
 //        showSceneKit(level: 1)
     }
     
@@ -99,10 +99,10 @@ extension MainViewController : GameUIDelegate{
         view.addSubview(uiview)
         uiview.alpha = 0
         
-        let frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        let frame = CGRect(x: view.frame.width - 250, y: 30, width: 100, height: 16)
         label = UILabel(frame: frame)
-        label.center = view.center
-        label.textAlignment = .center
+//        label.center = view.center
+        label.textAlignment = .left
         label.textColor = .white
         label.font = UIFont(name: "Pigiarniq", size: 14)
         view.addSubview(label)
@@ -122,7 +122,7 @@ extension MainViewController : GameUIDelegate{
     }
     
     func showAlert(){
-        let alert = UIAlertController(title: "Exit Chapter?", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Back to Main Menu?", message: nil, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             self.saveGame()

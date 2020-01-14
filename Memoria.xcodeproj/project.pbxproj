@@ -172,7 +172,7 @@
 		4711D2E323AA20C000D7D14C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		4711D2E523B0B5CD00D7D14C /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		4711D2E723CC148B00D7D14C /* BGM Elio 2.0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "BGM Elio 2.0.mp3"; sourceTree = "<group>"; };
-		47B7A1A923585BCA0027AA1F /* elio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47B7A1A923585BCA0027AA1F /* The Story of Elio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Story of Elio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		47B7A1B023585BCA0027AA1F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 		47B7A1AA23585BCA0027AA1F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				47B7A1A923585BCA0027AA1F /* elio.app */,
+				47B7A1A923585BCA0027AA1F /* The Story of Elio.app */,
 				47B7A1BF23585BCD0027AA1F /* MemoriaTests.xctest */,
 				47B7A1CA23585BCE0027AA1F /* MemoriaUITests.xctest */,
 			);
@@ -794,7 +794,7 @@
 			);
 			name = Memoria;
 			productName = Memoria;
-			productReference = 47B7A1A923585BCA0027AA1F /* elio.app */;
+			productReference = 47B7A1A923585BCA0027AA1F /* The Story of Elio.app */;
 			productType = "com.apple.product-type.application";
 		};
 		47B7A1BE23585BCD0027AA1F /* MemoriaTests */ = {
@@ -1207,7 +1207,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finalchallenge.elio;
-				PRODUCT_NAME = elio;
+				PRODUCT_NAME = "The Story of Elio";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1226,7 +1226,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finalchallenge.elio;
-				PRODUCT_NAME = elio;
+				PRODUCT_NAME = "The Story of Elio";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

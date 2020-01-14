@@ -28,6 +28,7 @@
 		47076BB0239E55E600EAE6E2 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */; };
 		4711D2E423AA20C000D7D14C /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4711D2E323AA20C000D7D14C /* Cloud.swift */; };
 		4711D2E623B0B5CD00D7D14C /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4711D2E523B0B5CD00D7D14C /* Arrow.swift */; };
+		4711D2E823CC148C00D7D14C /* BGM Elio 2.0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4711D2E723CC148B00D7D14C /* BGM Elio 2.0.mp3 */; };
 		47B7A1AD23585BCA0027AA1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */; };
 		47B7A1AF23585BCA0027AA1F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A1AE23585BCA0027AA1F /* art.scnassets */; };
 		47B7A1B123585BCA0027AA1F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A1B023585BCA0027AA1F /* GameViewController.swift */; };
@@ -170,6 +171,7 @@
 		47076BAF239E55E600EAE6E2 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
 		4711D2E323AA20C000D7D14C /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		4711D2E523B0B5CD00D7D14C /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
+		4711D2E723CC148B00D7D14C /* BGM Elio 2.0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "BGM Elio 2.0.mp3"; sourceTree = "<group>"; };
 		47B7A1A923585BCA0027AA1F /* elio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B7A1AC23585BCA0027AA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47B7A1AE23585BCA0027AA1F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -765,6 +767,7 @@
 		F1BA096723990B2C003E4295 /* Main Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4711D2E723CC148B00D7D14C /* BGM Elio 2.0.mp3 */,
 				F1E66BAA2386A391000633A6 /* A_Quiet_Thought.mp3 */,
 				F1BA096123990AF0003E4295 /* Piano In Blue.mp3 */,
 				F1BA096223990AF5003E4295 /* PianoDreams.mp3 */,
@@ -891,6 +894,7 @@
 				F12801A523A245390004C79B /* SignikaNegative-Bold.ttf in Resources */,
 				F1728ADF238288A70027A617 /* Roboto-MediumItalic.ttf in Resources */,
 				F1BA096D23991734003E4295 /* Road.mp3 in Resources */,
+				4711D2E823CC148C00D7D14C /* BGM Elio 2.0.mp3 in Resources */,
 				F1728AD9238288A70027A617 /* Roboto-Bold.ttf in Resources */,
 				F15732412375586B00E7891E /* InHouse.sks in Resources */,
 				F177D55C23AA1A3100E28CFB /* NextButton.mp3 in Resources */,

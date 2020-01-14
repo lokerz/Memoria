@@ -32,7 +32,7 @@ class FirstPlayer{
     var volume : Float = 1
     var mainTheme = [
     "",
-    "A_Quiet_Thought",
+    "BGM Elio 2.0",
     "Piano In Blue",
     "PianoDreams",
     "full_ThisBeautifulWorld",

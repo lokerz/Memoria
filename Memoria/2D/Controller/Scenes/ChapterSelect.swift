@@ -30,10 +30,10 @@ class ChapterSelect: SKScene {
     let dropShadowChapterBox = SKShapeNode(rectOf: CGSize(width: 400, height: 65))
     
     let chapter1 = SKSpriteNode(imageNamed: "House")
-    let chapter2 = SKSpriteNode(imageNamed: "PH1")
-    let chapter3 = SKSpriteNode(imageNamed: "PH2")
-    let chapter4 = SKSpriteNode(imageNamed: "PH3")
-    let chapter5 = SKSpriteNode(imageNamed: "PH4")
+    let chapter2 = SKSpriteNode(imageNamed: "House")
+    let chapter3 = SKSpriteNode(imageNamed: "House")
+    let chapter4 = SKSpriteNode(imageNamed: "House")
+    let chapter5 = SKSpriteNode(imageNamed: "House")
     
     let whiteBorder = SKSpriteNode(imageNamed: "CS_Brush_Circle")
     
@@ -181,10 +181,10 @@ class ChapterSelect: SKScene {
                         self.run(SKAction.wait(forDuration: 2)){
                             BGMPlayer.instance.player?.stop()
                         }
-                    case 2: spriteManager.callScene(index: 6, transition: .fade(withDuration: 1))
-                    case 3: break
-                    case 4: break
-                    case 5: break
+                    case 2: spriteManager.loadGame(level: 1)
+                    case 3: spriteManager.callScene(index: 4, transition: .fade(withDuration: 1))
+                    case 4: spriteManager.callScene(index: 6, transition: .fade(withDuration: 1))
+                    case 5: spriteManager.callScene(index: 7, transition: .fade(withDuration: 1))
                     default: break
                     }
                     playPlaySound()

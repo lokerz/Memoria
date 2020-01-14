@@ -68,7 +68,7 @@ class GameUIView: UIView{
         buttons.append(hapticButtonOutlet)
         buttons.append(exitButtonOutlet)
         
-        setupShadow()
+//        setupShadow()
     }
     
     func setupShadow(){

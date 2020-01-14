@@ -61,7 +61,7 @@ class Office: SKScene{
         mobA.zPosition = -0.5
         mobA.alpha = 0
         
-        hint.position = CGPoint(x: frame.midX + 150, y: frame.midY)
+        hint.position = CGPoint(x: frame.midX + 175, y: frame.midY - 50)
         hint.tap()
         hint.alpha = 0
         hint.zPosition = 2
@@ -105,6 +105,8 @@ class Office: SKScene{
             let location = touch.location(in: self)
             let nodesarray = nodes(at: location)
             
+            hint.removeAllActions()
+            hint.alpha = 0
             for node in nodesarray {
                 if node.name == "nextButton"{
                     HapticGenerator.instance.play(sharpnessValue : 0.5, intensityValue : 0.5)

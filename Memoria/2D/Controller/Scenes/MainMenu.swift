@@ -122,7 +122,7 @@ class MainMenu: SKScene {
     }
     
     func playBackgroundSound(){
-        BGMPlayer.instance.playSound(for: part.mainMenu, index: 5, volume: 0)
+        BGMPlayer.instance.playSound(for: part.mainMenu, index: 1, volume: 0)
         BGMPlayer.instance.player?.numberOfLoops = -1
         BGMPlayer.instance.player?.setVolume(0.5, fadeDuration: 2)
     }

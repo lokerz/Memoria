@@ -152,7 +152,7 @@ class MainMenu: SKScene {
             for node in nodesarray {
                 if node.name == "bg"{
                     HapticGenerator.instance.play(sharpnessValue: 0.5, intensityValue: 0.5)
-                    spriteManager.callScene(index: 1, transition: .fade(withDuration: 3))
+                    spriteManager.callScene(index: 99, transition: .fade(withDuration: 3))
                     break
                 }
             }

@@ -125,7 +125,8 @@ class EndingOne: SKScene {
     }
     
     func changeScene(){
-        SpriteManager.instance.callChapterSelect(index: 2, transition: .fade(with : .white, duration : 2))
+//        SpriteManager.instance.callChapterSelect(index: 2, transition: .fade(with : .white, duration : 2))
+        SpriteManager.instance.callScene(index: 0, transition: .fade(with: .white, duration: 1))
     }
     
     func playSound(){
